@@ -1,0 +1,14 @@
+SMAP
+analise_002descolha_jsp.java
+JSP
+*S JSP
+*F
++ 0 analise-escolha.jsp
+analise/analise-escolha.jsp
++ 1 cabecalho.jsp
+analise/../cabecalho.jsp
+*L
+1,6:49
+1#1,67:55
+6#0,37:122
+*E

@@ -1,0 +1,35 @@
+.conteudo{
+    margin-top:60px;
+}
+
+#sair{
+    margin:3px;
+    color:white;
+}
+
+#sair:hover{
+    background-color:#d9534f;
+    border-color:#000;
+    
+}
+.topnav{
+    font-size:18px;
+}
+
+.navbar-brand{
+    font-size:30px;
+}
+
+.intro-header{
+    background:url("../img/banner-background.png") fixed;
+    background-size: cover;
+}
+
+a[href="trocar-senha.jsp"]{
+    color:white;
+}
+
+.table>tbody>tr>th{
+    padding:15px 6px;
+    font-size: 18px;
+}

@@ -1,0 +1,97 @@
+body{
+    font-family: "Times New Roman", Times;
+    font-size: 22px;
+    color:#333333;
+
+}
+.container-fluid{
+    padding:0px;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+ul.nav.navbar-nav.navbar-right{
+    margin-right: 40px;
+}
+
+.navbar-header .navbar-brand{
+    font-size:40px;
+}
+.navbar>.container-fluid .navbar-brand{
+    margin-left:30px;
+}
+.navbar-nav li {
+    margin-right: 40px;
+}
+
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.banner{
+    background-image: url(../imagens/picjumbo-bg5.png);
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 200px;
+    padding-left: 100px;
+    height:650px;
+}
+
+#info{
+    height:400px;
+    background-color: #000\9;
+    border-top:solid 1px black;
+    padding:30px;
+
+}
+
+#info2{
+    border-top:solid 1px black;
+    background-color:#26a438;
+    padding:30px;
+    height:400px; 
+
+}
+#dev{
+    background-color: #f4f4f4;
+    padding:30px;
+
+    height:600px;
+    border-top:solid 1px black;
+
+}
+
+.titulo{
+    margin-bottom: 40px;
+}
+
+img{
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    margin-bottom:0px;
+}
+
+h3{
+    margin-top:0px;
+}
+.story-box{
+    border-bottom-left-radius:5px;
+    border-bottom-right-radius:5px;
+    margin-top:0px;
+    width:320px;
+    background-color:#ffffff;
+    font-size: 18px;
+}
+
+.box{
+    color:#333333;
+    text-decoration: none;
+
+}
+.box:hover{
+    color:#333333;
+    text-decoration: none;
+}
+
