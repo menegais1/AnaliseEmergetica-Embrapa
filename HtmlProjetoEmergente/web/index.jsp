@@ -1,5 +1,47 @@
 
+<%@page import="dao.UsuarioDAO"%>
+<%@page import="modelo.Usuario"%>
+<%
+    request.setCharacterEncoding("UTF-8");
+    session.setAttribute("Usuario", null);
+    session.setAttribute("Passos", null);
+    session.setAttribute("Ano", null);
+    session.setAttribute("Propriedade_id", null);
+    session.setAttribute("Link", null);
+    session.setAttribute("Teste", null);
 
+    String msg = "";
+    String classe = "";
+    if (request.getParameter("usuario") != null || request.getParameter("senha") != null) {
+
+        if ((!request.getParameter("usuario").isEmpty()) && (!request.getParameter("senha").isEmpty())) {
+            UsuarioDAO dao = new UsuarioDAO();
+            Usuario u = new Usuario();
+
+            u.setLogin(request.getParameter("usuario"));
+            u.setSenha(request.getParameter("senha"));
+
+            Usuario teste = dao.login(u);
+            if (teste != null) {
+
+                session.setAttribute("Usuario", teste);
+                response.sendRedirect("propriedades/propriedades.jsp");
+                return;
+
+            } else {
+                msg = "Nome de Usuário e/ou Senha Inválido(s)";
+                classe = "alert alert-danger text-center";
+            }
+
+        } else {
+            msg = "Nome de Usuário e/ou Senha Inválido(s)";
+            classe = "alert alert-danger text-center";
+        }
+
+    }
+
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,6 +135,7 @@
                             <div class="row">
 
                                 <div class="col-lg-6 col-lg-offset-3">
+                                    <h4 class="<%=classe%>"><%=msg%></h4>
                                     <div class="form-group-lg">
                                         <form action="index.jsp" method="post">
                                             <a href="trocar-senha.jsp" ><span>Esqueceu sua senha? Clique aqui <span class="glyphicon glyphicon-check"></span></span></a><br><br>
@@ -102,6 +145,7 @@
                                             <input type="password" placeholder="Insira sua senha" class="form-control" name="senha" required><br>
                                             <button type="submit" class="btn btn-lg btn-success">Entrar <span class="glyphicon glyphicon-log-in"></span></button>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>

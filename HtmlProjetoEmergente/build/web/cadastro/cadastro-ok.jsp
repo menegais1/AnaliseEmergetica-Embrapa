@@ -1,4 +1,19 @@
+<%@page import="dao.UsuarioDAO"%>
+<%@page import="modelo.Usuario"%>
+<%
+    request.setCharacterEncoding("UTF-8");
 
+    if ((!request.getParameter("usuario").isEmpty()) && (!request.getParameter("senha").isEmpty()) && (!request.getParameter("email").isEmpty())) {
+
+        UsuarioDAO dao = new UsuarioDAO();
+        Usuario u = new Usuario();
+        u.setLogin(request.getParameter("usuario"));
+        u.setSenha(request.getParameter("senha"));
+        u.setEmail(request.getParameter("email"));
+        dao.inserir(u);
+    }
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">

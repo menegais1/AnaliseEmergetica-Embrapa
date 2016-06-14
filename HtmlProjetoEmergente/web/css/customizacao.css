@@ -10,7 +10,7 @@
 #sair:hover{
     background-color:#d9534f;
     border-color:#000;
-    
+
 }
 .topnav{
     font-size:18px;
@@ -32,4 +32,50 @@ a[href="trocar-senha.jsp"]{
 .table>tbody>tr>th{
     padding:15px 6px;
     font-size: 18px;
+}
+
+.navegacao{
+    font-size: 20px;
+
+}
+
+.navegacao>a>div{
+    border:solid 1px;;
+    padding:5px;
+
+}
+
+.navegacao>a{
+    color:black;
+}
+
+.navegacao>a>div:hover{
+    background-color: #c0c0c0;
+    color:#080808;
+}
+
+.navegacao>a>div.active{
+    background-color: #ce8483;
+}
+
+.navegacao>a>div.active:hover{
+    background-color: #c0c0c0;
+}
+
+a.disabled{
+    pointer-events: none;
+
+}
+
+#infocalculo{
+    margin-top: 250px;
+}
+
+#infocalculo1{
+    margin-top:320px;
+}
+
+
+.nivel2{
+    background-color:#f0ad4e;
 }

@@ -1,10 +1,31 @@
+<%@include file="../jsp/testelogin.jsp"%>
+
+
+<%@page import="java.util.List"%>
+<%@page import="modelo.Propriedade"%>
+<%@page import="dao.PropriedadeDAO"%>
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="../cabecalho.jsp"%>
+        <%@include file="../importacoes/cabecalho.jsp"%>
+
+        <%            session.setAttribute("Passos", null);
+            session.setAttribute("Ano", null);
+            session.setAttribute("Propriedade_id", null);
+            session.setAttribute("Link", null);
+            PropriedadeDAO pdao = new PropriedadeDAO();
+            Usuario u = (Usuario) session.getAttribute("Usuario");
+            List<Propriedade> plista = pdao.listarPropriedadePorUsuario(u.getId());
+
+            if (request.getParameter("id") != null) {
+                session.setAttribute("Propriedade_id", Integer.parseInt(request.getParameter("id")));
+                response.sendRedirect("../analise/analise-escolha.jsp");
+                return;
+            }
+        %>
 
     <div class="container conteudo">
         <div class="row">
@@ -31,40 +52,26 @@
                             Opções
                         </th>
                     </tr>
+                    <%for (Propriedade p : plista) {%>
                     <tr>
                         <td>
-                            xxxxxxxxxxxx
+                            <%=p.getNome()%>
                         </td>
                         <td>
-                            xxxxxxxxxxxxx
+                            <%=p.getCidade()%>
                         </td>
                         <td>
-                            xx
+                            <%=p.getUf()%>
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="../analise/analise-escolha.jsp" class="btn btn-lg btn-danger">Análise</a>
-                                <a href="propriedade-del.jsp" class="btn btn-lg btn-warning">Excluir</a>
+                                <a href="propriedades.jsp?id=<%=p.getId()%>" class="btn btn-lg btn-danger">Análise</a>
+                                <a href="propriedade-del.jsp?id=<%=p.getId()%>" class="btn btn-lg btn-warning">Excluir</a>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            xxxxxxxxxxxx
-                        </td>
-                        <td>
-                            xxxxxxxxxxxxx
-                        </td>
-                        <td>
-                            xx
-                        </td>
-                        <td>
-                            <div class="btn-group">
-                                <a href="../analise/analise-escolha.jsp" class="btn btn-lg btn-danger">Análise</a>
-                                <a href="propriedade-del.jsp" class="btn btn-lg btn-warning">Excluir</a>
-                            </div>
-                        </td>
-                    </tr>
+                    <%}%>
+
 
                 </table>
             </div>
@@ -72,7 +79,7 @@
 
         <div class="row conteudo">
             <div class="col-md-12">
-                <a class="btn btn-danger btn-block btn-lg" href="propriedade-add.jsp">Adicionar nova propriedade <span class="glyphicon glyphicon-plus"></span></a>
+                <a class="btn btn-primary btn-block btn-lg" href="propriedade-add.jsp">Adicionar nova propriedade <span class="glyphicon glyphicon-plus"></span></a>
             </div>
         </div>
 

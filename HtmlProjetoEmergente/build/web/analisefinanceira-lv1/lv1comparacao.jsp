@@ -1,17 +1,374 @@
-<%-- 
-    Document   : lv1comparacao
-    Created on : 27/05/2016, 20:13:57
-    Author     : Usuario
---%>
+<%@page import="modelo.Lv1Resultado"%>
+<%@page import="dao.Passos"%>
+<%@include file="../jsp/testelogin.jsp"%>
+<%@include file="../jsp/testepropriedade.jsp"%>
+<%@include file="../jsp/testeano.jsp"%>
+<%@include file="../jsp/testepassos.jsp"%>
+
+<%    Long id = Long.parseLong(session.getAttribute("Propriedade_id").toString());
+    Integer ano = Integer.parseInt(session.getAttribute("Ano").toString());
+
+    Passos passos = (Passos) session.getAttribute("Passos");
+
+    Lv1Resultado lv1resultado = passos.getLv1resultadodao().media();
+
+
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+        <%@include file="../importacoes/cabecalho.jsp"%>
+
+
+
+        <%@include  file="../importacoes/subcabecalholv1.jsp" %>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div id="grafico1"></div>
+            <div id="grafico2"></div>
+            <div id="grafico3"></div>
+        </div>
+        <div class="col-md-6">
+            <div id="grafico4"></div>
+            <div id="grafico5"></div>
+            <div id="grafico6"></div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a class="btn btn-lg btn-danger " href="lv1resultados.jsp">Voltar <span class="glyphicon glyphicon-backward"></span></a>
+        </div>
+    </div>
+
+    <table id="custohectare" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                <th>
+                    Outros
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td><%=passos.getLv1resultado().getCustohectar()%></td>
+                <td><%=lv1resultado.getCustohectar()%></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="lotacaomedia" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                <th>
+                    Outros
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
+                <td><%=lv1resultado.getLotacaomedia()%></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="receitahectare" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                <th>
+                    Outros
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td><%=passos.getLv1resultado().getReceitahectar()%></td>
+                <td><%=lv1resultado.getReceitahectar()%></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="totalcustoproducao" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                <th>
+                    Outros
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td><%=passos.getLv1resultado().getTotalcustoproducao()%></td>
+                <td><%=lv1resultado.getTotalcustoproducao()%></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="custoatividadedecria" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                <th>
+                    Outros
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td>3000</td>
+                <td>5000</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="custoporterneirodesmamado" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                <th>
+                    Outros
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td>3000</td>
+                <td>5000</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+<script src="../js/highcharts.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/exporting.js"></script>
+<script>
+    $(function () {
+        $('#grafico1').highcharts({
+            data: {
+                table: 'custohectare'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Custo por Hectare'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'R$/HM²'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico2').highcharts({
+            data: {
+                table: 'lotacaomedia'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Lotação Media da Propriedade'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Cabeças por Hectare'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico3').highcharts({
+            data: {
+                table: 'receitahectare'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Receita por Hectare'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'R$/HM²'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico4').highcharts({
+            data: {
+                table: 'totalcustoproducao'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Total Custo de Procução'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'R$'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico5').highcharts({
+            data: {
+                table: 'custoatividadedecria'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Custo Atividade de Cria'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'R$'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico6').highcharts({
+            data: {
+                table: 'custoporterneirodesmamado'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Custo por Terneiro Desmamado'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'R$ por Terneiro Desmamado'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+    });
+
+
+</script>
+</body>
 </html>

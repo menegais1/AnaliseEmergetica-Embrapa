@@ -1,9 +1,24 @@
+<%@include file="../jsp/testelogin.jsp"%>
+<%@include file="../jsp/testepropriedade.jsp"%>
+
+<%@page import="dao.PropriedadeDAO"%>
+<%@page import="modelo.Propriedade"%>
+<%        
+     
+    Propriedade p = new Propriedade();
+
+    PropriedadeDAO dao = new PropriedadeDAO();
+    p = dao.buscar(Integer.parseInt(session.getAttribute("Propriedade_id").toString()));
+
+
+%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <%@include file="../cabecalho.jsp" %>
+        <%@include file="../importacoes/cabecalho.jsp" %>
 
     <div class="container conteudo">
         <div class="row">
@@ -12,8 +27,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-1">
-                <h2 class="well">Propriedade: xxxxxxxx</h2>
+            <div class="col-md-4  well well-sm text-center">
+                <h4 >Propriedade: <%=p.getNome()%></h4>
             </div>
 
         </div>
