@@ -14,8 +14,8 @@
         p.setCidade(request.getParameter("cidade"));
         p.setNome(request.getParameter("nome"));
         p.setUf(request.getParameter("uf"));
-        p.setUsuario_id(u.getId());
-        pdao.inserir(p);
+        p.setUsuarioId(u);
+        pdao.incluir(p);
     }
 %>
 

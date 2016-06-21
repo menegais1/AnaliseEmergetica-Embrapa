@@ -1,40 +1,54 @@
 
-<%@page import="modelo.Lv1Resultado"%>
+<%@page import="java.math.BigDecimal"%>
+<%@page import="modelo.Lv1resultado"%>
 <%@include file="../jsp/testelogin.jsp"%>
 <%@include file="../jsp/testepropriedade.jsp"%>
 <%@include file="../jsp/testeano.jsp"%>
-<%@include file="../jsp/testepassos.jsp"%>
+<%@include file="../jsp/testepassoslv1.jsp"%>
+
 
 <%    session.setAttribute("Link", 5);
 
-    Passos passos = (Passos) session.getAttribute("Passos");
+    Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
+    String ano = session.getAttribute("Ano").toString();
 
-    Long id = Long.parseLong(session.getAttribute("Propriedade_id").toString());
-    Integer ano = Integer.parseInt(session.getAttribute("Ano").toString());
+    Passoslv1 passos;
+    if (session.getAttribute("Passoslv1") == null) {
+        passos = new Passoslv1();
+        passos.setLv1p1(passos.getLv1p1dao().buscarPorPropriedade(id, ano));
+        passos.setLv1p2(passos.getLv1p2dao().buscarPorPropriedade(id, ano));
+        passos.setLv1p3(passos.getLv1p3dao().buscarPorPropriedade(id, ano));
+        passos.setLv1p4(passos.getLv1p4dao().buscarPorPropriedade(id, ano));
+        passos.setLv1resultado(passos.getLv1resultadodao().buscarPorPropriedade(id, ano));
+        session.setAttribute("Passoslv1",passos);
+    } else {
+        passos = (Passoslv1) session.getAttribute("Passoslv1");
 
-    Lv1Resultado lv1resultado = passos.getLv1resultadodao().buscarPorPropriedade(id, ano);
+    }
+
+    Lv1resultado lv1resultado = passos.getLv1resultadodao().buscarPorPropriedade(id, ano);
 
     if (lv1resultado == null) {
-        lv1resultado = new Lv1Resultado(id, ano);
+        lv1resultado = new Lv1resultado(id, ano);
 
-        lv1resultado.setCustohectar(passos.custoHectar());
-        lv1resultado.setLotacaomedia(passos.lotacaoMedia());
-        lv1resultado.setReceitahectar(passos.receitaHectar());
-        lv1resultado.setTotalcustoproducao(passos.totalCustoProducao());
+        lv1resultado.setCustohectar(BigDecimal.valueOf(passos.custoHectare()));
+        lv1resultado.setLotacaomedia(BigDecimal.valueOf(passos.lotacaoMedia()));
+        lv1resultado.setReceitahectar(BigDecimal.valueOf(passos.receitaHectare()));
+        lv1resultado.setTotalcustoproducao(BigDecimal.valueOf(passos.totalCustoProducao()));
 
-        passos.getLv1resultadodao().inserir(lv1resultado);
+        passos.getLv1resultadodao().incluir(lv1resultado);
         passos.setLv1resultado(lv1resultado);
-        session.setAttribute("Passos", passos);
+        session.setAttribute("Passoslv1", passos);
     } else if (lv1resultado != null) {
 
-        lv1resultado.setCustohectar(passos.custoHectar());
-        lv1resultado.setLotacaomedia(passos.lotacaoMedia());
-        lv1resultado.setReceitahectar(passos.receitaHectar());
-        lv1resultado.setTotalcustoproducao(passos.totalCustoProducao());
+        lv1resultado.setCustohectar(BigDecimal.valueOf(passos.custoHectare()));
+        lv1resultado.setLotacaomedia(BigDecimal.valueOf(passos.lotacaoMedia()));
+        lv1resultado.setReceitahectar(BigDecimal.valueOf(passos.receitaHectare()));
+        lv1resultado.setTotalcustoproducao(BigDecimal.valueOf(passos.totalCustoProducao()));
 
-        passos.getLv1resultadodao().atualizar(lv1resultado);
+        passos.getLv1resultadodao().alterar(lv1resultado);
         passos.setLv1resultado(lv1resultado);
-        session.setAttribute("Passos", passos);
+        session.setAttribute("Passoslv1", passos);
     }
 %>
 
@@ -53,7 +67,7 @@
     <%@include file="../importacoes/navegacaolv1.jsp"%>
 
     <div class='row'>
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6">
             <div class="well well-sm">
                 Lotação Média da Propriedade: <%=passos.getLv1resultado().getLotacaomedia()%> Cabeças por Hectare
             </div>
@@ -70,22 +84,21 @@
                 Custo de Atividade de Cria: <%=passos.custoAtividadeDeCria()%> R$
             </div>
             <div class="well well-sm">
-                Custo de Produção por Terneiro Desmamado: <%=passos.custoTerneiro1()%> R$ por Cabeça
+                Custo de Produção por Terneiro Desmamado: <%=passos.custoTerneiro()%> R$ por Cabeça
             </div>
 
         </div>
 
+        <div class="row">
+            <div class="col-md-6 conteudo">
+                <a href="../analisefinanceira-lv2/lv2escolha.jsp" class="btn btn-primary btn-block">Ir para o próximo nível</a>
+                <a href="lv1comparacao.jsp" class="btn btn-primary btn-block">Comparar resultados com outros produtores</a>
+                <a href="../propriedades/propriedades.jsp" class="btn btn-primary btn-block">Voltar a tela de seleção de propriedade</a><br>
 
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <a href="../analisefinanceira/nivel-data.jsp" class="btn btn-primary btn-block">Fazer outra análise</a>
-            <a href="../analisefinanceira-lv2/lv2escolha.jsp" class="btn btn-primary btn-block">Ir para o próximo nível</a>
-            <a href="lv1comparacao.jsp" class="btn btn-primary btn-block">Comparar resultados com outros produtores</a>
-            <a href="../propriedades/propriedades.jsp" class="btn btn-primary btn-block">Voltar a tela de seleção de propriedade</a><br>
+            </div>
 
         </div>
+
     </div>
 
 

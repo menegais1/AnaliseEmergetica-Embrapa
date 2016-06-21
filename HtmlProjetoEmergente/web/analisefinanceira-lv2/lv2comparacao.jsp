@@ -1,14 +1,14 @@
-<%@page import="modelo.Lv2Resultado"%>
-<%@page import="dao.Passos"%>
+<%@page import="modelo.Lv2resultado"%>
+<%@page import="dao.Passoslv2"%>
 <%@include file="../jsp/testelogin.jsp"%>
 <%@include file="../jsp/testepropriedade.jsp"%>
 <%@include file="../jsp/testeano.jsp"%>
-<%@include file="../jsp/testepassos.jsp"%>
+<%@include file="../jsp/testepassoslv2.jsp"%>
 
-<%    Passos passos = (Passos) session.getAttribute("Passos");
-    Long id = Long.parseLong(session.getAttribute("Propriedade_id").toString());
-    Integer ano = Integer.parseInt(session.getAttribute("Ano").toString());
-    Lv2Resultado lv2resultado = passos.getLv2resultadodao().media();
+<%    Passoslv2 passos = (Passoslv2) session.getAttribute("Passoslv2");
+    Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
+    String ano = session.getAttribute("Ano").toString();
+    Lv2resultado lv2resultado = passos.getLv2resultadodao().media();
 
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -62,7 +62,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>HM²</th>
                 <td><%=passos.getLv2resultado().getAreamedia()%></td>
                 <td><%=lv2resultado.getAreamedia()%></td>
 
@@ -88,7 +88,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>HM²</th>
                 <td><%=passos.getLv2resultado().getAreaaproveitavel()%></td>
                 <td><%=lv2resultado.getAreaaproveitavel()%></td>
 
@@ -114,7 +114,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>%</th>
                 <td><%=passos.getLv2resultado().getPercentualrebanhocomcria()%></td>
                 <td><%=lv2resultado.getPercentualrebanhocomcria()%></td>
 
@@ -140,7 +140,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>CABEÇAS/HM²</th>
                 <td><%=passos.getLv2resultado().getLotacaomedia2()%></td>
                 <td><%=lv2resultado.getLotacaomedia2()%></td>
 
@@ -192,7 +192,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>R$/HM²</th>
                 <td><%=passos.getLv2resultado().getReceitahectar2()%></td>
                 <td><%=lv2resultado.getReceitahectar2()%></td>
 
@@ -246,7 +246,7 @@
             <tr>
                 <th>R$</th>
                 <td><%=passos.getLv2resultado().getCustoatividadecria1()%></td>
-                <td><%=passos.getLv2resultado().getCustoatividadecria1()%></td>
+                <td><%=lv2resultado.getCustoatividadecria1()%></td>
 
             </tr>
 
@@ -270,7 +270,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>R$/HM²</th>
                 <td><%=passos.getLv2resultado().getCustoproducaohectar1()%></td>
                 <td><%=lv2resultado.getCustoproducaohectar1()%></td>
 
@@ -296,7 +296,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>R$/CABEÇA</th>
                 <td><%=passos.getLv2resultado().getCustoterneiro()%></td>
                 <td><%=lv2resultado.getCustoterneiro()%></td>
 

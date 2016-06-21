@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="HtmlProjetoEmergentePU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>modelo.Lv1p1</class>
+    <class>modelo.Lv1resultado</class>
+    <class>modelo.Lv1p2</class>
+    <class>modelo.Lv2p2</class>
+    <class>modelo.Lv1p3</class>
+    <class>modelo.Usuario</class>
+    <class>modelo.Lv2resultado</class>
+    <class>modelo.Lv1p4</class>
+    <class>modelo.Propriedade</class>
+    <class>modelo.Lv2p1</class>
+    <class>modelo.Lv2p4</class>
+    <class>modelo.Lv2p3</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bancofazenda"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="postgres"/>
+    </properties>
+  </persistence-unit>
+</persistence>

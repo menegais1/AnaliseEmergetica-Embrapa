@@ -1,135 +1,75 @@
 package dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import modelo.Usuario;
 
 public class UsuarioDAO {
 
-    public void inserir(Usuario usuario) throws Exception {
+    EntityManager em;
 
-        String sql = "INSERT INTO usuario (login,senha,email)"
-                + "VALUES (?,?,?)";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-            pst.setString(1, usuario.getLogin());
-            pst.setString(2, usuario.getSenha());
-            pst.setString(3, usuario.getEmail());
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-
+    public UsuarioDAO() throws Exception {
+        EntityManagerFactory emf;
+        emf = Conexao.getConexao();
+        em = emf.createEntityManager();
     }
 
-    public void excluir(Usuario usuario) throws Exception {
+    public Usuario login(Usuario obj) {
+        List<Usuario> u = em.createNamedQuery("Usuario.findLoginSenha").setParameter("senha", obj.getSenha()).setParameter("login", obj.getLogin()).getResultList();
 
-        String sql = "DELETE FROM usuario WHERE id = ?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-            pst.setInt(1, usuario.getId());
-
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Erro");
+        if (!u.isEmpty()) {
+            return u.get(0);
         }
+
+        return null;
+    }
+
+    public void incluir(Usuario obj) throws Exception {
+        try {
+            em.getTransaction().begin();
+            em.persist(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
+        } 
 
     }
 
     public List<Usuario> listar() throws Exception {
-
-        List<Usuario> lista = new ArrayList();
-        String sql = "SELECT * FROM usuario";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-            ResultSet res = pst.executeQuery();
-            while (res.next()) {
-                Usuario usuario = new Usuario();
-                usuario.setLogin(res.getString("login"));
-                usuario.setSenha(res.getString("senha"));
-                usuario.setEmail(res.getString("email"));
-                usuario.setId(res.getInt("id"));
-                lista.add(usuario);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lista;
+        return em.createNamedQuery("Usuario.findAll").getResultList();
     }
 
-    public void redefinirSenha(Usuario usuario) throws Exception {
-        Boolean retorno = false;
-        String sql = "UPDATE usuario set senha=? where id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public void alterar(Usuario obj) throws Exception {
+
         try {
-
-            pst.setString(1, usuario.getSenha());
-            pst.setInt(2, usuario.getId());
-
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-
+            em.getTransaction().begin();
+            em.merge(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
+        } 
     }
 
-    public Usuario login(Usuario usuarioE) throws Exception {
-
-        Usuario usuario = null;
-        String sql = "SELECT * FROM usuario WHERE login =? AND senha=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public void excluir(Usuario obj) throws Exception {
 
         try {
-            pst.setString(1, usuarioE.getLogin());
-            pst.setString(2, usuarioE.getSenha());
-            ResultSet res = pst.executeQuery();
-            while (res.next()) {
-                usuario = new Usuario();
-                usuario.setLogin(res.getString("login"));
-                usuario.setSenha(res.getString("senha"));
-                usuario.setEmail(res.getString("email"));
-                usuario.setId(res.getInt("id"));
-
-            }
-
-        } catch (SQLException ex) {
-
-            System.out.println("batata");
-        }
-
-        return usuario;
+            em.getTransaction().begin();
+            em.remove(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+        } 
     }
 
-    public Usuario buscar(Integer id) throws Exception {
+    public Usuario buscarPorChavePrimaria(Integer x) {
+        return em.find(Usuario.class, x);
+    }
 
-        Usuario usuario = new Usuario();
-        String sql = "SELECT * FROM usuario WHERE id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-            pst.setInt(1, id);
-
-            ResultSet res = pst.executeQuery();
-
-            while (res.next()) {
-
-                usuario.setLogin(res.getString("login"));
-                usuario.setSenha(res.getString("senha"));
-                usuario.setEmail(res.getString("email"));
-                usuario.setId(res.getInt("id"));
-
-            }
-        } catch (SQLException ex) {
-
-            System.out.println("Erro");
-        }
-        return usuario;
+    public void fechaEmf() {
+        Conexao.closeConexao();
     }
 
 }

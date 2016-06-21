@@ -1,16 +1,15 @@
-<%@page import="modelo.Lv1Resultado"%>
-<%@page import="dao.Passos"%>
+<%@page import="modelo.Lv1resultado"%>
+<%@page import="dao.Passoslv1"%>
 <%@include file="../jsp/testelogin.jsp"%>
 <%@include file="../jsp/testepropriedade.jsp"%>
 <%@include file="../jsp/testeano.jsp"%>
-<%@include file="../jsp/testepassos.jsp"%>
+<%@include file="../jsp/testepassoslv1.jsp"%>
 
-<%    Long id = Long.parseLong(session.getAttribute("Propriedade_id").toString());
-    Integer ano = Integer.parseInt(session.getAttribute("Ano").toString());
+<%    Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
+    String ano = session.getAttribute("Ano").toString();
+    Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
 
-    Passos passos = (Passos) session.getAttribute("Passos");
-
-    Lv1Resultado lv1resultado = passos.getLv1resultadodao().media();
+    Lv1resultado lv1resultado = passos.getLv1resultadodao().media();
 
 
 %>
@@ -29,12 +28,13 @@
         <div class="col-md-6">
             <div id="grafico1"></div>
             <div id="grafico2"></div>
-            <div id="grafico3"></div>
+
         </div>
         <div class="col-md-6">
+            <div id="grafico3"></div>
             <div id="grafico4"></div>
-            <div id="grafico5"></div>
-            <div id="grafico6"></div>
+            <!-- <div id="grafico5"></div>
+             <div id="grafico6"></div>-->
         </div>
     </div>
 
@@ -63,7 +63,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>R$/HM²</th>
                 <td><%=passos.getLv1resultado().getCustohectar()%></td>
                 <td><%=lv1resultado.getCustohectar()%></td>
 
@@ -89,7 +89,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>CABEÇAS/HM²</th>
                 <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
                 <td><%=lv1resultado.getLotacaomedia()%></td>
 
@@ -115,7 +115,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$</th>
+                <th>R$/HM²</th>
                 <td><%=passos.getLv1resultado().getReceitahectar()%></td>
                 <td><%=lv1resultado.getReceitahectar()%></td>
 
@@ -150,57 +150,57 @@
         </tbody>
     </table>
 
-    <table id="custoatividadedecria" class="hidden" >
-        <thead>
-            <tr>
-                <th>
-
-                </th>
-                <th>
-                    Você
-                </th>
-                <th>
-                    Outros
-                </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>R$</th>
-                <td>3000</td>
-                <td>5000</td>
-
-            </tr>
-
-        </tbody>
-    </table>
-
-    <table id="custoporterneirodesmamado" class="hidden" >
-        <thead>
-            <tr>
-                <th>
-
-                </th>
-                <th>
-                    Você
-                </th>
-                <th>
-                    Outros
-                </th>
-
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>R$</th>
-                <td>3000</td>
-                <td>5000</td>
-
-            </tr>
-
-        </tbody>
-    </table>
+    <!--  <table id="custoatividadedecria" class="hidden" >
+          <thead>
+              <tr>
+                  <th>
+  
+                  </th>
+                  <th>
+                      Você
+                  </th>
+                  <th>
+                      Outros
+                  </th>
+  
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th>R$</th>
+                  <td>3000</td>
+                  <td>5000</td>
+  
+              </tr>
+  
+          </tbody>
+      </table>
+  
+      <table id="custoporterneirodesmamado" class="hidden" >
+          <thead>
+              <tr>
+                  <th>
+  
+                  </th>
+                  <th>
+                      Você
+                  </th>
+                  <th>
+                      Outros
+                  </th>
+  
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <th>R$</th>
+                  <td>3000</td>
+                  <td>5000</td>
+  
+              </tr>
+  
+          </tbody>
+      </table>-->
 </div>
 
 

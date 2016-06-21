@@ -10,7 +10,7 @@
         u.setLogin(request.getParameter("usuario"));
         u.setSenha(request.getParameter("senha"));
         u.setEmail(request.getParameter("email"));
-        dao.inserir(u);
+        dao.incluir(u);
     }
 
 %>

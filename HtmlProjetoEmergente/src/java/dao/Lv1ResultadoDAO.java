@@ -1,194 +1,103 @@
 package dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.List;
-import modelo.Lv1Resultado;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import modelo.Lv1resultado;
 
-public class Lv1ResultadoDAO {
+public class Lv1resultadoDAO {
 
-    public void inserir(Lv1Resultado lv1resultado) throws Exception {
+    EntityManager em;
+    EntityManager emexcluir;
 
-        String sql = "INSERT INTO lv1resultado (custohectar,lotacaomedia,receitahectar,totalcustoproducao,ano,propriedade_id)"
-                + "VALUES (?,?,?,?,?,?)";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public Lv1resultadoDAO() throws Exception {
+        EntityManagerFactory emf;
+        emf = Conexao.getConexao();
+        em = emf.createEntityManager();
+    }
 
+    public void incluir(Lv1resultado obj) throws Exception {
         try {
-            pst.setDouble(1, lv1resultado.getCustohectar());
-            pst.setDouble(2, lv1resultado.getLotacaomedia());
-            pst.setDouble(3, lv1resultado.getReceitahectar());
-            pst.setDouble(4, lv1resultado.getTotalcustoproducao());
-            pst.setString(5, lv1resultado.getAno());
-            pst.setLong(6, lv1resultado.getPropriedade_id());
-
-            pst.executeUpdate();
-
-        } catch (Exception ex) {
-            System.out.println("Erro");
-
+            em.getTransaction().begin();
+            em.persist(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
         }
 
     }
 
-    public void excluir(Lv1Resultado lv1resultado) throws Exception {
-
-        String sql = "DELETE FROM lv1resultado where id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-        try {
-            pst.setInt(1, lv1resultado.getId());
-
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
+    public void excluirPorPropriedade(Integer id) throws Exception {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Lv1resultado l WHERE l.propriedadeId.id= :propriedadeId").setParameter("propriedadeId", id).executeUpdate();
+        em.getTransaction().commit();
 
     }
 
-    public void excluirPorPropriedade(Long id) throws Exception {
-        String sql = "DELETE FROM lv1resultado where propriedade_id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-        try {
-            pst.setLong(1, id);
+    public Lv1resultado media() throws Exception {
+        List<Object[]> o=em.createNativeQuery("SELECT AVG(l.custohectar),"
+                + " AVG(l.lotacaomedia),"
+                + " AVG(l.receitahectar) ,"
+                + " AVG(l.totalcustoproducao) FROM Lv1resultado l").getResultList();
 
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Erro");
+        if(!o.isEmpty()){
+           
+            Lv1resultado l = new Lv1resultado();
+            l.setCustohectar(BigDecimal.valueOf(Double.parseDouble(o.get(0)[0].toString())));
+            l.setLotacaomedia(BigDecimal.valueOf(Double.parseDouble(o.get(0)[1].toString())));
+            l.setReceitahectar(BigDecimal.valueOf(Double.parseDouble(o.get(0)[2].toString())));
+            l.setTotalcustoproducao(BigDecimal.valueOf(Double.parseDouble(o.get(0)[3].toString())));
+            return l;
+        }
+        
+        return null;
+    }
+
+    public Lv1resultado buscarPorPropriedade(Integer id, String ano) throws Exception {
+        List<Lv1resultado> l = em.createNamedQuery("Lv1resultado.findPropriedade").setParameter("propriedadeId", id).setParameter("ano", ano).getResultList();
+
+        if (!l.isEmpty()) {
+            return l.get(0);
+        }
+
+        return null;
+    }
+
+    public List<Lv1resultado> listar() throws Exception {
+        return em.createNamedQuery("Lv1resultado.findAll").getResultList();
+    }
+
+    public void alterar(Lv1resultado obj) throws Exception {
+
+        try {
+            em.getTransaction().begin();
+            em.merge(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
         }
     }
 
-    public List<Lv1Resultado> listar() throws Exception {
-
-        List<Lv1Resultado> lista = new ArrayList();
-        String sql = "SELECT * FROM lv1resultado";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public void excluir(Lv1resultado obj) throws Exception {
 
         try {
-            ResultSet res = pst.executeQuery();
-
-            while (res.next()) {
-                Lv1Resultado a = new Lv1Resultado();
-                a.setId(res.getInt("id"));
-                a.setCustohectar(res.getDouble("custohectar"));
-                a.setLotacaomedia(res.getDouble("lotacaomedia"));
-                a.setReceitahectar(res.getDouble("receitahectar"));
-                a.setTotalcustoproducao(res.getDouble("totalcustoproducao"));
-                a.setAno(res.getString("ano"));
-                a.setPropriedade_id(res.getLong("propriedade_id"));
-                lista.add(a);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
+            em.getTransaction().begin();
+            em.remove(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
         }
-        return lista;
     }
 
-    public Lv1Resultado buscarPorPropriedade(Long id,Integer ano) throws Exception {
-
-        Lv1Resultado lv1resultado = null;
-        String sql = "SELECT * FROM lv1resultado WHERE propriedade_id = ? AND ano=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-
-            pst.setLong(1, id);
-            pst.setString(2,ano.toString());
-            ResultSet res = pst.executeQuery();
-
-            if (res.next()) {
-                lv1resultado = new Lv1Resultado();
-                lv1resultado.setId(res.getInt("id"));
-                lv1resultado.setCustohectar(res.getDouble("custohectar"));
-                lv1resultado.setLotacaomedia(res.getDouble("lotacaomedia"));
-                lv1resultado.setReceitahectar(res.getDouble("receitahectar"));
-                lv1resultado.setTotalcustoproducao(res.getDouble("totalcustoproducao"));
-                lv1resultado.setAno(res.getString("ano"));
-                lv1resultado.setPropriedade_id(res.getLong("propriedade_id"));
-
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lv1resultado;
+    public Lv1resultado buscarPorChavePrimaria(Integer x) {
+        return em.find(Lv1resultado.class, x);
     }
 
-    public Lv1Resultado buscar(Integer id) throws Exception {
-
-        Lv1Resultado lv1resultado = new Lv1Resultado();
-        String sql = "SELECT * FROM lv1resultado WHERE id = ?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-
-            pst.setInt(1, id);
-            ResultSet res = pst.executeQuery();
-
-            if (res.next()) {
-                lv1resultado.setId(res.getInt("id"));
-                lv1resultado.setCustohectar(res.getDouble("custohectar"));
-                lv1resultado.setLotacaomedia(res.getDouble("lotacaomedia"));
-                lv1resultado.setReceitahectar(res.getDouble("receitahectar"));
-                lv1resultado.setTotalcustoproducao(res.getDouble("totalcustoproducao"));
-                lv1resultado.setAno(res.getString("ano"));
-                lv1resultado.setPropriedade_id(res.getLong("propriedade_id"));
-
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lv1resultado;
+    public void fechaEmf() {
+        Conexao.closeConexao();
     }
 
-    public void atualizar(Lv1Resultado lv1resultado) throws Exception {
-        String sql = "UPDATE lv1resultado set ano=?,custohectar=?,lotacaomedia=?,receitahectar=?,totalcustoproducao=?,propriedade_id=? where id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-        try {
-
-            pst.setString(1, lv1resultado.getAno());
-            pst.setDouble(2, lv1resultado.getCustohectar());
-            pst.setDouble(3, lv1resultado.getLotacaomedia());
-            pst.setDouble(4, lv1resultado.getReceitahectar());
-            pst.setDouble(5, lv1resultado.getTotalcustoproducao());
-            pst.setLong(6, lv1resultado.getPropriedade_id());
-            pst.setInt(7, lv1resultado.getId());
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-
-    }
-
-    public Lv1Resultado media() throws Exception {
-
-        Lv1Resultado lv1resultadomedia = null;
-
-        String sql = "select \n"
-                + "	ROUND(avg(totalcustoproducao),2) as totalcustoproducao, \n"
-                + "	ROUND(avg(lotacaomedia),2) as lotacaomedia,\n"
-                + "	ROUND(avg(receitahectar),2) as receitahectar,\n"
-                + "	ROUND(avg(custohectar),2) as custohectar\n"
-                + "  from lv1resultado";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-            
-          
-            ResultSet res = pst.executeQuery();
-
-            if (res.next()) {
-                lv1resultadomedia = new Lv1Resultado();
-                lv1resultadomedia.setTotalcustoproducao(res.getDouble("totalcustoproducao"));
-                lv1resultadomedia.setLotacaomedia(res.getDouble("lotacaomedia"));
-                lv1resultadomedia.setReceitahectar(res.getDouble("receitahectar"));
-                lv1resultadomedia.setCustohectar(res.getDouble("custohectar"));
-
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lv1resultadomedia;
-    }
 }

@@ -1,51 +1,23 @@
-package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+package dao;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class Conexao {
-
-//    private static final String banco = "jdbc:postgresql://192.168.0.33:5432/bancofazenda";
-    private static final String banco = "jdbc:postgresql://localhost:5432/bancofazenda";
-
-    private static final String driver = "org.postgresql.Driver";
-
-//    private static final String usuario = "marcelo";
-//    private static final String senha = "siedler@2015";
-    private static final String usuario = "postgres";
-    private static final String senha = "postgres";
-
-    private static Connection con = null;
-
-    public static Connection getConexao() throws Exception {
-        if (con == null) {
-            try {
-                Class.forName(driver);
-                con = DriverManager.getConnection(banco, usuario, senha);
-
-            } catch (ClassNotFoundException ex) {
-                System.out.println("Driver não encontrado");
-            } catch (SQLException ex) {
-                System.out.println("Erro ao conectar" + ex.getMessage());
-            }
-
+   
+    private static EntityManagerFactory emf;
+    
+    
+    public static EntityManagerFactory getConexao() throws Exception{
+        if((emf==null) || (!emf.isOpen())){
+            emf=Persistence.createEntityManagerFactory("HtmlProjetoEmergentePU");
         }
-        return con;
-
+        return emf;
     }
-
-    public static PreparedStatement getPreparedStatement(String sql) throws Exception {
-        if (con == null) {
-            con = getConexao();
+    
+    public static void closeConexao(){
+        if(emf.isOpen()){
+            emf.close();
         }
-
-        try {
-            return con.prepareStatement(sql);
-        } catch (SQLException e) {
-            System.out.println("Erro de sql" + e.getMessage());
-        }
-        return null;
     }
 }

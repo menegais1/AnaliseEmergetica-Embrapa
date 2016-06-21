@@ -9,10 +9,10 @@
     Propriedade p = new Propriedade();
 
     PropriedadeDAO dao = new PropriedadeDAO();
-    p = dao.buscar(Integer.parseInt(session.getAttribute("Propriedade_id").toString()));
+    p = dao.buscarPorChavePrimaria(Integer.parseInt(session.getAttribute("Propriedade_id").toString()));
     if (request.getParameter("ano") != null && (!request.getParameter("ano").isEmpty())) {
         session.setAttribute("Ano", request.getParameter("ano"));
-        response.sendRedirect("../analisefinanceira-lv1/lv1escolha.jsp");
+        response.sendRedirect("../niveis/escolha-niveis.jsp");
         return;
     }
 

@@ -18,7 +18,7 @@
             session.setAttribute("Link", null);
             PropriedadeDAO pdao = new PropriedadeDAO();
             Usuario u = (Usuario) session.getAttribute("Usuario");
-            List<Propriedade> plista = pdao.listarPropriedadePorUsuario(u.getId());
+            List<Propriedade> plista = pdao.listarPorUsuario(u.getId());
 
             if (request.getParameter("id") != null) {
                 session.setAttribute("Propriedade_id", Integer.parseInt(request.getParameter("id")));

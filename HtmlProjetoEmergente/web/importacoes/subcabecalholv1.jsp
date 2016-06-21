@@ -5,7 +5,7 @@
         Propriedade p = new Propriedade();
 
         PropriedadeDAO dao = new PropriedadeDAO();
-        p = dao.buscar(Integer.parseInt(session.getAttribute("Propriedade_id").toString()));
+        p = dao.buscarPorChavePrimaria(Integer.parseInt(session.getAttribute("Propriedade_id").toString()));
     
 
 

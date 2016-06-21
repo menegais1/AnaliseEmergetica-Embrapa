@@ -1,168 +1,83 @@
 package dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import modelo.Lv1p4;
 
 public class Lv1p4DAO {
 
-    public void excluir(Lv1p4 lv1p4) throws Exception {
-        String sql = "DELETE FROM lv1p4 where id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-        try {
-            pst.setInt(1, lv1p4.getId());
+    EntityManager em;
 
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-
-    }
-    
-     public void excluirPorPropriedade(Long id) throws Exception {
-        String sql = "DELETE FROM lv1p4 where propriedade_id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-        try {
-            pst.setLong(1, id);
-
-            pst.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
+    public Lv1p4DAO() throws Exception {
+        EntityManagerFactory emf;
+        emf = Conexao.getConexao();
+        em = emf.createEntityManager();
     }
 
-    public void inserir(Lv1p4 lv1p4) throws Exception {
-
-        String sql = "INSERT INTO lv1p4("
-                + "            medicamento, mao_de_obra, maquinas, pastagem, propriedade_id, "
-                + "            ano, outros)"
-                + "    VALUES (?, ?, ?, ?, ?,"
-                + "            ?, ?)";
-
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
+    public void incluir(Lv1p4 obj) throws Exception {
         try {
-            pst.setDouble(1, lv1p4.getMedicamento());
-            pst.setDouble(2, lv1p4.getMao_de_obra());
-            pst.setDouble(3, lv1p4.getMaquinas());
-            pst.setDouble(4, lv1p4.getPastagem());
-            pst.setLong(5, lv1p4.getPropriedade_id());
-            pst.setString(6, lv1p4.getAno());
-            pst.setDouble(7, lv1p4.getOutros());
+            em.getTransaction().begin();
+            em.persist(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
+        } 
 
-            pst.executeUpdate();
-        } catch (Exception ex) {
-            System.out.println("Erro");
+    }
+
+    public void excluirPorPropriedade(Integer id) throws Exception {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Lv1p4 l WHERE l.propriedadeId.id= :propriedadeId").setParameter("propriedadeId", id).executeUpdate();
+        em.getTransaction().commit();
+
+    }
+
+    public Lv1p4 buscarPorPropriedade(Integer id, String ano) throws Exception {
+        List<Lv1p4> l = em.createNamedQuery("Lv1p4.findPropriedade").setParameter("propriedadeId", id).setParameter("ano", ano).getResultList();
+
+        if (!l.isEmpty()) {
+            return l.get(0);
         }
 
+        return null;
     }
 
     public List<Lv1p4> listar() throws Exception {
-
-        List<Lv1p4> lista = new ArrayList();
-        String sql = "SELECT * FROM lv1p4";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
-
-        try {
-            ResultSet res = pst.executeQuery();
-            while (res.next()) {
-                Lv1p4 lv1p4 = new Lv1p4();
-                lv1p4.setMedicamento(res.getDouble("medicamento"));
-                lv1p4.setMao_de_obra(res.getDouble("mao_de_obra"));
-                lv1p4.setMaquinas(res.getDouble("maquinas"));
-                lv1p4.setPastagem(res.getDouble("pastagem"));
-                lv1p4.setOutros(res.getDouble("outros"));
-                lv1p4.setPropriedade_id(res.getLong("propriedade_id"));
-                lv1p4.setAno(res.getString("ano"));
-
-                lista.add(lv1p4);
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lista;
+        return em.createNamedQuery("Lv1p4.findAll").getResultList();
     }
 
-    public void atualizar(Lv1p4 lv1p4) throws Exception {
-        String sql = "UPDATE lv1p4 set medicamento =?,mao_de_obra=?,maquinas=?,pastagem=?,outros =?,ano =?,propriedade_id=?  where id=? ";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public void alterar(Lv1p4 obj) throws Exception {
+
         try {
-
-            pst.setDouble(1, lv1p4.getMedicamento());
-            pst.setDouble(2, lv1p4.getMao_de_obra());
-            pst.setDouble(3, lv1p4.getMaquinas());
-            pst.setDouble(4, lv1p4.getPastagem());
-            pst.setDouble(5, lv1p4.getOutros());
-            pst.setString(6, lv1p4.getAno());
-            pst.setLong(7, lv1p4.getPropriedade_id());
-            pst.setInt(8, lv1p4.getId());
-            pst.executeUpdate();
-
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-
+            em.getTransaction().begin();
+            em.merge(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+            throw e;
+        } 
+           
     }
 
-    public Lv1p4 buscar(Integer id) throws Exception {
-
-        Lv1p4 lv1p4 = new Lv1p4();
-        String sql = "SELECT * FROM lv1p4 WHERE id=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public void excluir(Lv1p4 obj) throws Exception {
 
         try {
-
-            pst.setInt(1, id);
-            ResultSet res = pst.executeQuery();
-            if (res.next()) {
-
-                lv1p4.setId(res.getInt("id"));
-                lv1p4.setMedicamento(res.getDouble("medicamento"));
-                lv1p4.setMao_de_obra(res.getDouble("mao_de_obra"));
-                lv1p4.setMaquinas(res.getDouble("maquinas"));
-                lv1p4.setPastagem(res.getDouble("pastagem"));
-                lv1p4.setOutros(res.getDouble("outros"));
-                lv1p4.setPropriedade_id(res.getLong("propriedade_id"));
-                lv1p4.setAno(res.getString("ano"));
-
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lv1p4;
+            em.getTransaction().begin();
+            em.remove(obj);
+            em.getTransaction().commit();
+        } catch (RuntimeException e) {
+            em.getTransaction().rollback();
+        } 
     }
-    
-    public Lv1p4 buscarPorPropriedade(Long id,Integer ano) throws Exception {
 
-        Lv1p4 lv1p4 = null;
-        String sql = "SELECT * FROM lv1p4 WHERE propriedade_id=? AND ano=?";
-        PreparedStatement pst = Conexao.getPreparedStatement(sql);
+    public Lv1p4 buscarPorChavePrimaria(Integer x) {
+        return em.find(Lv1p4.class, x);
+    }
 
-        try {
-
-            pst.setLong(1, id);
-            pst.setString(2,ano.toString());
-            ResultSet res = pst.executeQuery();
-            if (res.next()) {
-                lv1p4 = new Lv1p4();
-                lv1p4.setId(res.getInt("id"));
-                lv1p4.setMedicamento(res.getDouble("medicamento"));
-                lv1p4.setMao_de_obra(res.getDouble("mao_de_obra"));
-                lv1p4.setMaquinas(res.getDouble("maquinas"));
-                lv1p4.setPastagem(res.getDouble("pastagem"));
-                lv1p4.setOutros(res.getDouble("outros"));
-                lv1p4.setPropriedade_id(res.getLong("propriedade_id"));
-                lv1p4.setAno(res.getString("ano"));
-
-            }
-        } catch (SQLException ex) {
-            System.out.println("Erro");
-        }
-        return lv1p4;
+    public void fechaEmf() {
+        Conexao.closeConexao();
     }
 
 }

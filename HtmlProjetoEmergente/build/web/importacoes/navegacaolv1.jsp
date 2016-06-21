@@ -1,10 +1,10 @@
-<%@page import="dao.Passos"%>
+<%@page import="dao.Passoslv1"%>
 <%
 
     String p2 = "", p3 = "", p4 = "", resul = "", p1a = "", p2a = "", p3a = "", p4a = "", resula = "";
     Integer porcento = 20;
 
-    Passos passo = (Passos) session.getAttribute("Passos");
+    Passoslv1 passo = (Passoslv1) session.getAttribute("Passoslv1");
 
     if (session.getAttribute("Link") != null) {
         Integer link = Integer.parseInt(session.getAttribute("Link").toString());
