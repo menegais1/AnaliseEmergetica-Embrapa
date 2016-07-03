@@ -66,6 +66,28 @@ a[href="trocar-senha.jsp"]{
     color:#080808;
 }
 
+
+
+a.disabled{
+    pointer-events: none;
+
+}
+
+.infocalculo{
+    margin-top: 250px;
+}
+
+.infocalculo1{
+    margin-top:320px;
+}
+
+
+.nivel2{
+    background-color:#f0ad4e;
+}
+
+
+
 .navegacao>a>div.active{
     background-color: #ce8483;
 }
@@ -74,20 +96,44 @@ a[href="trocar-senha.jsp"]{
     background-color: #c0c0c0;
 }
 
-a.disabled{
-    pointer-events: none;
+#parente{
+    position:relative;
+    z-index:9999999;}
 
+#parente>div#filho1>div,#parente>div#filho2>div,#parente>div#filho3>div,#parente>div#filho4>div,#parente>div#filho5>div{
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    position:absolute;
+    height:150px;
+    font-size: 13px;
+    z-index: 99999999;
+    background-color:#f5f5f0;
+}
+#parente>div#filho1>div{
+    
+    top:0px;
+    left:0px;
+    
+}
+#parente>div#filho2>div{
+    
+    top:0px;
+    left:292.5px;
+}
+#parente>div#filho3>div{
+    
+    top:0px;
+    left:487.5px;
+}
+#parente>div#filho4>div{
+    
+    top:0px;
+    left:682.5px;
+}
+#parente>div#filho5>div{
+    
+    top:0px;
+    left:877.5px;
 }
 
-#infocalculo{
-    margin-top: 250px;
-}
-
-#infocalculo1{
-    margin-top:320px;
-}
-
-
-.nivel2{
-    background-color:#f0ad4e;
-}

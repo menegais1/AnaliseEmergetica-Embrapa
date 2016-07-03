@@ -81,48 +81,58 @@
     <div class="row">
 
         <div class="form-group">
-            <form action="lv2p1.jsp" method="post">
+            <form action="lv2p1.jsp" onsubmit="return validarForm()" method="post">
                 <div class="col-md-6">
-                    <label>Pastagem Nativa</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemNativa()%>" placeholder="Insira a quantidade (em Hectares) de pastagens nativas em sua propriedade" class="form-control" name="pastagem_nativa" required>
-                    <label>Pastagem Nativa Melhorada</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemNativaMelhorada()%>" placeholder="Insira a quantidade (em Hectares) de pastagens nativas melhoradas em sua propriedade" class="form-control" name="pastagem_nativa_melhorada" required>
-                    <label>Pastagem Cultivada Perene</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemCultivadaPerene()%>" placeholder="Insira a quantidade (em Hectares) de pastagens cultivadas perenes em sua propriedade" class="form-control" name="pastagem_cultivada_perene" required>
-                    <label>Pastagem Anual de Inverno</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemAnuaisDeInverno()%>" placeholder="Insira a quantidade (em Hectares) de pastagens anuais de inverno em sua propriedade" class="form-control" name="pastagem_anuais_de_verao" required>
-                    <label>Pastagem Anual de Verão</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemAnuaisDeVerao()%>" placeholder="Insira a quantidade (em Hectares) de pastagens anuais de verão em sua propriedade" class="form-control" name="pastagem_anuais_de_inverno" required>
-                    <label>Agricultura de Inverno</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getAgriculturaI()%>" placeholder="Insira a quantidade (em Hectares) de agricultura de inverno em sua propriedade" class="form-control" name="agricultura_i" required>
-                    <label>Agricultura de Verão</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getAgriculturaV()%>" placeholder="Insira a quantidade (em Hectares) de agricultura de verão em sua propriedade" class="form-control" name="agricultura_v" required>
-                    <label>Florestas Plantadas</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getFlorestasPlantadas()%>" placeholder="Insira a quantidade (em Hectares) de florestas plantadas em sua propriedade" class="form-control" name="florestas_plantadas" required>
-                    <label>Matas Nativas</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getMatasNativas()%>" placeholder="Insira a quantidade (em Hectares) de matas nativas em sua propriedade" class="form-control" name="matas_nativas" required>
-                    <label>Outras culturas</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getOutrasCulturas()%>" placeholder="Insira a quantidade (em Hectares) de outras culturas em sua propriedade" class="form-control" name="outras_culturas" required>
-                    <label>Sede, Estradas e Açudes</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getSea()%>" placeholder="Insira a quantidade (em Hectares) de sede,estradas e açudes em sua propriedade" class="form-control" name="sea" required>
-                    <label>Inaproveitavel</label>
-                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getInaproveitavel()%>" placeholder="Insira a quantidade (em Hectares) de terreno inaproveitável em sua propriedade" class="form-control" name="inaproveitavel" required><br>
-                    <button type="button" class="btn btn-block btn-danger">Calcular</button><br>
+                    <label>Pastagem Nativa <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemNativa()%>" placeholder="Insira a quantidade (em Hectares) de pastagens nativas em sua propriedade" class="form-control" name="pastagem_nativa" >
+                    <label>Pastagem Nativa Melhorada <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemNativaMelhorada()%>" placeholder="Insira a quantidade (em Hectares) de pastagens nativas melhoradas em sua propriedade" class="form-control" name="pastagem_nativa_melhorada" >
+                    <label>Pastagem Cultivada Perene <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemCultivadaPerene()%>" placeholder="Insira a quantidade (em Hectares) de pastagens cultivadas perenes em sua propriedade" class="form-control" name="pastagem_cultivada_perene" >
+                    <label>Pastagem Anual de Inverno <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemAnuaisDeInverno()%>" placeholder="Insira a quantidade (em Hectares) de pastagens anuais de inverno em sua propriedade" class="form-control" name="pastagem_anuais_de_inverno" >
+                    <label>Pastagem Anual de Verão <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getPastagemAnuaisDeVerao()%>" placeholder="Insira a quantidade (em Hectares) de pastagens anuais de verão em sua propriedade" class="form-control" name="pastagem_anuais_de_verao" >
+                    <label>Agricultura de Inverno <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getAgriculturaI()%>" placeholder="Insira a quantidade (em Hectares) de agricultura de inverno em sua propriedade" class="form-control" name="agricultura_i" >
+                    <label>Agricultura de Verão <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getAgriculturaV()%>" placeholder="Insira a quantidade (em Hectares) de agricultura de verão em sua propriedade" class="form-control" name="agricultura_v" >
+                    <label>Florestas Plantadas <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getFlorestasPlantadas()%>" placeholder="Insira a quantidade (em Hectares) de florestas plantadas em sua propriedade" class="form-control" name="florestas_plantadas" >
+                    <label>Matas Nativas <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getMatasNativas()%>" placeholder="Insira a quantidade (em Hectares) de matas nativas em sua propriedade" class="form-control" name="matas_nativas" >
+                    <label>Outras culturas <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getOutrasCulturas()%>" placeholder="Insira a quantidade (em Hectares) de outras culturas em sua propriedade" class="form-control" name="outras_culturas" >
+                    <label>Sede, Estradas e Açudes <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getSea()%>" placeholder="Insira a quantidade (em Hectares) de sede,estradas e açudes em sua propriedade" class="form-control" name="sea" >
+                    <label>Inaproveitavel <span class="label-control"></span></label>
+                    <input type="number" max="10000000" min="0" value="<%=passos.getLv2p1().getInaproveitavel()%>" placeholder="Insira a quantidade (em Hectares) de terreno inaproveitável em sua propriedade" class="form-control" name="inaproveitavel" ><br>
+                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                    <a type="button" id="calcular" class="btn btn-block btn-danger">Calcular</a><br>
 
                 </div>
 
-                <div class="col-md-6" id="infocalculo">
+                <div class="col-md-6 infocalculo" id="infocalculo" hidden>
 
-                    <div class="well well-sm">
-                        Área Total da Pecúaria: xx
+                    <div class="well well-sm" id="areatotalpecuariainverno">
+                        Área Total da Pecuária no Inverno:
                     </div>
-                    <div class="well well-sm">
-                        Total de Área Aproveitável: xx
+                    <div class="well well-sm" id="areatotalpecuariaverao">
+                        Área Total da Pecuária no Verão:
                     </div>
-                    <div class="well well-sm">
-                        Área Total: xx
+                    <div class="well well-sm" id="areaaproveitavelinverno">
+                        Total de Área Aproveitável no Inverno:
                     </div>
-                    <input type="submit" value="Próximo Passo" class="btn btn-lg btn-success center-block">
+                    <div class="well well-sm" id="areaaproveitavelverao">
+                        Total de Área Aproveitável no Verão:
+                    </div>
+                    <div class="well well-sm" id="areatotal">
+                        Área Total:
+                    </div>
+                    <div class="well well-sm" id="areamedia">
+                        Área Média da Pecuária:
+                    </div>
+                    <input type="submit" disabled value="Próximo Passo" class="btn btn-lg btn-success center-block">
                 </div>
 
 
@@ -133,5 +143,15 @@
 
     </div>
 </div>
+</div>
+
+<script src="../js/calculos.js"></script>
+<script src="../js/validarForm.js"></script>
+<script>
+    $(document).ready(function () {
+
+        lv2p1();
+
+    });</script>
 </body>
 </html>

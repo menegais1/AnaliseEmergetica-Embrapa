@@ -53,15 +53,21 @@
         porcento = 100;
     }
 
-
+    
 %>
 
 
-<div class="row">
+<div class="row" >
+    <%if (passo.getLv2p2() != null) {%>
+    <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Dica!</strong> Passe o mouse sobre um passo já feito para ver informações adicionais.
+    </div>
 
-    <div class="navegacao">
+    <%}%>
+    <div class="navegacao" >
         <a  href="lv2p1.jsp">
-            <div class="col-md-2 col-md-offset-1 text-center <%=p1a%>">
+            <div class="col-md-2 col-md-offset-1 text-center <%=p1a%>" id="passo1">
 
                 <span class="glyphicon glyphicon-home"></span><br>
                 <span>Passo 1</span>
@@ -73,7 +79,7 @@
     <div class="navegacao">
         <!--CLASS="DISABLED"-->
         <a  class="<%=p2%>" href="lv2p2.jsp">
-            <div class="col-md-2 text-center <%=p2a%>">
+            <div class="col-md-2 text-center <%=p2a%>" id="passo2">
 
                 <span class="glyphicon glyphicon-grain"></span><br>
                 <span>Passo 2</span>
@@ -83,7 +89,7 @@
     </div>
     <div class="navegacao">
         <a class="<%=p3%>" href="lv2p3.jsp">
-            <div class="col-md-2  text-center <%=p3a%>">
+            <div class="col-md-2  text-center <%=p3a%>" id="passo3">
 
 
                 <span class="glyphicon glyphicon-briefcase"></span><br>
@@ -94,7 +100,7 @@
     </div>
     <div class="navegacao">
         <a class="<%=p4%>" href="lv2p4.jsp">
-            <div class="col-md-2  text-center <%=p4a%>">
+            <div class="col-md-2  text-center <%=p4a%>" id="passo4">
 
                 <span class="glyphicon glyphicon-euro"></span><br>
                 <span>Passo 4</span>
@@ -104,7 +110,7 @@
     </div>
     <div class="navegacao">
         <a class="<%=resul%>" href="lv2resultados.jsp">
-            <div class="col-md-2 text-center <%=resula%> ">
+            <div class="col-md-2 text-center <%=resula%> " id="passo5">
 
                 <span class="glyphicon glyphicon-barcode"></span><br>
                 <span>Resultados</span>
@@ -113,6 +119,86 @@
         </a>
     </div>
 </div>
+
+<div class="row" id="parente">
+
+    <%if (passo.getLv2p2() != null) {%>
+    <div class="navegacao" id="filho1" hidden>
+        <div class="col-md-2 col-md-offset-1 text-center  ">
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Area Média: <%=passo.areaMedia()%> HM²</li>
+            </ul>
+
+            <br>
+        </div>
+
+    </div>
+    <%}%>
+
+    <%if (passo.getLv2p3() != null) {%>
+    <div class="navegacao" id="filho2" hidden>
+        <!--CLASS="DISABLED"-->
+
+        <div class="col-md-2 text-center">
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <%=passo.lotacaoMedia()%> Cabeças/HM²</li>
+            </ul>
+            <br>
+        </div>
+
+    </div>
+    <%}%>
+
+    <%if (passo.getLv2p4() != null) {%>
+    <div class="navegacao" id="filho3"  hidden>
+        <!--CLASS="DISABLED"-->
+
+        <div class="col-md-2 text-center">
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Receita por Hectare: <%=passo.receitaHectare()%> R$/HM²</li>
+            </ul>
+            <br>
+        </div>
+
+    </div>
+    <%}%>
+
+    <%if (passo.getLv2resultado() != null) {%>
+    <div class="navegacao" id="filho4"  hidden>
+        <!--CLASS="DISABLED"-->
+
+        <div class="col-md-2 text-center">
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">Custo por Hectare: <%=passo.custoProducaoHectare()%> R$/HM²</li>
+            </ul>
+            <br>
+        </div>
+
+    </div>
+
+    <div class="navegacao"  id="filho5"  hidden>
+        <!--CLASS="DISABLED"-->
+
+        <div class="col-md-2 text-center">
+
+            <br>
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-success">xxxxxxxxxx: 200</li>
+            </ul>
+            <br>
+        </div>
+
+    </div>
+    <%}%>
+</div>        
 <br>
 <div class="row">
     <div class="col-md-12">
@@ -124,3 +210,5 @@
     </div>
 </div>
 <hr>
+
+<script src="../js/infoNav.js"></script>

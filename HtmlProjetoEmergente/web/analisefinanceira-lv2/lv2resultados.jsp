@@ -16,6 +16,10 @@
 
     Lv2resultado lv2resultado = passos.getLv2resultadodao().buscarPorPropriedade(id, ano);
 
+    if(passos.getLv2p4()== null){
+        response.sendRedirect("lv2p4.jsp");
+    }
+    
     if (lv2resultado == null) {
         lv2resultado = new Lv2resultado(id, ano);
 
@@ -111,6 +115,7 @@
     <hr>
 
 
+</div>
 </div>
 </body>
 </html>

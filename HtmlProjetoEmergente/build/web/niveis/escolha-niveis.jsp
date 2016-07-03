@@ -35,6 +35,12 @@
     <hr>
     <br>
     <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <h1>Escolha um nível para começar</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
 
         <div class="navegacao">
             <a  href="../analisefinanceira-lv1/lv1escolha.jsp">

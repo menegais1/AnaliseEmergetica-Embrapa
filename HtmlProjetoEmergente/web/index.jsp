@@ -167,16 +167,16 @@
                     <h2 class="section-heading text-center">Cadastro</h2>
                     <div class="col-md-6 col-md-offset-3">
                         <div class="form-group-lg">
-                            <form action="cadastro/cadastro-ok.jsp" method="post">
-                                <label>Email</label>
-                                <input type="email" class="form-control" placeholder="Insira seu email" name="email" required>
-                                <label>Usuário</label>
-                                <input type="text" class="form-control" placeholder="Insira seu nome de usuário" name="usuario" required="">
+                            <form action="cadastro/cadastro-ok.jsp" onsubmit="return validarFormCadastro()" method="post">
+                                <label>Email </label>
+                                <input type="email" required class="form-control" placeholder="Insira seu email" name="email" >
+                                <label>Usuário </label>
+                                <input type="text" required  class="form-control" placeholder="Insira seu nome de usuário" name="usuario" >
                                 <label>Senha</label>
-                                <input type="password" class="form-control" placeholder="Insira sua senha" name="senha" required>
-                                <label>Confirmação de senha</label>
-                                <input type="password" class="form-control" placeholder="Insira sua senha novamente" name="senhaconf" required><br>
-                                <button type="submit" class="btn btn-lg btn-success center-block">Enviar <span class="glyphicon glyphicon-send"></span></button>
+                                <input type="password"required  id="senha" class="form-control" placeholder="Insira sua senha" name="senha" >
+                                <label>Confirmação de senha <span id="senhaconf-label"></span></label>
+                                <input type="password" required  id="senhaconf" class="form-control" placeholder="Insira sua senha novamente" name="senhaconf" ><br>
+                                <button type="submit"  class="btn btn-lg btn-success center-block">Enviar <span class="glyphicon glyphicon-send"></span></button>
                             </form>
                         </div>
                     </div>
@@ -317,9 +317,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
+    <script src="js/validarFormCadastro.js"></script>
 </body>
 
 </html>
 
-</html>

@@ -8,6 +8,10 @@
 <%    Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
     Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
+    
+    if(passos.getLv1resultado()== null){
+        response.sendRedirect("../index.jsp");
+    }
 
     Lv1resultado lv1resultado = passos.getLv1resultadodao().media();
 

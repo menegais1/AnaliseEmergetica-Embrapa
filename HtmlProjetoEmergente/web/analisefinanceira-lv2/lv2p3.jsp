@@ -14,6 +14,10 @@
 
     Lv2p3 lv2p3 = passos.getLv2p3dao().buscarPorPropriedade(id, ano);
 
+    if(passos.getLv2p2()== null){
+        response.sendRedirect("lv2p2.jsp");
+    }
+    
     if (passos.getLv2p3() == null) {
 
         passos.setLv2p3(new Lv2p3(id, ano));
@@ -98,89 +102,91 @@
 
 
     <div class="form-group">
-        <form action="lv2p3.jsp" method="post">
+        <form action="lv2p3.jsp" onsubmit="return validarForm()" method="post">
             <div class="row">
 
                 <div class="col-md-6">
 
                     <h3>Cabeças</h3>
 
-                    <label>Terneiros</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirosQuant()%>" placeholder="Insira a quantidade de terneiros" name="terneiros_Quant" max="1000000" min="0" required>
-                    <label>Terneiras</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirasQuant()%>" placeholder="Insira a quantidade de terneiras" name="terneiras_Quant" max="1000000" min="0" required>
-                    <label>Novilhas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhasQuant()%>" placeholder="Insira a quantidade de novilhas" name="novilhas_Quant" max="1000000" min="0" required>
-                    <label>Vacas de Descarte</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacasDeDescarteQuant()%>" placeholder="Insira a quantidade de vacas de descarte" name="vacas_de_descarte_Quant" max="1000000" min="0" required>
+                    <label>Terneiros <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirosQuant()%>" placeholder="Insira a quantidade de terneiros" name="terneiros_Quant" max="1000000" min="0" >
+                    <label>Terneiras <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirasQuant()%>" placeholder="Insira a quantidade de terneiras" name="terneiras_Quant" max="1000000" min="0" >
+                    <label>Novilhas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhasQuant()%>" placeholder="Insira a quantidade de novilhas" name="novilhas_Quant" max="1000000" min="0" >
+                    <label>Vacas de Descarte <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacasDeDescarteQuant()%>" placeholder="Insira a quantidade de vacas de descarte" name="vacas_de_descarte_Quant" max="1000000" min="0" >
 
 
-                    <label>Vacas Prenhas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaPrenhaQuant()%>" placeholder="Insira a quantidade de vacas prenhas" name="vaca_prenha_Quant" max="1000000" min="0" required>
-                    <label>Vacas com Cria</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaComCriaQuant()%>" placeholder="Insira a quantidade de vacas com cria" name="vaca_com_cria_Quant" max="1000000" min="0" required>
-                    <label>Vacas Gordas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaGordaQuant()%>" placeholder="Insira a quantidade vacas gordas" name="vaca_gorda_Quant" max="1000000" min="0" required>
-                    <label>Novilhos para Recria</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoPraRecriaQuant()%>" placeholder="Insira a quantidade de novilhos para recria" name="novilho_pra_recria_Quant" max="1000000" min="0" required>
+                    <label>Vacas Prenhas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaPrenhaQuant()%>" placeholder="Insira a quantidade de vacas prenhas" name="vaca_prenha_Quant" max="1000000" min="0" >
+                    <label>Vacas com Cria <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaComCriaQuant()%>" placeholder="Insira a quantidade de vacas com cria" name="vaca_com_cria_Quant" max="1000000" min="0" >
+                    <label>Vacas Gordas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaGordaQuant()%>" placeholder="Insira a quantidade vacas gordas" name="vaca_gorda_Quant" max="1000000" min="0" >
+                    <label>Novilhos para Recria <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoPraRecriaQuant()%>" placeholder="Insira a quantidade de novilhos para recria" name="novilho_pra_recria_Quant" max="1000000" min="0" >
 
 
 
-                    <label>Novilhos Gordos</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoGordoQuant()%>" placeholder="Insira a quantidade de novilhos gordos" name="novilho_gordo_Quant" max="1000000" min="0" required>
-                    <label>Torunos</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTorunosQuant()%>" placeholder="Insira a quantidade de torunos" name="torunos_Quant" max="1000000" min="0" required>
-                    <label>Touros</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTouroQuant()%>" placeholder="Insira a quantidade de touros" name="touro_Quant" max="1000000" min="0" required>
+                    <label>Novilhos Gordos <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoGordoQuant()%>" placeholder="Insira a quantidade de novilhos gordos" name="novilho_gordo_Quant" max="1000000" min="0" >
+                    <label>Torunos <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTorunosQuant()%>" placeholder="Insira a quantidade de torunos" name="torunos_Quant" max="1000000" min="0" >
+                    <label>Touros <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTouroQuant()%>" placeholder="Insira a quantidade de touros" name="touro_Quant" max="1000000" min="0" >
 
 
                 </div>
                 <div class="col-md-6">
                     <h3>Valor Unitário</h3>
 
-                    <label>Terneiros</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirosValor()%>" placeholder="Insira o valor unitário por terneiro" name="terneiros_Valor" max="1000000" min="0" required>
-                    <label>Terneiras</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirasValor()%>" placeholder="Insira o valor unitário por terneira" name="terneiras_Valor" max="1000000" min="0" required>
-                    <label>Novilhas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhasValor()%>" placeholder="Insira o valor unitário por novilha" name="novilhas_Valor" max="1000000" min="0" required>
-                    <label>Vacas de Descarte</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacasDeDescarteValor()%>" placeholder="Insira o valor unitário por vaca de descarte" name="vacas_de_descarte_Valor" max="1000000" min="0" required>
+                    <label>Terneiros <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirosValor()%>" placeholder="Insira o valor unitário por terneiro" name="terneiros_Valor" max="1000000" min="0" >
+                    <label>Terneiras <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirasValor()%>" placeholder="Insira o valor unitário por terneira" name="terneiras_Valor" max="1000000" min="0" >
+                    <label>Novilhas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhasValor()%>" placeholder="Insira o valor unitário por novilha" name="novilhas_Valor" max="1000000" min="0" >
+                    <label>Vacas de Descarte <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacasDeDescarteValor()%>" placeholder="Insira o valor unitário por vaca de descarte" name="vacas_de_descarte_Valor" max="1000000" min="0" >
 
 
-                    <label>Vacas Prenhas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaPrenhaValor()%>" placeholder="Insira o valor unitário por vaca prenha" name="vaca_prenha_Valor" max="1000000" min="0" required>
-                    <label>Vacas com Cria</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaComCriaValor()%>" placeholder="Insira o valor unitário por vaca com cria" name="vaca_com_cria_Valor" max="1000000" min="0" required>
-                    <label>Vacas Gordas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaGordaValor()%>" placeholder="Insira o valor unitário por vaca gorda" name="vaca_gorda_Valor" max="1000000" min="0" required>
-                    <label>Novilhos para Recria</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoPraRecriaValor()%>" placeholder="Insira o valor unitário por novilho para recria" name="novilho_pra_recria_Valor" max="1000000" min="0" required>
+                    <label>Vacas Prenhas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaPrenhaValor()%>" placeholder="Insira o valor unitário por vaca prenha" name="vaca_prenha_Valor" max="1000000" min="0" >
+                    <label>Vacas com Cria <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaComCriaValor()%>" placeholder="Insira o valor unitário por vaca com cria" name="vaca_com_cria_Valor" max="1000000" min="0" >
+                    <label>Vacas Gordas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaGordaValor()%>" placeholder="Insira o valor unitário por vaca gorda" name="vaca_gorda_Valor" max="1000000" min="0" >
+                    <label>Novilhos para Recria <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoPraRecriaValor()%>" placeholder="Insira o valor unitário por novilho para recria" name="novilho_pra_recria_Valor" max="1000000" min="0" >
 
 
 
-                    <label>Novilhos Gordos</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoGordoValor()%>" placeholder="Insira o valor unitário por novilho gordo" name="novilho_gordo_Valor" max="1000000" min="0" required>
-                    <label>Torunos</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTorunosValor()%>" placeholder="Insira o valor unitário por toruno" name="torunos_Valor" max="1000000" min="0" required>
-                    <label>Touros</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTouroValor()%>" placeholder="Insira o valor unitário por touro" name="touro_Valor" max="1000000" min="0" required>
+                    <label>Novilhos Gordos <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoGordoValor()%>" placeholder="Insira o valor unitário por novilho gordo" name="novilho_gordo_Valor" max="1000000" min="0" >
+                    <label>Torunos <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTorunosValor()%>" placeholder="Insira o valor unitário por toruno" name="torunos_Valor" max="1000000" min="0" >
+                    <label>Touros <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTouroValor()%>" placeholder="Insira o valor unitário por touro" name="touro_Valor" max="1000000" min="0" >
 
 
                     <br/>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <button type="button" class="btn btn-block btn-danger">Calcular</button><br>
+                        <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                        <a type="button" class="btn btn-block btn-danger" id="calcular">Calcular</a><br>
                     </div>
                 </div>          
             </div>
             <div class="row">
-                <div class="col-md-6 col-md-offset-3 conteudo">
+                <div class="col-md-6 col-md-offset-3 conteudo" hidden id="infocalculo">
 
-                    <div class="well well-sm">Total de Bovinos: </div>
-                    <div class="well well-sm">Total de Receita de Bovinos:</div>
-                    <input type="submit" value="Próximo Passo" class="btn btn-success btn-lg center-block">
+                    <div class="well well-sm" id="totalb">Total de Bovinos:</div>
+                    <div class="well well-sm" id="totalreceita">Total de Receita de Bovinos:</div>
+                    <div class="well well-sm" id="receitahectare">Receita por Hectare:</div>
+                    <input type="submit" disabled value="Próximo Passo" class="btn btn-success btn-lg center-block">
 
                 </div>
             </div>
@@ -192,6 +198,15 @@
 
 
 </div>
+</div>
+<script src="../js/calculos.js"></script>
+<script src="../js/validarForm.js"></script>
+<script>
+    $(document).ready(function () {
+
+        lv2p3(<%=passos.areaAproveitavel()%>);
+
+    });</script>
 
 </body>
 </html>

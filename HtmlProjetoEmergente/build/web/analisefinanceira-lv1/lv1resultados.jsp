@@ -12,18 +12,14 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Passoslv1 passos;
-    if (session.getAttribute("Passoslv1") == null) {
-        passos = new Passoslv1();
-        passos.setLv1p1(passos.getLv1p1dao().buscarPorPropriedade(id, ano));
-        passos.setLv1p2(passos.getLv1p2dao().buscarPorPropriedade(id, ano));
-        passos.setLv1p3(passos.getLv1p3dao().buscarPorPropriedade(id, ano));
-        passos.setLv1p4(passos.getLv1p4dao().buscarPorPropriedade(id, ano));
-        passos.setLv1resultado(passos.getLv1resultadodao().buscarPorPropriedade(id, ano));
-        session.setAttribute("Passoslv1",passos);
-    } else {
-        passos = (Passoslv1) session.getAttribute("Passoslv1");
+     
+   
+         Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
 
+    
+    
+    if(passos.getLv1p4()== null){
+        response.sendRedirect("lv1p4.jsp");
     }
 
     Lv1resultado lv1resultado = passos.getLv1resultadodao().buscarPorPropriedade(id, ano);
@@ -100,7 +96,6 @@
         </div>
 
     </div>
-
 
 
 </div>

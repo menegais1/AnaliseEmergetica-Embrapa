@@ -13,6 +13,10 @@
 
     Lv1p2 lv1p2 = passos.getLv1p2dao().buscarPorPropriedade(id, ano);
 
+    if(passos.getLv1p1()== null){
+        response.sendRedirect("lv1p1.jsp");
+    }
+    
     if (passos.getLv1p2() == null) {
 
         passos.setLv1p2(new Lv1p2(id, ano));
@@ -79,7 +83,7 @@
     <div class="row" >
 
         <div class="form-group">
-            <form action="lv1p2.jsp" method="post">
+            <form action="lv1p2.jsp" onsubmit="return validarForm()" method="post">
                 <div class="col-md-6">
 
 
@@ -88,39 +92,40 @@
 
 
                     <h3>Machos</h3>
-                    <label>Touros</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getTouro()%>" placeholder="Insira a quantidade de touros em sua propriedade" max="1000000" min="0" name="touro" required>
-                    <label>Terneiros</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getTerneiro()%>" placeholder="Insira a quantidade de terneiros em sua propriedade" max="1000000" min="0" name="terneiro" required>
-                    <label>Novilhos: 13-24 meses</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilho13a24()%>" placeholder="Insira a quantidade de novilhos de 13 a 24 meses em sua propriedade" max="1000000" min="0" name="novilho_13a24" required>
-                    <label>Novilhos: 25-36 meses</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilho25a36()%>" placeholder="Insira a quantidade de novilhos de 25 a 36 meses em sua propriedade" max="1000000" min="0" name="novilho_25a36" required>
-                    <label>Novilhos: Mais de 36 meses</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilho36()%>" placeholder="Insira a quantidade de novilhos com mais de 36 meses em sua propriedade" max="1000000" min="0" name="novilho_36" required>
+                    <label>Touros <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getTouro()%>" placeholder="Insira a quantidade de touros em sua propriedade" max="1000000" min="0" name="touro" >
+                    <label>Terneiros <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getTerneiro()%>" placeholder="Insira a quantidade de terneiros em sua propriedade" max="1000000" min="0" name="terneiro" >
+                    <label>Novilhos: 13-24 meses <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilho13a24()%>" placeholder="Insira a quantidade de novilhos de 13 a 24 meses em sua propriedade" max="1000000" min="0" name="novilho_13a24" >
+                    <label>Novilhos: 25-36 meses <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilho25a36()%>" placeholder="Insira a quantidade de novilhos de 25 a 36 meses em sua propriedade" max="1000000" min="0" name="novilho_25a36" >
+                    <label>Novilhos: Mais de 36 meses <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilho36()%>" placeholder="Insira a quantidade de novilhos com mais de 36 meses em sua propriedade" max="1000000" min="0" name="novilho_36" >
 
 
 
                     <h3>Fêmeas</h3>
-                    <label>Vacas de cria</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getVacaDeCria()%>" placeholder="Insira a quantidade de vacas de cria em sua propriedade" max="1000000" min="0" name="vaca_de_cria" required>
-                    <label>Vacas de descarte</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getVacaDeDescarte()%>" placeholder="Insira a quantidade de vacas de descarte em sua propriedade" max="1000000" min="0" name="vaca_de_descarte" required>
-                    <label>Terneiras</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getTerneira()%>" placeholder="Insira a quantidade de terneiras em sua propriedade" max="1000000" min="0" name="terneira" required>
-                    <label>Novilhas: 13-24 meses</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilha13a24()%>" placeholder="Insira a quantidade de novilhas de 13 a 24 meses em sua propriedade" max="1000000" min="0" name="novilha_13a24" required>
-                    <label>Novilhas: 25-36 meses</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilha25a36()%>" placeholder="Insira a quantidade de novilhas de 25 a 36 meses em sua propriedade" max="1000000" min="0" name="novilha_25a36" required>
-                    <label>Novilhas: Mais de 36 meses</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilha36()%>" placeholder="Insira a quantidade de novilhas com mais de 36 meses em sua propriedade" max="1000000" min="0" name="novilha_36" required><br>
+                    <label>Vacas de cria <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getVacaDeCria()%>" placeholder="Insira a quantidade de vacas de cria em sua propriedade" max="1000000" min="0" name="vaca_de_cria" >
+                    <label>Vacas de descarte <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getVacaDeDescarte()%>" placeholder="Insira a quantidade de vacas de descarte em sua propriedade" max="1000000" min="0" name="vaca_de_descarte" >
+                    <label>Terneiras <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getTerneira()%>" placeholder="Insira a quantidade de terneiras em sua propriedade" max="1000000" min="0" name="terneira" >
+                    <label>Novilhas: 13-24 meses <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilha13a24()%>" placeholder="Insira a quantidade de novilhas de 13 a 24 meses em sua propriedade" max="1000000" min="0" name="novilha_13a24" >
+                    <label>Novilhas: 25-36 meses <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilha25a36()%>" placeholder="Insira a quantidade de novilhas de 25 a 36 meses em sua propriedade" max="1000000" min="0" name="novilha_25a36" >
+                    <label>Novilhas: Mais de 36 meses <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p2().getNovilha36()%>" placeholder="Insira a quantidade de novilhas com mais de 36 meses em sua propriedade" max="1000000" min="0" name="novilha_36" ><br>
 
-                    
-                    <button type="button" class="btn btn-danger btn-block" id="calcular" >Calcular</button>
+                    <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                    <a class="btn btn-danger btn-block" id="calcular" >Calcular</a>
                     <br/>
 
                 </div>
-                <div class="col-md-6" hidden id="infocalculo" >
+                    
+                <div class="col-md-6 infocalculo" hidden id="infocalculo" >
 
                     <div class="well well-sm" id="totalm">
                         Total Machos: 
@@ -133,6 +138,9 @@
                     </div>
                     <div class="well well-sm"  id="totalcria">
                         Total Rebanho com Atividade de Cria: 
+                    </div>
+                    <div class="well well-sm" id="lotacaomedia">
+                        Lotação Média da Propriedade: 
                     </div>
                     <input type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
                 </div>
@@ -147,14 +155,15 @@
     </div>
 </div>
 
-<script src="../js/calculos.js">
-    
-    
-</script>
-<script src="../js/validarForm.js">
-    
-    
-</script>
+
+<script src="../js/calculos.js"></script>
+<script src="../js/validarForm.js"></script>
+<script>
+    $(document).ready(function () {
+
+        lv1p2(<%=passos.getLv1p1().getAreaApro()%>);
+
+    });</script>
 
 </body>
 </html>

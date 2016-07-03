@@ -26,14 +26,14 @@ public class Passoslv2 {
 
     private String ano;
 
-    public Passoslv2() throws Exception{
-        lv2p1dao =new Lv2p1DAO();
-        lv2p2dao =new Lv2p2DAO();
-        lv2p3dao =new Lv2p3DAO();
-        lv2p4dao =new Lv2p4DAO();
-        lv2resultadodao =new Lv2resultadoDAO();
+    public Passoslv2() throws Exception {
+        lv2p1dao = new Lv2p1DAO();
+        lv2p2dao = new Lv2p2DAO();
+        lv2p3dao = new Lv2p3DAO();
+        lv2p4dao = new Lv2p4DAO();
+        lv2resultadodao = new Lv2resultadoDAO();
     }
-    
+
     public Lv2p1 getLv2p1() {
         return lv2p1;
     }
@@ -127,26 +127,47 @@ public class Passoslv2 {
         Double b = this.getLv2p1().getPastagemNativaMelhorada().doubleValue();
         Double c = this.getLv2p1().getPastagemCultivadaPerene().doubleValue();
         Double d = this.getLv2p1().getPastagemAnuaisDeInverno().doubleValue();
+
         Double e = this.getLv2p1().getPastagemAnuaisDeVerao().doubleValue();
+
         Double f = this.getLv2p1().getAgriculturaI().doubleValue();
         Double g = this.getLv2p1().getAgriculturaV().doubleValue();
         Double h = this.getLv2p1().getFlorestasPlantadas().doubleValue();
         Double i = this.getLv2p1().getOutrasCulturas().doubleValue();
+
         Double j = this.getLv2p1().getMatasNativas().doubleValue();
         Double k = this.getLv2p1().getSea().doubleValue();
         Double l = this.getLv2p1().getInaproveitavel().doubleValue();
 
-        return a + b + c + d + e + f + g + h + i + j + k + l;
+        return ((a + b + c + d) + (a + b + c + e)) / 2;
     }
 
     public Double areaAproveitavel() {
+        Double a = this.getLv2p1().getPastagemNativa().doubleValue();
+        Double b = this.getLv2p1().getPastagemNativaMelhorada().doubleValue();
+        Double c = this.getLv2p1().getPastagemCultivadaPerene().doubleValue();
+        Double d = this.getLv2p1().getPastagemAnuaisDeInverno().doubleValue();
+
+
         Double f = this.getLv2p1().getAgriculturaI().doubleValue();
-        Double g = this.getLv2p1().getAgriculturaV().doubleValue();
         Double h = this.getLv2p1().getFlorestasPlantadas().doubleValue();
         Double i = this.getLv2p1().getOutrasCulturas().doubleValue();
 
-        return f + g + h + i;
+        return (a + b + c + d + f + h + i) ;
     }
+    
+    public Double areaAproveitavelPecuaria() {
+        Double a = this.getLv2p1().getPastagemNativa().doubleValue();
+        Double b = this.getLv2p1().getPastagemNativaMelhorada().doubleValue();
+        Double c = this.getLv2p1().getPastagemCultivadaPerene().doubleValue();
+        Double d = this.getLv2p1().getPastagemAnuaisDeInverno().doubleValue();
+
+
+        
+
+        return (a + b + c + d) ;
+    }
+
 
     public Double percentualRebanhoComCria() {
         Integer a1 = this.getLv2p2().getVacaDeCriaJanmar();
@@ -158,6 +179,7 @@ public class Passoslv2 {
         Integer c2 = this.getLv2p2().getTerneirosAbrjun();
         Integer c3 = this.getLv2p2().getTerneirosJulset();
         Integer c4 = this.getLv2p2().getTerneirosOutdez();
+        
         Integer d1 = this.getLv2p2().getTerneirasJanmar();
         Integer d2 = this.getLv2p2().getTerneirasAbrjun();
         Integer d3 = this.getLv2p2().getTerneirasJulset();

@@ -14,6 +14,10 @@
 
     Lv1p4 lv1p4 = passos.getLv1p4dao().buscarPorPropriedade(id, ano);
 
+    if(passos.getLv1p3()== null){
+        response.sendRedirect("lv1p3.jsp");
+    }
+    
     if (passos.getLv1p4() == null) {
 
         passos.setLv1p4(new Lv1p4(id, ano));
@@ -66,35 +70,35 @@
     <div class="row" >
 
         <div class="form-group">
-            <form action="lv1p4.jsp" method="post">
+            <form action="lv1p4.jsp" onsubmit="return validarForm()" method="post">
                 <div class="col-md-6">
 
 
-                    <label>Medicamento</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade" max="1000000" min="0" name="medicamento" required>
-                    <label>Mão de Obra</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getMaoDeObra()%>" placeholder="Insira o gasto com mão de obra em sua propriedade" max="1000000" min="0" name="mao_de_obra" required>
-                    <label>Maquinas e Benfeitorias</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getMaquinas()%>" placeholder="Insira o gasto em maquinários e benfeitorias em sua propriedade" max="1000000" min="0" name="maquinas" required>
+                    <label>Medicamento <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade" max="1000000" min="0" name="medicamento" >
+                    <label>Mão de Obra <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getMaoDeObra()%>" placeholder="Insira o gasto com mão de obra em sua propriedade" max="1000000" min="0" name="mao_de_obra" >
+                    <label>Maquinas e Benfeitorias <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getMaquinas()%>" placeholder="Insira o gasto em maquinários e benfeitorias em sua propriedade" max="1000000" min="0" name="maquinas" >
 
 
-                    <label>Pastagem e Suplementos</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getPastagem()%>" placeholder="Insira o gasto com pastagem e suplementos em sua propriedade" max="1000000" min="0" name="pastagem" required>
-                    <label>Outras Despesas</label>
-                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getOutros()%>" placeholder="Insira outras despesas em sua propriedade" max="1000000" min="0" name="outros" required><br>
-
-                    <button type="button" class="btn btn-danger btn-block" >Calcular</button><br>
+                    <label>Pastagem e Suplementos <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getPastagem()%>" placeholder="Insira o gasto com pastagem e suplementos em sua propriedade" max="1000000" min="0" name="pastagem" >
+                    <label>Outras Despesas <span class="label-control"></span></label>
+                    <input type="number" class="form-control" value="<%=passos.getLv1p4().getOutros()%>" placeholder="Insira outras despesas em sua propriedade" max="1000000" min="0" name="outros" ><br>
+                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                    <a type="button" class="btn btn-danger btn-block" id="calcular" >Calcular</a><br>
 
 
                 </div>
 
-                <div class="col-md-6 conteudo"  >
+                <div class="col-md-6 conteudo" id="infocalculo" hidden  >
 
-                    <div class="well well-sm">
-                        Total Custos de Produção: xx
+                    <div class="well well-sm" id="totalcustoproducao">
+                        Total Custos de Produção:
                     </div>
 
-                    <input type="submit" class="btn btn-success btn-lg center-block" value="Resultados">
+                    <input type="submit" disabled class="btn btn-success btn-lg center-block" value="Resultados">
 
                 </div>
 
@@ -108,6 +112,13 @@
 
     </div>
 </div>
+<script src="../js/calculos.js"></script>
+<script src="../js/validarForm.js"></script>
+<script>
+    $(document).ready(function () {
 
+        lv1p4();
+
+    });</script>
 </body>
 </html>

@@ -14,11 +14,17 @@
 
     Lv2p4 lv2p4 = passos.getLv2p4dao().buscarPorPropriedade(id, ano);
 
+    if(passos.getLv2p3()== null){
+        response.sendRedirect("lv2p3.jsp");
+    }
+    
     if (passos.getLv2p4() == null) {
 
         passos.setLv2p4(new Lv2p4(id, ano));
         session.setAttribute("Passoslv2", passos);
     }
+    
+    
 
     if (lv2p4 == null && request.getParameter("medicamento") != null) {
         lv2p4 = new Lv2p4(id, ano);
@@ -95,65 +101,75 @@
     <div class="row" >
 
         <div class="form-group">
-            <form action="lv2p4.jsp" method="post">
+            <form action="lv2p4.jsp" onsubmit="return validarForm()" method="post">
                 <div class="col-md-6">
 
 
-                    <label>Medicamento</label>
+                    <label>Medicamento <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade" max="1000000" min="0" name="medicamento" required>
-                    <label>Carrapaticidas</label>
+                    <label>Carrapaticidas <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getCarrapaticidas()%>" placeholder="Insira o gasto com carrapaticidas em sua propriedade" max="1000000" min="0" name="carrapaticidas" required>
-                    <label>Sal</label>
+                    <label>Sal <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getSal()%>" placeholder="Insira o gasto com sal em sua propriedade" max="1000000" min="0" name="sal" required>
-                    <label>Ração</label>
+                    <label>Ração <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getRacao()%>" placeholder="Insira o gasto com ração em sua propriedade" max="1000000" min="0" name="racao" required>
-                    <label>Compra de Bovinos</label>
+                    <label>Compra de Bovinos <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getCompraDeBovinos()%>" placeholder="Insira o gasto com compras de bovinos  em sua propriedade" max="1000000" min="0" name="compra_de_bovinos" required>
-                    <label>Utensílios de Uso Geral </label>
+                    <label>Utensílios de Uso Geral  <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getUntensiliosDeUsoGeral()%>" placeholder="Insira o gasto com utensílios de uso geral em sua propriedade" max="1000000" min="0" name="untensilios_de_uso_geral" required>
-                    <label>Sêmen</label>
+                    <label>Sêmen <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getSemem()%>" placeholder="Insira o gasto com sêmen em sua propriedade" max="1000000" min="0" name="semem" required>
-                    <label>Semente</label>
+                    <label>Semente <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getSemente()%>" placeholder="Insira o gasto com semente em sua propriedade" max="1000000" min="0" name="semente" required>
-                    <label>Defensivos Agrícolas para Pastagem</label>
+                    <label>Defensivos Agrícolas para Pastagem <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getDefensivosAgriParaPastagem()%>" placeholder="Insira o gasto com defensivos agrícolas em sua propriedade" max="1000000" min="0" name="defensivos-agri_para_pastagem" required>
-                    <label>Adubos para Pastagem</label>
+                    <label>Adubos para Pastagem <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getAdubosParaPastagem()%>" placeholder="Insira o gasto com adubos para pastagem em sua propriedade" max="1000000" min="0" name="adubos_para_pastagem" required>
-                    <label>Combustível</label>
+                    <label>Combustível <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getCombustivel()%>" placeholder="Insira o gasto com combustível em sua propriedade" max="1000000" min="0" name="combustivel" required>
-                    <label>Frete</label>
+                    <label>Frete <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getFrete()%>" placeholder="Insira o gasto com fretes em sua propriedade" max="1000000" min="0" name="frete" required>
-                    <label>Arrendamentos de Campo Nativo</label>
+                    <label>Arrendamentos de Campo Nativo <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDeCampoNativo()%>" placeholder="Insira o gasto com arrendamentos de campo nativo em sua propriedade" max="1000000" min="0" name="arrendamentos_de_campo_nativo" required>
-                    <label>Arrendamentos de Pastagem Cultivada</label>
+                    <label>Arrendamentos de Pastagem Cultivada <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDePastagemCultivada()%>" placeholder="Insira o gasto com arrendamentos de pastagem cultivada em sua propriedade" max="1000000" min="0" name="arrendamentos_de_pastagem_cultivada" required>
-                    <label>Impostos</label>
+                    <label>Impostos <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getImpostos()%>" placeholder="Insira o gasto com impostos em sua propriedade" max="1000000" min="0" name="impostos" required>
-                    <label>Outras Despesas</label>
+                    <label>Outras Despesas <span class="label-control"></span></label>
                     <input type="number" class="form-control"value="<%=passos.getLv2p4().getOutrasDespesas()%>" placeholder="Insira o gasto com outras despesas em sua propriedade" max="1000000" min="0" name="outras_despesas" required>
 
 
 
-                    <label>Mão de Obra Fixa</label>
+                    <label>Mão de Obra Fixa <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraFixa()%>" placeholder="Insira o gasto com mão de obra em sua propriedade" max="1000000" min="0" name="mao_de_obra_fixa" required>
-                    <label>Mão de Obra Variavel</label>
+                    <label>Mão de Obra Variavel <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraVariavel()%>" placeholder="Insira o gasto com mão de obra em sua propriedade" max="1000000" min="0" name="mao_de_obra_variavel" required>
-                    <label>Reparos de Maquinas </label>
+                    <label>Reparos de Maquinas  <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getReparosDeMaquina()%>" placeholder="Insira o gasto em reparos de maquinas em sua propriedade" max="1000000" min="0" name="reparos_de_maquina" required>
-                    <label>Reparos de Benfeitorias</label>
+                    <label>Reparos de Benfeitorias <span class="label-control"></span></label>
                     <input type="number" class="form-control" value="<%=passos.getLv2p4().getReparoDeBenfeitorias()%>" placeholder="Insira o gasto em reparos de benfeitorias em sua propriedade" max="1000000" min="0" name="reparo_de_benfeitorias" required>
                     <br/>
-                    <button class="btn btn-danger btn-block" >Calcular</button><br/>
+                    <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                    <a class="btn btn-danger btn-block" id="calcular" >Calcular</a><br/>
 
                 </div>
 
 
-                <div class="col-md-6 conteudo" id="infocalculo" >
-                    <div id="infocalculo1">
-                        <div class="well well-sm">
-                            Total Custos de Produção: xx
+                <div class="col-md-6 conteudo infocalculo" hidden id="infocalculo" >
+                    <div class="infocalculo1">
+                        <div class="well well-sm" id="totalcustoproducao">
+                            Total Custos de Produção: 
                         </div>
-                        <input type="submit" class="btn btn-success btn-lg center-block" value="Resultados">
+                        <div class="well well-sm" id="custoatividadecria">
+                            Custo Atividade de Cria: 
+                        </div>
+                        <div class="well well-sm" id="custoproducaohectar">
+                            Custo de Produção por Hectare: 
+                        </div>
+                        <div class="well well-sm" id="custoterneiro">
+                            Custo de Produção por Terneiro Desmamado: 
+                        </div>
+                        <input type="submit" disabled class="btn btn-success btn-lg center-block" value="Resultados">
 
                     </div>
 
@@ -168,6 +184,14 @@
 
     </div>
 </div>
+</div>
+<script src="../js/calculos.js"></script>
+<script src="../js/validarForm.js"></script>
+<script>
+    $(document).ready(function () {
 
+        lv2p4(<%=passos.areaMedia()%>,<%=passos.getLv2p3().getTerneirosQuant()%>,<%=passos.percentualRebanhoComCria()%>);
+
+    });</script>
 </body>
 </html>
