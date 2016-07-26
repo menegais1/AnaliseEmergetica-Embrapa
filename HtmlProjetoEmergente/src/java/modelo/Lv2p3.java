@@ -29,8 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lv2p3")
 @XmlRootElement
 @NamedQueries({
-    
-        @NamedQuery(name = "Lv2p3.findPropriedade", query="SELECT l FROM Lv2p3 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
+    @NamedQuery(name = "Lv2p3.findPropriedade", query = "SELECT l FROM Lv2p3 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
 
     @NamedQuery(name = "Lv2p3.findAll", query = "SELECT l FROM Lv2p3 l"),
     @NamedQuery(name = "Lv2p3.findById", query = "SELECT l FROM Lv2p3 l WHERE l.id = :id"),
@@ -129,12 +128,12 @@ public class Lv2p3 implements Serializable {
 
     public Lv2p3() {
     }
-    
-    public Lv2p3(Integer id, String ano) throws Exception{
-        PropriedadeDAO dao=new PropriedadeDAO();
-        this.ano=ano;
+
+    public Lv2p3(Integer id, String ano) throws Exception {
+        PropriedadeDAO dao = new PropriedadeDAO();
+        this.ano = ano;
         this.propriedadeId = dao.buscarPorChavePrimaria(id);
-        
+
     }
 
     public Lv2p3(Integer id) {
@@ -173,10 +172,15 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getTerneirosValor() {
+        if (terneirosValor != null) {
+
+            terneirosValor = terneirosValor.setScale(2);
+        }
         return terneirosValor;
     }
 
     public void setTerneirosValor(BigDecimal terneirosValor) {
+
         this.terneirosValor = terneirosValor;
     }
 
@@ -189,6 +193,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getTerneirasValor() {
+        if (terneirasValor != null) {
+
+            terneirasValor = terneirasValor.setScale(2);
+        }
         return terneirasValor;
     }
 
@@ -205,6 +213,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getNovilhasValor() {
+        if (novilhasValor != null) {
+
+            novilhasValor = novilhasValor.setScale(2);
+        }
         return novilhasValor;
     }
 
@@ -221,6 +233,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getVacasDeDescarteValor() {
+        if (vacasDeDescarteValor != null) {
+
+            vacasDeDescarteValor = vacasDeDescarteValor.setScale(2);
+        }
         return vacasDeDescarteValor;
     }
 
@@ -237,6 +253,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getVacaPrenhaValor() {
+        if (vacaPrenhaValor != null) {
+
+            vacaPrenhaValor = vacaPrenhaValor.setScale(2);
+        }
         return vacaPrenhaValor;
     }
 
@@ -253,6 +273,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getVacaComCriaValor() {
+        if (vacaComCriaValor != null) {
+
+            vacaComCriaValor = vacaComCriaValor.setScale(2);
+        }
         return vacaComCriaValor;
     }
 
@@ -269,6 +293,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getVacaGordaValor() {
+        if (vacaGordaValor != null) {
+
+            vacaGordaValor = vacaGordaValor.setScale(2);
+        }
         return vacaGordaValor;
     }
 
@@ -285,6 +313,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getNovilhoPraRecriaValor() {
+        if (novilhoPraRecriaValor != null) {
+
+            novilhoPraRecriaValor = novilhoPraRecriaValor.setScale(2);
+        }
         return novilhoPraRecriaValor;
     }
 
@@ -301,6 +333,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getNovilhoGordoValor() {
+        if (novilhoGordoValor != null) {
+
+            novilhoGordoValor = novilhoGordoValor.setScale(2);
+        }
         return novilhoGordoValor;
     }
 
@@ -317,6 +353,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getTorunosValor() {
+        if (torunosValor != null) {
+
+            torunosValor = torunosValor.setScale(2);
+        }
         return torunosValor;
     }
 
@@ -333,6 +373,10 @@ public class Lv2p3 implements Serializable {
     }
 
     public BigDecimal getTouroValor() {
+        if (touroValor != null) {
+
+            touroValor = touroValor.setScale(2);
+        }
         return touroValor;
     }
 
@@ -380,5 +424,5 @@ public class Lv2p3 implements Serializable {
     public String toString() {
         return "modelo.Lv2p3[ id=" + id + " ]";
     }
-    
+
 }

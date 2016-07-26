@@ -133,7 +133,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Area Média: <%=passo.getLv1p1().getAreaApro()%> HM²</li>
+                <li class="list-group-item list-group-item-success">Area Média: <span id="area"><%=passo.getLv1p1().getAreaApro().toPlainString()%></span> HM²</li>
             </ul>
 
             <br>
@@ -150,7 +150,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <%=passo.lotacaoMedia()%> Cabeças/HM²</li>
+                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <span id="lotacao"><%=passo.lotacaoMedia().toPlainString()%></span> Cabeças/HM²</li>
             </ul>
             <br>
         </div>
@@ -166,7 +166,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Receita por Hectare: <%=passo.receitaHectare()%> R$/HM²</li>
+                <li class="list-group-item list-group-item-success">Receita por Hectare: <span id="receita"><%=passo.receitaHectare().toPlainString()%></span> R$/HM²</li>
             </ul>
             <br>
         </div>
@@ -182,7 +182,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Custo por Hectare: <%=passo.custoHectare()%> R$/HM²</li>
+                <li class="list-group-item list-group-item-success">Custo por Hectare: <span id="custo"><%=passo.custoHectare().toPlainString()%></span> R$/HM²</li>
             </ul>
             <br>
         </div>
@@ -217,4 +217,11 @@
 <hr>
 
 <script src="../js/infoNav.js"></script>
+
+<script>$(document).ready(function () {
+        $('#area').mask('0.000.000,00', {reverse: true});
+         $('#lotacao').mask('0.000.000,00', {reverse: true});
+          $('#receita').mask('0.000.000,00', {reverse: true});
+           $('#custo').mask('0.000.000,00', {reverse: true});
+    });</script>
 

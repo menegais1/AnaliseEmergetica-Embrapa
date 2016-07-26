@@ -8,6 +8,7 @@ package modelo;
 import dao.PropriedadeDAO;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,8 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lv1p3")
 @XmlRootElement
 @NamedQueries({
-    
-        @NamedQuery(name = "Lv1p3.findPropriedade", query="SELECT l FROM Lv1p3 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
+    @NamedQuery(name = "Lv1p3.findPropriedade", query = "SELECT l FROM Lv1p3 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
 
     @NamedQuery(name = "Lv1p3.findAll", query = "SELECT l FROM Lv1p3 l"),
     @NamedQuery(name = "Lv1p3.findById", query = "SELECT l FROM Lv1p3 l WHERE l.id = :id"),
@@ -56,12 +56,12 @@ public class Lv1p3 implements Serializable {
 
     public Lv1p3() {
     }
-    
-    public Lv1p3(Integer id, String ano) throws Exception{
-        PropriedadeDAO dao=new PropriedadeDAO();
-        this.ano=ano;
+
+    public Lv1p3(Integer id, String ano) throws Exception {
+        PropriedadeDAO dao = new PropriedadeDAO();
+        this.ano = ano;
         this.propriedadeId = dao.buscarPorChavePrimaria(id);
-        
+
     }
 
     public Lv1p3(Integer id) {
@@ -82,6 +82,10 @@ public class Lv1p3 implements Serializable {
     }
 
     public BigDecimal getReceitaAnual() {
+        if (receitaAnual != null) {
+
+            receitaAnual = receitaAnual.setScale(2);
+        }
         return receitaAnual;
     }
 
@@ -129,5 +133,5 @@ public class Lv1p3 implements Serializable {
     public String toString() {
         return "modelo.Lv1p3[ id=" + id + " ]";
     }
-    
+
 }

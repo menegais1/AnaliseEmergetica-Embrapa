@@ -48,6 +48,12 @@ public class Lv1p1DAO {
         em.createQuery("DELETE FROM Lv1p1 l WHERE l.propriedadeId.id = :propriedadeId").setParameter("propriedadeId", id).executeUpdate();
         em.getTransaction().commit();
     }
+    
+    public void excluirPorAno(Integer id, String ano) throws Exception {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Lv1p1 l WHERE l.propriedadeId.id = :propriedadeId AND l.ano= :ano").setParameter("propriedadeId", id).setParameter("ano", ano).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public Lv1p1 buscarPorPropriedade(Integer id, String ano) throws Exception {
         List<Lv1p1> l = em.createNamedQuery("Lv1p1.findPropriedade").setParameter("propriedadeId", id).setParameter("ano", ano).getResultList();

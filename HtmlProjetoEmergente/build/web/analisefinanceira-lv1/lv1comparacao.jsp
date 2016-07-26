@@ -37,8 +37,7 @@
         <div class="col-md-6">
             <div id="grafico3"></div>
             <div id="grafico4"></div>
-            <!-- <div id="grafico5"></div>
-             <div id="grafico6"></div>-->
+            
         </div>
     </div>
 
@@ -154,57 +153,7 @@
         </tbody>
     </table>
 
-    <!--  <table id="custoatividadedecria" class="hidden" >
-          <thead>
-              <tr>
-                  <th>
-  
-                  </th>
-                  <th>
-                      Você
-                  </th>
-                  <th>
-                      Outros
-                  </th>
-  
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th>R$</th>
-                  <td>3000</td>
-                  <td>5000</td>
-  
-              </tr>
-  
-          </tbody>
-      </table>
-  
-      <table id="custoporterneirodesmamado" class="hidden" >
-          <thead>
-              <tr>
-                  <th>
-  
-                  </th>
-                  <th>
-                      Você
-                  </th>
-                  <th>
-                      Outros
-                  </th>
-  
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <th>R$</th>
-                  <td>3000</td>
-                  <td>5000</td>
-  
-              </tr>
-  
-          </tbody>
-      </table>-->
+   
 </div>
 
 
@@ -212,9 +161,7 @@
 
 
 
-<script src="../js/highcharts.js"></script>
 <script src="../js/data.js"></script>
-<script src="../js/exporting.js"></script>
 <script>
     $(function () {
         $('#grafico1').highcharts({
@@ -228,7 +175,7 @@
                 text: 'Custo por Hectare'
             },
             yAxis: {
-                allowDecimals: false,
+                
                 title: {
                     text: 'R$/HM²'
                 }
@@ -236,7 +183,7 @@
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            this.point.y + ' ' + this.point.name;
                 }
             }
         });
@@ -254,7 +201,7 @@
                 text: 'Lotação Media da Propriedade'
             },
             yAxis: {
-                allowDecimals: false,
+                
                 title: {
                     text: 'Cabeças por Hectare'
                 }
@@ -262,7 +209,7 @@
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            this.point.y + ' ' + this.point.name;
                 }
             }
         });
@@ -280,7 +227,7 @@
                 text: 'Receita por Hectare'
             },
             yAxis: {
-                allowDecimals: false,
+                
                 title: {
                     text: 'R$/HM²'
                 }
@@ -288,7 +235,7 @@
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            this.point.y + ' ' + this.point.name;
                 }
             }
         });
@@ -306,7 +253,7 @@
                 text: 'Total Custo de Procução'
             },
             yAxis: {
-                allowDecimals: false,
+                
                 title: {
                     text: 'R$'
                 }
@@ -314,63 +261,13 @@
             tooltip: {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            this.point.y + ' ' + this.point.name;
                 }
             }
         });
     });
 
-    $(function () {
-        $('#grafico5').highcharts({
-            data: {
-                table: 'custoatividadedecria'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Custo Atividade de Cria'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'R$'
-                }
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-    });
-
-    $(function () {
-        $('#grafico6').highcharts({
-            data: {
-                table: 'custoporterneirodesmamado'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Custo por Terneiro Desmamado'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'R$ por Terneiro Desmamado'
-                }
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-    });
+   
 
 
 </script>

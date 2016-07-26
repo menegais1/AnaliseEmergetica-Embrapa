@@ -26,6 +26,12 @@ public class Lv2resultadoDAO {
             throw e;
         }
     }
+    
+    public void excluirPorAno(Integer id, String ano) throws Exception {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Lv2resultado l WHERE l.propriedadeId.id = :propriedadeId AND l.ano= :ano").setParameter("propriedadeId", id).setParameter("ano", ano).executeUpdate();
+        em.getTransaction().commit();
+    }
 
     public void excluirPorPropriedade(Integer id) throws Exception {
         em.getTransaction().begin();

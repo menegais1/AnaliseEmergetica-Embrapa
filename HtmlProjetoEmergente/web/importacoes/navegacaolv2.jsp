@@ -110,7 +110,7 @@
     </div>
     <div class="navegacao">
         <a class="<%=resul%>" href="lv2resultados.jsp">
-            <div class="col-md-2 text-center <%=resula%> " id="passo5">
+            <div class="col-md-2 text-center <%=resula%> " id="resultado">
 
                 <span class="glyphicon glyphicon-barcode"></span><br>
                 <span>Resultados</span>
@@ -128,7 +128,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Area Média: <%=passo.areaMedia()%> HM²</li>
+                <li class="list-group-item list-group-item-success">Area Média: <span id="area"><%=passo.areaMedia().toPlainString()%> </span> HM²</li>
             </ul>
 
             <br>
@@ -145,7 +145,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <%=passo.lotacaoMedia()%> Cabeças/HM²</li>
+                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <span id="lotacao"><%=passo.lotacaoMedia().toPlainString()%></span> Cabeças/HM²</li>
             </ul>
             <br>
         </div>
@@ -161,7 +161,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Receita por Hectare: <%=passo.receitaHectare()%> R$/HM²</li>
+                <li class="list-group-item list-group-item-success">Receita por Hectare: <span id="receita"><%=passo.receitaHectare().toPlainString()%></span> R$/HM²</li>
             </ul>
             <br>
         </div>
@@ -177,7 +177,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Custo por Hectare: <%=passo.custoProducaoHectare()%> R$/HM²</li>
+                <li class="list-group-item list-group-item-success">Custo por Hectare: <span id="custo"><%=passo.custoProducaoHectare().toPlainString()%></span> R$/HM²</li>
             </ul>
             <br>
         </div>
@@ -212,3 +212,10 @@
 <hr>
 
 <script src="../js/infoNav.js"></script>
+
+<script>$(document).ready(function () {
+        $('#area').mask('0.000.000,00', {reverse: true});
+         $('#lotacao').mask('0.000.000,00', {reverse: true});
+          $('#receita').mask('0.000.000,00', {reverse: true});
+           $('#custo').mask('0.000.000,00', {reverse: true});
+    });</script>

@@ -239,6 +239,46 @@
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Desenvolvedores</h2>
                     <p class="lead">Esse software foi desenvolvido por alunos bolsistas do colégio IFSUL, Bagé, com ajuda dos orientadores e de um consultor da EMBRAPA. </p>
+                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Ver mais</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title text-center">Desenvolvimento</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>&emsp;&emsp;&emsp;&emsp;A programação desta solução web foi desenvolvida em projetos de iniciação científica com alunos e professores
+                                        do IFSUL vinculados ao Projeto MyBeef da Embrapa Pecuária Sul intitulado “Desenvolvimento de sistemas de
+                                        apoio à decisão e de métodos de coleta, análise de dados e monitoramento da pecuária na região Sul do Brasil"
+                                        (código SEG 02.13.14.015.00.00).</p>
+                                    <p>&emsp;&emsp;&emsp;&emsp;A Embrapa desenvolveu a solução, mas precisava de parceiros para desenvolver a aplicação para a web. A solução
+                                        foi concebida a partir de experiências da Embrapa Pecuária Sul realizadas em palestras e cursos básicos em gestão
+                                        rural para produtores rurais da região da campanha gaúcha entre os anos de 2013 e 2014. Neste processo de
+                                        aprendizado desenvolveu-se uma sistemática rápida de cálculo de custo de produção do quilograma do bezerro
+                                        produzido em apenas 4 passos.</p>
+                                    <p>&emsp;&emsp;&emsp;&emsp;O método era voltado para produtores rurais que não possuíam anotações e nem registros do seu sistema de
+                                        produção onde era limitado aplicar métodos contábeis convencionais. Dessa forma criou-se uma proposta de
+                                        obter um valor aproximado do seu custo de produção em alguns minutos de entrevista.
+                                        Como alguns produtores já possuem registros mais detalhados optou-se por criar uma solução com diferentes
+                                        níveis de complexidade (método muito rápido, rápido, moderado, lento, muito lento) considerando essa
+                                        diversidade existente no campo quanto à gestão da informação.</p>
+                                    <p>&emsp;&emsp;&emsp;&emsp;Entre 2014 e 2015 surge então a parceria entre Embrapa Pecuária Sul e o Instituto Federal Sul-rio-grandense
+                                        (IFSul) com a finalidade de desenvolver uma solução web voltada para produtores rurais de pecuária de corte.
+                                        Este serviço web gera relatórios gráficos e permite iniciar a utilização inserindo poucas informações e
+                                        posteriormente ir migrando para os demais níveis à medida que o usuário for qualificando seu processo de
+                                        registro de dados e de gerenciamento de sua propriedade rural. </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                     <img class="img-responsive img-rounded" src="img/story1.jpg" alt="">

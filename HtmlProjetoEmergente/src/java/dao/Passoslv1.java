@@ -1,6 +1,7 @@
 package dao;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 import modelo.Lv1p1;
 import modelo.Lv1p2;
@@ -24,7 +25,11 @@ public class Passoslv1 {
     private String ano;
 
     
-    
+    public String conversor(String x){
+        x= x.replace(".","");
+        x=x.replace(",", ".");
+        return x;
+    }
     public Passoslv1() throws Exception{
         lv1p1dao =new Lv1p1DAO();
         lv1p2dao =new Lv1p2DAO();
@@ -141,11 +146,11 @@ public class Passoslv1 {
 
     }
     
-    public Double lotacaoMedia(){
-        return BigDecimal.valueOf(totalBovinos().longValue()).divide(lv1p1.getAreaApro()).doubleValue();
+    public BigDecimal lotacaoMedia(){
+        return (BigDecimal.valueOf(totalBovinos().longValue()).divide(lv1p1.getAreaApro())).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 
-    public Double percentualRebanhoComCria() {
+    public BigDecimal percentualRebanhoComCria() {
 
 
         Integer vacasdecria = this.getLv1p2().getVacaDeCria();
@@ -155,54 +160,43 @@ public class Passoslv1 {
         Integer touros = this.getLv1p2().getTouro();
         Double x = (double) ((vacasdecria + vacasdedescarte + touros + terneiro + terneira) * 100) / totalBovinos();
 
-        return x;
+        return BigDecimal.valueOf(x);
 
     }
 
-    public Double totalCustoProducao() {
+    public BigDecimal totalCustoProducao() {
 
-        Double medicamento = this.getLv1p4().getMedicamento().doubleValue();
-        Double maodeobra = this.getLv1p4().getMaoDeObra().doubleValue();
-        Double maquina = this.getLv1p4().getMaquinas().doubleValue();
-        Double pastagem = this.getLv1p4().getPastagem().doubleValue();
-        Double outros = this.getLv1p4().getOutros().doubleValue();
+       
 
-        return medicamento + maodeobra + maquina + pastagem + outros;
+        return  this.getLv1p4().getMedicamento().add(this.getLv1p4().getMaquinas()).add(this.getLv1p4().getPastagem()).add(this.getLv1p4().getMaoDeObra()).add(this.getLv1p4().getOutros());
     }
 
-    public Double receitaHectare() {
+    public BigDecimal receitaHectare() {
 
-        Double areapec = this.getLv1p1().getAreaApro().doubleValue();
+       
 
-        Double receitatotal = this.getLv1p3().getReceitaAnual().doubleValue();
-
-        return receitatotal / areapec;
+        return ((lv1p3.getReceitaAnual().divide(lv1p1.getAreaApro())).setScale(2,BigDecimal.ROUND_HALF_UP));
     }
 
-    public Double custoAtividadeDeCria() {
+    public BigDecimal custoAtividadeDeCria() {
 
-        return (totalCustoProducao() * percentualRebanhoComCria()) / 100;
+        return ((this.totalCustoProducao().multiply(percentualRebanhoComCria())).divide(BigDecimal.valueOf(100))).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 
-    public Double custoHectare() {
+    public BigDecimal custoHectare() {
 
-        Double areapec = this.getLv1p1().getAreaApro().doubleValue();
-
-        Double custoproducao = this.totalCustoProducao();
-
-        return custoproducao / areapec;
+        return ((this.totalCustoProducao().divide(lv1p1.getAreaApro())).setScale(2,BigDecimal.ROUND_HALF_UP));
     }
 
-    public Double custoTerneiro() {
+    public BigDecimal custoTerneiro() {
 
         Integer terneiro = this.getLv1p2().getTerneiro();
         Integer terneira = this.getLv1p2().getTerneira();
 
-        Double totalcusto = this.totalCustoProducao();
+        BigDecimal totalcusto = this.totalCustoProducao();
 
-        Double total = totalcusto / (terneiro + terneira);
 
-        return total;
+        return totalcusto.divide(BigDecimal.valueOf(terneiro+terneira)).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 
 }

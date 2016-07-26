@@ -91,6 +91,10 @@ public class Lv1p1 implements Serializable {
     }
 
     public BigDecimal getAreaApro() {
+         if (areaApro != null) {
+
+            areaApro = areaApro.setScale(2);
+        }
         return areaApro;
     }
 

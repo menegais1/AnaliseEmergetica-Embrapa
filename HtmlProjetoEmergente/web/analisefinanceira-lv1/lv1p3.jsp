@@ -14,10 +14,10 @@
 
     Lv1p3 lv1p3 = passos.getLv1p3dao().buscarPorPropriedade(id, ano);
 
-    if(passos.getLv1p2()== null){
+    if (passos.getLv1p2() == null) {
         response.sendRedirect("lv1p2.jsp");
     }
-    
+
     if (passos.getLv1p3() == null) {
 
         passos.setLv1p3(new Lv1p3(id, ano));
@@ -27,7 +27,7 @@
     if (lv1p3 == null && request.getParameter("receita_anual") != null) {
         lv1p3 = new Lv1p3(id, ano);
 
-        lv1p3.setReceitaAnual(BigDecimal.valueOf(Double.parseDouble(request.getParameter("receita_anual"))));
+        lv1p3.setReceitaAnual(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("receita_anual")))));
         passos.getLv1p3dao().incluir(lv1p3);
         passos.setLv1p3(lv1p3);
         session.setAttribute("Passoslv1", passos);
@@ -35,7 +35,7 @@
         return;
     } else if (lv1p3 != null && request.getParameter("receita_anual") != null) {
 
-        lv1p3.setReceitaAnual(BigDecimal.valueOf(Double.parseDouble(request.getParameter("receita_anual"))));
+        lv1p3.setReceitaAnual(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("receita_anual")))));
 
         passos.getLv1p3dao().alterar(lv1p3);
         passos.setLv1p3(lv1p3);
@@ -64,7 +64,11 @@
             <div class="form-group">
                 <form action="lv1p3.jsp" onsubmit="return validarForm()" method="post">
                     <label>Receita Anual de Bovinos: <span class="label-control"></span> </label>
-                    <input type="number" class="form-control" max="10000000" min="0" value="<%=passos.getLv1p3().getReceitaAnual()%>" placeholder="Insira a receita anual de Bovinos de sua propriedade" name="receita_anual"><br>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p3().getReceitaAnual()%>" placeholder="Insira a receita anual de Bovinos de sua propriedade" name="receita_anual"><br>
+
+                    </div>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
                     <input type="submit" class="btn btn-success btn-lg center-block" value="Próximo Passo">
                 </form>
@@ -72,5 +76,10 @@
         </div>
     </div>
 </div>
+
+<script>$(document).ready(function () {
+        $('.form-control').mask('0.000.000,00', {reverse: true});
+    });</script>
+
 </body>
 </html>

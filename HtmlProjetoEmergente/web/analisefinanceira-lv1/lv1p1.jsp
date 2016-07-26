@@ -1,4 +1,5 @@
 
+<%@page import="dao.Lv1p1DAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv1p1"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -24,7 +25,7 @@
     if (lv1p1 == null && request.getParameter("area_apro") != null) {
         lv1p1 = new Lv1p1(id, ano);
 
-        lv1p1.setAreaApro(BigDecimal.valueOf(Double.parseDouble(request.getParameter("area_apro"))));
+        lv1p1.setAreaApro(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("area_apro")))));
 
         passos.getLv1p1dao().incluir(lv1p1);
         passos.setLv1p1(lv1p1);
@@ -33,7 +34,7 @@
         return;
     } else if (lv1p1 != null && request.getParameter("area_apro") != null) {
 
-        lv1p1.setAreaApro(BigDecimal.valueOf(Double.parseDouble(request.getParameter("area_apro"))));
+        lv1p1.setAreaApro(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("area_apro")))));
 
         passos.getLv1p1dao().alterar(lv1p1);
         passos.setLv1p1(lv1p1);
@@ -63,7 +64,7 @@
             <div class="form-group">
                 <form action="lv1p1.jsp" onsubmit="return validarForm()" method="post">
                     <label>Area Aproximada: <span class="label-control"></span></label>
-                    <input type="number" value="<%=passos.getLv1p1().getAreaApro()%>"class="form-control" max="10000000" min="0" placeholder="Insira a area aproximada de sua propriedade em hectares" name="area_apro"><br>
+                    <input   type="text" value="<%=passos.getLv1p1().getAreaApro()%>"class="form-control" placeholder="Insira a area aproximada de sua propriedade em hectares" name="area_apro"><br>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
                     <input type="submit" class="btn btn-success btn-lg center-block" value="Próximo Passo">
                 </form>
@@ -71,6 +72,13 @@
         </div>
     </div>
 </div>
+
+<script>$(document).ready(function () {
+        $('.form-control').mask("0.000.000,00", {reverse: true});
+    });</script>
+
+
+
 </body>
 </html>
 

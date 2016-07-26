@@ -29,8 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lv2resultado")
 @XmlRootElement
 @NamedQueries({
-    
-        @NamedQuery(name = "Lv2resultado.findPropriedade", query="SELECT l FROM Lv2resultado l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
+    @NamedQuery(name = "Lv2resultado.findPropriedade", query = "SELECT l FROM Lv2resultado l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
 
     @NamedQuery(name = "Lv2resultado.findAll", query = "SELECT l FROM Lv2resultado l"),
     @NamedQuery(name = "Lv2resultado.findById", query = "SELECT l FROM Lv2resultado l WHERE l.id = :id"),
@@ -93,12 +92,12 @@ public class Lv2resultado implements Serializable {
 
     public Lv2resultado() {
     }
-    
-    public Lv2resultado(Integer id, String ano) throws Exception{
-        PropriedadeDAO dao=new PropriedadeDAO();
-        this.ano=ano;
+
+    public Lv2resultado(Integer id, String ano) throws Exception {
+        PropriedadeDAO dao = new PropriedadeDAO();
+        this.ano = ano;
         this.propriedadeId = dao.buscarPorChavePrimaria(id);
-        
+
     }
 
     public Lv2resultado(Integer id) {
@@ -129,6 +128,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getAreamedia() {
+        if (areamedia != null) {
+
+            areamedia = areamedia.setScale(2);
+        }
         return areamedia;
     }
 
@@ -137,6 +140,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getAreaaproveitavel() {
+        if (areaaproveitavel != null) {
+
+            areaaproveitavel = areaaproveitavel.setScale(2);
+        }
         return areaaproveitavel;
     }
 
@@ -145,6 +152,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getPercentualrebanhocomcria() {
+        if (percentualrebanhocomcria != null) {
+
+            percentualrebanhocomcria = percentualrebanhocomcria.setScale(2);
+        }
         return percentualrebanhocomcria;
     }
 
@@ -153,6 +164,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getLotacaomedia2() {
+        if (lotacaomedia2 != null) {
+
+            lotacaomedia2 = lotacaomedia2.setScale(2);
+        }
         return lotacaomedia2;
     }
 
@@ -161,6 +176,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getTotalreceita() {
+        if (totalreceita != null) {
+
+            totalreceita = totalreceita.setScale(2);
+        }
         return totalreceita;
     }
 
@@ -169,6 +188,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getReceitahectar2() {
+        if (receitahectar2 != null) {
+
+            receitahectar2 = receitahectar2.setScale(2);
+        }
         return receitahectar2;
     }
 
@@ -177,6 +200,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getCustotalproducao() {
+        if (custotalproducao != null) {
+
+            custotalproducao = custotalproducao.setScale(2);
+        }
         return custotalproducao;
     }
 
@@ -185,6 +212,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getCustoatividadecria1() {
+        if (custoatividadecria1 != null) {
+
+            custoatividadecria1 = custoatividadecria1.setScale(2);
+        }
         return custoatividadecria1;
     }
 
@@ -193,6 +224,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getCustoproducaohectar1() {
+        if (custoproducaohectar1 != null) {
+
+            custoproducaohectar1 = custoproducaohectar1.setScale(2);
+        }
         return custoproducaohectar1;
     }
 
@@ -201,6 +236,10 @@ public class Lv2resultado implements Serializable {
     }
 
     public BigDecimal getCustoterneiro() {
+        if (custoterneiro != null) {
+
+            custoterneiro = custoterneiro.setScale(2);
+        }
         return custoterneiro;
     }
 
@@ -248,5 +287,5 @@ public class Lv2resultado implements Serializable {
     public String toString() {
         return "modelo.Lv2resultado[ id=" + id + " ]";
     }
-    
+
 }

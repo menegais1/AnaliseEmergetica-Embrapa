@@ -21,14 +21,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4  well well-sm text-center">
+        <div class="col-md-3  well well-sm text-center">
             <h4>Propriedade: <%=p.getNome()%></h4>
         </div>
-        <div class="col-md-4 well well-sm text-center">
+        <div class="col-md-2  well well-sm text-center">
+            <h4>Cidade: <%=p.getCidade()%></h4>
+        </div>
+        <div class="col-md-2  well well-sm text-center">
+            <h4>UF: <%=p.getUf()%></h4>
+        </div>
+        <div class="col-md-2 well well-sm text-center">
             <h4>Ano: <%=session.getAttribute("Ano").toString()%></h4>
         </div>
 
-        <div class="col-md-4 well well-sm text-center">
+        <div class="col-md-3 well well-sm text-center">
             <h4>Nivel: 1</h4>
         </div>
     </div>

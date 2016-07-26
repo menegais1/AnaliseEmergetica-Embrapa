@@ -29,9 +29,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lv2p4")
 @XmlRootElement
 @NamedQueries({
-        @NamedQuery(name = "Lv2p4.findPropriedade", query="SELECT l FROM Lv2p4 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
+    @NamedQuery(name = "Lv2p4.findPropriedade", query = "SELECT l FROM Lv2p4 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
 
-    
     @NamedQuery(name = "Lv2p4.findAll", query = "SELECT l FROM Lv2p4 l"),
     @NamedQuery(name = "Lv2p4.findById", query = "SELECT l FROM Lv2p4 l WHERE l.id = :id"),
     @NamedQuery(name = "Lv2p4.findByMedicamento", query = "SELECT l FROM Lv2p4 l WHERE l.medicamento = :medicamento"),
@@ -132,12 +131,12 @@ public class Lv2p4 implements Serializable {
 
     public Lv2p4() {
     }
-    
-    public Lv2p4(Integer id, String ano) throws Exception{
-        PropriedadeDAO dao=new PropriedadeDAO();
-        this.ano=ano;
+
+    public Lv2p4(Integer id, String ano) throws Exception {
+        PropriedadeDAO dao = new PropriedadeDAO();
+        this.ano = ano;
         this.propriedadeId = dao.buscarPorChavePrimaria(id);
-        
+
     }
 
     public Lv2p4(Integer id) {
@@ -177,6 +176,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getMedicamento() {
+        if (medicamento != null) {
+
+            medicamento = medicamento.setScale(2);
+        }
         return medicamento;
     }
 
@@ -185,6 +188,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getCarrapaticidas() {
+        if (carrapaticidas != null) {
+
+            carrapaticidas = carrapaticidas.setScale(2);
+        }
         return carrapaticidas;
     }
 
@@ -193,6 +200,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getSal() {
+        if (sal != null) {
+
+            sal = sal.setScale(2);
+        }
         return sal;
     }
 
@@ -201,6 +212,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getRacao() {
+        if (racao != null) {
+
+            racao = racao.setScale(2);
+        }
         return racao;
     }
 
@@ -209,6 +224,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getCompraDeBovinos() {
+        if (compraDeBovinos != null) {
+
+            compraDeBovinos = compraDeBovinos.setScale(2);
+        }
         return compraDeBovinos;
     }
 
@@ -217,6 +236,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getUntensiliosDeUsoGeral() {
+        if (untensiliosDeUsoGeral != null) {
+
+            untensiliosDeUsoGeral = untensiliosDeUsoGeral.setScale(2);
+        }
         return untensiliosDeUsoGeral;
     }
 
@@ -225,6 +248,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getSemem() {
+        if (semem != null) {
+
+            semem = semem.setScale(2);
+        }
         return semem;
     }
 
@@ -233,6 +260,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getMaoDeObraFixa() {
+        if (maoDeObraFixa != null) {
+
+            maoDeObraFixa = maoDeObraFixa.setScale(2);
+        }
         return maoDeObraFixa;
     }
 
@@ -241,6 +272,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getMaoDeObraVariavel() {
+        if (maoDeObraVariavel != null) {
+
+            maoDeObraVariavel = maoDeObraVariavel.setScale(2);
+        }
         return maoDeObraVariavel;
     }
 
@@ -249,6 +284,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getSemente() {
+        if (semente != null) {
+
+            semente = semente.setScale(2);
+        }
         return semente;
     }
 
@@ -257,6 +296,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getDefensivosAgriParaPastagem() {
+        if (defensivosAgriParaPastagem != null) {
+
+            defensivosAgriParaPastagem = defensivosAgriParaPastagem.setScale(2);
+        }
         return defensivosAgriParaPastagem;
     }
 
@@ -265,6 +308,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getAdubosParaPastagem() {
+        if (adubosParaPastagem != null) {
+
+            adubosParaPastagem = adubosParaPastagem.setScale(2);
+        }
         return adubosParaPastagem;
     }
 
@@ -273,6 +320,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getCombustivel() {
+        if (combustivel != null) {
+
+            combustivel = combustivel.setScale(2);
+        }
         return combustivel;
     }
 
@@ -281,6 +332,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getReparosDeMaquina() {
+        if (reparosDeMaquina != null) {
+
+            reparosDeMaquina = reparosDeMaquina.setScale(2);
+        }
         return reparosDeMaquina;
     }
 
@@ -289,6 +344,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getReparoDeBenfeitorias() {
+        if (reparoDeBenfeitorias != null) {
+
+            reparoDeBenfeitorias = reparoDeBenfeitorias.setScale(2);
+        }
         return reparoDeBenfeitorias;
     }
 
@@ -297,6 +356,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getFrete() {
+        if (frete != null) {
+
+            frete = frete.setScale(2);
+        }
         return frete;
     }
 
@@ -305,6 +368,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getArrendamentosDeCampoNativo() {
+        if (arrendamentosDeCampoNativo != null) {
+
+            arrendamentosDeCampoNativo = arrendamentosDeCampoNativo.setScale(2);
+        }
         return arrendamentosDeCampoNativo;
     }
 
@@ -313,6 +380,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getArrendamentosDePastagemCultivada() {
+        if (arrendamentosDePastagemCultivada != null) {
+
+            arrendamentosDePastagemCultivada = arrendamentosDePastagemCultivada.setScale(2);
+        }
         return arrendamentosDePastagemCultivada;
     }
 
@@ -321,6 +392,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getImpostos() {
+        if (impostos != null) {
+
+            impostos = impostos.setScale(2);
+        }
         return impostos;
     }
 
@@ -329,6 +404,10 @@ public class Lv2p4 implements Serializable {
     }
 
     public BigDecimal getOutrasDespesas() {
+        if (outrasDespesas != null) {
+
+            outrasDespesas = outrasDespesas.setScale(2);
+        }
         return outrasDespesas;
     }
 
@@ -376,5 +455,5 @@ public class Lv2p4 implements Serializable {
     public String toString() {
         return "modelo.Lv2p4[ id=" + id + " ]";
     }
-    
+
 }

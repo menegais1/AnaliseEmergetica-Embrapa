@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.math.BigDecimal;
 import modelo.Lv2p1;
 import modelo.Lv2p2;
 import modelo.Lv2p3;
@@ -25,6 +26,12 @@ public class Passoslv2 {
     private Lv2resultadoDAO lv2resultadodao;
 
     private String ano;
+
+    public String conversor(String x) {
+        x = x.replace(".", "");
+        x = x.replace(",", ".");
+        return x;
+    }
 
     public Passoslv2() throws Exception {
         lv2p1dao = new Lv2p1DAO();
@@ -122,54 +129,45 @@ public class Passoslv2 {
         this.ano = ano;
     }
 
-    public Double areaMedia() {
-        Double a = this.getLv2p1().getPastagemNativa().doubleValue();
-        Double b = this.getLv2p1().getPastagemNativaMelhorada().doubleValue();
-        Double c = this.getLv2p1().getPastagemCultivadaPerene().doubleValue();
-        Double d = this.getLv2p1().getPastagemAnuaisDeInverno().doubleValue();
+    public BigDecimal areaMedia() {
 
-        Double e = this.getLv2p1().getPastagemAnuaisDeVerao().doubleValue();
+        return (areaAproveitavelPecuariaVerao().add(areaAproveitavelPecuariaInverno())).divide(BigDecimal.valueOf(2), 2, BigDecimal.ROUND_HALF_UP);
 
-        Double f = this.getLv2p1().getAgriculturaI().doubleValue();
-        Double g = this.getLv2p1().getAgriculturaV().doubleValue();
-        Double h = this.getLv2p1().getFlorestasPlantadas().doubleValue();
-        Double i = this.getLv2p1().getOutrasCulturas().doubleValue();
-
-        Double j = this.getLv2p1().getMatasNativas().doubleValue();
-        Double k = this.getLv2p1().getSea().doubleValue();
-        Double l = this.getLv2p1().getInaproveitavel().doubleValue();
-
-        return ((a + b + c + d) + (a + b + c + e)) / 2;
     }
 
-    public Double areaAproveitavel() {
-        Double a = this.getLv2p1().getPastagemNativa().doubleValue();
-        Double b = this.getLv2p1().getPastagemNativaMelhorada().doubleValue();
-        Double c = this.getLv2p1().getPastagemCultivadaPerene().doubleValue();
-        Double d = this.getLv2p1().getPastagemAnuaisDeInverno().doubleValue();
+    public BigDecimal areaAproveitavel() {
+        BigDecimal a = this.getLv2p1().getPastagemNativaVerao();
+        BigDecimal b = this.getLv2p1().getPastagemNativaMelhoradaVerao();
+        BigDecimal c = this.getLv2p1().getPastagemCultivadaPereneVerao();
+        BigDecimal d = this.getLv2p1().getPastagemAnualVerao();
 
+        BigDecimal f = this.getLv2p1().getAgriculturaVerao();
+        BigDecimal h = this.getLv2p1().getFlorestasPlantadasVerao();
+        BigDecimal i = this.getLv2p1().getOutrasAreasVerao();
 
-        Double f = this.getLv2p1().getAgriculturaI().doubleValue();
-        Double h = this.getLv2p1().getFlorestasPlantadas().doubleValue();
-        Double i = this.getLv2p1().getOutrasCulturas().doubleValue();
-
-        return (a + b + c + d + f + h + i) ;
-    }
-    
-    public Double areaAproveitavelPecuaria() {
-        Double a = this.getLv2p1().getPastagemNativa().doubleValue();
-        Double b = this.getLv2p1().getPastagemNativaMelhorada().doubleValue();
-        Double c = this.getLv2p1().getPastagemCultivadaPerene().doubleValue();
-        Double d = this.getLv2p1().getPastagemAnuaisDeInverno().doubleValue();
-
-
-        
-
-        return (a + b + c + d) ;
+        return a.add(b).add(c).add(d).add(f).add(h).add(i);
     }
 
+    public BigDecimal areaAproveitavelPecuariaVerao() {
+        BigDecimal a = this.getLv2p1().getPastagemNativaVerao();
+        BigDecimal b = this.getLv2p1().getPastagemNativaMelhoradaVerao();
+        BigDecimal c = this.getLv2p1().getPastagemCultivadaPereneVerao();
+        BigDecimal d = this.getLv2p1().getPastagemAnualVerao();
 
-    public Double percentualRebanhoComCria() {
+        return (a.add(b).add(c).add(d));
+    }
+
+    public BigDecimal areaAproveitavelPecuariaInverno() {
+        BigDecimal a = this.getLv2p1().getPastagemNativaInverno();
+        BigDecimal b = this.getLv2p1().getPastagemNativaMelhoradaInverno();
+        BigDecimal c = this.getLv2p1().getPastagemCultivadaPereneInverno();
+        BigDecimal d = this.getLv2p1().getPastagemAnualInverno();
+
+        return (a.add(b).add(c).add(d));
+
+    }
+
+    public BigDecimal percentualRebanhoComCria() {
         Integer a1 = this.getLv2p2().getVacaDeCriaJanmar();
         Integer a2 = this.getLv2p2().getVacaDeCriaAbrjun();
         Integer a3 = this.getLv2p2().getVacaDeCriaJulset();
@@ -179,7 +177,7 @@ public class Passoslv2 {
         Integer c2 = this.getLv2p2().getTerneirosAbrjun();
         Integer c3 = this.getLv2p2().getTerneirosJulset();
         Integer c4 = this.getLv2p2().getTerneirosOutdez();
-        
+
         Integer d1 = this.getLv2p2().getTerneirasJanmar();
         Integer d2 = this.getLv2p2().getTerneirasAbrjun();
         Integer d3 = this.getLv2p2().getTerneirasJulset();
@@ -200,13 +198,13 @@ public class Passoslv2 {
         Integer j3 = this.getLv2p2().getTouroJulset();
         Integer j4 = this.getLv2p2().getTouroOutdez();
 
-        Integer x = ((a1 + a2 + a3 + a4 + j1 + j2 + j3 + j4 + f1 + f2 + f3 + f4 + h1 + h2 + h3 + h4 + c1 + c2 + c3 + c4 + d1 + d2 + d3 + d4) * 100) / totalRebanho();
+        BigDecimal x = BigDecimal.valueOf(((((a1 + a2 + a3 + a4) / 4) + ((j1 + j2 + j3 + j4)/4) + ((f1 + f2 + f3 + f4) / 4) + ((h1 + h2 + h3 + h4) / 4) + ((c1 + c2 + c3 + c4) / 4) + ((d1 + d2 + d3 + d4) / 4)) * 100) / totalRebanho());
 
-        return Double.parseDouble(x.toString());
+        return x;
 
     }
 
-    public Integer totalRebanho() {
+    public Double totalRebanho() {
 
         Integer a1 = this.getLv2p2().getVacaDeCriaJanmar();
         Integer a2 = this.getLv2p2().getVacaDeCriaAbrjun();
@@ -249,16 +247,16 @@ public class Passoslv2 {
         Integer j3 = this.getLv2p2().getTouroJulset();
         Integer j4 = this.getLv2p2().getTouroOutdez();
 
-        return a1 + a2 + a3 + a4 + b1 + b2 + b3 + b4 + c1 + c2 + c3 + c4 + d1 + d2 + d3 + d4 + e1 + e2 + e3 + e4 + f1 + f2 + f3 + f4 + g1 + g2 + g3 + g4 + h1 + h2 + h3 + h4 + i1 + i2 + i3 + i4 + j1 + j2 + j3 + j4;
+        return (double) ((a1 + a2 + a3 + a4 ) / 4) + ((b1 + b2 + b3 + b4) / 4) + ((c1 + c2 + c3 + c4) / 4) + ((d1 + d2 + d3 + d4) / 4) + ((e1 + e2 + e3 + e4) / 4) + ((f1 + f2 + f3 + f4) / 4) + ((g1 + g2 + g3 + g4) / 4) + ((h1 + h2 + h3 + h4) / 4) + ((i1 + i2 + i3 + i4) / 4) + ((j1 + j2 + j3 + j4) / 4);
     }
 
-    public Double lotacaoMedia() {
-        Double area = areaMedia();
+    public BigDecimal lotacaoMedia() {
+        BigDecimal area = areaMedia();
 
-        return totalRebanho() / area;
+        return (BigDecimal.valueOf(totalRebanho().longValue()).divide(area, 2, BigDecimal.ROUND_HALF_UP));
     }
 
-    public Double totalReceita() {
+    public BigDecimal totalReceita() {
         Double a = this.getLv2p3().getTerneirosValor().doubleValue();
         Double b = this.getLv2p3().getTerneirasValor().doubleValue();
         Double c = this.getLv2p3().getNovilhasValor().doubleValue();
@@ -282,15 +280,15 @@ public class Passoslv2 {
         Integer j1 = this.getLv2p3().getTorunosQuant();
         Integer k1 = this.getLv2p3().getTouroQuant();
 
-        return (a * a1) + (b * b1) + (c * c1) + (d * d1) + (e * e1) + (f * f1) + (g * g1) + (h * h1) + (i * i1) + (j * j1) + (k * k1);
+        return BigDecimal.valueOf(((a * a1) + (b * b1) + (c * c1) + (d * d1) + (e * e1) + (f * f1) + (g * g1) + (h * h1) + (i * i1) + (j * j1) + (k * k1))).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public Double receitaHectare() {
+    public BigDecimal receitaHectare() {
 
-        return areaMedia() / totalReceita();
+        return totalReceita().divide(areaMedia(), 2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public Double totalCustoProducao() {
+    public BigDecimal totalCustoProducao() {
         Double a = this.getLv2p4().getMedicamento().doubleValue();
         Double b = this.getLv2p4().getCarrapaticidas().doubleValue();
         Double c = this.getLv2p4().getSal().doubleValue();
@@ -312,21 +310,21 @@ public class Passoslv2 {
         Double s = this.getLv2p4().getImpostos().doubleValue();
         Double t = this.getLv2p4().getOutrasDespesas().doubleValue();
 
-        return a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t;
+        return BigDecimal.valueOf(a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public Double custoAtividadeDeCria() {
+    public BigDecimal custoAtividadeDeCria() {
 
-        return (totalCustoProducao() * percentualRebanhoComCria()) / 100;
+        return (totalCustoProducao().multiply(percentualRebanhoComCria())).divide(BigDecimal.valueOf(100), 2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public Double custoProducaoHectare() {
+    public BigDecimal custoProducaoHectare() {
 
-        return custoAtividadeDeCria() / areaMedia();
+        return totalCustoProducao().divide(areaMedia(), 2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public double custoTerneiro() {
-        Double custo = this.custoAtividadeDeCria();
+    public BigDecimal custoTerneiro() {
+        BigDecimal custo = this.custoAtividadeDeCria();
 
         Integer c1 = this.getLv2p2().getTerneirosJanmar();
         Integer c2 = this.getLv2p2().getTerneirosAbrjun();
@@ -337,7 +335,7 @@ public class Passoslv2 {
         Integer d3 = this.getLv2p2().getTerneirasJulset();
         Integer d4 = this.getLv2p2().getTerneirasOutdez();
 
-        return custo / (c1 + c2 + c3 + c4 + d1 + d2 + d3 + d4);
+        return custo.divide(BigDecimal.valueOf(((c1 + c2 + c3 + c4) / 4) + ((d1 + d2 + d3 + d4) / 4)), 2, BigDecimal.ROUND_HALF_UP);
     }
 
 }

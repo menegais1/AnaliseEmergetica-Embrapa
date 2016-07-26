@@ -12,13 +12,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-     
-   
-         Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
+    Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
 
-    
-    
-    if(passos.getLv1p4()== null){
+    if (passos.getLv1p4() == null) {
         response.sendRedirect("lv1p4.jsp");
     }
 
@@ -27,20 +23,20 @@
     if (lv1resultado == null) {
         lv1resultado = new Lv1resultado(id, ano);
 
-        lv1resultado.setCustohectar(BigDecimal.valueOf(passos.custoHectare()));
-        lv1resultado.setLotacaomedia(BigDecimal.valueOf(passos.lotacaoMedia()));
-        lv1resultado.setReceitahectar(BigDecimal.valueOf(passos.receitaHectare()));
-        lv1resultado.setTotalcustoproducao(BigDecimal.valueOf(passos.totalCustoProducao()));
+        lv1resultado.setCustohectar(passos.custoHectare());
+        lv1resultado.setLotacaomedia(passos.lotacaoMedia());
+        lv1resultado.setReceitahectar(passos.receitaHectare());
+        lv1resultado.setTotalcustoproducao(passos.totalCustoProducao());
 
         passos.getLv1resultadodao().incluir(lv1resultado);
         passos.setLv1resultado(lv1resultado);
         session.setAttribute("Passoslv1", passos);
     } else if (lv1resultado != null) {
 
-        lv1resultado.setCustohectar(BigDecimal.valueOf(passos.custoHectare()));
-        lv1resultado.setLotacaomedia(BigDecimal.valueOf(passos.lotacaoMedia()));
-        lv1resultado.setReceitahectar(BigDecimal.valueOf(passos.receitaHectare()));
-        lv1resultado.setTotalcustoproducao(BigDecimal.valueOf(passos.totalCustoProducao()));
+        lv1resultado.setCustohectar(passos.custoHectare());
+        lv1resultado.setLotacaomedia(passos.lotacaoMedia());
+        lv1resultado.setReceitahectar(passos.receitaHectare());
+        lv1resultado.setTotalcustoproducao(passos.totalCustoProducao());
 
         passos.getLv1resultadodao().alterar(lv1resultado);
         passos.setLv1resultado(lv1resultado);
@@ -62,31 +58,23 @@
 
     <%@include file="../importacoes/navegacaolv1.jsp"%>
 
-    <div class='row'>
+     <div class="row">
         <div class="col-md-6">
-            <div class="well well-sm">
-                Lotação Média da Propriedade: <%=passos.getLv1resultado().getLotacaomedia()%> Cabeças por Hectare
-            </div>
-            <div class="well well-sm">
-                Receita por Hectare: <%=passos.getLv1resultado().getReceitahectar()%> R$ por Hectare
-            </div>
-            <div class="well well-sm">
-                Total dos Custos de Produção: <%=passos.getLv1resultado().getTotalcustoproducao()%> R$
-            </div>
-            <div class="well well-sm">
-                Custo de Produçao por Hectare: <%=passos.getLv1resultado().getCustohectar()%> R$ por Hectare
-            </div>
-            <div class="well well-sm">
-                Custo de Atividade de Cria: <%=passos.custoAtividadeDeCria()%> R$
-            </div>
-            <div class="well well-sm">
-                Custo de Produção por Terneiro Desmamado: <%=passos.custoTerneiro()%> R$ por Cabeça
-            </div>
+            <div id="grafico1"></div>
+            <div id="grafico2"></div>
 
         </div>
+        <div class="col-md-6">
+            <div id="grafico3"></div>
+            <div id="grafico4"></div>
+            
+        </div>
+    </div>
 
-        <div class="row">
-            <div class="col-md-6 conteudo">
+    <hr>
+
+    <div class="row">
+            <div class="col-md-6 col-md-offset-3">
                 <a href="../analisefinanceira-lv2/lv2escolha.jsp" class="btn btn-primary btn-block">Ir para o próximo nível</a>
                 <a href="lv1comparacao.jsp" class="btn btn-primary btn-block">Comparar resultados com outros produtores</a>
                 <a href="../propriedades/propriedades.jsp" class="btn btn-primary btn-block">Voltar a tela de seleção de propriedade</a><br>
@@ -94,6 +82,222 @@
             </div>
 
         </div>
+
+    <table id="custohectare" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$/HM²</th>
+                <td><%=passos.getLv1resultado().getCustohectar()%></td>
+                
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="lotacaomedia" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>CABEÇAS/HM²</th>
+                <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
+                
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="receitahectare" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$/HM²</th>
+                <td><%=passos.getLv1resultado().getReceitahectar()%></td>
+               
+
+            </tr>
+
+        </tbody>
+    </table>
+
+    <table id="totalcustoproducao" class="hidden" >
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    Você
+                </th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>R$</th>
+                <td><%=passos.getLv1resultado().getTotalcustoproducao()%></td>
+                
+            </tr>
+
+        </tbody>
+    </table>
+
+   
+</div>
+
+
+
+
+
+
+<script src="../js/data.js"></script>
+<script>
+    $(function () {
+        $('#grafico1').highcharts({
+            data: {
+                table: 'custohectare'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Custo por Hectare'
+            },
+            yAxis: {
+                
+                title: {
+                    text: 'R$/HM²'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name;
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico2').highcharts({
+            data: {
+                table: 'lotacaomedia'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Lotação Media da Propriedade'
+            },
+            yAxis: {
+                
+                title: {
+                    text: 'Cabeças por Hectare'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name;
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico3').highcharts({
+            data: {
+                table: 'receitahectare'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Receita por Hectare'
+            },
+            yAxis: {
+                
+                title: {
+                    text: 'R$/HM²'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name;
+                }
+            }
+        });
+    });
+
+    $(function () {
+        $('#grafico4').highcharts({
+            data: {
+                table: 'totalcustoproducao'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Total Custo de Procução'
+            },
+            yAxis: {
+                
+                title: {
+                    text: 'R$'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name;
+                }
+            }
+        });
+    });
+
+   
+
+
+</script>
+
+        
 
     </div>
 

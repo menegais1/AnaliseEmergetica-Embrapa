@@ -2,6 +2,12 @@
     margin-top:60px;
 }
 
+.modal-body{
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-align: justify;
+    font-weight: 700;
+}
+
 #sair{
     margin:3px;
     color:white;
@@ -21,7 +27,7 @@
 }
 
 .intro-header{
-    background:url("../img/banner-background.png") fixed;
+    background:url("../img/banner-background.jpg") fixed;
     background-size: cover;
 }
 

@@ -29,8 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "lv1p4")
 @XmlRootElement
 @NamedQueries({
-    
-        @NamedQuery(name = "Lv1p4.findPropriedade", query="SELECT l FROM Lv1p4 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
+    @NamedQuery(name = "Lv1p4.findPropriedade", query = "SELECT l FROM Lv1p4 l WHERE l.propriedadeId.id= :propriedadeId AND l.ano= :ano"),
 
     @NamedQuery(name = "Lv1p4.findAll", query = "SELECT l FROM Lv1p4 l"),
     @NamedQuery(name = "Lv1p4.findById", query = "SELECT l FROM Lv1p4 l WHERE l.id = :id"),
@@ -72,12 +71,12 @@ public class Lv1p4 implements Serializable {
 
     public Lv1p4() {
     }
-    
-    public Lv1p4(Integer id, String ano) throws Exception{
-        PropriedadeDAO dao=new PropriedadeDAO();
-        this.ano=ano;
+
+    public Lv1p4(Integer id, String ano) throws Exception {
+        PropriedadeDAO dao = new PropriedadeDAO();
+        this.ano = ano;
         this.propriedadeId = dao.buscarPorChavePrimaria(id);
-        
+
     }
 
     public Lv1p4(Integer id) {
@@ -102,6 +101,10 @@ public class Lv1p4 implements Serializable {
     }
 
     public BigDecimal getMedicamento() {
+        if (medicamento != null) {
+
+            medicamento = medicamento.setScale(2);
+        }
         return medicamento;
     }
 
@@ -110,6 +113,10 @@ public class Lv1p4 implements Serializable {
     }
 
     public BigDecimal getMaoDeObra() {
+        if (maoDeObra != null) {
+
+            maoDeObra = maoDeObra.setScale(2);
+        }
         return maoDeObra;
     }
 
@@ -118,6 +125,10 @@ public class Lv1p4 implements Serializable {
     }
 
     public BigDecimal getMaquinas() {
+        if (maquinas != null) {
+
+            maquinas = maquinas.setScale(2);
+        }
         return maquinas;
     }
 
@@ -126,6 +137,10 @@ public class Lv1p4 implements Serializable {
     }
 
     public BigDecimal getPastagem() {
+        if (pastagem != null) {
+
+            pastagem = pastagem.setScale(2);
+        }
         return pastagem;
     }
 
@@ -142,6 +157,10 @@ public class Lv1p4 implements Serializable {
     }
 
     public BigDecimal getOutros() {
+        if (outros != null) {
+
+            outros = outros.setScale(2);
+        }
         return outros;
     }
 
@@ -181,5 +200,5 @@ public class Lv1p4 implements Serializable {
     public String toString() {
         return "modelo.Lv1p4[ id=" + id + " ]";
     }
-    
+
 }

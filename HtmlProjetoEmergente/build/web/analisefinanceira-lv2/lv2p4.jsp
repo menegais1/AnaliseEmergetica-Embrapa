@@ -14,41 +14,39 @@
 
     Lv2p4 lv2p4 = passos.getLv2p4dao().buscarPorPropriedade(id, ano);
 
-    if(passos.getLv2p3()== null){
+    if (passos.getLv2p3() == null) {
         response.sendRedirect("lv2p3.jsp");
     }
-    
+
     if (passos.getLv2p4() == null) {
 
         passos.setLv2p4(new Lv2p4(id, ano));
         session.setAttribute("Passoslv2", passos);
     }
-    
-    
 
     if (lv2p4 == null && request.getParameter("medicamento") != null) {
         lv2p4 = new Lv2p4(id, ano);
 
-        lv2p4.setMedicamento(BigDecimal.valueOf(Double.parseDouble(request.getParameter("medicamento"))));
-        lv2p4.setCarrapaticidas(BigDecimal.valueOf(Double.parseDouble(request.getParameter("carrapaticidas"))));
-        lv2p4.setSal(BigDecimal.valueOf(Double.parseDouble(request.getParameter("sal"))));
-        lv2p4.setRacao(BigDecimal.valueOf(Double.parseDouble(request.getParameter("racao"))));
-        lv2p4.setCompraDeBovinos(BigDecimal.valueOf(Double.parseDouble(request.getParameter("compra_de_bovinos"))));
-        lv2p4.setUntensiliosDeUsoGeral(BigDecimal.valueOf(Double.parseDouble(request.getParameter("untensilios_de_uso_geral"))));
-        lv2p4.setSemem(BigDecimal.valueOf(Double.parseDouble(request.getParameter("semem"))));
-        lv2p4.setSemente(BigDecimal.valueOf(Double.parseDouble(request.getParameter("semente"))));
-        lv2p4.setDefensivosAgriParaPastagem(BigDecimal.valueOf(Double.parseDouble(request.getParameter("defensivos-agri_para_pastagem"))));
-        lv2p4.setAdubosParaPastagem(BigDecimal.valueOf(Double.parseDouble(request.getParameter("adubos_para_pastagem"))));
-        lv2p4.setCombustivel(BigDecimal.valueOf(Double.parseDouble(request.getParameter("combustivel"))));
-        lv2p4.setFrete(BigDecimal.valueOf(Double.parseDouble(request.getParameter("frete"))));
-        lv2p4.setArrendamentosDeCampoNativo(BigDecimal.valueOf(Double.parseDouble(request.getParameter("arrendamentos_de_campo_nativo"))));
-        lv2p4.setArrendamentosDePastagemCultivada(BigDecimal.valueOf(Double.parseDouble(request.getParameter("arrendamentos_de_pastagem_cultivada"))));
-        lv2p4.setImpostos(BigDecimal.valueOf(Double.parseDouble(request.getParameter("impostos"))));
-        lv2p4.setOutrasDespesas(BigDecimal.valueOf(Double.parseDouble(request.getParameter("outras_despesas"))));
-        lv2p4.setMaoDeObraFixa(BigDecimal.valueOf(Double.parseDouble(request.getParameter("mao_de_obra_fixa"))));
-        lv2p4.setMaoDeObraVariavel(BigDecimal.valueOf(Double.parseDouble(request.getParameter("mao_de_obra_variavel"))));
-        lv2p4.setReparosDeMaquina(BigDecimal.valueOf(Double.parseDouble(request.getParameter("reparos_de_maquina"))));
-        lv2p4.setReparoDeBenfeitorias(BigDecimal.valueOf(Double.parseDouble(request.getParameter("reparo_de_benfeitorias"))));
+        lv2p4.setMedicamento(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("medicamento")))));
+        lv2p4.setCarrapaticidas(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("carrapaticidas")))));
+        lv2p4.setSal(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sal")))));
+        lv2p4.setRacao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("racao")))));
+        lv2p4.setCompraDeBovinos(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("compra_de_bovinos")))));
+        lv2p4.setUntensiliosDeUsoGeral(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("untensilios_de_uso_geral")))));
+        lv2p4.setSemem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("semem")))));
+        lv2p4.setSemente(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("semente")))));
+        lv2p4.setDefensivosAgriParaPastagem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("defensivos-agri_para_pastagem")))));
+        lv2p4.setAdubosParaPastagem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("adubos_para_pastagem")))));
+        lv2p4.setCombustivel(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("combustivel")))));
+        lv2p4.setFrete(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("frete")))));
+        lv2p4.setArrendamentosDeCampoNativo(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("arrendamentos_de_campo_nativo")))));
+        lv2p4.setArrendamentosDePastagemCultivada(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("arrendamentos_de_pastagem_cultivada")))));
+        lv2p4.setImpostos(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("impostos")))));
+        lv2p4.setOutrasDespesas(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_despesas")))));
+        lv2p4.setMaoDeObraFixa(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("mao_de_obra_fixa")))));
+        lv2p4.setMaoDeObraVariavel(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("mao_de_obra_variavel")))));
+        lv2p4.setReparosDeMaquina(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparos_de_maquina")))));
+        lv2p4.setReparoDeBenfeitorias(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparo_de_benfeitorias")))));
 
         passos.getLv2p4dao().incluir(lv2p4);
         passos.setLv2p4(lv2p4);
@@ -57,26 +55,26 @@
         return;
     } else if (lv2p4 != null && request.getParameter("medicamento") != null) {
 
-        lv2p4.setMedicamento(BigDecimal.valueOf(Double.parseDouble(request.getParameter("medicamento"))));
-        lv2p4.setCarrapaticidas(BigDecimal.valueOf(Double.parseDouble(request.getParameter("carrapaticidas"))));
-        lv2p4.setSal(BigDecimal.valueOf(Double.parseDouble(request.getParameter("sal"))));
-        lv2p4.setRacao(BigDecimal.valueOf(Double.parseDouble(request.getParameter("racao"))));
-        lv2p4.setCompraDeBovinos(BigDecimal.valueOf(Double.parseDouble(request.getParameter("compra_de_bovinos"))));
-        lv2p4.setUntensiliosDeUsoGeral(BigDecimal.valueOf(Double.parseDouble(request.getParameter("untensilios_de_uso_geral"))));
-        lv2p4.setSemem(BigDecimal.valueOf(Double.parseDouble(request.getParameter("semem"))));
-        lv2p4.setSemente(BigDecimal.valueOf(Double.parseDouble(request.getParameter("semente"))));
-        lv2p4.setDefensivosAgriParaPastagem(BigDecimal.valueOf(Double.parseDouble(request.getParameter("defensivos-agri_para_pastagem"))));
-        lv2p4.setAdubosParaPastagem(BigDecimal.valueOf(Double.parseDouble(request.getParameter("adubos_para_pastagem"))));
-        lv2p4.setCombustivel(BigDecimal.valueOf(Double.parseDouble(request.getParameter("combustivel"))));
-        lv2p4.setFrete(BigDecimal.valueOf(Double.parseDouble(request.getParameter("frete"))));
-        lv2p4.setArrendamentosDeCampoNativo(BigDecimal.valueOf(Double.parseDouble(request.getParameter("arrendamentos_de_campo_nativo"))));
-        lv2p4.setArrendamentosDePastagemCultivada(BigDecimal.valueOf(Double.parseDouble(request.getParameter("arrendamentos_de_pastagem_cultivada"))));
-        lv2p4.setImpostos(BigDecimal.valueOf(Double.parseDouble(request.getParameter("impostos"))));
-        lv2p4.setOutrasDespesas(BigDecimal.valueOf(Double.parseDouble(request.getParameter("outras_despesas"))));
-        lv2p4.setMaoDeObraFixa(BigDecimal.valueOf(Double.parseDouble(request.getParameter("mao_de_obra_fixa"))));
-        lv2p4.setMaoDeObraVariavel(BigDecimal.valueOf(Double.parseDouble(request.getParameter("mao_de_obra_variavel"))));
-        lv2p4.setReparosDeMaquina(BigDecimal.valueOf(Double.parseDouble(request.getParameter("reparos_de_maquina"))));
-        lv2p4.setReparoDeBenfeitorias(BigDecimal.valueOf(Double.parseDouble(request.getParameter("reparo_de_benfeitorias"))));
+        lv2p4.setMedicamento(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("medicamento")))));
+        lv2p4.setCarrapaticidas(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("carrapaticidas")))));
+        lv2p4.setSal(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sal")))));
+        lv2p4.setRacao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("racao")))));
+        lv2p4.setCompraDeBovinos(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("compra_de_bovinos")))));
+        lv2p4.setUntensiliosDeUsoGeral(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("untensilios_de_uso_geral")))));
+        lv2p4.setSemem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("semem")))));
+        lv2p4.setSemente(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("semente")))));
+        lv2p4.setDefensivosAgriParaPastagem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("defensivos-agri_para_pastagem")))));
+        lv2p4.setAdubosParaPastagem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("adubos_para_pastagem")))));
+        lv2p4.setCombustivel(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("combustivel")))));
+        lv2p4.setFrete(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("frete")))));
+        lv2p4.setArrendamentosDeCampoNativo(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("arrendamentos_de_campo_nativo")))));
+        lv2p4.setArrendamentosDePastagemCultivada(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("arrendamentos_de_pastagem_cultivada")))));
+        lv2p4.setImpostos(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("impostos")))));
+        lv2p4.setOutrasDespesas(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_despesas")))));
+        lv2p4.setMaoDeObraFixa(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("mao_de_obra_fixa")))));
+        lv2p4.setMaoDeObraVariavel(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("mao_de_obra_variavel")))));
+        lv2p4.setReparosDeMaquina(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparos_de_maquina")))));
+        lv2p4.setReparoDeBenfeitorias(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparo_de_benfeitorias")))));
 
         passos.getLv2p4dao().alterar(lv2p4);
         passos.setLv2p4(lv2p4);
@@ -106,48 +104,108 @@
 
 
                     <label>Medicamento <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade" max="1000000" min="0" name="medicamento" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade"  name="medicamento" required>
+                    </div>
                     <label>Carrapaticidas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getCarrapaticidas()%>" placeholder="Insira o gasto com carrapaticidas em sua propriedade" max="1000000" min="0" name="carrapaticidas" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCarrapaticidas()%>" placeholder="Insira o gasto com carrapaticidas em sua propriedade"  name="carrapaticidas" required>
+                    </div>
                     <label>Sal <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getSal()%>" placeholder="Insira o gasto com sal em sua propriedade" max="1000000" min="0" name="sal" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSal()%>" placeholder="Insira o gasto com sal em sua propriedade"  name="sal" required>
+                    </div>
                     <label>Ração <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getRacao()%>" placeholder="Insira o gasto com ração em sua propriedade" max="1000000" min="0" name="racao" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getRacao()%>" placeholder="Insira o gasto com ração em sua propriedade"  name="racao" required>
+                    </div>
                     <label>Compra de Bovinos <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getCompraDeBovinos()%>" placeholder="Insira o gasto com compras de bovinos  em sua propriedade" max="1000000" min="0" name="compra_de_bovinos" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCompraDeBovinos()%>" placeholder="Insira o gasto com compras de bovinos  em sua propriedade"  name="compra_de_bovinos" required>
+                    </div>
                     <label>Utensílios de Uso Geral  <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getUntensiliosDeUsoGeral()%>" placeholder="Insira o gasto com utensílios de uso geral em sua propriedade" max="1000000" min="0" name="untensilios_de_uso_geral" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getUntensiliosDeUsoGeral()%>" placeholder="Insira o gasto com utensílios de uso geral em sua propriedade"  name="untensilios_de_uso_geral" required>
+                    </div>
                     <label>Sêmen <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getSemem()%>" placeholder="Insira o gasto com sêmen em sua propriedade" max="1000000" min="0" name="semem" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSemem()%>" placeholder="Insira o gasto com sêmen em sua propriedade"  name="semem" required>
+                    </div>
                     <label>Semente <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getSemente()%>" placeholder="Insira o gasto com semente em sua propriedade" max="1000000" min="0" name="semente" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSemente()%>" placeholder="Insira o gasto com semente em sua propriedade"  name="semente" required>
+                    </div>
                     <label>Defensivos Agrícolas para Pastagem <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getDefensivosAgriParaPastagem()%>" placeholder="Insira o gasto com defensivos agrícolas em sua propriedade" max="1000000" min="0" name="defensivos-agri_para_pastagem" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getDefensivosAgriParaPastagem()%>" placeholder="Insira o gasto com defensivos agrícolas em sua propriedade"  name="defensivos-agri_para_pastagem" required>
+                    </div>
                     <label>Adubos para Pastagem <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getAdubosParaPastagem()%>" placeholder="Insira o gasto com adubos para pastagem em sua propriedade" max="1000000" min="0" name="adubos_para_pastagem" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getAdubosParaPastagem()%>" placeholder="Insira o gasto com adubos para pastagem em sua propriedade"  name="adubos_para_pastagem" required>
+                    </div>
                     <label>Combustível <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getCombustivel()%>" placeholder="Insira o gasto com combustível em sua propriedade" max="1000000" min="0" name="combustivel" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCombustivel()%>" placeholder="Insira o gasto com combustível em sua propriedade"  name="combustivel" required>
+                    </div>
                     <label>Frete <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getFrete()%>" placeholder="Insira o gasto com fretes em sua propriedade" max="1000000" min="0" name="frete" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getFrete()%>" placeholder="Insira o gasto com fretes em sua propriedade"  name="frete" required>
+                    </div>
                     <label>Arrendamentos de Campo Nativo <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDeCampoNativo()%>" placeholder="Insira o gasto com arrendamentos de campo nativo em sua propriedade" max="1000000" min="0" name="arrendamentos_de_campo_nativo" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDeCampoNativo()%>" placeholder="Insira o gasto com arrendamentos de campo nativo em sua propriedade"  name="arrendamentos_de_campo_nativo" required>
+                    </div>
                     <label>Arrendamentos de Pastagem Cultivada <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDePastagemCultivada()%>" placeholder="Insira o gasto com arrendamentos de pastagem cultivada em sua propriedade" max="1000000" min="0" name="arrendamentos_de_pastagem_cultivada" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDePastagemCultivada()%>" placeholder="Insira o gasto com arrendamentos de pastagem cultivada em sua propriedade"  name="arrendamentos_de_pastagem_cultivada" required>
+                    </div>
                     <label>Impostos <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getImpostos()%>" placeholder="Insira o gasto com impostos em sua propriedade" max="1000000" min="0" name="impostos" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getImpostos()%>" placeholder="Insira o gasto com impostos em sua propriedade"  name="impostos" required>
+                    </div>
                     <label>Outras Despesas <span class="label-control"></span></label>
-                    <input type="number" class="form-control"value="<%=passos.getLv2p4().getOutrasDespesas()%>" placeholder="Insira o gasto com outras despesas em sua propriedade" max="1000000" min="0" name="outras_despesas" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control"value="<%=passos.getLv2p4().getOutrasDespesas()%>" placeholder="Insira o gasto com outras despesas em sua propriedade"  name="outras_despesas" required>
 
-
+                    </div>
 
                     <label>Mão de Obra Fixa <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraFixa()%>" placeholder="Insira o gasto com mão de obra em sua propriedade" max="1000000" min="0" name="mao_de_obra_fixa" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraFixa()%>" placeholder="Insira o gasto com mão de obra em sua propriedade"  name="mao_de_obra_fixa" required>
+                    </div>
                     <label>Mão de Obra Variavel <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraVariavel()%>" placeholder="Insira o gasto com mão de obra em sua propriedade" max="1000000" min="0" name="mao_de_obra_variavel" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraVariavel()%>" placeholder="Insira o gasto com mão de obra em sua propriedade"  name="mao_de_obra_variavel" required>
+                    </div>
                     <label>Reparos de Maquinas  <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getReparosDeMaquina()%>" placeholder="Insira o gasto em reparos de maquinas em sua propriedade" max="1000000" min="0" name="reparos_de_maquina" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getReparosDeMaquina()%>" placeholder="Insira o gasto em reparos de maquinas em sua propriedade"  name="reparos_de_maquina" required>
+                    </div>
                     <label>Reparos de Benfeitorias <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p4().getReparoDeBenfeitorias()%>" placeholder="Insira o gasto em reparos de benfeitorias em sua propriedade" max="1000000" min="0" name="reparo_de_benfeitorias" required>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getReparoDeBenfeitorias()%>" placeholder="Insira o gasto em reparos de benfeitorias em sua propriedade"  name="reparo_de_benfeitorias" required>
+                    </div>
                     <br/>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
                     <a class="btn btn-danger btn-block" id="calcular" >Calcular</a><br/>
@@ -187,6 +245,9 @@
 </div>
 <script src="../js/calculos.js"></script>
 <script src="../js/validarForm.js"></script>
+<script>$(document).ready(function () {
+                    $('.form-control').mask('0.000.000,00', {reverse: true});
+                });</script>
 <script>
     $(document).ready(function () {
 

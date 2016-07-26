@@ -11,9 +11,9 @@
     <class>modelo.Lv2resultado</class>
     <class>modelo.Lv1p4</class>
     <class>modelo.Propriedade</class>
-    <class>modelo.Lv2p1</class>
     <class>modelo.Lv2p4</class>
     <class>modelo.Lv2p3</class>
+    <class>modelo.Lv2p1</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/bancofazenda"/>

@@ -97,6 +97,10 @@ public class Lv1resultado implements Serializable {
     }
 
     public BigDecimal getCustohectar() {
+        if (custohectar != null) {
+
+            custohectar = custohectar.setScale(2);
+        }
         return custohectar;
     }
 
@@ -105,6 +109,10 @@ public class Lv1resultado implements Serializable {
     }
 
     public BigDecimal getLotacaomedia() {
+        if (lotacaomedia != null) {
+
+            lotacaomedia = lotacaomedia.setScale(2);
+        }
         return lotacaomedia;
     }
 
@@ -113,6 +121,10 @@ public class Lv1resultado implements Serializable {
     }
 
     public BigDecimal getReceitahectar() {
+        if (receitahectar != null) {
+
+            receitahectar = receitahectar.setScale(2);
+        }
         return receitahectar;
     }
 
@@ -121,6 +133,10 @@ public class Lv1resultado implements Serializable {
     }
 
     public BigDecimal getTotalcustoproducao() {
+        if (totalcustoproducao != null) {
+
+            totalcustoproducao = totalcustoproducao.setScale(2);
+        }
         return totalcustoproducao;
     }
 

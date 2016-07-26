@@ -65,7 +65,7 @@
                         </td>
                         <td>
                             <div class="btn-group">
-                                <a href="propriedades.jsp?id=<%=p.getId()%>" class="btn btn-lg btn-danger">Análise</a>
+                                <a href="propriedades.jsp?id=<%=p.getId()%>" class="btn btn-lg btn-danger">Entrar</a>
                                 <a href="propriedade-del.jsp?id=<%=p.getId()%>" class="btn btn-lg btn-warning">Excluir</a>
                             </div>
                         </td>

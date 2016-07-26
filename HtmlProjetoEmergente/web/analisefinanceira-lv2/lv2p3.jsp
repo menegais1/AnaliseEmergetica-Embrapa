@@ -14,10 +14,10 @@
 
     Lv2p3 lv2p3 = passos.getLv2p3dao().buscarPorPropriedade(id, ano);
 
-    if(passos.getLv2p2()== null){
+    if (passos.getLv2p2() == null) {
         response.sendRedirect("lv2p2.jsp");
     }
-    
+
     if (passos.getLv2p3() == null) {
 
         passos.setLv2p3(new Lv2p3(id, ano));
@@ -27,28 +27,28 @@
     if (lv2p3 == null && request.getParameter("terneiros_Quant") != null) {
         lv2p3 = new Lv2p3(id, ano);
 
-        lv2p3.setTerneirosQuant(Integer.parseInt(request.getParameter("terneiros_Quant")));
-        lv2p3.setTerneirasQuant(Integer.parseInt(request.getParameter("terneiras_Quant")));
-        lv2p3.setNovilhasQuant(Integer.parseInt(request.getParameter("novilhas_Quant")));
-        lv2p3.setVacasDeDescarteQuant(Integer.parseInt(request.getParameter("vacas_de_descarte_Quant")));
-        lv2p3.setVacaPrenhaQuant(Integer.parseInt(request.getParameter("vaca_prenha_Quant")));
-        lv2p3.setVacaComCriaQuant(Integer.parseInt(request.getParameter("vaca_com_cria_Quant")));
-        lv2p3.setVacaGordaQuant(Integer.parseInt(request.getParameter("vaca_gorda_Quant")));
-        lv2p3.setNovilhoPraRecriaQuant(Integer.parseInt(request.getParameter("novilho_pra_recria_Quant")));
-        lv2p3.setNovilhoGordoQuant(Integer.parseInt(request.getParameter("novilho_gordo_Quant")));
-        lv2p3.setTorunosQuant(Integer.parseInt(request.getParameter("torunos_Quant")));
-        lv2p3.setTouroQuant(Integer.parseInt(request.getParameter("touro_Quant")));
-        lv2p3.setTerneirosValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("terneiros_Valor"))));
-        lv2p3.setTerneirasValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("terneiras_Valor"))));
-        lv2p3.setNovilhasValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("novilhas_Valor"))));
-        lv2p3.setVacasDeDescarteValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vacas_de_descarte_Valor"))));
-        lv2p3.setVacaPrenhaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vaca_prenha_Valor"))));
-        lv2p3.setVacaComCriaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vaca_com_cria_Valor"))));
-        lv2p3.setVacaGordaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vaca_gorda_Valor"))));
-        lv2p3.setNovilhoPraRecriaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("novilho_pra_recria_Valor"))));
-        lv2p3.setNovilhoGordoValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("novilho_gordo_Valor"))));
-        lv2p3.setTorunosValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("torunos_Valor"))));
-        lv2p3.setTouroValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("touro_Valor"))));
+        lv2p3.setTerneirosQuant(Integer.parseInt(passos.conversor(request.getParameter("terneiros_Quant"))));
+        lv2p3.setTerneirasQuant(Integer.parseInt(passos.conversor(request.getParameter("terneiras_Quant"))));
+        lv2p3.setNovilhasQuant(Integer.parseInt(passos.conversor(request.getParameter("novilhas_Quant"))));
+        lv2p3.setVacasDeDescarteQuant(Integer.parseInt(passos.conversor(request.getParameter("vacas_de_descarte_Quant"))));
+        lv2p3.setVacaPrenhaQuant(Integer.parseInt(passos.conversor(request.getParameter("vaca_prenha_Quant"))));
+        lv2p3.setVacaComCriaQuant(Integer.parseInt(passos.conversor(request.getParameter("vaca_com_cria_Quant"))));
+        lv2p3.setVacaGordaQuant(Integer.parseInt(passos.conversor(request.getParameter("vaca_gorda_Quant"))));
+        lv2p3.setNovilhoPraRecriaQuant(Integer.parseInt(passos.conversor(request.getParameter("novilho_pra_recria_Quant"))));
+        lv2p3.setNovilhoGordoQuant(Integer.parseInt(passos.conversor(request.getParameter("novilho_gordo_Quant"))));
+        lv2p3.setTorunosQuant(Integer.parseInt(passos.conversor(request.getParameter("torunos_Quant"))));
+        lv2p3.setTouroQuant(Integer.parseInt(passos.conversor(request.getParameter("touro_Quant"))));
+        lv2p3.setTerneirosValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiros_Valor")))));
+        lv2p3.setTerneirasValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiras_Valor")))));
+        lv2p3.setNovilhasValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilhas_Valor")))));
+        lv2p3.setVacasDeDescarteValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vacas_de_descarte_Valor")))));
+        lv2p3.setVacaPrenhaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_prenha_Valor")))));
+        lv2p3.setVacaComCriaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_com_cria_Valor")))));
+        lv2p3.setVacaGordaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_gorda_Valor")))));
+        lv2p3.setNovilhoPraRecriaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_pra_recria_Valor")))));
+        lv2p3.setNovilhoGordoValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_gordo_Valor")))));
+        lv2p3.setTorunosValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("torunos_Valor")))));
+        lv2p3.setTouroValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("touro_Valor")))));
 
         passos.getLv2p3dao().incluir(lv2p3);
         passos.setLv2p3(lv2p3);
@@ -57,28 +57,28 @@
         return;
     } else if (lv2p3 != null && request.getParameter("terneiros_Quant") != null) {
 
-        lv2p3.setTerneirosQuant(Integer.parseInt(request.getParameter("terneiros_Quant")));
-        lv2p3.setTerneirasQuant(Integer.parseInt(request.getParameter("terneiras_Quant")));
-        lv2p3.setNovilhasQuant(Integer.parseInt(request.getParameter("novilhas_Quant")));
-        lv2p3.setVacasDeDescarteQuant(Integer.parseInt(request.getParameter("vacas_de_descarte_Quant")));
-        lv2p3.setVacaPrenhaQuant(Integer.parseInt(request.getParameter("vaca_prenha_Quant")));
-        lv2p3.setVacaComCriaQuant(Integer.parseInt(request.getParameter("vaca_com_cria_Quant")));
-        lv2p3.setVacaGordaQuant(Integer.parseInt(request.getParameter("vaca_gorda_Quant")));
-        lv2p3.setNovilhoPraRecriaQuant(Integer.parseInt(request.getParameter("novilho_pra_recria_Quant")));
-        lv2p3.setNovilhoGordoQuant(Integer.parseInt(request.getParameter("novilho_gordo_Quant")));
-        lv2p3.setTorunosQuant(Integer.parseInt(request.getParameter("torunos_Quant")));
-        lv2p3.setTouroQuant(Integer.parseInt(request.getParameter("touro_Quant")));
-        lv2p3.setTerneirosValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("terneiros_Valor"))));
-        lv2p3.setTerneirasValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("terneiras_Valor"))));
-        lv2p3.setNovilhasValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("novilhas_Valor"))));
-        lv2p3.setVacasDeDescarteValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vacas_de_descarte_Valor"))));
-        lv2p3.setVacaPrenhaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vaca_prenha_Valor"))));
-        lv2p3.setVacaComCriaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vaca_com_cria_Valor"))));
-        lv2p3.setVacaGordaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("vaca_gorda_Valor"))));
-        lv2p3.setNovilhoPraRecriaValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("novilho_pra_recria_Valor"))));
-        lv2p3.setNovilhoGordoValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("novilho_gordo_Valor"))));
-        lv2p3.setTorunosValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("torunos_Valor"))));
-        lv2p3.setTouroValor(BigDecimal.valueOf(Double.parseDouble(request.getParameter("touro_Valor"))));
+        lv2p3.setTerneirosQuant(Integer.parseInt(passos.conversor(request.getParameter("terneiros_Quant"))));
+        lv2p3.setTerneirasQuant(Integer.parseInt(passos.conversor(request.getParameter("terneiras_Quant"))));
+        lv2p3.setNovilhasQuant(Integer.parseInt(passos.conversor(request.getParameter("novilhas_Quant"))));
+        lv2p3.setVacasDeDescarteQuant(Integer.parseInt(passos.conversor(request.getParameter("vacas_de_descarte_Quant"))));
+        lv2p3.setVacaPrenhaQuant(Integer.parseInt(passos.conversor(request.getParameter("vaca_prenha_Quant"))));
+        lv2p3.setVacaComCriaQuant(Integer.parseInt(passos.conversor(request.getParameter("vaca_com_cria_Quant"))));
+        lv2p3.setVacaGordaQuant(Integer.parseInt(passos.conversor(request.getParameter("vaca_gorda_Quant"))));
+        lv2p3.setNovilhoPraRecriaQuant(Integer.parseInt(passos.conversor(request.getParameter("novilho_pra_recria_Quant"))));
+        lv2p3.setNovilhoGordoQuant(Integer.parseInt(passos.conversor(request.getParameter("novilho_gordo_Quant"))));
+        lv2p3.setTorunosQuant(Integer.parseInt(passos.conversor(request.getParameter("torunos_Quant"))));
+        lv2p3.setTouroQuant(Integer.parseInt(passos.conversor(request.getParameter("touro_Quant"))));
+        lv2p3.setTerneirosValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiros_Valor")))));
+        lv2p3.setTerneirasValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiras_Valor")))));
+        lv2p3.setNovilhasValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilhas_Valor")))));
+        lv2p3.setVacasDeDescarteValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vacas_de_descarte_Valor")))));
+        lv2p3.setVacaPrenhaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_prenha_Valor")))));
+        lv2p3.setVacaComCriaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_com_cria_Valor")))));
+        lv2p3.setVacaGordaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_gorda_Valor")))));
+        lv2p3.setNovilhoPraRecriaValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_pra_recria_Valor")))));
+        lv2p3.setNovilhoGordoValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_gordo_Valor")))));
+        lv2p3.setTorunosValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("torunos_Valor")))));
+        lv2p3.setTouroValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("touro_Valor")))));
 
         passos.getLv2p3dao().alterar(lv2p3);
         passos.setLv2p3(lv2p3);
@@ -110,32 +110,32 @@
                     <h3>Cabeças</h3>
 
                     <label>Terneiros <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirosQuant()%>" placeholder="Insira a quantidade de terneiros" name="terneiros_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirosQuant()%>" placeholder="Insira a quantidade de terneiros" name="terneiros_Quant"  >
                     <label>Terneiras <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirasQuant()%>" placeholder="Insira a quantidade de terneiras" name="terneiras_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirasQuant()%>" placeholder="Insira a quantidade de terneiras" name="terneiras_Quant"  >
                     <label>Novilhas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhasQuant()%>" placeholder="Insira a quantidade de novilhas" name="novilhas_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhasQuant()%>" placeholder="Insira a quantidade de novilhas" name="novilhas_Quant"  >
                     <label>Vacas de Descarte <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacasDeDescarteQuant()%>" placeholder="Insira a quantidade de vacas de descarte" name="vacas_de_descarte_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacasDeDescarteQuant()%>" placeholder="Insira a quantidade de vacas de descarte" name="vacas_de_descarte_Quant"  >
 
 
                     <label>Vacas Prenhas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaPrenhaQuant()%>" placeholder="Insira a quantidade de vacas prenhas" name="vaca_prenha_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaPrenhaQuant()%>" placeholder="Insira a quantidade de vacas prenhas" name="vaca_prenha_Quant"  >
                     <label>Vacas com Cria <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaComCriaQuant()%>" placeholder="Insira a quantidade de vacas com cria" name="vaca_com_cria_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaComCriaQuant()%>" placeholder="Insira a quantidade de vacas com cria" name="vaca_com_cria_Quant"  >
                     <label>Vacas Gordas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaGordaQuant()%>" placeholder="Insira a quantidade vacas gordas" name="vaca_gorda_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaGordaQuant()%>" placeholder="Insira a quantidade vacas gordas" name="vaca_gorda_Quant"  >
                     <label>Novilhos para Recria <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoPraRecriaQuant()%>" placeholder="Insira a quantidade de novilhos para recria" name="novilho_pra_recria_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhoPraRecriaQuant()%>" placeholder="Insira a quantidade de novilhos para recria" name="novilho_pra_recria_Quant"  >
 
 
 
                     <label>Novilhos Gordos <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoGordoQuant()%>" placeholder="Insira a quantidade de novilhos gordos" name="novilho_gordo_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhoGordoQuant()%>" placeholder="Insira a quantidade de novilhos gordos" name="novilho_gordo_Quant"  >
                     <label>Torunos <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTorunosQuant()%>" placeholder="Insira a quantidade de torunos" name="torunos_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTorunosQuant()%>" placeholder="Insira a quantidade de torunos" name="torunos_Quant"  >
                     <label>Touros <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTouroQuant()%>" placeholder="Insira a quantidade de touros" name="touro_Quant" max="1000000" min="0" >
+                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTouroQuant()%>" placeholder="Insira a quantidade de touros" name="touro_Quant"  >
 
 
                 </div>
@@ -143,33 +143,63 @@
                     <h3>Valor Unitário</h3>
 
                     <label>Terneiros <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirosValor()%>" placeholder="Insira o valor unitário por terneiro" name="terneiros_Valor" max="1000000" min="0" >
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirosValor()%>" placeholder="Insira o valor unitário por terneiro" name="terneiros_Valor"  >
+                    </div>
                     <label>Terneiras <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTerneirasValor()%>" placeholder="Insira o valor unitário por terneira" name="terneiras_Valor" max="1000000" min="0" >
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirasValor()%>" placeholder="Insira o valor unitário por terneira" name="terneiras_Valor"  >
+                    </div>
                     <label>Novilhas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhasValor()%>" placeholder="Insira o valor unitário por novilha" name="novilhas_Valor" max="1000000" min="0" >
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhasValor()%>" placeholder="Insira o valor unitário por novilha" name="novilhas_Valor"  >
+                    </div>
                     <label>Vacas de Descarte <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacasDeDescarteValor()%>" placeholder="Insira o valor unitário por vaca de descarte" name="vacas_de_descarte_Valor" max="1000000" min="0" >
-
-
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacasDeDescarteValor()%>" placeholder="Insira o valor unitário por vaca de descarte" name="vacas_de_descarte_Valor"  >
+                    </div>
                     <label>Vacas Prenhas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaPrenhaValor()%>" placeholder="Insira o valor unitário por vaca prenha" name="vaca_prenha_Valor" max="1000000" min="0" >
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaPrenhaValor()%>" placeholder="Insira o valor unitário por vaca prenha" name="vaca_prenha_Valor"  >
+                    </div>
                     <label>Vacas com Cria <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaComCriaValor()%>" placeholder="Insira o valor unitário por vaca com cria" name="vaca_com_cria_Valor" max="1000000" min="0" >
-                    <label>Vacas Gordas <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getVacaGordaValor()%>" placeholder="Insira o valor unitário por vaca gorda" name="vaca_gorda_Valor" max="1000000" min="0" >
-                    <label>Novilhos para Recria <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoPraRecriaValor()%>" placeholder="Insira o valor unitário por novilho para recria" name="novilho_pra_recria_Valor" max="1000000" min="0" >
 
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaComCriaValor()%>" placeholder="Insira o valor unitário por vaca com cria" name="vaca_com_cria_Valor"  >
+                    </div>
+                    <label>Vacas Gordas <span class="label-control"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaGordaValor()%>" placeholder="Insira o valor unitário por vaca gorda" name="vaca_gorda_Valor"  >
+                    </div>
+                    <label>Novilhos para Recria <span class="label-control"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoPraRecriaValor()%>" placeholder="Insira o valor unitário por novilho para recria" name="novilho_pra_recria_Valor"  >
+                    </div>
 
 
                     <label>Novilhos Gordos <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getNovilhoGordoValor()%>" placeholder="Insira o valor unitário por novilho gordo" name="novilho_gordo_Valor" max="1000000" min="0" >
-                    <label>Torunos <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTorunosValor()%>" placeholder="Insira o valor unitário por toruno" name="torunos_Valor" max="1000000" min="0" >
-                    <label>Touros <span class="label-control"></span></label>
-                    <input type="number" class="form-control" value="<%=passos.getLv2p3().getTouroValor()%>" placeholder="Insira o valor unitário por touro" name="touro_Valor" max="1000000" min="0" >
-
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoGordoValor()%>" placeholder="Insira o valor unitário por novilho gordo" name="novilho_gordo_Valor"  >
+                    </div>
+                    <label>Torunos <span class="label-control int"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTorunosValor()%>" placeholder="Insira o valor unitário por toruno" name="torunos_Valor"  >
+                    </div>
+                    <label>Touros <span class="label-control int"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">R$</div>
+                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTouroValor()%>" placeholder="Insira o valor unitário por touro" name="touro_Valor"  >
+                    </div>
 
                     <br/>
                 </div>
@@ -201,10 +231,15 @@
 </div>
 <script src="../js/calculos.js"></script>
 <script src="../js/validarForm.js"></script>
+<script>$(document).ready(function () {
+                $('.int').mask('0.000.000', {reverse: true});
+                $('.double').mask('0.000.000,00', {reverse: true});
+
+            });</script>
 <script>
     $(document).ready(function () {
 
-        lv2p3(<%=passos.areaAproveitavel()%>);
+        lv2p3(<%=passos.areaMedia()%>);
 
     });</script>
 

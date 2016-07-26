@@ -28,6 +28,12 @@ public class Lv2p3DAO {
     }
     
     
+    public void excluirPorAno(Integer id, String ano) throws Exception {
+        em.getTransaction().begin();
+        em.createQuery("DELETE FROM Lv2p3 l WHERE l.propriedadeId.id = :propriedadeId AND l.ano= :ano").setParameter("propriedadeId", id).setParameter("ano", ano).executeUpdate();
+        em.getTransaction().commit();
+    }
+    
      public void excluirPorPropriedade(Integer id) throws Exception {
         em.getTransaction().begin();
         em.createQuery("DELETE FROM Lv2p3 l WHERE l.propriedadeId.id= :propriedadeId").setParameter("propriedadeId", id).executeUpdate();
