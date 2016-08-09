@@ -24,6 +24,30 @@
     passos.setLv2resultado(passos.getLv2resultadodao().buscarPorPropriedade(id, ano));
     session.setAttribute("Passoslv2", passos);
 
+    if (request.getParameter("identificador") != null && !request.getParameter("identificador").isEmpty()) {
+        if (passos.getLv2p4() != null) {
+            response.sendRedirect("lv2p1.jsp");
+            return;
+        }
+
+        if (passos.getLv2p3() != null) {
+            response.sendRedirect("lv2p4.jsp");
+            return;
+        }
+        if (passos.getLv2p2() != null) {
+            response.sendRedirect("lv2p3.jsp");
+            return;
+        }
+        if (passos.getLv2p1() != null) {
+            response.sendRedirect("lv2p2.jsp");
+            return;
+        } else {
+            response.sendRedirect("lv2p1.jsp");
+            return;
+        }
+
+    }
+
 
 %>
 
@@ -42,7 +66,7 @@
         <div class="col-md-6 col-md-offset-3">
             <h3>Selecione uma das opções</h3>
             <!--ADD .DISABLED-->
-            <a class="btn btn-danger btn-block" href="lv2p1.jsp">Fazer Análise</a>
+            <a class="btn btn-danger btn-block" href="lv2escolha.jsp?identificador=1">Fazer Análise</a>
             <a class="btn btn-primary btn-block <%=classe%>" href="lv2resultados.jsp">Resultados</a>
             <a class="btn btn-primary btn-block <%=classe%>" href="lv2comparacao.jsp">Comparar Resultados</a>
             <a class="btn btn-primary btn-block " href="../analisefinanceira-lv1/lv1escolha.jsp">Nível Anterior</a>

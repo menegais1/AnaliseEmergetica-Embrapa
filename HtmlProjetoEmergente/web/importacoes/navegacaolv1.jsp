@@ -1,3 +1,4 @@
+<%@page import="java.math.BigDecimal"%>
 <%@page import="dao.Passoslv1"%>
 <%
 
@@ -56,6 +57,7 @@
     } else {
         porcento = 100;
     }
+
 
 
 %>

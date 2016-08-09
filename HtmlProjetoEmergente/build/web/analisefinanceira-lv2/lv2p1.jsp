@@ -12,6 +12,8 @@
 
     Passoslv2 passos = (Passoslv2) session.getAttribute("Passoslv2");
 
+  
+    
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 

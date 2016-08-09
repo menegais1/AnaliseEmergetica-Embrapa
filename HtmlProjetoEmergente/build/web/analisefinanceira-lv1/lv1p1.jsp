@@ -10,11 +10,15 @@
 <%    session.setAttribute("Link", 1);
 
     Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
+    
+   
 
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
     Lv1p1 lv1p1 = passos.getLv1p1dao().buscarPorPropriedade(id, ano);
+    
+     
 
     if (passos.getLv1p1() == null) {
 

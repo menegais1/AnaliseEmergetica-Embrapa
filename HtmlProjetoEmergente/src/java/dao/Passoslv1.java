@@ -147,7 +147,7 @@ public class Passoslv1 {
     }
     
     public BigDecimal lotacaoMedia(){
-        return (BigDecimal.valueOf(totalBovinos().longValue()).divide(lv1p1.getAreaApro())).setScale(2,BigDecimal.ROUND_HALF_UP);
+        return (BigDecimal.valueOf(totalBovinos().longValue()).divide(lv1p1.getAreaApro(),2,BigDecimal.ROUND_HALF_UP));
     }
 
     public BigDecimal percentualRebanhoComCria() {
@@ -175,7 +175,7 @@ public class Passoslv1 {
 
        
 
-        return ((lv1p3.getReceitaAnual().divide(lv1p1.getAreaApro())).setScale(2,BigDecimal.ROUND_HALF_UP));
+        return ((lv1p3.getReceitaAnual().divide(lv1p1.getAreaApro(),2,BigDecimal.ROUND_HALF_UP)));
     }
 
     public BigDecimal custoAtividadeDeCria() {
@@ -185,7 +185,7 @@ public class Passoslv1 {
 
     public BigDecimal custoHectare() {
 
-        return ((this.totalCustoProducao().divide(lv1p1.getAreaApro())).setScale(2,BigDecimal.ROUND_HALF_UP));
+        return ((this.totalCustoProducao().divide(lv1p1.getAreaApro(),2,BigDecimal.ROUND_HALF_UP)));
     }
 
     public BigDecimal custoTerneiro() {
@@ -196,7 +196,7 @@ public class Passoslv1 {
         BigDecimal totalcusto = this.totalCustoProducao();
 
 
-        return totalcusto.divide(BigDecimal.valueOf(terneiro+terneira)).setScale(2,BigDecimal.ROUND_HALF_UP);
+        return totalcusto.divide(BigDecimal.valueOf(terneiro+terneira),2,BigDecimal.ROUND_HALF_UP);
     }
 
 }
