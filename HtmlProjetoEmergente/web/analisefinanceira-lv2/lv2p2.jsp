@@ -178,20 +178,32 @@
                         <h4>Vacas de Cria</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Cria <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaJanmar()%>" placeholder="Janeiro A Março" name="vaca_de_cria_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaJanmar()%>" placeholder="Jan A Mar" name="vaca_de_cria_janmar"  title="Insira a Quantidade de Vacas de Cria de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Cria <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaAbrjun()%>" placeholder="Abril A Junho" name="vaca_de_cria_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaAbrjun()%>" placeholder="Abr A Jun" name="vaca_de_cria_abrjun"  title="Insira a Quantidade de Vacas de Cria de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Cria <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaJulset()%>" placeholder="Julho A Setembro" name="vaca_de_cria_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaJulset()%>" placeholder="Jul A Set" name="vaca_de_cria_julset"  title="Insira a Quantidade de Vacas de Cria de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Cria <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaOutdez()%>" placeholder="Outubro A Dezembro" name="vaca_de_cria_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaOutdez()%>" placeholder="Out A Dez" name="vaca_de_cria_outdez"  title="Insira a Quantidade de Vacas de Cria de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -204,20 +216,32 @@
                         <h4>Vacas de Descarte</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Descarte <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteJanmar()%>" placeholder="Janeiro A Março" name="vaca_de_descarte_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteJanmar()%>" placeholder="Jan A Mar" name="vaca_de_descarte_janmar"  title="Insira a Quantidade de Vacas de Descarte de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Descarte <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteAbrjun()%>" placeholder="Abril A Junho" name="vaca_de_descarte_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteAbrjun()%>" placeholder="Abr A Jun" name="vaca_de_descarte_abrjun"  title="Insira a Quantidade de Vacas de Descarte Cria de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Descarte <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteJulset()%>" placeholder="Julho A Setembro" name="vaca_de_descarte_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteJulset()%>" placeholder="Jul A Set" name="vaca_de_descarte_julset"  title="Insira a Quantidade de Vacas de Descarte de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Vacas de Descarte <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteOutdez()%>" placeholder="Outubro A Dezembro" name="vaca_de_descarte_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeDescarteOutdez()%>" placeholder="Out A Dez" name="vaca_de_descarte_outdez" title="Insira a Quantidade de Vacas de Descarte de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -230,20 +254,32 @@
                         <h4>Touros</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Touros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroJanmar()%>" placeholder="Janeiro A Março" name="touro_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroJanmar()%>" placeholder="Jan A Mar" name="touro_janmar" title="Insira a Quantidade de Touros de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Touros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroAbrjun()%>" placeholder="Abril A Junho" name="touro_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroAbrjun()%>" placeholder="Abr A Jun" name="touro_abrjun" title="Insira a Quantidade de Touros de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Touros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroJulset()%>" placeholder="Julho A Setembro" name="touro_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroJulset()%>" placeholder="Jul A Set" name="touro_julset"  title="Insira a Quantidade de Touros de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Touros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroOutdez()%>" placeholder="Outubro A Dezembro" name="touro_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTouroOutdez()%>" placeholder="Out A Dez" name="touro_outdez"  title="Insira a Quantidade de Touros de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -256,20 +292,32 @@
                         <h4>Terneiros</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosJanmar()%>" placeholder="Janeiro A Março" name="terneiros_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosJanmar()%>" placeholder="Jan A Mar" name="terneiros_janmar"  title="Insira a Quantidade de Terneiros de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosAbrjun()%>" placeholder="Abril A Junho" name="terneiros_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosAbrjun()%>" placeholder="Abr A Jun" name="terneiros_abrjun"  title="Insira a Quantidade de Terneiros de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosJulset()%>" placeholder="Julho A Setembro" name="terneiros_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosJulset()%>" placeholder="Jul A Set" name="terneiros_julset"  title="Insira a Quantidade de Terneiros de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiros <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosOutdez()%>" placeholder="Outubro A Dezembro" name="terneiros_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirosOutdez()%>" placeholder="Out A Dez" name="terneiros_outdez"  title="Insira a Quantidade de Terneiros de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -282,20 +330,32 @@
                         <h4>Terneiras</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiras <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasJanmar()%>" placeholder="Janeiro A Março" name="terneiras_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasJanmar()%>" placeholder="Jan A Mar" name="terneiras_janmar"  title="Insira a Quantidade de Terneiras de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiras <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasAbrjun()%>" placeholder="Abril A Junho" name="terneiras_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasAbrjun()%>" placeholder="Abr A Jun" name="terneiras_abrjun"  title="Insira a Quantidade de Terneiras de Abril a Julho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiras <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasJulset()%>" placeholder="Julho A Setembro" name="terneiras_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasJulset()%>" placeholder="Jul A Set" name="terneiras_julset"  title="Insira a Quantidade de Terneiras de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Terneiras <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasOutdez()%>" placeholder="Outubro A Dezembro" name="terneiras_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getTerneirasOutdez()%>" placeholder="Out A Dez" name="terneiras_outdez"  title="Insira a Quantidade de Terneiras de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -309,20 +369,33 @@
                         <h4>Novilhos: 13 a 24 Meses</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Janmar()%>" placeholder="Janeiro A Março" name="novilhos_13a24_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Janmar()%>" placeholder="Jan A Mar" name="novilhos_13a24_janmar"  title="Insira a Quantidade de Novilhos de 13 a 24 Meses de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Abrjun()%>" placeholder="Abril A Junho" name="novilhos_13a24_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Abrjun()%>" placeholder="Abr A Jun" name="novilhos_13a24_abrjun"  title="Insira a Quantidade de Novilhos de 13 a 24 Meses de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Julset()%>" placeholder="Julho A Setembro" name="novilhos_13a24_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Julset()%>" placeholder="Jul A Set" name="novilhos_13a24_julset"  title="Insira a Quantidade de Novilhos de 13 a 24 Meses de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Outdez()%>" placeholder="Outubro A Dezembro" name="novilhos_13a24_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos13a24Outdez()%>" placeholder="Out A Dez" name="novilhos_13a24_outdez"  title="Insira a Quantidade de Novilhos de 13 a 24 Meses de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+
+                        </div>
                     </div>
 
                 </div>
@@ -335,20 +408,32 @@
                         <h4>Novilhas: 13 a 24 Meses</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Janmar()%>" placeholder="Janeiro A Março" name="novilhas_13a24_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Janmar()%>" placeholder="Jan A Mar" name="novilhas_13a24_janmar"  title="Insira a Quantidade de Novilhas de 13 a 24 Meses de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Abrjun()%>" placeholder="Abril A Junho" name="novilhas_13a24_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Abrjun()%>" placeholder="Abr A Jun" name="novilhas_13a24_abrjun"  title="Insira a Quantidade de Novilhas de 13 a 24 Meses de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Julset()%>" placeholder="Julho A Setembro" name="novilhas_13a24_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Julset()%>" placeholder="Jul A Set" name="novilhas_13a24_julset"  title="Insira a Quantidade de Novilhas de 13 a 24 Meses de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 13 a 24 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Outdez()%>" placeholder="Outubro A Dezembro" name="novilhas_13a24_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas13a24Outdez()%>" placeholder="Out A Dez" name="novilhas_13a24_outdez"  title="Insira a Quantidade de Novilhas de 13 a 24 Meses de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -361,20 +446,32 @@
                         <h4>Novilhos: 25 a 36 Meses</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Janmar()%>" placeholder="Janeiro A Março" name="novilhos_25a36_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Janmar()%>" placeholder="Jan A Mar" name="novilhos_25a36_janmar"  title="Insira a Quantidade de Novilhos de 25 a 36 Meses de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Abrjun()%>" placeholder="Abril A Junho" name="novilhos_25a36_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Abrjun()%>" placeholder="Abr A Jun" name="novilhos_25a36_abrjun"  title="Insira a Quantidade de Novilhos de 25 a 36 Meses de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Julset()%>" placeholder="Julho A Setembro" name="novilhos_25a36_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Julset()%>" placeholder="Jul A Set" name="novilhos_25a36_julset"  title="Insira a Quantidade de Novilhos de 25 a 36 Meses de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Outdez()%>" placeholder="Outubro A Dezembro" name="novilhos_25a36_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhos25a36Outdez()%>" placeholder="Out A Dez" name="novilhos_25a36_outdez"  title="Insira a Quantidade de Novilhos de 25 a 36 Meses de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -387,20 +484,32 @@
                         <h4>Novilhas: 25 a 36 Meses</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas25a36Janmar()%>" placeholder="Janeiro A Março" name="novilhas_25a36_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas25a36Janmar()%>" placeholder="Jan A Mar" name="novilhas_25a36_janmar"  title="Insira a Quantidade de Novilhas de 25 a 36 Meses de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control"  value="<%=passos.getLv2p2().getNovilhas25a36Abrjun()%>" placeholder="Abril A Junho" name="novilhas_25a36_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control"  value="<%=passos.getLv2p2().getNovilhas25a36Abrjun()%>" placeholder="Abr A Jun" name="novilhas_25a36_abrjun"  title="Insira a Quantidade de Novilhas de 25 a 36 Meses de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas25a36Julset()%>" placeholder="Julho A Setembro" name="novilhas_25a36_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas25a36Julset()%>" placeholder="Jul A Set" name="novilhas_25a36_julset"  title="Insira a Quantidade de Novilhas de 25 a 36 Meses de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhas: 25 a 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas25a36Outdez()%>" placeholder="Outubro A Dezembro" name="novilhas_25a36_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilhas25a36Outdez()%>" placeholder="Out A Dez"  name="novilhas_25a36_outdez"  title="Insira a Quantidade de Novilhas de 25 a 36 Meses de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
@@ -413,57 +522,38 @@
                         <h4>Novilhos: Mais de 36 Meses</h4>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: Mais de 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Janmar()%>" placeholder="Janeiro A Março" name="novilho_36_janmar"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Janmar()%>" placeholder="Jan A Mar" name="novilho_36_janmar"  title="Insira a Quantidade de Novilhos de mais de 36 Meses de Janeiro a Março de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: Mais de 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Abrjun()%>" placeholder="Abril A Junho" name="novilho_36_abrjun"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Abrjun()%>" placeholder="Abr A Jun" name="novilho_36_abrjun" title="Insira a Quantidade de Novilhos de mais de 36 Meses de Abril a Junho de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: Mais de 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Julset()%>" placeholder="Julho A Setembro" name="novilho_36_julset"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Julset()%>" placeholder="Jul A Set" name="novilho_36_julset"  title="Insira a Quantidade de Novilhos de mais de 36 Meses de Julho a Setembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
                     <div class="col-md-2">
-                        <label>Novilhos: Mais de 36 Meses <span class="label-control"></span></label>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Outdez()%>" placeholder="Outubro A Dezembro" name="novilho_36_outdez"  >
+                        <div class="input-group">
+                            <div class="input-group-addon">cab</div>
+                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getNovilho36Outdez()%>" placeholder="Out A Dez" name="novilho_36_outdez" title="Insira a Quantidade de Novilhos de mais de 36 Meses de Outubro a Dezembro de sua propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        </div>
                     </div>
 
                 </div>
 
                 <hr>
 
-                <div class="row">
-                    <div class="col-md-2 col-md-offset-1">
-                        <br>
-                        <h4>Total de Bovinos no Semestre</h4>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Total de Bovinos de Janeiro a Março </span>
-                        <div class="well well-sm" id="totalbjm" style="margin-top:3px;">
-
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Total de Bovinos de Abril a Junho </span>
-                        <div class="well well-sm" id="totalbaj" style="margin-top:3px;">
-
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Total de Bovinos de Julho a Setembro </span>
-                        <div class="well well-sm" id="totalbjs" style="margin-top:3px;">
-
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <span>Total Bovinos de Outubro a Dezembro </span>
-                        <div class="well well-sm" id="totalbod" style="margin-top:3px;">
-
-                        </div>
-                    </div>
-
-                </div>
 
 
             </div>
@@ -483,21 +573,21 @@
 
 
 
-                <div class="col-md-6" style="width: 585px" hidden id="infocalculo">
+                <div class="col-md-12"  hidden id="infocalculo">
 
 
 
 
 
                 </div>
-                <div class="col-md-6 conteudo"  hidden id="infocalculo2">
+                <!--<div class="col-md-6 conteudo"  hidden id="infocalculo2">
 
                     <div id="percentualrebanhocomcria" class="well well-sm"></div>
                     <div id="lotacaomedia" class="well well-sm"></div>
 
 
 
-                </div>
+                </div>-->
 
                 </br>
                 <div class="row">

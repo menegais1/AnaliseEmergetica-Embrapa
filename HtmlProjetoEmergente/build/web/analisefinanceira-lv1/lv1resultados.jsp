@@ -58,7 +58,7 @@
 
     <%@include file="../importacoes/navegacaolv1.jsp"%>
 
-     <div class="row">
+    <div class="row">
         <div class="col-md-6">
             <div id="grafico1"></div>
             <div id="grafico2"></div>
@@ -67,118 +67,126 @@
         <div class="col-md-6">
             <div id="grafico3"></div>
             <div id="grafico4"></div>
-            
+
         </div>
     </div>
 
     <hr>
 
     <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <a href="../analisefinanceira-lv2/lv2escolha.jsp" class="btn btn-primary btn-block">Ir para o próximo nível</a>
-                <a href="lv1comparacao.jsp" class="btn btn-primary btn-block">Comparar resultados com outros produtores</a>
-                <a href="../propriedades/propriedades.jsp" class="btn btn-primary btn-block">Voltar a tela de seleção de propriedade</a><br>
-
-            </div>
-
+        <div class="col-md-4">
+            <a href="../propriedades/propriedades.jsp" class="btn btn-warning btn-block center-block">Voltar a tela de seleção de propriedade</a>
+        </div>
+        <div class="col-md-4">
+            <a href="lv1comparacao.jsp" class="btn btn-primary btn-block center-block">Comparar resultados com outros produtores</a>
+        </div>
+        <div class="col-md-4">
+            <a href="../analisefinanceira-lv2/lv2escolha.jsp" class="btn btn-warning btn-block center-block">Ir para o próximo nível</a>
         </div>
 
-    <table id="custohectare" class="hidden" >
-        <thead>
-            <tr>
-                <th>
 
-                </th>
-                <th>
-                    Você
-                </th>
-                
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>R$/HM²</th>
-                <td><%=passos.getLv1resultado().getCustohectar()%></td>
-                
+    </div>
+    <br>
 
-            </tr>
+</div>
 
-        </tbody>
-    </table>
+<table id="custohectare" class="hidden" >
+    <thead>
+        <tr>
+            <th>
 
-    <table id="lotacaomedia" class="hidden" >
-        <thead>
-            <tr>
-                <th>
+            </th>
+            <th>
+                Você
+            </th>
 
-                </th>
-                <th>
-                    Você
-                </th>
-                
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>CABEÇAS/HM²</th>
-                <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
-                
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>R$/HM²</th>
+            <td><%=passos.getLv1resultado().getCustohectar()%></td>
 
-            </tr>
 
-        </tbody>
-    </table>
+        </tr>
 
-    <table id="receitahectare" class="hidden" >
-        <thead>
-            <tr>
-                <th>
+    </tbody>
+</table>
 
-                </th>
-                <th>
-                    Você
-                </th>
-                
+<table id="lotacaomedia" class="hidden" >
+    <thead>
+        <tr>
+            <th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>R$/HM²</th>
-                <td><%=passos.getLv1resultado().getReceitahectar()%></td>
-               
+            </th>
+            <th>
+                Você
+            </th>
 
-            </tr>
 
-        </tbody>
-    </table>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>CABEÇAS/HM²</th>
+            <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
 
-    <table id="totalcustoproducao" class="hidden" >
-        <thead>
-            <tr>
-                <th>
 
-                </th>
-                <th>
-                    Você
-                </th>
-                
+        </tr>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>R$</th>
-                <td><%=passos.getLv1resultado().getTotalcustoproducao()%></td>
-                
-            </tr>
+    </tbody>
+</table>
 
-        </tbody>
-    </table>
+<table id="receitahectare" class="hidden" >
+    <thead>
+        <tr>
+            <th>
 
-   
+            </th>
+            <th>
+                Você
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>R$/HM²</th>
+            <td><%=passos.getLv1resultado().getReceitahectar()%></td>
+
+
+        </tr>
+
+    </tbody>
+</table>
+
+<table id="totalcustoproducao" class="hidden" >
+    <thead>
+        <tr>
+            <th>
+
+            </th>
+            <th>
+                Você
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>R$</th>
+            <td><%=passos.getLv1resultado().getTotalcustoproducao()%></td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+
 </div>
 
 
@@ -200,7 +208,6 @@
                 text: 'Custo por Hectare'
             },
             yAxis: {
-                
                 title: {
                     text: 'R$/HM²'
                 }
@@ -226,7 +233,6 @@
                 text: 'Lotação Media da Propriedade'
             },
             yAxis: {
-                
                 title: {
                     text: 'Cabeças por Hectare'
                 }
@@ -252,7 +258,6 @@
                 text: 'Receita por Hectare'
             },
             yAxis: {
-                
                 title: {
                     text: 'R$/HM²'
                 }
@@ -278,7 +283,6 @@
                 text: 'Total Custo de Procução'
             },
             yAxis: {
-                
                 title: {
                     text: 'R$'
                 }
@@ -292,14 +296,14 @@
         });
     });
 
-   
+
 
 
 </script>
 
-        
 
-    </div>
+
+</div>
 
 
 </div>

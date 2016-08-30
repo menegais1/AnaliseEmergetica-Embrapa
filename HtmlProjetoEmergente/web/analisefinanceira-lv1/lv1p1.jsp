@@ -10,15 +10,11 @@
 <%    session.setAttribute("Link", 1);
 
     Passoslv1 passos = (Passoslv1) session.getAttribute("Passoslv1");
-    
-   
 
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
     Lv1p1 lv1p1 = passos.getLv1p1dao().buscarPorPropriedade(id, ano);
-    
-     
 
     if (passos.getLv1p1() == null) {
 
@@ -65,21 +61,42 @@
 
     <div class="row">
         <div class="col-md-6">
-            <div class="form-group">
+            <div class="form-group has-feedback">
                 <form action="lv1p1.jsp" onsubmit="return validarForm()" method="post">
-                    <label>Area Aproximada: <span class="label-control"></span></label>
-                    <input   type="text" value="<%=passos.getLv1p1().getAreaApro()%>"class="form-control" placeholder="Insira a area aproximada de sua propriedade em hectares" name="area_apro"><br>
+                    <label>Area Aproximada: 
+                        <span class="label-control"></span></label>
+                    <div >
+                        <div class="input-group">
+                            <div class="input-group-addon ">ha</div>
+                            <input type="text" value="<%=passos.getLv1p1().getAreaApro()%>"class="form-control "  name="area_apro"  title="Insira a Área Aproximada da sua Propriedade">
+                            <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+
+
+
+                        </div>
+
+                    </div>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
                     <input type="submit" class="btn btn-success btn-lg center-block" value="Próximo Passo">
                 </form>
             </div>
+
+
+
         </div>
     </div>
 </div>
 
-<script>$(document).ready(function () {
+<script>
+
+
+    $(document).ready(function () {
         $('.form-control').mask("0.000.000,00", {reverse: true});
-    });</script>
+
+    });
+
+
+</script>
 
 
 

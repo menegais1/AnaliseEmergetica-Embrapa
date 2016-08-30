@@ -81,10 +81,10 @@
                         <div class="form-group form-group-lg ">
                             <form action="nivel-data.jsp" method="post">
                                 <label>Ano: </label>
-                                <input type="number" max="2100" min="1900" placeholder="Insira o ano da análise" class="form-control" name="ano"><br>
+                                <input type="number" max="2100" min="1900" required placeholder="Insira o ano da análise" class="form-control" name="ano"><br>
 
 
-                                <button type="submit" class="btn btn-success btn-lg center-block">Enviar</button>
+                                <button type="submit" class="btn btn-success btn-lg center-block">Entrar</button>
 
                             </form>
                         </div>

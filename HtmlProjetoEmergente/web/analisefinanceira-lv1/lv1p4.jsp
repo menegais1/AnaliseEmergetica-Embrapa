@@ -77,30 +77,35 @@
                     <label>Medicamento <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade" name="medicamento" >
+                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMedicamento()%>" name="medicamento" title="Insira os Gastos com Medicamento da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
 
                     <label>Mão de Obra <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMaoDeObra()%>" placeholder="Insira o gasto com mão de obra em sua propriedade"  name="mao_de_obra" >
+                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMaoDeObra()%>" name="mao_de_obra" title="Insira os Gastos com Mão de Obra da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
-                    <label>Maquinas e Benfeitorias <span class="label-control"></span></label>
+                    <label>Manutenção e Conservação <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMaquinas()%>" placeholder="Insira o gasto em maquinários e benfeitorias em sua propriedade" name="maquinas" >
+                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMaquinas()%>"  name="maquinas" title="Insira os Gastos com Manutenção e Conservação de Máquinas e Benfeitorias da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
 
                     <label>Pastagem e Suplementos <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getPastagem()%>" placeholder="Insira o gasto com pastagem e suplementos em sua propriedade"  name="pastagem" >
+                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getPastagem()%>" name="pastagem" title="Insira os Gastos com Pastagem da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
 
                     <label>Outras Despesas <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getOutros()%>" placeholder="Insira outras despesas em sua propriedade"  name="outros" ><br>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getOutros()%>"  name="outros" title="Insira Quaisquer Outros Gastos da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
                     </div>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
                     <a type="button" class="btn btn-danger btn-block" id="calcular" >Calcular</a><br>

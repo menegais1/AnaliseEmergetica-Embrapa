@@ -25,7 +25,7 @@
                         <input type="text" class="form-control" placeholder="Insira sua unidade federativa (Ex:RS)" name="uf" required>
                         <Label>Cidade</label>
                         <input type="text" class="form-control" placeholder="Insira sua cidade" name="cidade" required></br>
-                        <button type="submit" class="btn btn-lg btn-success center-block">Adicionar <span class="glyphicon glyphicon-plus"></span></button>
+                        <button type="submit" class="btn btn-lg btn-success center-block">Salvar <span class="glyphicon glyphicon-check"></span></button>
                     </form>
                 </div>
             </div>

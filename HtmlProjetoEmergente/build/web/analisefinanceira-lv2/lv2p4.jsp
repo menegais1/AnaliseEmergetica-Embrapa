@@ -106,105 +106,125 @@
                     <label>Medicamento <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMedicamento()%>" placeholder="Insira o gasto com medicamentos em sua propriedade"  name="medicamento" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMedicamento()%>"   name="medicamento" required title="Insira o Valor Gasto em Medicamentos de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Carrapaticidas <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCarrapaticidas()%>" placeholder="Insira o gasto com carrapaticidas em sua propriedade"  name="carrapaticidas" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCarrapaticidas()%>"   name="carrapaticidas" required title="Insira o Valor Gasto em Carrapaticidas de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Sal <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSal()%>" placeholder="Insira o gasto com sal em sua propriedade"  name="sal" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSal()%>"   name="sal" required title="Insira o Valor Gasto em Sal de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Ração <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getRacao()%>" placeholder="Insira o gasto com ração em sua propriedade"  name="racao" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getRacao()%>"   name="racao" required title="Insira o Valor Gasto em Ração de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Compra de Bovinos <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCompraDeBovinos()%>" placeholder="Insira o gasto com compras de bovinos  em sua propriedade"  name="compra_de_bovinos" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCompraDeBovinos()%>"  name="compra_de_bovinos" required title="Insira o Valor Gasto em Compra de Bovinos de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Utensílios de Uso Geral  <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getUntensiliosDeUsoGeral()%>" placeholder="Insira o gasto com utensílios de uso geral em sua propriedade"  name="untensilios_de_uso_geral" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getUntensiliosDeUsoGeral()%>"   name="untensilios_de_uso_geral" required title="Insira o Valor Gasto em Utensilios de Uso Geral de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Sêmen <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSemem()%>" placeholder="Insira o gasto com sêmen em sua propriedade"  name="semem" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSemem()%>"   name="semem" required title="Insira o Valor Gasto em Semen de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Semente <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSemente()%>" placeholder="Insira o gasto com semente em sua propriedade"  name="semente" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getSemente()%>"   name="semente" required title="Insira o Valor Gasto em Semente de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Defensivos Agrícolas para Pastagem <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getDefensivosAgriParaPastagem()%>" placeholder="Insira o gasto com defensivos agrícolas em sua propriedade"  name="defensivos-agri_para_pastagem" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getDefensivosAgriParaPastagem()%>"   name="defensivos-agri_para_pastagem" required title="Insira o Valor Gasto em Defensivos Agrícola para Pastagem de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Adubos para Pastagem <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getAdubosParaPastagem()%>" placeholder="Insira o gasto com adubos para pastagem em sua propriedade"  name="adubos_para_pastagem" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getAdubosParaPastagem()%>"   name="adubos_para_pastagem" required title="Insira o Valor Gasto em Adubos para Pastagem de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Combustível <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCombustivel()%>" placeholder="Insira o gasto com combustível em sua propriedade"  name="combustivel" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getCombustivel()%>"   name="combustivel" required title="Insira o Valor Gasto em Combustível de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Frete <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
 
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getFrete()%>" placeholder="Insira o gasto com fretes em sua propriedade"  name="frete" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getFrete()%>"   name="frete" required title="Insira o Valor Gasto em Frete de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Arrendamentos de Campo Nativo <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDeCampoNativo()%>" placeholder="Insira o gasto com arrendamentos de campo nativo em sua propriedade"  name="arrendamentos_de_campo_nativo" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDeCampoNativo()%>"  name="arrendamentos_de_campo_nativo" required title="Insira o Valor Gasto em Arrendamentos de Campo Nativo de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Arrendamentos de Pastagem Cultivada <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDePastagemCultivada()%>" placeholder="Insira o gasto com arrendamentos de pastagem cultivada em sua propriedade"  name="arrendamentos_de_pastagem_cultivada" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getArrendamentosDePastagemCultivada()%>"  name="arrendamentos_de_pastagem_cultivada" required title="Insira o Valor Gasto em Arrendamentos de Pastagem Cultivada de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Impostos <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getImpostos()%>" placeholder="Insira o gasto com impostos em sua propriedade"  name="impostos" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getImpostos()%>"  name="impostos" required title="Insira o Valor Gasto em Impostos de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Outras Despesas <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control"value="<%=passos.getLv2p4().getOutrasDespesas()%>" placeholder="Insira o gasto com outras despesas em sua propriedade"  name="outras_despesas" required>
+                        <input type="text" class="form-control"value="<%=passos.getLv2p4().getOutrasDespesas()%>"   name="outras_despesas" required title="Insira o Valor Gasto em Outras Despesas de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
 
                     </div>
 
                     <label>Mão de Obra Fixa <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraFixa()%>" placeholder="Insira o gasto com mão de obra em sua propriedade"  name="mao_de_obra_fixa" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraFixa()%>"  name="mao_de_obra_fixa" required title="Insira o Valor Gasto em Mão de Obra Fixa sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Mão de Obra Variavel <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraVariavel()%>" placeholder="Insira o gasto com mão de obra em sua propriedade"  name="mao_de_obra_variavel" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getMaoDeObraVariavel()%>"   name="mao_de_obra_variavel" required title="Insira o Valor Gasto em Mão de Obra Variavel de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Reparos de Maquinas  <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getReparosDeMaquina()%>" placeholder="Insira o gasto em reparos de maquinas em sua propriedade"  name="reparos_de_maquina" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getReparosDeMaquina()%>"   name="reparos_de_maquina" required title="Insira o Valor Gasto em Reparos de Máquina de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Reparos de Benfeitorias <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getReparoDeBenfeitorias()%>" placeholder="Insira o gasto em reparos de benfeitorias em sua propriedade"  name="reparo_de_benfeitorias" required>
+                        <input type="text" class="form-control" value="<%=passos.getLv2p4().getReparoDeBenfeitorias()%>"   name="reparo_de_benfeitorias" required title="Insira o Valor Gasto em Reparos de Benfeitorias de sua propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <br/>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>

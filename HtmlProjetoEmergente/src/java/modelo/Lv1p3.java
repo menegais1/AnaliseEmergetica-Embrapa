@@ -84,7 +84,7 @@ public class Lv1p3 implements Serializable {
     public BigDecimal getReceitaAnual() {
         if (receitaAnual != null) {
 
-            receitaAnual = receitaAnual.setScale(2);
+            receitaAnual = receitaAnual.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return receitaAnual;
     }

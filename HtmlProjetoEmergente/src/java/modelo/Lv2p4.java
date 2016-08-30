@@ -178,7 +178,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getMedicamento() {
         if (medicamento != null) {
 
-            medicamento = medicamento.setScale(2);
+            medicamento = medicamento.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return medicamento;
     }
@@ -190,7 +190,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getCarrapaticidas() {
         if (carrapaticidas != null) {
 
-            carrapaticidas = carrapaticidas.setScale(2);
+            carrapaticidas = carrapaticidas.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return carrapaticidas;
     }
@@ -202,7 +202,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getSal() {
         if (sal != null) {
 
-            sal = sal.setScale(2);
+            sal = sal.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return sal;
     }
@@ -214,7 +214,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getRacao() {
         if (racao != null) {
 
-            racao = racao.setScale(2);
+            racao = racao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return racao;
     }
@@ -226,7 +226,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getCompraDeBovinos() {
         if (compraDeBovinos != null) {
 
-            compraDeBovinos = compraDeBovinos.setScale(2);
+            compraDeBovinos = compraDeBovinos.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return compraDeBovinos;
     }
@@ -238,7 +238,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getUntensiliosDeUsoGeral() {
         if (untensiliosDeUsoGeral != null) {
 
-            untensiliosDeUsoGeral = untensiliosDeUsoGeral.setScale(2);
+            untensiliosDeUsoGeral = untensiliosDeUsoGeral.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return untensiliosDeUsoGeral;
     }
@@ -250,7 +250,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getSemem() {
         if (semem != null) {
 
-            semem = semem.setScale(2);
+            semem = semem.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return semem;
     }
@@ -262,7 +262,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getMaoDeObraFixa() {
         if (maoDeObraFixa != null) {
 
-            maoDeObraFixa = maoDeObraFixa.setScale(2);
+            maoDeObraFixa = maoDeObraFixa.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return maoDeObraFixa;
     }
@@ -274,7 +274,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getMaoDeObraVariavel() {
         if (maoDeObraVariavel != null) {
 
-            maoDeObraVariavel = maoDeObraVariavel.setScale(2);
+            maoDeObraVariavel = maoDeObraVariavel.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return maoDeObraVariavel;
     }
@@ -286,7 +286,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getSemente() {
         if (semente != null) {
 
-            semente = semente.setScale(2);
+            semente = semente.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return semente;
     }
@@ -298,7 +298,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getDefensivosAgriParaPastagem() {
         if (defensivosAgriParaPastagem != null) {
 
-            defensivosAgriParaPastagem = defensivosAgriParaPastagem.setScale(2);
+            defensivosAgriParaPastagem = defensivosAgriParaPastagem.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return defensivosAgriParaPastagem;
     }
@@ -310,7 +310,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getAdubosParaPastagem() {
         if (adubosParaPastagem != null) {
 
-            adubosParaPastagem = adubosParaPastagem.setScale(2);
+            adubosParaPastagem = adubosParaPastagem.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return adubosParaPastagem;
     }
@@ -322,7 +322,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getCombustivel() {
         if (combustivel != null) {
 
-            combustivel = combustivel.setScale(2);
+            combustivel = combustivel.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return combustivel;
     }
@@ -334,7 +334,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getReparosDeMaquina() {
         if (reparosDeMaquina != null) {
 
-            reparosDeMaquina = reparosDeMaquina.setScale(2);
+            reparosDeMaquina = reparosDeMaquina.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return reparosDeMaquina;
     }
@@ -346,7 +346,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getReparoDeBenfeitorias() {
         if (reparoDeBenfeitorias != null) {
 
-            reparoDeBenfeitorias = reparoDeBenfeitorias.setScale(2);
+            reparoDeBenfeitorias = reparoDeBenfeitorias.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return reparoDeBenfeitorias;
     }
@@ -358,7 +358,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getFrete() {
         if (frete != null) {
 
-            frete = frete.setScale(2);
+            frete = frete.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return frete;
     }
@@ -370,7 +370,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getArrendamentosDeCampoNativo() {
         if (arrendamentosDeCampoNativo != null) {
 
-            arrendamentosDeCampoNativo = arrendamentosDeCampoNativo.setScale(2);
+            arrendamentosDeCampoNativo = arrendamentosDeCampoNativo.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return arrendamentosDeCampoNativo;
     }
@@ -382,7 +382,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getArrendamentosDePastagemCultivada() {
         if (arrendamentosDePastagemCultivada != null) {
 
-            arrendamentosDePastagemCultivada = arrendamentosDePastagemCultivada.setScale(2);
+            arrendamentosDePastagemCultivada = arrendamentosDePastagemCultivada.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return arrendamentosDePastagemCultivada;
     }
@@ -394,7 +394,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getImpostos() {
         if (impostos != null) {
 
-            impostos = impostos.setScale(2);
+            impostos = impostos.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return impostos;
     }
@@ -406,7 +406,7 @@ public class Lv2p4 implements Serializable {
     public BigDecimal getOutrasDespesas() {
         if (outrasDespesas != null) {
 
-            outrasDespesas = outrasDespesas.setScale(2);
+            outrasDespesas = outrasDespesas.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return outrasDespesas;
     }

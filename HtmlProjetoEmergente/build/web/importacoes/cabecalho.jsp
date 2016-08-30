@@ -40,11 +40,11 @@ Usuario entroucomo= (Usuario) session.getAttribute("Usuario");
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.mask.min.js"></script>
 
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="../js/highcharts.js"></script>
+<script src="../js/exporting.js"></script>
 
-<script src="https://code.highcharts.com/modules/heatmap.js"></script>
-<script src="https://code.highcharts.com/modules/treemap.js"></script>
+<script src="../js/heatmap.js"></script>
+<script src="../js/treemap.js"></script>
 </head>
 
 <body>

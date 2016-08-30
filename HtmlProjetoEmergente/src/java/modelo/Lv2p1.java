@@ -188,7 +188,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemNativaVerao() {
         if (pastagemNativaVerao != null) {
 
-            pastagemNativaVerao = pastagemNativaVerao.setScale(2);
+            pastagemNativaVerao = pastagemNativaVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemNativaVerao;
     }
@@ -200,7 +200,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemNativaInverno() {
         if (pastagemNativaInverno != null) {
 
-            pastagemNativaInverno = pastagemNativaInverno.setScale(2);
+            pastagemNativaInverno = pastagemNativaInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemNativaInverno;
     }
@@ -212,7 +212,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemNativaMelhoradaVerao() {
         if (pastagemNativaMelhoradaVerao != null) {
 
-            pastagemNativaMelhoradaVerao = pastagemNativaMelhoradaVerao.setScale(2);
+            pastagemNativaMelhoradaVerao = pastagemNativaMelhoradaVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemNativaMelhoradaVerao;
     }
@@ -224,7 +224,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemNativaMelhoradaInverno() {
         if (pastagemNativaMelhoradaInverno != null) {
 
-            pastagemNativaMelhoradaInverno = pastagemNativaMelhoradaInverno.setScale(2);
+            pastagemNativaMelhoradaInverno = pastagemNativaMelhoradaInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemNativaMelhoradaInverno;
     }
@@ -236,7 +236,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemCultivadaPereneVerao() {
         if (pastagemCultivadaPereneVerao != null) {
 
-            pastagemCultivadaPereneVerao = pastagemCultivadaPereneVerao.setScale(2);
+            pastagemCultivadaPereneVerao = pastagemCultivadaPereneVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemCultivadaPereneVerao;
     }
@@ -248,7 +248,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemCultivadaPereneInverno() {
         if (pastagemCultivadaPereneInverno != null) {
 
-            pastagemCultivadaPereneInverno = pastagemCultivadaPereneInverno.setScale(2);
+            pastagemCultivadaPereneInverno = pastagemCultivadaPereneInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemCultivadaPereneInverno;
     }
@@ -260,7 +260,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemAnualInverno() {
         if (pastagemAnualInverno != null) {
 
-            pastagemAnualInverno = pastagemAnualInverno.setScale(2);
+            pastagemAnualInverno = pastagemAnualInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemAnualInverno;
     }
@@ -272,7 +272,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getPastagemAnualVerao() {
         if (pastagemAnualVerao != null) {
 
-            pastagemAnualVerao = pastagemAnualVerao.setScale(2);
+            pastagemAnualVerao = pastagemAnualVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagemAnualVerao;
     }
@@ -285,7 +285,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getAgriculturaVerao() {
         if (agriculturaVerao != null) {
 
-            agriculturaVerao = agriculturaVerao.setScale(2);
+            agriculturaVerao = agriculturaVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return agriculturaVerao;
     }
@@ -297,7 +297,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getAgriculturaInverno() {
         if (agriculturaInverno != null) {
 
-            agriculturaInverno = agriculturaInverno.setScale(2);
+            agriculturaInverno = agriculturaInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return agriculturaInverno;
     }
@@ -309,7 +309,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getFlorestasPlantadasInverno() {
         if (florestasPlantadasInverno != null) {
 
-            florestasPlantadasInverno = florestasPlantadasInverno.setScale(2);
+            florestasPlantadasInverno = florestasPlantadasInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return florestasPlantadasInverno;
     }
@@ -321,7 +321,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getFlorestasPlantadasVerao() {
         if (florestasPlantadasVerao != null) {
 
-            florestasPlantadasVerao = florestasPlantadasVerao.setScale(2);
+            florestasPlantadasVerao = florestasPlantadasVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return florestasPlantadasVerao;
     }
@@ -333,7 +333,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getOutrasAreasVerao() {
         if (outrasAreasVerao != null) {
 
-            outrasAreasVerao = outrasAreasVerao.setScale(2);
+            outrasAreasVerao = outrasAreasVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return outrasAreasVerao;
     }
@@ -345,7 +345,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getOutrasAreasInverno() {
         if (outrasAreasInverno != null) {
 
-            outrasAreasInverno = outrasAreasInverno.setScale(2);
+            outrasAreasInverno = outrasAreasInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return outrasAreasInverno;
     }
@@ -357,7 +357,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getMatasNativasVerao() {
         if (matasNativasVerao != null) {
 
-            matasNativasVerao = matasNativasVerao.setScale(2);
+            matasNativasVerao = matasNativasVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return matasNativasVerao;
     }
@@ -369,7 +369,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getMatasNativasInverno() {
         if (matasNativasInverno != null) {
 
-            matasNativasInverno = matasNativasInverno.setScale(2);
+            matasNativasInverno = matasNativasInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return matasNativasInverno;
     }
@@ -381,7 +381,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getSedesEstradasAcudesVerao() {
         if (sedesEstradasAcudesVerao != null) {
 
-            sedesEstradasAcudesVerao = sedesEstradasAcudesVerao.setScale(2);
+            sedesEstradasAcudesVerao = sedesEstradasAcudesVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return sedesEstradasAcudesVerao;
     }
@@ -393,7 +393,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getSedesEstradasAcudesInverno() {
         if (sedesEstradasAcudesInverno != null) {
 
-            sedesEstradasAcudesInverno = sedesEstradasAcudesInverno.setScale(2);
+            sedesEstradasAcudesInverno = sedesEstradasAcudesInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return sedesEstradasAcudesInverno;
     }
@@ -405,7 +405,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getInaproveitaveisVerao() {
         if (inaproveitaveisVerao != null) {
 
-            inaproveitaveisVerao = inaproveitaveisVerao.setScale(2);
+            inaproveitaveisVerao = inaproveitaveisVerao.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return inaproveitaveisVerao;
     }
@@ -417,7 +417,7 @@ public class Lv2p1 implements Serializable {
     public BigDecimal getInaproveitaveisInverno() {
         if (inaproveitaveisInverno != null) {
 
-            inaproveitaveisInverno = inaproveitaveisInverno.setScale(2);
+            inaproveitaveisInverno = inaproveitaveisInverno.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return inaproveitaveisInverno;
     }

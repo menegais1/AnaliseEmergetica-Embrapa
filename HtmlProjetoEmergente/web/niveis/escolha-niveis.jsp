@@ -105,7 +105,7 @@
 
         <div class="navegacao">
             <a  href="../analisefinanceira-lv1/lv1escolha.jsp">
-                <div class="col-md-2 col-md-offset-4 text-center lv1">
+                <div class="col-md-2 col-md-offset-4 text-center lv">
 
 
                     <span>Nível 1</span>
@@ -117,7 +117,7 @@
 
         <div class="navegacao">
             <a  href="../analisefinanceira-lv2/lv2escolha.jsp">
-                <div class="col-md-2 text-center lv2">
+                <div class="col-md-2 text-center lv">
 
 
                     <span>Nível 2</span>
@@ -145,6 +145,18 @@
             <div class="progress">
                 <div class="progress-bar progress-bar-info" style="width: <%=porcento1%>%; z-index:1; color:black;">
                     <span><%=porcento1%>%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    O que você encontrará em cada um dos níveis
+                </div>
+                <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam massa. Proin vitae massa augue. Proin condimentum quis magna vitae dapibus. Donec eu sem ipsum. Ut pretium congue imperdiet. Quisque a dictum mi. Praesent placerat a tellus ut porttitor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
                 </div>
             </div>
         </div>

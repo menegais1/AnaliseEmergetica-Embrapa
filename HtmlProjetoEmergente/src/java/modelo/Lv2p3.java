@@ -174,7 +174,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTerneirosValor() {
         if (terneirosValor != null) {
 
-            terneirosValor = terneirosValor.setScale(2);
+            terneirosValor = terneirosValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return terneirosValor;
     }
@@ -195,7 +195,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTerneirasValor() {
         if (terneirasValor != null) {
 
-            terneirasValor = terneirasValor.setScale(2);
+            terneirasValor = terneirasValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return terneirasValor;
     }
@@ -215,7 +215,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getNovilhasValor() {
         if (novilhasValor != null) {
 
-            novilhasValor = novilhasValor.setScale(2);
+            novilhasValor = novilhasValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return novilhasValor;
     }
@@ -235,7 +235,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacasDeDescarteValor() {
         if (vacasDeDescarteValor != null) {
 
-            vacasDeDescarteValor = vacasDeDescarteValor.setScale(2);
+            vacasDeDescarteValor = vacasDeDescarteValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return vacasDeDescarteValor;
     }
@@ -255,7 +255,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacaPrenhaValor() {
         if (vacaPrenhaValor != null) {
 
-            vacaPrenhaValor = vacaPrenhaValor.setScale(2);
+            vacaPrenhaValor = vacaPrenhaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return vacaPrenhaValor;
     }
@@ -275,7 +275,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacaComCriaValor() {
         if (vacaComCriaValor != null) {
 
-            vacaComCriaValor = vacaComCriaValor.setScale(2);
+            vacaComCriaValor = vacaComCriaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return vacaComCriaValor;
     }
@@ -295,7 +295,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacaGordaValor() {
         if (vacaGordaValor != null) {
 
-            vacaGordaValor = vacaGordaValor.setScale(2);
+            vacaGordaValor = vacaGordaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return vacaGordaValor;
     }
@@ -315,7 +315,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getNovilhoPraRecriaValor() {
         if (novilhoPraRecriaValor != null) {
 
-            novilhoPraRecriaValor = novilhoPraRecriaValor.setScale(2);
+            novilhoPraRecriaValor = novilhoPraRecriaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return novilhoPraRecriaValor;
     }
@@ -335,7 +335,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getNovilhoGordoValor() {
         if (novilhoGordoValor != null) {
 
-            novilhoGordoValor = novilhoGordoValor.setScale(2);
+            novilhoGordoValor = novilhoGordoValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return novilhoGordoValor;
     }
@@ -355,7 +355,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTorunosValor() {
         if (torunosValor != null) {
 
-            torunosValor = torunosValor.setScale(2);
+            torunosValor = torunosValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return torunosValor;
     }
@@ -375,7 +375,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTouroValor() {
         if (touroValor != null) {
 
-            touroValor = touroValor.setScale(2);
+            touroValor = touroValor.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return touroValor;
     }

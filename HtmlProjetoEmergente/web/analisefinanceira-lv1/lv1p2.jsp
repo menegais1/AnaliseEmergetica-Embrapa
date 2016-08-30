@@ -86,7 +86,7 @@
     <%@include file="../importacoes/navegacaolv1.jsp"%>
 
 
-    <div class="form-group">
+    <div class="form-group has-feedback">
         <form action="lv1p2.jsp" onsubmit="return validarForm()" method="post">
             <div class="row" >
                 <div class="col-md-5">
@@ -97,17 +97,36 @@
 
 
                     <h3>Atividade de Cria</h3>
-                    <label>Touros <span class="label-control"></span></label>
-                    <input type="text" class="form-control" value="<%=passos.getLv1p2().getTouro()%>" placeholder="Insira a quantidade de touros em sua propriedade"  name="touro" >
-                    <label>Terneiros <span class="label-control"></span></label>
-                    <input type="text" class="form-control" value="<%=passos.getLv1p2().getTerneiro()%>" placeholder="Insira a quantidade de terneiros em sua propriedade" name="terneiro" >
-
                     <label>Vacas de cria <span class="label-control"></span></label>
-                    <input type="text" class="form-control" value="<%=passos.getLv1p2().getVacaDeCria()%>" placeholder="Insira a quantidade de vacas de cria em sua propriedade"  name="vaca_de_cria" >
-                    <label>Vacas de descarte <span class="label-control"></span></label>
-                    <input type="text" class="form-control" value="<%=passos.getLv1p2().getVacaDeDescarte()%>" placeholder="Insira a quantidade de vacas de descarte em sua propriedade" name="vaca_de_descarte" >
+                    <div class="input-group">
+                        <div class="input-group-addon">cab</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p2().getVacaDeCria()%>"  name="vaca_de_cria"title="Insira a Quantidade de Vacas de Cria da sua Propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                    </div>
+                    <label>Terneiros <span class="label-control"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">cab</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p2().getTerneiro()%>" name="terneiro" title="Insira a Quantidade de Terneiros da sua Propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                    </div>
                     <label>Terneiras <span class="label-control"></span></label>
-                    <input type="text" class="form-control" value="<%=passos.getLv1p2().getTerneira()%>" placeholder="Insira a quantidade de terneiras em sua propriedade"  name="terneira" >
+                    <div class="input-group">
+                        <div class="input-group-addon">cab</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p2().getTerneira()%>"   name="terneira" title="Insira a Quantidade de Terneiras da sua Propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                    </div>
+                    <label>Touros <span class="label-control"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">cab</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p2().getTouro()%>"   name="touro" title="Insira a Quantidade de Touros da sua Propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                    </div>
+                    <label>Vacas de descarte <span class="label-control"></span></label>
+                    <div class="input-group">
+                        <div class="input-group-addon">cab</div>
+                        <input type="text" class="form-control" value="<%=passos.getLv1p2().getVacaDeDescarte()%>"  name="vaca_de_descarte" title="Insira a Quantidade de Vacas de Descarte da sua Propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                    </div>
                 </div>
 
                 <div class="col-md-6 col-md-offset-1">
@@ -117,62 +136,94 @@
                             <h4>Machos</h4>
 
                             <label>Novilhos: 13-24 meses <span class="label-control"></span></label>
-                            <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilho13a24()%>" placeholder="Insira a quantidade de novilhos de 13 a 24 meses em sua propriedade"  name="novilho_13a24" >
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilho13a24()%>"   name="novilho_13a24" title="Insira a Quantidade de Novilhos de 13 a 24 meses da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
                             <label>Novilhos: 25-36 meses <span class="label-control"></span></label>
-                            <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilho25a36()%>" placeholder="Insira a quantidade de novilhos de 25 a 36 meses em sua propriedade"  name="novilho_25a36" >
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilho25a36()%>"   name="novilho_25a36" title="Insira a Quantidade de Novilhos de 25 a 36 meses da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
                             <label>Novilhos: Mais de 36 meses <span class="label-control"></span></label>
-                            <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilho36()%>" placeholder="Insira a quantidade de novilhos com mais de 36 meses em sua propriedade"  name="novilho_36" >
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilho36()%>"  name="novilho_36" title="Insira a Quantidade de Novilhos de mais de 36 meses  da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <h4>Fêmeas</h4>
                             <label>Novilhas: 13-24 meses <span class="label-control"></span></label>
-                            <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha13a24()%>" placeholder="Insira a quantidade de novilhas de 13 a 24 meses em sua propriedade" name="novilha_13a24" >
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha13a24()%>"  name="novilha_13a24" title="Insira a Quantidade de Novilhas de 13 a 24 meses  da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
                             <label>Novilhas: 25-36 meses <span class="label-control"></span></label>
-                            <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha25a36()%>" placeholder="Insira a quantidade de novilhas de 25 a 36 meses em sua propriedade"  name="novilha_25a36" >
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha25a36()%>"  name="novilha_25a36" title="Insira a Quantidade de Novilhos de 25 a 36 meses  da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
                             <label>Novilhas: Mais de 36 meses <span class="label-control"></span></label>
-                            <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha36()%>" placeholder="Insira a quantidade de novilhas com mais de 36 meses em sua propriedade"  name="novilha_36" ><br>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha36()%>"  name="novilha_36" title="Insira a Quantidade de Novilhos de mais de 36 meses da sua Propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                    <br>
-                    <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
-                    <a class="btn btn-danger btn-block" id="calcular" href="#infocalculo" >Calcular</a>
-                    <br/>
-                </div>
-            </div>
-
-
-
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3" hidden id="infocalculo" >
-
-
-
-
-
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3" hidden id="botao" >
-
-
-
-                    <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
-
-                </div>
-
-            </div>
-        </form>
 
     </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+            <br>
+            <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+            <a class="btn btn-danger btn-block" id="calcular" href="#infocalculo" >Calcular</a>
+            <br/>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-6" hidden id="infocalculo" >
+
+
+
+
+
+        </div>
+        
+        <div class="col-md-6">
+            <div class="well well-sm conteudo" id="lotacaocalculo" hidden></div>
+        </div>
+
+
+
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" hidden id="botao" >
+
+
+
+            <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
+
+        </div>
+
+    </div>
+</form>
+
+</div>
 
 
 

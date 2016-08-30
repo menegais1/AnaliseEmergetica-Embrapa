@@ -24,20 +24,20 @@ public class Passoslv1 {
 
     private String ano;
 
-    
-    public String conversor(String x){
-        x= x.replace(".","");
-        x=x.replace(",", ".");
+    public String conversor(String x) {
+        x = x.replace(".", "");
+        x = x.replace(",", ".");
         return x;
     }
-    public Passoslv1() throws Exception{
-        lv1p1dao =new Lv1p1DAO();
-        lv1p2dao =new Lv1p2DAO();
-        lv1p3dao =new Lv1p3DAO();
-        lv1p4dao =new Lv1p4DAO();
-        lv1resultadodao =new Lv1resultadoDAO();
+
+    public Passoslv1() throws Exception {
+        lv1p1dao = new Lv1p1DAO();
+        lv1p2dao = new Lv1p2DAO();
+        lv1p3dao = new Lv1p3DAO();
+        lv1p4dao = new Lv1p4DAO();
+        lv1resultadodao = new Lv1resultadoDAO();
     }
-    
+
     public Lv1p1 getLv1p1() {
         return lv1p1;
     }
@@ -145,58 +145,87 @@ public class Passoslv1 {
         return total;
 
     }
-    
-    public BigDecimal lotacaoMedia(){
-        return (BigDecimal.valueOf(totalBovinos().longValue()).divide(lv1p1.getAreaApro(),2,BigDecimal.ROUND_HALF_UP));
+
+    public BigDecimal lotacaoMedia() {
+
+        try {
+            return (BigDecimal.valueOf(totalBovinos().longValue()).divide(lv1p1.getAreaApro(), 2, BigDecimal.ROUND_HALF_UP));
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
+
     }
 
     public BigDecimal percentualRebanhoComCria() {
 
+        try {
+            Integer vacasdecria = this.getLv1p2().getVacaDeCria();
+            Integer vacasdedescarte = this.getLv1p2().getVacaDeDescarte();
+            Integer terneiro = this.getLv1p2().getTerneiro();
+            Integer terneira = this.getLv1p2().getTerneira();
+            Integer touros = this.getLv1p2().getTouro();
 
-        Integer vacasdecria = this.getLv1p2().getVacaDeCria();
-        Integer vacasdedescarte = this.getLv1p2().getVacaDeDescarte();
-        Integer terneiro = this.getLv1p2().getTerneiro();
-        Integer terneira = this.getLv1p2().getTerneira();
-        Integer touros = this.getLv1p2().getTouro();
-        Double x = (double) ((vacasdecria + vacasdedescarte + touros + terneiro + terneira) * 100) / totalBovinos();
+            Double x = (double) ((vacasdecria + vacasdedescarte + touros + terneiro + terneira) * 100) / totalBovinos();
 
-        return BigDecimal.valueOf(x);
+            return BigDecimal.valueOf(x);
+
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
 
     }
 
     public BigDecimal totalCustoProducao() {
 
-       
+        try {
 
-        return  this.getLv1p4().getMedicamento().add(this.getLv1p4().getMaquinas()).add(this.getLv1p4().getPastagem()).add(this.getLv1p4().getMaoDeObra()).add(this.getLv1p4().getOutros());
+            return this.getLv1p4().getMedicamento().add(this.getLv1p4().getMaquinas()).add(this.getLv1p4().getPastagem()).add(this.getLv1p4().getMaoDeObra()).add(this.getLv1p4().getOutros());
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
+
     }
 
     public BigDecimal receitaHectare() {
 
-       
-
-        return ((lv1p3.getReceitaAnual().divide(lv1p1.getAreaApro(),2,BigDecimal.ROUND_HALF_UP)));
+        try {
+            return ((lv1p3.getReceitaAnual().divide(lv1p1.getAreaApro(), 2, BigDecimal.ROUND_HALF_UP)));
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
     }
 
     public BigDecimal custoAtividadeDeCria() {
+        try {
+            return ((this.totalCustoProducao().multiply(percentualRebanhoComCria())).divide(BigDecimal.valueOf(100))).setScale(2, BigDecimal.ROUND_HALF_UP);
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
 
-        return ((this.totalCustoProducao().multiply(percentualRebanhoComCria())).divide(BigDecimal.valueOf(100))).setScale(2,BigDecimal.ROUND_HALF_UP);
     }
 
     public BigDecimal custoHectare() {
+        try {
+            return ((this.totalCustoProducao().divide(lv1p1.getAreaApro(), 2, BigDecimal.ROUND_HALF_UP)));
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
 
-        return ((this.totalCustoProducao().divide(lv1p1.getAreaApro(),2,BigDecimal.ROUND_HALF_UP)));
     }
 
     public BigDecimal custoTerneiro() {
 
-        Integer terneiro = this.getLv1p2().getTerneiro();
-        Integer terneira = this.getLv1p2().getTerneira();
+        try {
+            Integer terneiro = this.getLv1p2().getTerneiro();
+            Integer terneira = this.getLv1p2().getTerneira();
 
-        BigDecimal totalcusto = this.totalCustoProducao();
+            BigDecimal totalcusto = this.totalCustoProducao();
 
+            return totalcusto.divide(BigDecimal.valueOf(terneiro + terneira), 2, BigDecimal.ROUND_HALF_UP);
+        } catch (Exception e) {
+            return new BigDecimal("0");
+        }
 
-        return totalcusto.divide(BigDecimal.valueOf(terneiro+terneira),2,BigDecimal.ROUND_HALF_UP);
     }
 
 }

@@ -62,8 +62,22 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h3>Selecione uma das opções</h3>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6"> <h3 class="text-center">Selecione uma das opções</h3></div>
+        </div>
+       
+        <div class="col-md-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    O que você encontrará nesse nível
+                </div>
+                <div class="panel-body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et aliquam massa. Proin vitae massa augue. Proin condimentum quis magna vitae dapibus. Donec eu sem ipsum. Ut pretium congue imperdiet. Quisque a dictum mi. Praesent placerat a tellus ut porttitor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            
             <!--ADD .DISABLED-->
             <a class="btn btn-danger btn-block" href="lv1escolha.jsp?identificador=1">Fazer Análise</a>
             <a class="btn btn-primary btn-block <%=classe%>" href="lv1resultados.jsp">Resultados</a>

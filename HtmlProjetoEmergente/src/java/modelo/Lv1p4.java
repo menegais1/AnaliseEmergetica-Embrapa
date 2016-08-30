@@ -103,7 +103,7 @@ public class Lv1p4 implements Serializable {
     public BigDecimal getMedicamento() {
         if (medicamento != null) {
 
-            medicamento = medicamento.setScale(2);
+            medicamento = medicamento.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return medicamento;
     }
@@ -115,7 +115,7 @@ public class Lv1p4 implements Serializable {
     public BigDecimal getMaoDeObra() {
         if (maoDeObra != null) {
 
-            maoDeObra = maoDeObra.setScale(2);
+            maoDeObra = maoDeObra.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return maoDeObra;
     }
@@ -127,7 +127,7 @@ public class Lv1p4 implements Serializable {
     public BigDecimal getMaquinas() {
         if (maquinas != null) {
 
-            maquinas = maquinas.setScale(2);
+            maquinas = maquinas.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return maquinas;
     }
@@ -139,7 +139,7 @@ public class Lv1p4 implements Serializable {
     public BigDecimal getPastagem() {
         if (pastagem != null) {
 
-            pastagem = pastagem.setScale(2);
+            pastagem = pastagem.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return pastagem;
     }
@@ -159,7 +159,7 @@ public class Lv1p4 implements Serializable {
     public BigDecimal getOutros() {
         if (outros != null) {
 
-            outros = outros.setScale(2);
+            outros = outros.setScale(2,BigDecimal.ROUND_HALF_UP);
         }
         return outros;
     }

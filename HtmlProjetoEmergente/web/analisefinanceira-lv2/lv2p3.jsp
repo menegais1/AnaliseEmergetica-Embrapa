@@ -105,111 +105,236 @@
         <form action="lv2p3.jsp" onsubmit="return validarForm()" method="post">
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <h1>Vendas de Animais</h1>
 
-                    <h3>Cabeças</h3>
+                    <div class="row">
+                        <div class="col-md-6"><h3>Cabeças</h3></div>
+                        <div class="col-md-6"><h3>Valor Unitário</h3></div>
+                    </div>
 
-                    <label>Terneiros <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirosQuant()%>" placeholder="Insira a quantidade de terneiros" name="terneiros_Quant"  >
-                    <label>Terneiras <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirasQuant()%>" placeholder="Insira a quantidade de terneiras" name="terneiras_Quant"  >
-                    <label>Novilhas <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhasQuant()%>" placeholder="Insira a quantidade de novilhas" name="novilhas_Quant"  >
-                    <label>Vacas de Descarte <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacasDeDescarteQuant()%>" placeholder="Insira a quantidade de vacas de descarte" name="vacas_de_descarte_Quant"  >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Terneiros <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirosQuant()%>" name="terneiros_Quant"  title="Insira a Quantidade de Terneiros de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Terneiros <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirosValor()%>"  name="terneiros_Valor"  title="Insira o Valor de Terneiros de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
 
 
-                    <label>Vacas Prenhas <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaPrenhaQuant()%>" placeholder="Insira a quantidade de vacas prenhas" name="vaca_prenha_Quant"  >
-                    <label>Vacas com Cria <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaComCriaQuant()%>" placeholder="Insira a quantidade de vacas com cria" name="vaca_com_cria_Quant"  >
-                    <label>Vacas Gordas <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaGordaQuant()%>" placeholder="Insira a quantidade vacas gordas" name="vaca_gorda_Quant"  >
-                    <label>Novilhos para Recria <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhoPraRecriaQuant()%>" placeholder="Insira a quantidade de novilhos para recria" name="novilho_pra_recria_Quant"  >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Terneiras <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirasQuant()%>"  name="terneiras_Quant"  title="Insira a Quantidade de Terneiras de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Terneiras <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirasValor()%>"  name="terneiras_Valor"  title="Insira o Valor de Terneiras de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Novilhas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhasQuant()%>"  name="novilhas_Quant"  title="Insira a Quantidade de Novilhas de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Novilhas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhasValor()%>"  name="novilhas_Valor"  title="Insira o Valor De Novilhas de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Vacas de Descarte <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacasDeDescarteQuant()%>"  name="vacas_de_descarte_Quant"  title="Insira a Quantidade de Vacas de Descarte de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Vacas de Descarte <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacasDeDescarteValor()%>"  name="vacas_de_descarte_Valor" title="Insira o Valor de Vacas de Descarte de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Vacas Prenhas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaPrenhaQuant()%>"  name="vaca_prenha_Quant"  title="Insira a Quantidade de Vacas Prenha de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Vacas Prenhas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaPrenhaValor()%>"  name="vaca_prenha_Valor"  title="Insira o Valor de Vacas Prenha de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Vacas com Cria <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaComCriaQuant()%>"  name="vaca_com_cria_Quant"  title="Insira a Quantidade de Vacas com Cria de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Vacas com Cria <span class="label-control"></span></label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaComCriaValor()%>"  name="vaca_com_cria_Valor"  title="Insira o Valor de Vacas com Cria de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Vacas Gordas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getVacaGordaQuant()%>"  name="vaca_gorda_Quant"  title="Insira a Quantidade de Vacas Gordas de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Vacas Gordas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaGordaValor()%>"  name="vaca_gorda_Valor"  title="Insira o Valor de Vacas Gordas de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Novilhos para Recria <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhoPraRecriaQuant()%>"  name="novilho_pra_recria_Quant"  title="Insira a Quantidade de Novilhos para Recria de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Novilhos para Recria <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoPraRecriaValor()%>"  name="novilho_pra_recria_Valor"  title="Insira o Valor de Novilhos para Recria de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
 
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Novilhos Gordos <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhoGordoQuant()%>"  name="novilho_gordo_Quant"  title="Insira a Quantidade de Novilhos Gordos de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Novilhos Gordos <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoGordoValor()%>"  name="novilho_gordo_Valor"  title="Insira o Valor de Novilhos Gordos de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label>Novilhos Gordos <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getNovilhoGordoQuant()%>" placeholder="Insira a quantidade de novilhos gordos" name="novilho_gordo_Quant"  >
-                    <label>Torunos <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTorunosQuant()%>" placeholder="Insira a quantidade de torunos" name="torunos_Quant"  >
-                    <label>Touros <span class="label-control"></span></label>
-                    <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTouroQuant()%>" placeholder="Insira a quantidade de touros" name="touro_Quant"  >
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Torunos <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTorunosQuant()%>"  name="torunos_Quant"  title="Insira a Quantidade de Torunos de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Torunos <span class="label-control int"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTorunosValor()%>"  name="torunos_Valor"  title="Insira o Valor de Torunos de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Touros <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">cab</div>
+                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTouroQuant()%>"  name="touro_Quant"  title="Insira a Quantidade de Touros de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Touros <span class="label-control int"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">R$</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTouroValor()%>"  name="touro_Valor"  title="Insira o Valor de Touros de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
-                <div class="col-md-6">
-                    <h3>Valor Unitário</h3>
-
-                    <label>Terneiros <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirosValor()%>" placeholder="Insira o valor unitário por terneiro" name="terneiros_Valor"  >
-                    </div>
-                    <label>Terneiras <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirasValor()%>" placeholder="Insira o valor unitário por terneira" name="terneiras_Valor"  >
-                    </div>
-                    <label>Novilhas <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhasValor()%>" placeholder="Insira o valor unitário por novilha" name="novilhas_Valor"  >
-                    </div>
-                    <label>Vacas de Descarte <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacasDeDescarteValor()%>" placeholder="Insira o valor unitário por vaca de descarte" name="vacas_de_descarte_Valor"  >
-                    </div>
-                    <label>Vacas Prenhas <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaPrenhaValor()%>" placeholder="Insira o valor unitário por vaca prenha" name="vaca_prenha_Valor"  >
-                    </div>
-                    <label>Vacas com Cria <span class="label-control"></span></label>
-
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaComCriaValor()%>" placeholder="Insira o valor unitário por vaca com cria" name="vaca_com_cria_Valor"  >
-                    </div>
-                    <label>Vacas Gordas <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaGordaValor()%>" placeholder="Insira o valor unitário por vaca gorda" name="vaca_gorda_Valor"  >
-                    </div>
-                    <label>Novilhos para Recria <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoPraRecriaValor()%>" placeholder="Insira o valor unitário por novilho para recria" name="novilho_pra_recria_Valor"  >
-                    </div>
-
-
-                    <label>Novilhos Gordos <span class="label-control"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoGordoValor()%>" placeholder="Insira o valor unitário por novilho gordo" name="novilho_gordo_Valor"  >
-                    </div>
-                    <label>Torunos <span class="label-control int"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTorunosValor()%>" placeholder="Insira o valor unitário por toruno" name="torunos_Valor"  >
-                    </div>
-                    <label>Touros <span class="label-control int"></span></label>
-                    <div class="input-group">
-                        <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTouroValor()%>" placeholder="Insira o valor unitário por touro" name="touro_Valor"  >
-                    </div>
-
-                    <br/>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
-                        <a type="button" class="btn btn-block btn-danger" id="calcular">Calcular</a><br>
-                    </div>
-                </div>          
             </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                    <a type="button" class="btn btn-block btn-danger" id="calcular">Calcular</a><br>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 conteudo" hidden id="infocalculo">
 
@@ -220,8 +345,6 @@
 
                 </div>
             </div>
-
-
         </form> 
     </div>
 

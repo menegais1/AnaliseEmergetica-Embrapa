@@ -51,16 +51,12 @@ a[href="trocar-senha.jsp"]{
 
 }
 
-.navegacao>a>div.lv1{
+
+
+.navegacao>a>div.lv{
     border:solid 1px;;
     padding:30px;
     background-color: #000\9;
-}
-
-.navegacao>a>div.lv2{
-    border:solid 1px;;
-    padding:30px;
-    background-color: #f0ad4e;
 }
 
 .navegacao>a{
@@ -117,29 +113,44 @@ a.disabled{
     background-color:#f5f5f0;
 }
 #parente>div#filho1>div{
-    
+
     top:0px;
     left:0px;
-    
+
 }
 #parente>div#filho2>div{
-    
+
     top:0px;
     left:292.5px;
 }
 #parente>div#filho3>div{
-    
+
     top:0px;
     left:487.5px;
 }
 #parente>div#filho4>div{
-    
+
     top:0px;
     left:682.5px;
 }
 #parente>div#filho5>div{
-    
+
     top:0px;
     left:877.5px;
 }
 
+
+
+.form-control-feedback {
+   
+    z-index: 10;
+
+}
+
+.rowhighlight > td{ background: #EAD0D0;}
+.rowhighlight > th{ background: #EAD0D0;}
+
+
+.borderless {
+    border : none;
+}
