@@ -58,20 +58,6 @@
 
     <%@include file="../importacoes/navegacaolv1.jsp"%>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div id="grafico1"></div>
-            <div id="grafico2"></div>
-
-        </div>
-        <div class="col-md-6">
-            <div id="grafico3"></div>
-            <div id="grafico4"></div>
-
-        </div>
-    </div>
-
-    <hr>
 
     <div class="row">
         <div class="col-md-4">
@@ -88,6 +74,23 @@
 
     </div>
     <br>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="grafico1"></div>
+            <div id="grafico2"></div>
+
+        </div>
+        <div class="col-md-6">
+            <div id="grafico3"></div>
+            <div id="grafico4"></div>
+
+        </div>
+    </div>
+
+    <hr>
+
+
+
 
 </div>
 

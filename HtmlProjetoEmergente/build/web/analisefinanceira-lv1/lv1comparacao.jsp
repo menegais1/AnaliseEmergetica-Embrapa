@@ -66,7 +66,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$/HM²</th>
+                <th>R$/ha</th>
                 <td><%=passos.getLv1resultado().getCustohectar()%></td>
                 <td><%=lv1resultado.getCustohectar()%></td>
 
@@ -92,7 +92,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>CABEÇAS/HM²</th>
+                <th>CABEÇAS/ha</th>
                 <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
                 <td><%=lv1resultado.getLotacaomedia()%></td>
 
@@ -118,7 +118,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>R$/HM²</th>
+                <th>R$/ha</th>
                 <td><%=passos.getLv1resultado().getReceitahectar()%></td>
                 <td><%=lv1resultado.getReceitahectar()%></td>
 
@@ -177,7 +177,7 @@
             yAxis: {
                 
                 title: {
-                    text: 'R$/HM²'
+                    text: 'R$/ha'
                 }
             },
             tooltip: {
@@ -229,7 +229,7 @@
             yAxis: {
                 
                 title: {
-                    text: 'R$/HM²'
+                    text: 'R$/ha'
                 }
             },
             tooltip: {

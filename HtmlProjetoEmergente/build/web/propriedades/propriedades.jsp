@@ -19,11 +19,15 @@
             PropriedadeDAO pdao = new PropriedadeDAO();
             Usuario u = (Usuario) session.getAttribute("Usuario");
             List<Propriedade> plista = pdao.listarPorUsuario(u.getId());
-
+            String msg = "hidden";
             if (request.getParameter("id") != null) {
                 session.setAttribute("Propriedade_id", Integer.parseInt(request.getParameter("id")));
                 response.sendRedirect("../analise/analise-escolha.jsp");
                 return;
+            }
+
+            if (request.getParameter("ok") != null) {
+                msg = null;
             }
         %>
 
@@ -33,7 +37,14 @@
                 <h1>Propriedades</h1>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-12" <%=msg%>>
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Sucesso!</strong> Sua propriedade foi incluida com sucesso.
+                </div>
+            </div>
+        </div>
         <div class="row">
 
             <div class="col-md-12">

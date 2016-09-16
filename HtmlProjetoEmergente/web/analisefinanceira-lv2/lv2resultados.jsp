@@ -69,6 +69,19 @@
 
 
     <div class='row'>
+
+        <div class="row">
+            <div class="col-md-4">
+                <a href="../propriedades/propriedades.jsp" class="btn btn-warning btn-block center-block">Voltar a tela de seleção de propriedade</a>
+            </div>
+            <div class="col-md-4 col-md-offset-4">
+                <a href="lv2comparacao.jsp" class="btn btn-primary btn-block center-block">Comparar resultados com outros produtores</a>
+            </div>
+            
+
+
+        </div>
+        <br>
         <div class="col-md-6" id="grafico1">
             <!--<div class="well well-sm">
                 Área Média da Propriedade: <%=passos.areaMedia()%> Hectares
@@ -114,18 +127,13 @@
         <div class="col-md-6" id="grafico4">
 
         </div>
-            
-            <div class="col-md-6" id="grafico5">
+
+        <div class="col-md-6" id="grafico5">
 
         </div>
 
-            
-        <div class="col-md-6 conteudo">
-            <br><br>
-            <a href="lv2comparacao.jsp" class="btn btn-primary btn-block">Comparar resultados com outros produtores</a>
-            <a href="../propriedades/propriedades.jsp" class="btn btn-primary btn-block">Voltar a tela de seleção de propriedade</a><br>
 
-        </div>
+
 
     </div>
     <hr>
@@ -255,7 +263,7 @@
                 text: 'Custo e Receita por Hectare'
             },
             xAxis: {
-                categories: ['Custo por Hectare (R$/HM²)', 'Receita por Hectare (R$/HM²)', 'Custo por Terneiro (R$/TERNEIRO)'],
+                categories: ['Custo por Hectare (R$/ha)', 'Receita por Hectare (R$/ha)', 'Custo por Terneiro (R$/TERNEIRO)'],
                 title: {
                     text: null
                 }
@@ -357,7 +365,7 @@
             ]
         });
     });
-    
+
     $(function () {
         $('#grafico5').highcharts({
             chart: {
@@ -367,7 +375,7 @@
                 text: 'Lotação Média'
             },
             xAxis: {
-                categories: ['Lotação Média (CABEÇAS/HM²)'],
+                categories: ['Lotação Média (CABEÇAS/ha)'],
                 title: {
                     text: null
                 }

@@ -62,7 +62,7 @@
           </thead>
           <tbody>
               <tr>
-                  <th>HM²</th>
+                  <th>ha</th>
                   <td><%=passos.getLv2resultado().getAreamedia()%></td>
                   <td><%=lv2resultado.getAreamedia()%></td>
   
@@ -88,7 +88,7 @@
           </thead>
           <tbody>
               <tr>
-                  <th>HM²</th>
+                  <th>ha</th>
                   <td><%=passos.getLv2resultado().getAreaaproveitavel()%></td>
                   <td><%=lv2resultado.getAreaaproveitavel()%></td>
   
@@ -140,7 +140,7 @@
           </thead>
           <tbody>
               <tr>
-                  <th>CABEÇAS/HM²</th>
+                  <th>CABEÇAS/ha</th>
                   <td><%=passos.getLv2resultado().getLotacaomedia2()%></td>
                   <td><%=lv2resultado.getLotacaomedia2()%></td>
   
@@ -192,7 +192,7 @@
           </thead>
           <tbody>
               <tr>
-                  <th>R$/HM²</th>
+                  <th>R$/ha</th>
                   <td><%=passos.getLv2resultado().getReceitahectar2()%></td>
                   <td><%=lv2resultado.getReceitahectar2()%></td>
   
@@ -270,7 +270,7 @@
           </thead>
           <tbody>
               <tr>
-                  <th>R$/HM²</th>
+                  <th>R$/ha</th>
                   <td><%=passos.getLv2resultado().getCustoproducaohectar1()%></td>
                   <td><%=lv2resultado.getCustoproducaohectar1()%></td>
   
@@ -332,7 +332,7 @@
          yAxis: {
          allowDecimals: false,
          title: {
-         text: 'HM²'
+         text: 'ha'
          }
          },
          tooltip: {
@@ -358,7 +358,7 @@
          yAxis: {
          allowDecimals: false,
          title: {
-         text: 'HM²'
+         text: 'ha'
          }
          },
          tooltip: {
@@ -408,7 +408,7 @@
          yAxis: {
          allowDecimals: false,
          title: {
-         text: 'Cabeças/HM²'
+         text: 'Cabeças/ha'
          }
          },
          tooltip: {
@@ -458,7 +458,7 @@
          yAxis: {
          allowDecimals: false,
          title: {
-         text: 'R$/HM²'
+         text: 'R$/ha'
          }
          },
          tooltip: {
@@ -533,7 +533,7 @@
          yAxis: {
          allowDecimals: false,
          title: {
-         text: 'R$/HM²'
+         text: 'R$/ha'
          }
          },
          tooltip: {
@@ -596,7 +596,7 @@
                     }
                 },
                 tooltip: {
-                    valueSuffix: ' HM²'
+                    valueSuffix: ' ha'
                 },
                 plotOptions: {
                     bar: {
@@ -656,7 +656,7 @@
                     }
                 },
                 tooltip: {
-                    valueSuffix: ' HM²'
+                    valueSuffix: ' ha'
                 },
                 plotOptions: {
                     bar: {
@@ -773,7 +773,7 @@
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'CABEÇAS/HM²',
+                        text: 'CABEÇAS/ha',
                         align: 'high'
                     },
                     labels: {
@@ -781,7 +781,7 @@
                     }
                 },
                 tooltip: {
-                    valueSuffix: ' CABEÇAS/HM²'
+                    valueSuffix: ' CABEÇAS/ha'
                 },
                 plotOptions: {
                     bar: {
@@ -896,7 +896,7 @@
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'R$/HM²',
+                        text: 'R$/ha',
                         align: 'high'
                     },
                     labels: {
@@ -904,7 +904,7 @@
                     }
                 },
                 tooltip: {
-                    valueSuffix: ' R$/HM²'
+                    valueSuffix: ' R$/ha'
                 },
                 plotOptions: {
                     bar: {
@@ -1084,7 +1084,7 @@
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'R$/HM²',
+                        text: 'R$/ha',
                         align: 'high'
                     },
                     labels: {
@@ -1092,7 +1092,7 @@
                     }
                 },
                 tooltip: {
-                    valueSuffix: ' R$/HM²'
+                    valueSuffix: ' R$/ha'
                 },
                 plotOptions: {
                     bar: {

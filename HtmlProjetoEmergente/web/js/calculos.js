@@ -8,6 +8,7 @@ Number.prototype.formatMoney = function (decPlaces, thouSeparator, decSeparator)
             j = (j = i.length) > 3 ? j % 3 : 0;
     return sign + (j ? i.substr(0, j) + thouSeparator : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thouSeparator) + (decPlaces ? decSeparator + Math.abs(n - i).toFixed(decPlaces).slice(2) : "");
 };
+
 function round(value, decimals) {
     return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals).toFixed(decimals);
 }
@@ -49,7 +50,7 @@ function lv1p2(area) {
                 lotacaomedia = total / parseFloat(area);
             }
             $("#lotacaocalculo").fadeIn(3000, "linear");
-            document.getElementById("lotacaocalculo").innerHTML = "Lotação Média da Propriedade: " + lotacaomedia + " Cabeças por Hectare";
+            document.getElementById("lotacaocalculo").innerHTML = "Lotação Média da Propriedade: " + lotacaomedia.formatMoney(2, ".", ",") + " Cabeças por Hectare";
 
             $("#infocalculo").fadeIn(3000, "linear");
             $("#botao").fadeIn(3000, "linear");
@@ -59,7 +60,19 @@ function lv1p2(area) {
                 return parseFloat(b - a);
             });
 
-            var data = [{data: [totalm], name: "Total de Machos"}, {data: [totalf], name: "Total de Fêmeas"}, {data: [total], name: "Total do Rebanho"}, {data: [totalcria], name: "Total de Rebanho com Cria"}];
+            var data = [{
+                    data: [totalm],
+                    name: "Total de Machos"
+                }, {
+                    data: [totalf],
+                    name: "Total de Fêmeas"
+                }, {
+                    data: [total],
+                    name: "Total do Rebanho"
+                }, {
+                    data: [totalcria],
+                    name: "Total de Rebanho com Cria"
+                }];
             data.sort(function (a, b) {
                 return parseFloat(b.data) - parseFloat(a.data);
             });
@@ -133,6 +146,7 @@ function lv1p2(area) {
     });
 }
 ;
+
 function lv1p4() {
 
     $("[type=submit]").prop("disabled", true);
@@ -147,17 +161,70 @@ function lv1p4() {
                 valor = valor.replace(",", ".");
                 totalcustoproducao += parseFloat(valor);
             }
+            $(function () {
+                $('#grafico1').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Representação dos Custos no Gráfico'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                            name: 'Resultados',
+                            colorByPoint: true,
+                            data: [{
+                                    name: 'Medicamento',
+                                    y: parseFloat(document.getElementById("medicamento").value.replace(/\./g, "").replace(",", ".")) / totalcustoproducao * 100
+                                }, {
+                                    name: 'Mão de Obra',
+                                    y: parseFloat(document.getElementById("mao_de_obra").value.replace(/\./g, "").replace(",", ".")) / totalcustoproducao * 100,
+                                    sliced: true,
+                                    selected: true
+                                }, {
+                                    name: 'Manutenção e Conservação',
+                                    y: parseFloat(document.getElementById("maquinas").value.replace(/\./g, "").replace(",", ".")) / totalcustoproducao * 100
+                                }, {
+                                    name: 'Pastagens e Suplementos',
+                                    y: parseFloat(document.getElementById("pastagem").value.replace(/\./g, "").replace(",", ".")) / totalcustoproducao * 100
+                                },
+                                {
+                                    name: 'Outras Despesas',
+                                    y: parseFloat(document.getElementById("outros").value.replace(/\./g, "").replace(",", ".")) / totalcustoproducao * 100
+                                }]
+                        }]
+                });
+            });
             $("#infocalculo").fadeIn(3000, "linear");
             document.getElementById("totalcustoproducao").innerHTML = "Total Custos de Produção: R$ " + totalcustoproducao.formatMoney(2, '.', ',');
             $("[type=submit]").prop("disabled", false);
 
-            $("#calcular").attr("href", null);
+            $("#calcular").attr("href", "#infocalculo");
 
         }
 
     });
 }
 ;
+
 function lv2p1() {
 
     $("[type=submit]").prop("disabled", true);
@@ -178,39 +245,36 @@ function lv2p1() {
             for (i = 0; i < x.length; i++) {
                 valor = x[i].value.replace(/\./g, "");
                 valor = valor.replace(",", ".");
-                if (i <= 6 && i % 2 === 0) {
+                if (i <= 2) {
 
                     areatotalpecuariaverao += parseFloat(valor);
-                }
-
-                if (i <= 7 && i % 2 !== 0) {
                     areatotalpecuariainverno += parseFloat(valor);
                 }
 
-                if (i === 8 || i === 10 || i === 12) {
+                if (i === 3) {
+                    areatotalpecuariaverao += parseFloat(valor);
+                }
+                if (i === 4) {
+                    areatotalpecuariainverno += parseFloat(valor);
+                }
+
+                if (i === 5) {
                     areaaproveitavelverao += parseFloat(valor);
                 }
-                if (i === 9 || i === 11 || i === 13) {
+                if (i === 6) {
                     areaaproveitavelinverno += parseFloat(valor);
                 }
-
-                if (i === 8 || i === 12) {
-                    camponativo += parseFloat(valor);
-                }
-
-                if (i === 10 || i === 14) {
-                    matas += parseFloat(valor);
-                }
-
-                if (i === 16 || i === 18) {
-                    outros += parseFloat(valor);
+                if (i === 7 || i === 8) {
+                    areaaproveitavelinverno += parseFloat(valor);
+                    areaaproveitavelverao += parseFloat(valor);
                 }
 
 
 
 
 
-                if (i === 14 || i === 16 || i === 18) {
+
+                if (i === 9 || i === 10 || i === 11) {
                     areatotal += parseFloat(valor);
                 }
 
@@ -277,28 +341,52 @@ function lv2p1() {
             $(function () {
                 $('#infocalculo').highcharts({
                     colorAxis: {
-                        minColor: '#FFFFFF',
+                        minColor: '#ffffff',
                         maxColor: Highcharts.getOptions().colors[0]
                     },
                     series: [{
                             type: 'treemap',
                             layoutAlgorithm: 'squarified',
                             data: [{
-                                    name: 'Campos Nativo',
-                                    value: camponativo,
-                                    colorValue: 1
+                                    name: 'Pastagens Nativas',
+                                    value: parseFloat(document.getElementById("pastagem_nativa_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("pastagem_nativa_verao").value.replace(/\./g, "").replace(",", "."))
                                 }, {
-                                    name: 'Matas',
-                                    value: matas,
-                                    colorValue: 2
+                                    name: 'Pastagens Nativas Melhoradas',
+                                    value: parseFloat(document.getElementById("pastagem_nativa_melhorada_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("pastagem_nativa_melhorada_verao").value.replace(/\./g, "").replace(",", "."))
                                 }, {
-                                    name: 'Pastagens',
-                                    value: areatotalpecuariaverao,
-                                    colorValue: 3
+                                    name: 'Pastagens Nativas Perenes',
+                                    value: parseFloat(document.getElementById("pastagem_cultivada_perene_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("pastagem_cultivada_perene_verao").value.replace(/\./g, "").replace(",", "."))
                                 }, {
-                                    name: 'Outros',
-                                    value: outros,
-                                    colorValue: 4
+                                    name: 'Pastagens Anuais de Verão',
+                                    value: parseFloat(document.getElementById("pastagem_anual_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("pastagem_anual_verao").value.replace(/\./g, "").replace(",", "."))
+                                }, {
+                                    name: 'Agricultura',
+                                    value: parseFloat(document.getElementById("agricultura_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("agricultura_verao").value.replace(/\./g, "").replace(",", "."))
+                                }, {
+                                    name: 'Florestas Plantadas',
+                                    value: parseFloat(document.getElementById("florestas_plantadas_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("florestas_plantadas_verao").value.replace(/\./g, "").replace(",", "."))
+                                }, {
+                                    name: 'Outras Culturas',
+                                    value: parseFloat(document.getElementById("outras_areas_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("outras_areas_verao").value.replace(/\./g, "").replace(",", "."))
+                                }, {
+                                    name: 'Matas Nativas',
+                                    value: parseFloat(document.getElementById("matas_nativas_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("matas_nativas_verao").value.replace(/\./g, "").replace(",", "."))
+                                }, {
+                                    name: 'Sedes, Estradas e Açudes',
+                                    value: parseFloat(document.getElementById("sedes_estradas_acudes_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("sedes_estradas_acudes_verao").value.replace(/\./g, "").replace(",", "."))
+                                }, {
+                                    name: 'Inaproveitavel',
+                                    value: parseFloat(document.getElementById("inaproveitaveis_verao").value.replace(/\./g, "").replace(",", ".")),
+                                    colorValue: parseFloat(document.getElementById("inaproveitaveis_verao").value.replace(/\./g, "").replace(",", "."))
                                 }]
                         }],
                     title: {
@@ -324,6 +412,7 @@ function lv2p1() {
     });
 }
 ;
+
 function lv2p2(area) {
 
     $("[type=submit]").prop("disabled", true);
@@ -440,7 +529,37 @@ function lv2p2(area) {
 
             }
             totalb = (vacadecria / 4) + (vacadedescarte / 4) + (touros / 4) + (terneiros / 4) + (terneiras / 4) + (novilhos13 / 4) + (novilhas13 / 4) + (novilhos25 / 4) + (novilhas25 / 4) + (novilhos36 / 4);
-            var valores = [{data: [vacadecria / 4], name: "Vacas de Cria"}, {data: [vacadedescarte / 4], name: "Vacas de Descarte"}, {data: [touros / 4], name: "Touros"}, {data: [terneiros / 4], name: "Terneiros"}, {data: [terneiras / 4], name: "Terneiras"}, {data: [novilhos13 / 4], name: "Novilhos de 13 a 24 Meses"}, {data: [novilhas13 / 4], name: "Novilhas de 13 a 24 Meses"}, {data: [novilhos25 / 4], name: "Novilhos de 25 a 36 Meses"}, {data: [novilhas25 / 4], name: "Novilhas de 25 a 36 Meses"}, {data: [novilhos36 / 4], name: "Novilhos com Mais de 36 Meses"}];
+            var valores = [{
+                    data: [vacadecria / 4],
+                    name: "Vacas de Cria"
+                }, {
+                    data: [vacadedescarte / 4],
+                    name: "Vacas de Descarte"
+                }, {
+                    data: [touros / 4],
+                    name: "Touros"
+                }, {
+                    data: [terneiros / 4],
+                    name: "Terneiros"
+                }, {
+                    data: [terneiras / 4],
+                    name: "Terneiras"
+                }, {
+                    data: [novilhos13 / 4],
+                    name: "Novilhos de 13 a 24 Meses"
+                }, {
+                    data: [novilhas13 / 4],
+                    name: "Novilhas de 13 a 24 Meses"
+                }, {
+                    data: [novilhos25 / 4],
+                    name: "Novilhos de 25 a 36 Meses"
+                }, {
+                    data: [novilhas25 / 4],
+                    name: "Novilhas de 25 a 36 Meses"
+                }, {
+                    data: [novilhos36 / 4],
+                    name: "Novilhos com Mais de 36 Meses"
+                }];
             valores.sort(function (a, b) {
                 return parseFloat(b.valor) - parseFloat(a.valor);
             });
@@ -502,6 +621,7 @@ function lv2p2(area) {
     });
 }
 ;
+
 function lv2p3(area) {
 
     $("[type=submit]").prop("disabled", true);
@@ -512,18 +632,50 @@ function lv2p3(area) {
             var totalb = 0;
             var totalreceita = 0;
             var receitahectare = 0;
+            var porcentagem = [];
+            var contador1 = 0;
+            var tabela = "<table class='table table-bordered table-responsive text-center '><tr class='rowhighlight'><th class='text-center'>Categorias</th><th class='text-center'>Quantidade</th><th class='text-center'>Preço por Cabeça</th><th class='text-center'>Receita</th><th class='text-center'>Porcentagem</th></tr>";
+
             for (i = 0; i < x.length; i++) {
                 var valor = x[i].value.replace(".", "");
                 valor = valor.replace(",", ".");
 
+                if (i === 0) {
+                    tabela = tabela + "<tr><td>Terneiros</td>";
+                } else if (i === 2) {
+                    tabela = tabela + "<tr><td>Terneiras</td>";
+                } else if (i === 4) {
+                    tabela = tabela + "<tr><td>Novilhas</td>";
+                } else if (i === 6) {
+                    tabela = tabela + "<tr><td>Vacas de Descarte</td>";
+                } else if (i === 8) {
+                    tabela = tabela + "<tr><td>Vacas Prenhas</td>";
+                } else if (i === 10) {
+                    tabela = tabela + "<tr><td>Vacas com Cria</td>";
+                } else if (i === 12) {
+                    tabela = tabela + "<tr><td>Vacas Gordas</td>";
+                } else if (i === 14) {
+                    tabela = tabela + "<tr><td>Novilhos para Recria</td>";
+                } else if (i === 16) {
+                    tabela = tabela + "<tr><td>Novilhos Gordos</td>";
+                } else if (i === 18) {
+                    tabela = tabela + "<tr><td>Torunos</td>";
+                } else if (i === 20) {
+                    tabela = tabela + "<tr><td>Touros</td>";
+                }
                 if (i === 0 || i % 2 === 0) {
                     totalb += parseFloat(valor);
+                    tabela += "<td>" + valor + " cab</td>";
                 }
 
                 if (i !== 0 && i % 2 !== 0) {
                     var valor1 = x[i - 1].value.replace(".", "");
                     valor1 = valor1.replace(",", ".");
                     totalreceita += parseFloat(valor) * parseFloat(valor1);
+                    porcentagem[contador1] = (parseFloat(valor) * parseFloat(valor1));
+                    contador1++;
+                    tabela += "<td>R$ " + valor + "<td>R$ " + (parseFloat(valor) * parseFloat(valor1)).formatMoney(2, ".", ",") + "</td>" + "</td><td>valorreplace" + [i] + "</td></tr>";
+
                 }
 
 
@@ -534,9 +686,17 @@ function lv2p3(area) {
 
             receitahectare = totalreceita / area;
             $("#infocalculo").fadeIn(3000, "linear");
-            document.getElementById("totalb").innerHTML = "Total de Bovinos: " + totalb.formatMoney(0, ".", ",") + " Cabeça(s)";
-            document.getElementById("totalreceita").innerHTML = "Total de Receita de Bovinos: R$ " + totalreceita.formatMoney(2, ".", ",");
-            document.getElementById("receitahectare").innerHTML = "Receita por Hectare " + receitahectare.formatMoney(2, ".", ",") + " R$/HM²";
+            $("#botao").fadeIn(3000, "linear");
+            contador1 = 0;
+            for (var i = 1; i <= 21; i += 2) {
+                tabela = tabela.replace("valorreplace" + i, (porcentagem[contador1] / totalreceita * 100).formatMoney(2, ".", ",") + " %");
+                contador1++;
+            }
+            document.getElementById("infocalculo").innerHTML = tabela + "<tr class='rowhighlight'><td>Total de Bovinos</td><td colspan='4'>" + totalb.formatMoney(0, ".", ",") + " CAB</td></tr><tr class='rowhighlight'><td>Total Receita</td><td colspan='4'>" + totalreceita.formatMoney(2, ".", ",") + " R$ </td></tr><tr class='rowhighlight'><td>Receita por Hectare</td><td colspan='4'>" + receitahectare.formatMoney(2, ".", ",") + " R$/ha</td></tr></table>";
+
+            /*document.getElementById("totalb").innerHTML = "Total de Bovinos: " + totalb.formatMoney(0, ".", ",") + " Cabeça(s)";
+             document.getElementById("totalreceita").innerHTML = "Total de Receita de Bovinos: R$ " + totalreceita.formatMoney(2, ".", ",");
+             document.getElementById("receitahectare").innerHTML = "Receita por Hectare " + receitahectare.formatMoney(2, ".", ",") + " R$/HM²";*/
             $("[type=submit]").prop("disabled", false);
 
             $("#calcular").attr("href", "#infocalculo");
@@ -545,10 +705,10 @@ function lv2p3(area) {
 
 
 
-
     });
 }
 ;
+
 function lv2p4(area, terneiros, porcentagem) {
 
     $("[type=submit]").prop("disabled", true);
@@ -561,15 +721,86 @@ function lv2p4(area, terneiros, porcentagem) {
             var custoproducaohectar = 0;
             var custoterneiro = 0;
             var valor = 0;
+            var medicamento = 0, mao_de_obra = 0, pastagem = 0, manutencao = 0, outros = 0;
+            /*var tabela = "<table class='table table-bordered table-responsive text-center '><tr class='rowhighlight'><th class='text-center'>Categorias</th><th class='text-center'>Gastos</th><th class='text-center'>Percentuais</th></tr>";*/
             for (i = 0; i < x.length; i++) {
                 valor = x[i].value.replace(".", "");
                 valor = valor.replace(",", ".");
+                if (i === 16 || i === 17) {
+                    mao_de_obra += parseFloat(valor);
+                }
+                if (i <= 1) {
+                    medicamento += parseFloat(valor);
+                }
+                if (i === 8 || i === 9) {
+                    pastagem += parseFloat(valor);
+                }
+                if (i === 10 || i === 18 || i === 19) {
+                    manutencao += parseFloat(valor);
+                }
+                if (i > 1 && i <= 7 || i >= 11 && i <= 16) {
+                    outros += parseFloat(valor);
+                }
                 totalcustoproducao += parseFloat(valor);
             }
             custoatividadecria += totalcustoproducao * (porcentagem / 100);
             custoproducaohectar += custoatividadecria / area;
             custoterneiro += custoatividadecria / terneiros;
-            $("#infocalculo").fadeIn(3000, "linear");
+            $(function () {
+                $('#grafico1').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Representação dos Custos no Gráfico'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                            name: 'Resultados',
+                            colorByPoint: true,
+                            data: [{
+                                    name: 'Medicamento',
+                                    y: medicamento / totalcustoproducao * 100
+                                }, {
+                                    name: 'Mão de Obra',
+                                    y: mao_de_obra / totalcustoproducao * 100,
+                                    sliced: true,
+                                    selected: true
+                                }, {
+                                    name: 'Manutenção e Conservação',
+                                    y: manutencao / totalcustoproducao * 100
+                                }, {
+                                    name: 'Pastagens e Suplementos',
+                                    y: pastagem / totalcustoproducao * 100
+                                },
+                                {
+                                    name: 'Outras Despesas',
+                                    y: outros / totalcustoproducao * 100
+                                }]
+                        }]
+                });
+            });
+            $("#infocalculo").fadeIn(3000, "linear");       
+            $("#botao").fadeIn(3000, "linear");
+
             document.getElementById("totalcustoproducao").innerHTML = "Total Custos de Produção: R$ " + totalcustoproducao.formatMoney(2, ".", ",");
             document.getElementById("custoatividadecria").innerHTML = "Custo Atividade de Cria: R$ " + custoatividadecria.formatMoney(2, ".", ",");
             document.getElementById("custoproducaohectar").innerHTML = "Custo de Produção por Hectare: " + custoproducaohectar.formatMoney(2, ".", ",") + " R$/HM²";

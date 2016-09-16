@@ -100,7 +100,7 @@
                     <label>Vacas de cria <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">cab</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p2().getVacaDeCria()%>"  name="vaca_de_cria"title="Insira a Quantidade de Vacas de Cria da sua Propriedade">
+                        <input type="text" autofocus class="form-control" value="<%=passos.getLv1p2().getVacaDeCria()%>"  name="vaca_de_cria"title="Insira a Quantidade de Vacas de Cria da sua Propriedade">
                         <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Terneiros <span class="label-control"></span></label>

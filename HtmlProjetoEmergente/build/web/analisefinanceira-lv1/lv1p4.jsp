@@ -77,35 +77,35 @@
                     <label>Medicamento <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
-                        <input type="text" class="form-control" value="<%=passos.getLv1p4().getMedicamento()%>" name="medicamento" title="Insira os Gastos com Medicamento da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        <input type="text" autofocus class="form-control" value="<%=passos.getLv1p4().getMedicamento()%>" name="medicamento" title="Insira os Gastos com Medicamento da sua Propriedade">
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
 
                     <label>Mão de Obra <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
                         <input type="text" class="form-control" value="<%=passos.getLv1p4().getMaoDeObra()%>" name="mao_de_obra" title="Insira os Gastos com Mão de Obra da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
                     <label>Manutenção e Conservação <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
                         <input type="text" class="form-control" value="<%=passos.getLv1p4().getMaquinas()%>"  name="maquinas" title="Insira os Gastos com Manutenção e Conservação de Máquinas e Benfeitorias da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
 
                     <label>Pastagem e Suplementos <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
                         <input type="text" class="form-control" value="<%=passos.getLv1p4().getPastagem()%>" name="pastagem" title="Insira os Gastos com Pastagem da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                     </div>
 
                     <label>Outras Despesas <span class="label-control"></span></label>
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
                         <input type="text" class="form-control" value="<%=passos.getLv1p4().getOutros()%>"  name="outros" title="Insira Quaisquer Outros Gastos da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
                     </div>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
                     <a type="button" class="btn btn-danger btn-block" id="calcular" >Calcular</a><br>
@@ -113,14 +113,19 @@
 
                 </div>
 
-                <div class="col-md-6 conteudo" id="infocalculo" hidden  >
+                <div class="col-md-6" id="infocalculo" hidden  >
 
+                    <div id="grafico1">
+
+                    </div><br>
                     <div class="well well-sm" id="totalcustoproducao">
-                        
+
                     </div>
 
-                    <input type="submit" disabled class="btn btn-success btn-lg center-block" value="Resultados">
 
+
+                    <input type="submit" disabled class="btn btn-success btn-lg center-block" value="Avaliação Final">
+                    <br>
                 </div>
 
 

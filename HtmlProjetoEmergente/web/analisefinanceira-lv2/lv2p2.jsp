@@ -180,7 +180,7 @@
                     <div class="col-md-2">
                         <div class="input-group">
                             <div class="input-group-addon">cab</div>
-                            <input type="text" class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaJanmar()%>" placeholder="Jan A Mar" name="vaca_de_cria_janmar"  title="Insira a Quantidade de Vacas de Cria de Janeiro a Março de sua propriedade">
+                            <input type="text" autofocus class="form-control" value="<%=passos.getLv2p2().getVacaDeCriaJanmar()%>" placeholder="Jan A Mar" name="vaca_de_cria_janmar"  title="Insira a Quantidade de Vacas de Cria de Janeiro a Março de sua propriedade">
                             <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                         </div>
                     </div>

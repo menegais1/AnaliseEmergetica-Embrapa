@@ -106,23 +106,23 @@
             <div class="row">
 
                 <div class="col-md-12">
-                    <h1>Vendas de Animais</h1>
+                    <h1 class="text-center">Vendas de Animais</h1>
 
                     <div class="row">
-                        <div class="col-md-6"><h3>Cabeças</h3></div>
-                        <div class="col-md-6"><h3>Valor Unitário</h3></div>
+                        <div class="col-md-3 col-md-offset-3"><h3>Cabeças</h3></div>
+                        <div class="col-md-3"><h3>Valor Unitário</h3></div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Terneiros <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
-                                <input type="text" class="form-control int" value="<%=passos.getLv2p3().getTerneirosQuant()%>" name="terneiros_Quant"  title="Insira a Quantidade de Terneiros de sua propriedade">
+                                <input type="text" autofocus class="form-control int" value="<%=passos.getLv2p3().getTerneirosQuant()%>" name="terneiros_Quant"  title="Insira a Quantidade de Terneiros de sua propriedade">
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Terneiros <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -132,9 +132,9 @@
                         </div>
                     </div>
 
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Terneiras <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -142,7 +142,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Terneiras <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -151,9 +151,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Novilhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -161,7 +161,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Novilhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -170,9 +170,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Vacas de Descarte <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -180,7 +180,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Vacas de Descarte <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -189,9 +189,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Vacas Prenhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -199,7 +199,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Vacas Prenhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -208,9 +208,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Vacas com Cria <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -218,7 +218,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Vacas com Cria <span class="label-control"></span></label>
 
                             <div class="input-group">
@@ -228,9 +228,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Vacas Gordas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -238,7 +238,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Vacas Gordas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -247,9 +247,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Novilhos para Recria <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -257,7 +257,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Novilhos para Recria <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -267,9 +267,9 @@
                         </div>
                     </div>
 
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Novilhos Gordos <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -277,7 +277,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Novilhos Gordos <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -286,9 +286,9 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
+                    <hr>
+                    <div class="row ">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Torunos <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -296,7 +296,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Torunos <span class="label-control int"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -305,9 +305,9 @@
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3 col-md-offset-3">
                             <label>Touros <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -315,7 +315,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <label>Touros <span class="label-control int"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -336,15 +336,28 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6 col-md-offset-3 conteudo" hidden id="infocalculo">
+                <div class="col-md-12 " hidden id="infocalculo">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3" hidden id="botao" >
+
+
+
+                        <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
+
+                    </div></div>
+
+
+                <!--<div class="col-md-4 conteudo" hidden id="infocalculo2">
 
                     <div class="well well-sm" id="totalb">Total de Bovinos:</div>
                     <div class="well well-sm" id="totalreceita">Total de Receita de Bovinos:</div>
                     <div class="well well-sm" id="receitahectare">Receita por Hectare:</div>
-                    <input type="submit" disabled value="Próximo Passo" class="btn btn-success btn-lg center-block">
 
-                </div>
-            </div>
+                </div>-->
+
+
         </form> 
     </div>
 

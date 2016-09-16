@@ -68,7 +68,7 @@
                     <div >
                         <div class="input-group">
                             <div class="input-group-addon ">ha</div>
-                            <input type="text" value="<%=passos.getLv1p1().getAreaApro()%>"class="form-control "  name="area_apro"  title="Insira a Área Aproximada da sua Propriedade">
+                            <input type="text" autofocus value="<%=passos.getLv1p1().getAreaApro()%>"class="form-control "  name="area_apro"  title="Insira a Área Aproximada da sua Propriedade">
                             <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
 
 

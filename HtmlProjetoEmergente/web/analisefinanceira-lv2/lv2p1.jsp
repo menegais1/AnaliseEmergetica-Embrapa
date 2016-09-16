@@ -26,25 +26,25 @@
         lv2p1 = new Lv2p1(id, ano);
 
         lv2p1.setPastagemNativaVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_verao")))));
-        lv2p1.setPastagemNativaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_inverno")))));
+        lv2p1.setPastagemNativaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_verao")))));
         lv2p1.setPastagemNativaMelhoradaVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_melhorada_verao")))));
-        lv2p1.setPastagemNativaMelhoradaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_melhorada_inverno")))));
+        lv2p1.setPastagemNativaMelhoradaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_melhorada_verao")))));
         lv2p1.setPastagemCultivadaPereneVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_cultivada_perene_verao")))));
-        lv2p1.setPastagemCultivadaPereneInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_cultivada_perene_inverno")))));
+        lv2p1.setPastagemCultivadaPereneInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_cultivada_perene_verao")))));
         lv2p1.setPastagemAnualVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_anual_verao")))));
         lv2p1.setPastagemAnualInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_anual_inverno")))));
         lv2p1.setAgriculturaVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("agricultura_verao")))));
         lv2p1.setAgriculturaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("agricultura_inverno")))));
         lv2p1.setFlorestasPlantadasVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("florestas_plantadas_verao")))));
-        lv2p1.setFlorestasPlantadasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("florestas_plantadas_inverno")))));
+        lv2p1.setFlorestasPlantadasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("florestas_plantadas_verao")))));
         lv2p1.setOutrasAreasVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_areas_verao")))));
-        lv2p1.setOutrasAreasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_areas_inverno")))));
+        lv2p1.setOutrasAreasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_areas_verao")))));
         lv2p1.setMatasNativasVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("matas_nativas_verao")))));
-        lv2p1.setMatasNativasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("matas_nativas_inverno")))));
+        lv2p1.setMatasNativasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("matas_nativas_verao")))));
         lv2p1.setSedesEstradasAcudesVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sedes_estradas_acudes_verao")))));
-        lv2p1.setSedesEstradasAcudesInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sedes_estradas_acudes_inverno")))));
+        lv2p1.setSedesEstradasAcudesInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sedes_estradas_acudes_verao")))));
         lv2p1.setInaproveitaveisVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
-        lv2p1.setInaproveitaveisInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_inverno")))));
+        lv2p1.setInaproveitaveisInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
 
         passos.getLv2p1dao().incluir(lv2p1);
         passos.setLv2p1(lv2p1);
@@ -54,25 +54,25 @@
     } else if (lv2p1 != null && request.getParameter("pastagem_nativa_verao") != null) {
 
         lv2p1.setPastagemNativaVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_verao")))));
-        lv2p1.setPastagemNativaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_inverno")))));
+        lv2p1.setPastagemNativaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_verao")))));
         lv2p1.setPastagemNativaMelhoradaVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_melhorada_verao")))));
-        lv2p1.setPastagemNativaMelhoradaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_melhorada_inverno")))));
+        lv2p1.setPastagemNativaMelhoradaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_nativa_melhorada_verao")))));
         lv2p1.setPastagemCultivadaPereneVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_cultivada_perene_verao")))));
-        lv2p1.setPastagemCultivadaPereneInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_cultivada_perene_inverno")))));
+        lv2p1.setPastagemCultivadaPereneInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_cultivada_perene_verao")))));
         lv2p1.setPastagemAnualVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_anual_verao")))));
         lv2p1.setPastagemAnualInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem_anual_inverno")))));
         lv2p1.setAgriculturaVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("agricultura_verao")))));
         lv2p1.setAgriculturaInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("agricultura_inverno")))));
         lv2p1.setFlorestasPlantadasVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("florestas_plantadas_verao")))));
-        lv2p1.setFlorestasPlantadasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("florestas_plantadas_inverno")))));
+        lv2p1.setFlorestasPlantadasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("florestas_plantadas_verao")))));
         lv2p1.setOutrasAreasVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_areas_verao")))));
-        lv2p1.setOutrasAreasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_areas_inverno")))));
+        lv2p1.setOutrasAreasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outras_areas_verao")))));
         lv2p1.setMatasNativasVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("matas_nativas_verao")))));
-        lv2p1.setMatasNativasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("matas_nativas_inverno")))));
+        lv2p1.setMatasNativasInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("matas_nativas_verao")))));
         lv2p1.setSedesEstradasAcudesVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sedes_estradas_acudes_verao")))));
-        lv2p1.setSedesEstradasAcudesInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sedes_estradas_acudes_inverno")))));
+        lv2p1.setSedesEstradasAcudesInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("sedes_estradas_acudes_verao")))));
         lv2p1.setInaproveitaveisVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
-        lv2p1.setInaproveitaveisInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_inverno")))));
+        lv2p1.setInaproveitaveisInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
 
         passos.getLv2p1dao().alterar(lv2p1);
         passos.setLv2p1(lv2p1);
@@ -123,11 +123,11 @@
 
                                         </div>
 
-                                        <div class="col-md-5">
-                                            <label>Pastagem Nativa Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Pastagem Nativa Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaVerao()%>" class="form-control" name="pastagem_nativa_verao" title="Insira a Pastagem Nativa de Verao (Hectares) de sua propriedade">
+                                                <input type="text" autofocus value="<%=passos.getLv2p1().getPastagemNativaVerao()%>" class="form-control" name="pastagem_nativa_verao" title="Insira a Pastagem Nativa de Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
 
 
@@ -135,14 +135,14 @@
                                         </div>
 
 
-                                        <div class="col-md-5">
+                                       <!-- <div class="col-md-5">
                                             <label>Pastagem Nativa Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaInverno()%>" class="form-control"  name="pastagem_nativa_inverno"title="Insira a Pastagem Nativa de Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaInverno()%>" class="form-control"  name="pastagem_nativa_verao"title="Insira a Pastagem Nativa de Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -151,22 +151,22 @@
                                             <h4 class="text-right">Pastagem Nativa Melhorada</h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Pastagem Nativa Melhorada Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Pastagem Nativa Melhorada Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text" value="<%=passos.getLv2p1().getPastagemNativaMelhoradaVerao()%>" class="form-control"  name="pastagem_nativa_melhorada_verao"title="Insira a Pastagem Nativa Melhorada de Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                         <!--<div class="col-md-5">
                                             <label>Pastagem Nativa Melhorada Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaMelhoradaInverno()%>" class="form-control"  name="pastagem_nativa_melhorada_inverno"title="Insira a Pastagem Nativa Melhorada de Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaMelhoradaInverno()%>" class="form-control"  name="pastagem_nativa_melhorada_verao"title="Insira a Pastagem Nativa Melhorada de Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -175,22 +175,22 @@
                                             <h4 class="text-right">Pastagem Cultivada Perene</h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Pastagem Cultivada Perene Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Pastagem Cultivada Perene Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text" value="<%=passos.getLv2p1().getPastagemCultivadaPereneVerao()%>" class="form-control"  name="pastagem_cultivada_perene_verao"title="Insira a Pastagem Cultivada Perene de Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <!-- <div class="col-md-5">
                                             <label>Pastagem Cultivada Perene Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getPastagemCultivadaPereneInverno()%>" class="form-control"  name="pastagem_cultivada_perene_inverno"title="Insira a Pastagem Cultivada Perene de Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getPastagemCultivadaPereneInverno()%>" class="form-control"  name="pastagem_cultivada_perene_verao"title="Insira a Pastagem Cultivada Perene de Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -254,22 +254,22 @@
                                             <h4 class="text-right">Florestas Plantadas </h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Florestas Plantadas Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Florestas Plantadas Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text" value="<%=passos.getLv2p1().getFlorestasPlantadasVerao()%>" class="form-control"name="florestas_plantadas_verao"title="Insira a Area de Florestas Plantadas de Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <!-- <div class="col-md-5">
                                             <label>Florestas Plantadas Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getFlorestasPlantadasInverno()%>" class="form-control"  name="florestas_plantadas_inverno"title="Insira a Area de Florestas Plantadas de Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getFlorestasPlantadasInverno()%>" class="form-control"  name="florestas_plantadas_verao"title="Insira a Area de Florestas Plantadas de Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -278,22 +278,22 @@
                                             <h4 class="text-right">Outras culturas </h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Outras culturas Verão<span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Outras culturas Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text" value="<%=passos.getLv2p1().getOutrasAreasVerao()%>" class="form-control" name="outras_areas_verao"title="Insira a Area de Outras Culturas no Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                        <!-- <div class="col-md-5">
                                             <label>Outras culturas Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getOutrasAreasInverno()%>" class="form-control" name="outras_areas_inverno"title="Insira a Area de Outras Culturas no Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getOutrasAreasInverno()%>" class="form-control" name="outras_areas_verao"title="Insira a Area de Outras Culturas no Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>
@@ -309,22 +309,22 @@
                                             <h4 class="text-right">Matas Nativas </h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Matas Nativas Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Matas Nativas Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text"  value="<%=passos.getLv2p1().getMatasNativasVerao()%>"class="form-control" name="matas_nativas_verao"title="Insira a Area de Matas Nativas de Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                       <!--  <div class="col-md-5">
                                             <label>Matas Nativas Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getMatasNativasInverno()%>" class="form-control"  name="matas_nativas_inverno"title="Insira a Area de Matas Nativas de Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getMatasNativasInverno()%>" class="form-control"  name="matas_nativas_verao"title="Insira a Area de Matas Nativas de Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -333,22 +333,22 @@
                                             <h4 class="text-right">Sede, Estradas e Açudes </h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Sede, Estradas e Açudes Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Sede, Estradas e Açudes Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text" value="<%=passos.getLv2p1().getSedesEstradasAcudesVerao()%>" class="form-control"  name="sedes_estradas_acudes_verao"title="Insira a Area ocupada por Sedes, Estradas e Açudes no Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                       <!--  <div class="col-md-5">
                                             <label>Sede, Estradas e Açudes Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getSedesEstradasAcudesInverno()%>" class="form-control" name="sedes_estradas_acudes_inverno"title="Insira a Area ocupada por Sedes, Estradas e Açudes no Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getSedesEstradasAcudesInverno()%>" class="form-control" name="sedes_estradas_acudes_verao"title="Insira a Area ocupada por Sedes, Estradas e Açudes no Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -357,21 +357,21 @@
                                             <h4 class="text-right">Inaproveitavel </h4>
 
                                         </div>
-                                        <div class="col-md-5">
-                                            <label>Inaproveitavel Verão <span class="label-control"></span></label>
+                                        <div class="col-md-10">
+                                            <label>Inaproveitavel Verão e Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
                                                 <input type="text" value="<%=passos.getLv2p1().getInaproveitaveisVerao()%>" class="form-control"  name="inaproveitaveis_verao"title="Insira a Area Inaproveitavel no Verao (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
+                                       <!--  <div class="col-md-5">
                                             <label>Inaproveitavel Inverno <span class="label-control"></span></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getInaproveitaveisInverno()%>" class="form-control"  name="inaproveitaveis_inverno"title="Insira a Area Inaproveitavel no Inverno (Hectares) de sua propriedade">
+                                                <input type="text" value="<%=passos.getLv2p1().getInaproveitaveisInverno()%>" class="form-control"  name="inaproveitaveis_verao"title="Insira a Area Inaproveitavel no Inverno (Hectares) de sua propriedade">
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
