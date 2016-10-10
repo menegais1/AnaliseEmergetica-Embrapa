@@ -1,3 +1,4 @@
+<%@page import="dao.Lv2p4DAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv2p4"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -12,7 +13,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv2p4 lv2p4 = passos.getLv2p4dao().buscarPorPropriedade(id, ano);
+    Lv2p4DAO lv2p4dao = new Lv2p4DAO();
+
+    Lv2p4 lv2p4 = lv2p4dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv2p3() == null) {
         response.sendRedirect("lv2p3.jsp");
@@ -48,7 +51,7 @@
         lv2p4.setReparosDeMaquina(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparos_de_maquina")))));
         lv2p4.setReparoDeBenfeitorias(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparo_de_benfeitorias")))));
 
-        passos.getLv2p4dao().incluir(lv2p4);
+        lv2p4dao.incluir(lv2p4);
         passos.setLv2p4(lv2p4);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2resultados.jsp");
@@ -76,7 +79,7 @@
         lv2p4.setReparosDeMaquina(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparos_de_maquina")))));
         lv2p4.setReparoDeBenfeitorias(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("reparo_de_benfeitorias")))));
 
-        passos.getLv2p4dao().alterar(lv2p4);
+        lv2p4dao.alterar(lv2p4);
         passos.setLv2p4(lv2p4);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2resultados.jsp");
@@ -313,51 +316,54 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12" hidden id="infocalculo" >
-                        <div class="row">
-                            <div class="col-md-6" id="grafico1">
+                    <div class="col-md-12" hidden id="infocalculo"  >
+                        <div class="col-md-6" id="grafico1" style="width: 585px;height: 400px;">
 
-                            </div>
-                            <div class="col-md-6 conteudo">
-                                <div class="well well-sm" id="totalcustoproducao">
-                                    Total Custos de Produção: 
-                                </div>
-                                <div class="well well-sm" id="custoatividadecria">
-                                    Custo Atividade de Cria: 
-                                </div>
-                                <div class="well well-sm" id="custoproducaohectar">
-                                    Custo de Produção por Hectare: 
-                                </div>
-                                <div class="well well-sm" id="custoterneiro">
-                                    Custo de Produção por Terneiro Desmamado: 
-                                </div>
-                            </div>
                         </div>
 
+                        <div class="col-md-6 conteudo">
+                            <div class="well well-sm" id="totalcustoproducao">
+                            </div>
+                            <div class="well well-sm" id="custoatividadecria">
+                            </div>
+                            <div class="well well-sm" id="custoproducaohectar">
+                            </div>
+                            <div class="well well-sm" id="custoterneiro">
+                            </div>
+                            <div class="well well-sm" id="margembruta">
 
-                        <div class="row">
-                            <div class="col-md-6 col-md-offset-3" hidden id="botao" >
+                            </div>
+                            <div class="well well-sm" id="producaocarne">
 
-
-
-                                <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
-
-                            </div></div>
-
-
-
-
+                            </div>
+                        </div>
                     </div>
                 </div>
 
 
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3" hidden id="botao" >
 
-            </form>
+
+
+                        <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
+
+                    </div></div>
+
+
+
+
         </div>
-
-
-
     </div>
+
+
+
+</form>
+</div>
+
+
+
+</div>
 </div>
 </div>
 <script src="../js/calculos.js"></script>
@@ -368,7 +374,7 @@
 <script>
     $(document).ready(function () {
 
-        lv2p4(<%=passos.areaMedia()%>,<%=passos.getLv2p3().getTerneirosQuant()%>,<%=passos.percentualRebanhoComCria()%>);
+        lv2p4(<%=passos.areaMedia()%>,<%=passos.getLv2p3().getTerneirosQuant() + passos.getLv2p3().getTerneirasQuant()%>,<%=passos.percentualRebanhoComCria()%>,<%=passos.totalReceita()%>,<%=passos.kg()%>);
 
     });</script>
 </body>

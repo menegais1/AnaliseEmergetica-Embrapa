@@ -35,9 +35,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lv1resultado.findByCustohectar", query = "SELECT l FROM Lv1resultado l WHERE l.custohectar = :custohectar"),
     @NamedQuery(name = "Lv1resultado.findByLotacaomedia", query = "SELECT l FROM Lv1resultado l WHERE l.lotacaomedia = :lotacaomedia"),
     @NamedQuery(name = "Lv1resultado.findByReceitahectar", query = "SELECT l FROM Lv1resultado l WHERE l.receitahectar = :receitahectar"),
-    @NamedQuery(name = "Lv1resultado.findByTotalcustoproducao", query = "SELECT l FROM Lv1resultado l WHERE l.totalcustoproducao = :totalcustoproducao"),
     @NamedQuery(name = "Lv1resultado.findByAno", query = "SELECT l FROM Lv1resultado l WHERE l.ano = :ano")})
 public class Lv1resultado implements Serializable {
+
+    @Basic(optional = false)
+    @Column(name = "margembruta")
+    private BigDecimal margembruta;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -55,9 +58,7 @@ public class Lv1resultado implements Serializable {
     @Basic(optional = false)
     @Column(name = "receitahectar")
     private BigDecimal receitahectar;
-    @Basic(optional = false)
-    @Column(name = "totalcustoproducao")
-    private BigDecimal totalcustoproducao;
+
     @Basic(optional = false)
     @Column(name = "ano")
     private String ano;
@@ -84,7 +85,6 @@ public class Lv1resultado implements Serializable {
         this.custohectar = custohectar;
         this.lotacaomedia = lotacaomedia;
         this.receitahectar = receitahectar;
-        this.totalcustoproducao = totalcustoproducao;
         this.ano = ano;
     }
 
@@ -99,7 +99,7 @@ public class Lv1resultado implements Serializable {
     public BigDecimal getCustohectar() {
         if (custohectar != null) {
 
-            custohectar = custohectar.setScale(2,BigDecimal.ROUND_HALF_UP);
+            custohectar = custohectar.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return custohectar;
     }
@@ -111,7 +111,7 @@ public class Lv1resultado implements Serializable {
     public BigDecimal getLotacaomedia() {
         if (lotacaomedia != null) {
 
-            lotacaomedia = lotacaomedia.setScale(2,BigDecimal.ROUND_HALF_UP);
+            lotacaomedia = lotacaomedia.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return lotacaomedia;
     }
@@ -123,25 +123,13 @@ public class Lv1resultado implements Serializable {
     public BigDecimal getReceitahectar() {
         if (receitahectar != null) {
 
-            receitahectar = receitahectar.setScale(2,BigDecimal.ROUND_HALF_UP);
+            receitahectar = receitahectar.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return receitahectar;
     }
 
     public void setReceitahectar(BigDecimal receitahectar) {
         this.receitahectar = receitahectar;
-    }
-
-    public BigDecimal getTotalcustoproducao() {
-        if (totalcustoproducao != null) {
-
-            totalcustoproducao = totalcustoproducao.setScale(2,BigDecimal.ROUND_HALF_UP);
-        }
-        return totalcustoproducao;
-    }
-
-    public void setTotalcustoproducao(BigDecimal totalcustoproducao) {
-        this.totalcustoproducao = totalcustoproducao;
     }
 
     public String getAno() {
@@ -183,6 +171,18 @@ public class Lv1resultado implements Serializable {
     @Override
     public String toString() {
         return "modelo.Lv1resultado[ id=" + id + " ]";
+    }
+
+    public BigDecimal getMargembruta() {
+        if (margembruta != null) {
+
+            margembruta = margembruta.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return margembruta;
+    }
+
+    public void setMargembruta(BigDecimal margembruta) {
+        this.margembruta = margembruta;
     }
 
 }

@@ -1,4 +1,5 @@
 
+<%@page import="dao.Lv1resultadoDAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv1resultado"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -18,7 +19,9 @@
         response.sendRedirect("lv1p4.jsp");
     }
 
-    Lv1resultado lv1resultado = passos.getLv1resultadodao().buscarPorPropriedade(id, ano);
+        Lv1resultadoDAO lv1resultadodao = new Lv1resultadoDAO();
+
+    Lv1resultado lv1resultado = lv1resultadodao.buscarPorPropriedade(id, ano);
 
     if (lv1resultado == null) {
         lv1resultado = new Lv1resultado(id, ano);
@@ -26,9 +29,9 @@
         lv1resultado.setCustohectar(passos.custoHectare());
         lv1resultado.setLotacaomedia(passos.lotacaoMedia());
         lv1resultado.setReceitahectar(passos.receitaHectare());
-        lv1resultado.setTotalcustoproducao(passos.totalCustoProducao());
+        lv1resultado.setMargembruta(passos.margemBruta());
 
-        passos.getLv1resultadodao().incluir(lv1resultado);
+        lv1resultadodao.incluir(lv1resultado);
         passos.setLv1resultado(lv1resultado);
         session.setAttribute("Passoslv1", passos);
     } else if (lv1resultado != null) {
@@ -36,9 +39,9 @@
         lv1resultado.setCustohectar(passos.custoHectare());
         lv1resultado.setLotacaomedia(passos.lotacaoMedia());
         lv1resultado.setReceitahectar(passos.receitaHectare());
-        lv1resultado.setTotalcustoproducao(passos.totalCustoProducao());
+        lv1resultado.setMargembruta(passos.margemBruta());
 
-        passos.getLv1resultadodao().alterar(lv1resultado);
+        lv1resultadodao.alterar(lv1resultado);
         passos.setLv1resultado(lv1resultado);
         session.setAttribute("Passoslv1", passos);
     }
@@ -64,8 +67,34 @@
             <a href="../propriedades/propriedades.jsp" class="btn btn-warning btn-block center-block">Voltar a tela de seleção de propriedade</a>
         </div>
         <div class="col-md-4">
-            <a href="lv1comparacao.jsp" class="btn btn-primary btn-block center-block">Comparar resultados com outros produtores</a>
+            <button  data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block center-block">Comparar resultados com outros produtores</button>
         </div>
+
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Escolha a Faixa de Produtores para Realizar a Comparação </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Clique em uma das faixas de área desejada</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="lv1comparacao.jsp?codigo=1" class="btn btn-sm btn-danger">Menor que 10.000 ha</a>
+                        <a href="lv1comparacao.jsp?codigo=2" class="btn btn-sm btn-danger">Entre 10.000 e 50.000 ha</a>
+                        <a href="lv1comparacao.jsp?codigo=3" class="btn btn-sm btn-danger">Maior que 50.000 ha</a>
+                        <a href="lv1comparacao.jsp?codigo=0" class="btn btn-sm btn-danger">Todas as Áreas</a>
+
+                        <!--<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Cancelar</button>-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="col-md-4">
             <a href="../analisefinanceira-lv2/lv2escolha.jsp" class="btn btn-warning btn-block center-block">Ir para o próximo nível</a>
         </div>
@@ -94,103 +123,7 @@
 
 </div>
 
-<table id="custohectare" class="hidden" >
-    <thead>
-        <tr>
-            <th>
 
-            </th>
-            <th>
-                Você
-            </th>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>R$/HM²</th>
-            <td><%=passos.getLv1resultado().getCustohectar()%></td>
-
-
-        </tr>
-
-    </tbody>
-</table>
-
-<table id="lotacaomedia" class="hidden" >
-    <thead>
-        <tr>
-            <th>
-
-            </th>
-            <th>
-                Você
-            </th>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>CABEÇAS/HM²</th>
-            <td><%=passos.getLv1resultado().getLotacaomedia()%></td>
-
-
-        </tr>
-
-    </tbody>
-</table>
-
-<table id="receitahectare" class="hidden" >
-    <thead>
-        <tr>
-            <th>
-
-            </th>
-            <th>
-                Você
-            </th>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>R$/HM²</th>
-            <td><%=passos.getLv1resultado().getReceitahectar()%></td>
-
-
-        </tr>
-
-    </tbody>
-</table>
-
-<table id="totalcustoproducao" class="hidden" >
-    <thead>
-        <tr>
-            <th>
-
-            </th>
-            <th>
-                Você
-            </th>
-
-
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>R$</th>
-            <td><%=passos.getLv1resultado().getTotalcustoproducao()%></td>
-
-        </tr>
-
-    </tbody>
-</table>
-
-
-</div>
 
 
 
@@ -198,7 +131,7 @@
 
 
 <script src="../js/data.js"></script>
-<script>
+<!--<script>
     $(function () {
         $('#grafico1').highcharts({
             data: {
@@ -302,6 +235,214 @@
 
 
 
+</script>-->
+
+
+
+
+<script>
+    $(function () {
+        $('#grafico1').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Custo por Hectare'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'R$/ha'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Custo por Hectare: <b>{point.y:.1f} R$/ha</b>'
+            },
+            series: [{
+                    name: 'Custo Por Hectare',
+                    data: [
+                        ["Custo por Hectare",<%=passos.getLv1resultado().getCustohectar()%>]
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        });
+    });
+
+    $(function () {
+        $('#grafico2').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Receita por Hectare'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'R$/ha'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Receita por Hectare: <b>{point.y:.1f} R$/ha</b>'
+            },
+            series: [{
+                    name: 'Receita Por Hectare',
+                    data: [
+                        ["Receita por Hectare",<%=passos.getLv1resultado().getReceitahectar()%>]
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        });
+    });
+
+    $(function () {
+        $('#grafico3').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Lotação Média'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'cab/ha'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Lotação Média: <b>{point.y:.1f} cap/ha</b>'
+            },
+            series: [{
+                    name: 'Lotação Média',
+                    data: [
+                        ["Lotação Média",<%=passos.getLv1resultado().getLotacaomedia()%>]
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        });
+    });
+
+    $(function () {
+        $('#grafico4').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Margem Bruta por Hectare'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                title: {
+                    text: 'R$/ha'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Margem Bruta por Hectare: <b>{point.y:.1f} R$/ha</b>'
+            },
+            series: [{
+                    name: 'Margem Bruta por Hectare',
+                    data: [
+                        ["Margem Bruta por Hectare",<%=passos.getLv1resultado().getMargembruta()%>]
+                    ],
+                    dataLabels: {
+                        enabled: true,
+                        rotation: -90,
+                        color: '#FFFFFF',
+                        align: 'right',
+                        format: '{point.y:.1f}', // one decimal
+                        y: 10, // 10 pixels down from the top
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'Verdana, sans-serif'
+                        }
+                    }
+                }]
+        });
+    });
 </script>
 
 

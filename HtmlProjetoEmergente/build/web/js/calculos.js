@@ -27,6 +27,7 @@ function lv1p2(area) {
             var total = 0;
             var lotacaomedia = 0;
             var valor = 0;
+            var ua = 0;
             for (i = 0; i < x.length; i++) {
                 valor = x[i].value.replace(/\./g, "");
                 if (i === 1 || i === 3 || (i >= 5 && i <= 7)) {
@@ -38,19 +39,53 @@ function lv1p2(area) {
                     totalf += parseFloat(valor);
                 }
 
+                if (i === 0 || i === 4) {
+                    ua = ua + parseFloat(valor) * 1;
+                }
+
+                if (i === 1 || i === 2) {
+                    ua = ua + parseFloat(valor) * 0.4;
+                }
+
+                if (i === 3) {
+                    ua = ua + parseFloat(valor) * 1.5;
+                }
+
+                if (i === 5 || i === 8) {
+                    ua = ua + parseFloat(valor) * 0.6;
+                }
+
+                if (i === 6 || i === 9 || i === 7) {
+                    ua = ua + parseFloat(valor) * 0.8;
+                }
+
+
+
                 if (i <= 4) {
                     totalcria += parseFloat(valor);
                 }
                 total += parseFloat(valor);
+
             }
 
             if (area === 0) {
                 lotacaomedia = 0;
+                ua = 0;
             } else {
                 lotacaomedia = total / parseFloat(area);
+                ua = ua / area;
             }
             $("#lotacaocalculo").fadeIn(3000, "linear");
             document.getElementById("lotacaocalculo").innerHTML = "Lotação Média da Propriedade: " + lotacaomedia.formatMoney(2, ".", ",") + " Cabeças por Hectare";
+
+            $("#uacalculo").fadeIn(3000, "linear");
+            document.getElementById("uacalculo").innerHTML = "UA por Hectare: " + ua.formatMoney(2, ".", ",") + " UA por Hectare";
+
+            $("#pmachos").fadeIn(3000, "linear");
+            document.getElementById("pmachos").innerHTML = "Percentual de Machos: " + (totalm / total * 100).formatMoney(2, ".", ",") + "%";
+
+            $("#pfemeas").fadeIn(3000, "linear");
+            document.getElementById("pfemeas").innerHTML = "Percentual de Femeas: " + (totalf / total * 100).formatMoney(2, ".", ",") + "%";
 
             $("#infocalculo").fadeIn(3000, "linear");
             $("#botao").fadeIn(3000, "linear");
@@ -147,7 +182,7 @@ function lv1p2(area) {
 }
 ;
 
-function lv1p4() {
+function lv1p4(receitas, area) {
 
     $("[type=submit]").prop("disabled", true);
     $("#calcular").click(function () {
@@ -155,6 +190,7 @@ function lv1p4() {
         if (validarForm()) {
             var x = document.getElementsByClassName("form-control");
             var totalcustoproducao = 0;
+            var mb = 0;
             var valor = 0;
             for (i = 0; i < x.length; i++) {
                 valor = x[i].value.replace(/\./g, "");
@@ -183,7 +219,8 @@ function lv1p4() {
                                 enabled: true,
                                 format: '<b>{point.name}</b>: {point.percentage:.1f} %',
                                 style: {
-                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                                    fontSize: '13px'
                                 }
                             }
                         }
@@ -213,8 +250,13 @@ function lv1p4() {
                         }]
                 });
             });
+
+            mb = (receitas - totalcustoproducao) / area;
             $("#infocalculo").fadeIn(3000, "linear");
             document.getElementById("totalcustoproducao").innerHTML = "Total Custos de Produção: R$ " + totalcustoproducao.formatMoney(2, '.', ',');
+            document.getElementById("mb").innerHTML = "Margem Bruta por Hectare: R$ " + mb.formatMoney(2, '.', ',');
+
+
             $("[type=submit]").prop("disabled", false);
 
             $("#calcular").attr("href", "#infocalculo");
@@ -391,6 +433,21 @@ function lv2p1() {
                         }],
                     title: {
                         text: 'Desenho da propriedade'
+                    },
+                    plotOptions: {
+                        treemap: {
+                            //  area: { cropThreshold: 500 },
+                            dataLabels: {
+                                // overflow: 'right',
+                                //  crop: true,
+                                formatter: function () {
+                                    return '<b>' + this.point.name + ':</b> ' +
+                                            '<br/>' +
+                                            '<b>' + this.point.value + ' ha</b>';
+                                    //  return '$' + this.point.name
+                                }
+                            }
+                        }
                     }
                 });
             });
@@ -633,73 +690,126 @@ function lv2p3(area) {
             var totalreceita = 0;
             var receitahectare = 0;
             var porcentagem = [];
+            var valorGrafico = [];
             var contador1 = 0;
-            var tabela = "<table class='table table-bordered table-responsive text-center '><tr class='rowhighlight'><th class='text-center'>Categorias</th><th class='text-center'>Quantidade</th><th class='text-center'>Preço por Cabeça</th><th class='text-center'>Receita</th><th class='text-center'>Porcentagem</th></tr>";
-
+            var tabela = "<table class='table table-bordered table-responsive text-center '><tr class='rowhighlight'><th class='text-center'>Categorias</th><th class='text-center'>Quantidade</th><th class='text-center'>Preço por Cabeça</th><th class='text-center'>Peso Médio</th><th class='text-center'>Receita</th><th class='text-center'>Porcentagem da Receita</th></tr>";
+            var cont = 0;
             for (i = 0; i < x.length; i++) {
-                var valor = x[i].value.replace(".", "");
+                var valor = x[i].value.replace(/\./g, "");
                 valor = valor.replace(",", ".");
 
                 if (i === 0) {
                     tabela = tabela + "<tr><td>Terneiros</td>";
-                } else if (i === 2) {
+                } else if (i === 3) {
                     tabela = tabela + "<tr><td>Terneiras</td>";
-                } else if (i === 4) {
-                    tabela = tabela + "<tr><td>Novilhas</td>";
                 } else if (i === 6) {
+                    tabela = tabela + "<tr><td>Novilhas</td>";
+                } else if (i === 9) {
                     tabela = tabela + "<tr><td>Vacas de Descarte</td>";
-                } else if (i === 8) {
-                    tabela = tabela + "<tr><td>Vacas Prenhas</td>";
-                } else if (i === 10) {
-                    tabela = tabela + "<tr><td>Vacas com Cria</td>";
                 } else if (i === 12) {
-                    tabela = tabela + "<tr><td>Vacas Gordas</td>";
-                } else if (i === 14) {
-                    tabela = tabela + "<tr><td>Novilhos para Recria</td>";
-                } else if (i === 16) {
-                    tabela = tabela + "<tr><td>Novilhos Gordos</td>";
+                    tabela = tabela + "<tr><td>Vacas Prenhas</td>";
+                } else if (i === 15) {
+                    tabela = tabela + "<tr><td>Vacas com Cria</td>";
                 } else if (i === 18) {
+                    tabela = tabela + "<tr><td>Vacas Gordas</td>";
+                } else if (i === 21) {
+                    tabela = tabela + "<tr><td>Novilhos para Recria</td>";
+                } else if (i === 24) {
+                    tabela = tabela + "<tr><td>Novilhos Gordos</td>";
+                } else if (i === 27) {
                     tabela = tabela + "<tr><td>Torunos</td>";
-                } else if (i === 20) {
+                } else if (i === 30) {
                     tabela = tabela + "<tr><td>Touros</td>";
                 }
-                if (i === 0 || i % 2 === 0) {
+
+                if (cont === 0) {
                     totalb += parseFloat(valor);
                     tabela += "<td>" + valor + " cab</td>";
-                }
-
-                if (i !== 0 && i % 2 !== 0) {
+                    valorGrafico = valorGrafico.concat([{name: ucFirstAllWords(x[i].name.replace(/\_/g, " ")), y: parseFloat(valor)}]);
+                } else if (cont === 1) {
                     var valor1 = x[i - 1].value.replace(".", "");
                     valor1 = valor1.replace(",", ".");
+
+                    var valor2 = x[i + 1].value.replace(".", "");
+                    valor2 = valor1.replace(",", ".");
                     totalreceita += parseFloat(valor) * parseFloat(valor1);
                     porcentagem[contador1] = (parseFloat(valor) * parseFloat(valor1));
                     contador1++;
-                    tabela += "<td>R$ " + valor + "<td>R$ " + (parseFloat(valor) * parseFloat(valor1)).formatMoney(2, ".", ",") + "</td>" + "</td><td>valorreplace" + [i] + "</td></tr>";
+                    tabela += "<td>R$ " + parseFloat(valor).formatMoney(2, ".", ",") + "</td><td>" + valor2 + " KG </td><td>R$ " + (parseFloat(valor) * parseFloat(valor1)).formatMoney(2, ".", ",") + "</td><td>valorreplace" + [i] + "</td></tr>";
+
+                }
+                if (cont === 2) {
+                    cont = 0;
+                } else {
+                    cont++;
 
                 }
 
 
 
+
+
+
+
             }
 
-
+            for (var i = 0; i < valorGrafico.length; i++) {
+                valorGrafico[i].valor = parseFloat(valorGrafico[i].valor / totalb);
+            }
+            $(function () {
+                $('#grafico1').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+                    title: {
+                        text: 'Representação da Quantidade de Animais no Gráfico'
+                    },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                                    fontSize: '13px'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                            name: 'Resultados',
+                            colorByPoint: true,
+                            data: valorGrafico
+                        }]
+                });
+            });
 
             receitahectare = totalreceita / area;
             $("#infocalculo").fadeIn(3000, "linear");
+            $("#grafico1").fadeIn(3000, "linear");
+
             $("#botao").fadeIn(3000, "linear");
             contador1 = 0;
-            for (var i = 1; i <= 21; i += 2) {
+            for (var i = 1; i <= 32; i += 3) {
                 tabela = tabela.replace("valorreplace" + i, (porcentagem[contador1] / totalreceita * 100).formatMoney(2, ".", ",") + " %");
                 contador1++;
             }
-            document.getElementById("infocalculo").innerHTML = tabela + "<tr class='rowhighlight'><td>Total de Bovinos</td><td colspan='4'>" + totalb.formatMoney(0, ".", ",") + " CAB</td></tr><tr class='rowhighlight'><td>Total Receita</td><td colspan='4'>" + totalreceita.formatMoney(2, ".", ",") + " R$ </td></tr><tr class='rowhighlight'><td>Receita por Hectare</td><td colspan='4'>" + receitahectare.formatMoney(2, ".", ",") + " R$/ha</td></tr></table>";
+            document.getElementById("infocalculo").innerHTML = tabela + "<tr class='rowhighlight'><td>Total de Bovinos</td><td colspan='5'>" + totalb.formatMoney(0, ".", ",") + " CAB</td></tr><tr class='rowhighlight'><td>Total Receita</td><td colspan='5'>" + totalreceita.formatMoney(2, ".", ",") + " R$ </td></tr><tr class='rowhighlight'><td>Receita por Hectare</td><td colspan='5'>" + receitahectare.formatMoney(2, ".", ",") + " R$/ha</td></tr></table>";
 
             /*document.getElementById("totalb").innerHTML = "Total de Bovinos: " + totalb.formatMoney(0, ".", ",") + " Cabeça(s)";
              document.getElementById("totalreceita").innerHTML = "Total de Receita de Bovinos: R$ " + totalreceita.formatMoney(2, ".", ",");
              document.getElementById("receitahectare").innerHTML = "Receita por Hectare " + receitahectare.formatMoney(2, ".", ",") + " R$/HM²";*/
             $("[type=submit]").prop("disabled", false);
 
-            $("#calcular").attr("href", "#infocalculo");
+            $("#calcular").attr("href", "#grafico1");
         }
 
 
@@ -709,7 +819,19 @@ function lv2p3(area) {
 }
 ;
 
-function lv2p4(area, terneiros, porcentagem) {
+function ucFirstAllWords(str)
+{
+    str = str.toLowerCase();
+    var pieces = str.split(" ");
+    for (var i = 0; i < pieces.length; i++)
+    {
+        var j = pieces[i].charAt(0).toUpperCase();
+        pieces[i] = j + pieces[i].substr(1);
+    }
+    return pieces.join(" ");
+}
+
+function lv2p4(area, terneiros, porcentagem, receita, kg) {
 
     $("[type=submit]").prop("disabled", true);
     $("#calcular").click(function () {
@@ -722,9 +844,10 @@ function lv2p4(area, terneiros, porcentagem) {
             var custoterneiro = 0;
             var valor = 0;
             var medicamento = 0, mao_de_obra = 0, pastagem = 0, manutencao = 0, outros = 0;
+            var margembruta = 0;
             /*var tabela = "<table class='table table-bordered table-responsive text-center '><tr class='rowhighlight'><th class='text-center'>Categorias</th><th class='text-center'>Gastos</th><th class='text-center'>Percentuais</th></tr>";*/
             for (i = 0; i < x.length; i++) {
-                valor = x[i].value.replace(".", "");
+                valor = x[i].value.replace(/\./g, "");
                 valor = valor.replace(",", ".");
                 if (i === 16 || i === 17) {
                     mao_de_obra += parseFloat(valor);
@@ -732,13 +855,13 @@ function lv2p4(area, terneiros, porcentagem) {
                 if (i <= 1) {
                     medicamento += parseFloat(valor);
                 }
-                if (i === 8 || i === 9) {
+                if (i === 8 || i === 9 || i === 2 || i === 3 || i ===7) {
                     pastagem += parseFloat(valor);
                 }
                 if (i === 10 || i === 18 || i === 19) {
                     manutencao += parseFloat(valor);
                 }
-                if (i > 1 && i <= 7 || i >= 11 && i <= 16) {
+                if (i > 3 && i < 7 || i >= 11 && i <= 16) {
                     outros += parseFloat(valor);
                 }
                 totalcustoproducao += parseFloat(valor);
@@ -798,13 +921,16 @@ function lv2p4(area, terneiros, porcentagem) {
                         }]
                 });
             });
-            $("#infocalculo").fadeIn(3000, "linear");       
+            $("#infocalculo").fadeIn(3000, "linear");
             $("#botao").fadeIn(3000, "linear");
 
             document.getElementById("totalcustoproducao").innerHTML = "Total Custos de Produção: R$ " + totalcustoproducao.formatMoney(2, ".", ",");
             document.getElementById("custoatividadecria").innerHTML = "Custo Atividade de Cria: R$ " + custoatividadecria.formatMoney(2, ".", ",");
-            document.getElementById("custoproducaohectar").innerHTML = "Custo de Produção por Hectare: " + custoproducaohectar.formatMoney(2, ".", ",") + " R$/HM²";
+            document.getElementById("custoproducaohectar").innerHTML = "Custo de Produção por Hectare: " + custoproducaohectar.formatMoney(2, ".", ",") + " R$/ha";
             document.getElementById("custoterneiro").innerHTML = "Custo de Produção por Terneiro Desmamado: " + custoterneiro.formatMoney(2, ".", ",") + " R$/Cabeça(s)";
+            document.getElementById("margembruta").innerHTML = "Margem Bruta por Hectare: " + ((receita - totalcustoproducao) / area).formatMoney(2, ".", ",") + " R$/ha";
+            document.getElementById("producaocarne").innerHTML = "Produção de Carne: " + (kg / area).formatMoney(2, ".", ",") + " KG/ha";
+
             $("[type=submit]").prop("disabled", false);
             cont = 1;
             $("#calcular").attr("href", "#infocalculo");

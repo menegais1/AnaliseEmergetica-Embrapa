@@ -128,7 +128,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Area Média: <span id="area"><%=passo.areaMedia().toPlainString()%> </span> HM²</li>
+                <li class="list-group-item list-group-item-success">Area Média: <span id="area"><%=passo.areaMedia().toPlainString()%> </span> ha</li>
             </ul>
 
             <br>
@@ -145,7 +145,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <span id="lotacao"><%=passo.lotacaoMedia().toPlainString()%></span> Cabeças/HM²</li>
+                <li class="list-group-item list-group-item-success">Lotação Média da Propriedade: <span id="lotacao"><%=passo.lotacaoMedia().toPlainString()%></span> Cabeças/ha</li>
             </ul>
             <br>
         </div>
@@ -161,7 +161,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Receita por Hectare: <span id="receita"><%=passo.receitaHectare().toPlainString()%></span> R$/HM²</li>
+                <li class="list-group-item list-group-item-success">Receita por Hectare: <span id="receita"><%=passo.receitaHectare().toPlainString()%></span> R$/ha</li>
             </ul>
             <br>
         </div>
@@ -177,7 +177,7 @@
 
             <br>
             <ul class="list-group">
-                <li class="list-group-item list-group-item-success">Custo por Hectare: <span id="custo"><%=passo.custoProducaoHectare().toPlainString()%></span> R$/HM²</li>
+                <li class="list-group-item list-group-item-success">Custo por Hectare: <span id="custo"><%=passo.custoProducaoHectare().toPlainString()%></span> R$/ha</li>
             </ul>
             <br>
         </div>

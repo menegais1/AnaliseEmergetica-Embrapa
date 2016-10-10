@@ -61,6 +61,27 @@ function validarForm() {
 
 
         });
+        
+        $("#" + x[i].id).focusout(function () {
+            if (this.value !== "" && this.value > 0 && this.value <= 9999999) {
+                $("#" + this.id).css({"border-color": "#00ff00"});
+                $("[type=submit]").prop("disabled", false);
+            } else if (this.value == 0) {
+                $("#" + this.id).css({"border-color": "#ff0000"});
+            } else if (this.value === "") {
+                $("#" + this.id).css({"border-color": "#ff0000"});
+                $("[type=submit]").prop("disabled", true);
+
+            } else if (this.value < 0) {
+                $("#" + this.id).css({"border-color": "#ff0000"});
+                $("[type=submit]").prop("disabled", true);
+            } else if (this.value > 9999999) {
+                $("#" + this.id).css({"border-color": "#ff0000"});
+                $("[type=submit]").prop("disabled", true);
+            }
+
+
+        });
 
 
 

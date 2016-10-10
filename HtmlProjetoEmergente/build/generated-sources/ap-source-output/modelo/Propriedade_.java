@@ -16,7 +16,7 @@ import modelo.Lv2p4;
 import modelo.Lv2resultado;
 import modelo.Usuario;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-09-04T21:02:31")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2016-10-07T00:42:09")
 @StaticMetamodel(Propriedade.class)
 public class Propriedade_ { 
 

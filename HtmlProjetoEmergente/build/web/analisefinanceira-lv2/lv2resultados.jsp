@@ -1,5 +1,6 @@
 
 
+<%@page import="dao.Lv2resultadoDAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv2resultado"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -14,7 +15,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv2resultado lv2resultado = passos.getLv2resultadodao().buscarPorPropriedade(id, ano);
+    Lv2resultadoDAO lv2resultadodao = new Lv2resultadoDAO();
+
+    Lv2resultado lv2resultado = lv2resultadodao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv2p4() == null) {
         response.sendRedirect("lv2p4.jsp");
@@ -33,8 +36,10 @@
         lv2resultado.setPercentualrebanhocomcria(passos.percentualRebanhoComCria());
         lv2resultado.setReceitahectar2(passos.receitaHectare());
         lv2resultado.setTotalreceita(passos.totalReceita());
+        lv2resultado.setProducaodecarne(passos.kg());
+        lv2resultado.setMargembruta(passos.margembruta());
 
-        passos.getLv2resultadodao().incluir(lv2resultado);
+        lv2resultadodao.incluir(lv2resultado);
         passos.setLv2resultado(lv2resultado);
         session.setAttribute("Passoslv2", passos);
     } else if (lv2resultado != null) {
@@ -49,8 +54,10 @@
         lv2resultado.setPercentualrebanhocomcria(passos.percentualRebanhoComCria());
         lv2resultado.setReceitahectar2(passos.receitaHectare());
         lv2resultado.setTotalreceita(passos.totalReceita());
+        lv2resultado.setProducaodecarne(passos.kg());
+        lv2resultado.setMargembruta(passos.margembruta());
 
-        passos.getLv2resultadodao().alterar(lv2resultado);
+        lv2resultadodao.alterar(lv2resultado);
         passos.setLv2resultado(lv2resultado);
         session.setAttribute("Passoslv2", passos);
     }
@@ -75,46 +82,38 @@
                 <a href="../propriedades/propriedades.jsp" class="btn btn-warning btn-block center-block">Voltar a tela de seleção de propriedade</a>
             </div>
             <div class="col-md-4 col-md-offset-4">
-                <a href="lv2comparacao.jsp" class="btn btn-primary btn-block center-block">Comparar resultados com outros produtores</a>
+                <button data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block center-block">Comparar resultados com outros produtores</button>
             </div>
-            
 
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Escolha a Faixa de Produtores para Realizar a Comparação </h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Clique em uma das faixas de área desejada</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="lv2comparacao.jsp?codigo=1" class="btn btn-sm btn-danger">Menor que 10.000 ha</a>
+                            <a href="lv2comparacao.jsp?codigo=2" class="btn btn-sm btn-danger">Entre 10.000 e 50.000 ha</a>
+                            <a href="lv2comparacao.jsp?codigo=3" class="btn btn-sm btn-danger">Maior que 50.000 ha</a>
+                            <a href="lv2comparacao.jsp?codigo=0" class="btn btn-sm btn-danger">Todas as Áreas</a>
+
+                            <!--<button type="button" class="btn btn-lg btn-default" data-dismiss="modal">Cancelar</button>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
         </div>
         <br>
         <div class="col-md-6" id="grafico1">
-            <!--<div class="well well-sm">
-                Área Média da Propriedade: <%=passos.areaMedia()%> Hectares
-            </div>
-            <div class="well well-sm">
-                Área Aproveitável da Propriedade: <%=passos.areaAproveitavel()%> Hectares
-            </div>
-            <div class="well well-sm">
-                Percentual do Rebanho com Cria: <%=passos.percentualRebanhoComCria()%> %
-            </div>
-            <div class="well well-sm">
-                Lotação Média da Propriedade: <%=passos.lotacaoMedia()%> Cabeças por Hectare
-            </div>
-            <div class="well well-sm">
-                Total Receita da Propriedade: <%=passos.totalReceita()%> R$
-            </div>
-            <div class="well well-sm">
-                Receita por Hectare: <%=passos.receitaHectare()%> R$/Hectare
-            </div>
-            <div class="well well-sm">
-                Custo Total de Produção: <%=passos.totalCustoProducao()%> R$
-            </div>
-            <div class="well well-sm">
-                Custo Atividade de Cria: <%=passos.custoAtividadeDeCria()%> R$
-            </div>
-            <div class="well well-sm">
-                Custo de Produção por Hectare: <%=passos.custoProducaoHectare()%> R$/Hectare
-            </div>
-            <div class="well well-sm">
-                Custo por Terneiro: <%=passos.custoTerneiro()%> R$/Terneiro
-            </div>
-
-            -->
+            
         </div>
 
         <div class="col-md-6" id="grafico2">
@@ -129,6 +128,12 @@
         </div>
 
         <div class="col-md-6" id="grafico5">
+
+        </div>
+        <div class="col-md-6" id="grafico6">
+
+        </div>
+        <div class="col-md-6" id="grafico7">
 
         </div>
 
@@ -417,6 +422,118 @@
             series: [{
                     name: 'Lotação Média',
                     data: [<%=passos.lotacaoMedia()%>]
+                }
+            ]
+        });
+    });
+
+    $(function () {
+        $('#grafico6').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Margem Bruta por Hectare'
+            },
+            xAxis: {
+                categories: ['Margem Bruta (R$/ha)'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                    name: 'Margem Bruta',
+                    data: [<%=passos.margembruta()%>]
+                }
+            ]
+        });
+    });
+
+    $(function () {
+        $('#grafico7').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Produção de Carne(KG de Peso Vivo por Hectare'
+            },
+            xAxis: {
+                categories: ['Produção de Carne (KG/ha)'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ''
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                    name: 'Produção de Carne',
+                    data: [<%=passos.kg()%>]
                 }
             ]
         });

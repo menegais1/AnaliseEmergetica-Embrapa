@@ -3,9 +3,7 @@
 
 <%@page import="dao.PropriedadeDAO"%>
 <%@page import="modelo.Propriedade"%>
-<%        
-     
-    Propriedade p = new Propriedade();
+<%    Propriedade p = new Propriedade();
 
     PropriedadeDAO dao = new PropriedadeDAO();
     p = dao.buscarPorChavePrimaria(Integer.parseInt(session.getAttribute("Propriedade_id").toString()));
@@ -27,8 +25,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4  well well-sm text-center">
-                <h4 >Propriedade: <%=p.getNome()%></h4>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Propriedade
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4 > <%=p.getNome()%></h4>
+                    </div>
+                </div>
             </div>
 
         </div>

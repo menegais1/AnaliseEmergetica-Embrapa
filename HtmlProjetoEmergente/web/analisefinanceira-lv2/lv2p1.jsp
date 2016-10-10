@@ -1,5 +1,6 @@
 
 
+<%@page import="dao.Lv2p1DAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="dao.Passoslv2"%>
 <%@page import="modelo.Lv2p1"%>
@@ -15,7 +16,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv2p1 lv2p1 = passos.getLv2p1dao().buscarPorPropriedade(id, ano);
+        Lv2p1DAO lv2p1dao = new Lv2p1DAO();
+
+    Lv2p1 lv2p1 = lv2p1dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv2p1() == null) {
         passos.setLv2p1(new Lv2p1(id, ano));
@@ -46,7 +49,7 @@
         lv2p1.setInaproveitaveisVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
         lv2p1.setInaproveitaveisInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
 
-        passos.getLv2p1dao().incluir(lv2p1);
+       lv2p1dao.incluir(lv2p1);
         passos.setLv2p1(lv2p1);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2p2.jsp");
@@ -74,7 +77,7 @@
         lv2p1.setInaproveitaveisVerao(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
         lv2p1.setInaproveitaveisInverno(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("inaproveitaveis_verao")))));
 
-        passos.getLv2p1dao().alterar(lv2p1);
+        lv2p1dao.alterar(lv2p1);
         passos.setLv2p1(lv2p1);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2p2.jsp");
@@ -135,14 +138,14 @@
                                         </div>
 
 
-                                       <!-- <div class="col-md-5">
-                                            <label>Pastagem Nativa Inverno <span class="label-control"></span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaInverno()%>" class="form-control"  name="pastagem_nativa_verao"title="Insira a Pastagem Nativa de Inverno (Hectares) de sua propriedade">
-                                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
-                                            </div>
-                                        </div>-->
+                                        <!-- <div class="col-md-5">
+                                             <label>Pastagem Nativa Inverno <span class="label-control"></span></label>
+                                             <div class="input-group">
+                                                 <div class="input-group-addon">ha</div>
+                                                 <input type="text" value="<%=passos.getLv2p1().getPastagemNativaInverno()%>" class="form-control"  name="pastagem_nativa_verao"title="Insira a Pastagem Nativa de Inverno (Hectares) de sua propriedade">
+                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                                             </div>
+                                         </div>-->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -159,14 +162,14 @@
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                         <!--<div class="col-md-5">
-                                            <label>Pastagem Nativa Melhorada Inverno <span class="label-control"></span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getPastagemNativaMelhoradaInverno()%>" class="form-control"  name="pastagem_nativa_melhorada_verao"title="Insira a Pastagem Nativa Melhorada de Inverno (Hectares) de sua propriedade">
-                                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
-                                            </div>
-                                        </div>-->
+                                        <!--<div class="col-md-5">
+                                           <label>Pastagem Nativa Melhorada Inverno <span class="label-control"></span></label>
+                                           <div class="input-group">
+                                               <div class="input-group-addon">ha</div>
+                                               <input type="text" value="<%=passos.getLv2p1().getPastagemNativaMelhoradaInverno()%>" class="form-control"  name="pastagem_nativa_melhorada_verao"title="Insira a Pastagem Nativa Melhorada de Inverno (Hectares) de sua propriedade">
+                                               <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                                           </div>
+                                       </div>-->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -317,14 +320,14 @@
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                       <!--  <div class="col-md-5">
-                                            <label>Matas Nativas Inverno <span class="label-control"></span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getMatasNativasInverno()%>" class="form-control"  name="matas_nativas_verao"title="Insira a Area de Matas Nativas de Inverno (Hectares) de sua propriedade">
-                                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
-                                            </div>
-                                        </div> -->
+                                        <!--  <div class="col-md-5">
+                                             <label>Matas Nativas Inverno <span class="label-control"></span></label>
+                                             <div class="input-group">
+                                                 <div class="input-group-addon">ha</div>
+                                                 <input type="text" value="<%=passos.getLv2p1().getMatasNativasInverno()%>" class="form-control"  name="matas_nativas_verao"title="Insira a Area de Matas Nativas de Inverno (Hectares) de sua propriedade">
+                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                                             </div>
+                                         </div> -->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -341,14 +344,14 @@
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                       <!--  <div class="col-md-5">
-                                            <label>Sede, Estradas e Açudes Inverno <span class="label-control"></span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getSedesEstradasAcudesInverno()%>" class="form-control" name="sedes_estradas_acudes_verao"title="Insira a Area ocupada por Sedes, Estradas e Açudes no Inverno (Hectares) de sua propriedade">
-                                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
-                                            </div>
-                                        </div> -->
+                                        <!--  <div class="col-md-5">
+                                             <label>Sede, Estradas e Açudes Inverno <span class="label-control"></span></label>
+                                             <div class="input-group">
+                                                 <div class="input-group-addon">ha</div>
+                                                 <input type="text" value="<%=passos.getLv2p1().getSedesEstradasAcudesInverno()%>" class="form-control" name="sedes_estradas_acudes_verao"title="Insira a Area ocupada por Sedes, Estradas e Açudes no Inverno (Hectares) de sua propriedade">
+                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                                             </div>
+                                         </div> -->
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -365,85 +368,85 @@
                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                                             </div>
                                         </div>
-                                       <!--  <div class="col-md-5">
-                                            <label>Inaproveitavel Inverno <span class="label-control"></span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">ha</div>
-                                                <input type="text" value="<%=passos.getLv2p1().getInaproveitaveisInverno()%>" class="form-control"  name="inaproveitaveis_verao"title="Insira a Area Inaproveitavel no Inverno (Hectares) de sua propriedade">
-                                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
-                                            </div> -->
-                                        </div>
+                                        <!--  <div class="col-md-5">
+                                             <label>Inaproveitavel Inverno <span class="label-control"></span></label>
+                                             <div class="input-group">
+                                                 <div class="input-group-addon">ha</div>
+                                                 <input type="text" value="<%=passos.getLv2p1().getInaproveitaveisInverno()%>" class="form-control"  name="inaproveitaveis_verao"title="Insira a Area Inaproveitavel no Inverno (Hectares) de sua propriedade">
+                                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                                             </div> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <br>
-
-
-
-
-
-
-
-
-
-
                     </div>
+                    <br>
+
+
+
+
+
+
+
+
+
+
                 </div>
-
-
-
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
-                        <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
-                        <a type="button" id="calcular" class="btn btn-block btn-danger">Calcular</a><br>
-                    </div>
-                </div>
-
-
         </div>
 
-        <div class="col-md-12" id="infocalculo" hidden>
-            <!--
-            <div class="well well-sm" id="areatotalpecuariainverno">
-                Área Total da Pecuária no Inverno:
-            </div>
-            <div class="well well-sm" id="areatotalpecuariaverao">
-                Área Total da Pecuária no Verão:
-            </div>
-            <div class="well well-sm" id="areaaproveitavelinverno">
-                Total de Área Aproveitável no Inverno:
-            </div>
-            <div class="well well-sm" id="areaaproveitavelverao">
-                Total de Área Aproveitável no Verão:
-            </div>
-            <div class="well well-sm" id="areatotal">
-                Área Total:
-            </div>
-            <div class="well well-sm" id="areamedia">
-                Área Média da Pecuária:
-            </div>
-            -->
-        </div>
-        <!--<div class="col-md-6" id="infocalculo2" hidden>
 
 
-
-        </div>-->
-        </br>
         <div class="row">
-            <div class="col-md-6 col-md-offset-3" hidden id="botao" >
-
-
-
-                <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
-
+            <div class="col-md-6 col-md-offset-3">
+                <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>
+                <a type="button" id="calcular" class="btn btn-block btn-danger">Calcular</a><br>
             </div>
-
         </div>
 
 
-    </form>
+    </div>
+
+    <div class="col-md-12" id="infocalculo" hidden>
+        <!--
+        <div class="well well-sm" id="areatotalpecuariainverno">
+            Área Total da Pecuária no Inverno:
+        </div>
+        <div class="well well-sm" id="areatotalpecuariaverao">
+            Área Total da Pecuária no Verão:
+        </div>
+        <div class="well well-sm" id="areaaproveitavelinverno">
+            Total de Área Aproveitável no Inverno:
+        </div>
+        <div class="well well-sm" id="areaaproveitavelverao">
+            Total de Área Aproveitável no Verão:
+        </div>
+        <div class="well well-sm" id="areatotal">
+            Área Total:
+        </div>
+        <div class="well well-sm" id="areamedia">
+            Área Média da Pecuária:
+        </div>
+        -->
+    </div>
+    <!--<div class="col-md-6" id="infocalculo2" hidden>
+
+
+
+    </div>-->
+    </br>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" hidden id="botao" >
+
+
+
+            <input  type="submit" disabled class="btn btn-success btn-lg center-block" value="Próximo Passo" >
+
+        </div>
+
+    </div>
+
+
+</form>
 
 </div>
 

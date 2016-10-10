@@ -14,7 +14,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv1p1 lv1p1 = passos.getLv1p1dao().buscarPorPropriedade(id, ano);
+    Lv1p1DAO lv1p1dao = new Lv1p1DAO();
+
+    Lv1p1 lv1p1 = lv1p1dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv1p1() == null) {
 
@@ -27,7 +29,7 @@
 
         lv1p1.setAreaApro(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("area_apro")))));
 
-        passos.getLv1p1dao().incluir(lv1p1);
+        lv1p1dao.incluir(lv1p1);
         passos.setLv1p1(lv1p1);
         session.setAttribute("Passoslv1", passos);
         response.sendRedirect("lv1p2.jsp");
@@ -36,12 +38,13 @@
 
         lv1p1.setAreaApro(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("area_apro")))));
 
-        passos.getLv1p1dao().alterar(lv1p1);
+        lv1p1dao.alterar(lv1p1);
         passos.setLv1p1(lv1p1);
         session.setAttribute("Passoslv1", passos);
         response.sendRedirect("lv1p2.jsp");
         return;
     }
+
 
 %>
 
@@ -60,10 +63,10 @@
     <%@include file="../importacoes/navegacaolv1.jsp"%>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-3">
             <div class="form-group has-feedback">
                 <form action="lv1p1.jsp" onsubmit="return validarForm()" method="post">
-                    <label>Area Aproximada: 
+                    <label>Área Util Para a Pecuária: 
                         <span class="label-control"></span></label>
                     <div >
                         <div class="input-group">

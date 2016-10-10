@@ -1,3 +1,16 @@
+body{
+    background-color: rgba(58, 43, 43, 0.05);
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 1px solid #9e8383;
+
+}
+
+.navbar-inverse {
+    background-color: #3e3c3c;
+    border-color: #080808;
+}
 .conteudo{
     margin-top:60px;
 }
@@ -27,7 +40,7 @@
 }
 
 .intro-header{
-    background:url("../img/banner-background.jpg") fixed;
+    background:url("../img/banner-background1.jpg") fixed;
     background-size: cover;
 }
 
@@ -84,8 +97,8 @@ a.disabled{
 }
 
 
-.nivel2{
-    background-color:#f0ad4e;
+.nivel{
+   padding: 0px;
 }
 
 
@@ -142,7 +155,7 @@ a.disabled{
 
 
 .form-control-feedback {
-   
+
     z-index: 10;
 
 }

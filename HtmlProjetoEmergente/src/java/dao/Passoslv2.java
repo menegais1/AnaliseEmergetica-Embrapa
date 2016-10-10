@@ -15,15 +15,10 @@ import modelo.Lv2resultado;
 public class Passoslv2 {
 
     private Lv2p1 lv2p1;
-    private Lv2p1DAO lv2p1dao;
     private Lv2p2 lv2p2;
-    private Lv2p2DAO lv2p2dao;
     private Lv2p3 lv2p3;
-    private Lv2p3DAO lv2p3dao;
     private Lv2p4 lv2p4;
-    private Lv2p4DAO lv2p4dao;
     private Lv2resultado lv2resultado;
-    private Lv2resultadoDAO lv2resultadodao;
 
     private String ano;
 
@@ -34,11 +29,6 @@ public class Passoslv2 {
     }
 
     public Passoslv2() throws Exception {
-        lv2p1dao = new Lv2p1DAO();
-        lv2p2dao = new Lv2p2DAO();
-        lv2p3dao = new Lv2p3DAO();
-        lv2p4dao = new Lv2p4DAO();
-        lv2resultadodao = new Lv2resultadoDAO();
     }
 
     public Lv2p1 getLv2p1() {
@@ -49,13 +39,6 @@ public class Passoslv2 {
         this.lv2p1 = lv2p1;
     }
 
-    public Lv2p1DAO getLv2p1dao() {
-        return lv2p1dao;
-    }
-
-    public void setLv2p1dao(Lv2p1DAO lv2p1dao) {
-        this.lv2p1dao = lv2p1dao;
-    }
 
     public Lv2p2 getLv2p2() {
         return lv2p2;
@@ -65,13 +48,6 @@ public class Passoslv2 {
         this.lv2p2 = lv2p2;
     }
 
-    public Lv2p2DAO getLv2p2dao() {
-        return lv2p2dao;
-    }
-
-    public void setLv2p2dao(Lv2p2DAO lv2p2dao) {
-        this.lv2p2dao = lv2p2dao;
-    }
 
     public Lv2p3 getLv2p3() {
         return lv2p3;
@@ -79,14 +55,6 @@ public class Passoslv2 {
 
     public void setLv2p3(Lv2p3 lv2p3) {
         this.lv2p3 = lv2p3;
-    }
-
-    public Lv2p3DAO getLv2p3dao() {
-        return lv2p3dao;
-    }
-
-    public void setLv2p3dao(Lv2p3DAO lv2p3dao) {
-        this.lv2p3dao = lv2p3dao;
     }
 
     public Lv2p4 getLv2p4() {
@@ -97,13 +65,6 @@ public class Passoslv2 {
         this.lv2p4 = lv2p4;
     }
 
-    public Lv2p4DAO getLv2p4dao() {
-        return lv2p4dao;
-    }
-
-    public void setLv2p4dao(Lv2p4DAO lv2p4dao) {
-        this.lv2p4dao = lv2p4dao;
-    }
 
     public Lv2resultado getLv2resultado() {
         return lv2resultado;
@@ -113,13 +74,6 @@ public class Passoslv2 {
         this.lv2resultado = lv2resultado;
     }
 
-    public Lv2resultadoDAO getLv2resultadodao() {
-        return lv2resultadodao;
-    }
-
-    public void setLv2resultadodao(Lv2resultadoDAO lv2resultadodao) {
-        this.lv2resultadodao = lv2resultadodao;
-    }
 
     public String getAno() {
         return ano;
@@ -271,6 +225,29 @@ public class Passoslv2 {
         }
     }
 
+    public BigDecimal kg() {
+
+        try {
+            BigDecimal a1 = BigDecimal.valueOf(this.getLv2p3().getNovilhasQuant()).multiply(this.getLv2p3().getNovilhasKg());
+            BigDecimal a2 = BigDecimal.valueOf(this.getLv2p3().getTerneirosQuant()).multiply(this.getLv2p3().getTerneirosKg());
+            BigDecimal a3 = BigDecimal.valueOf(this.getLv2p3().getTerneirasQuant()).multiply(this.getLv2p3().getTerneirasKg());
+            BigDecimal a4 = BigDecimal.valueOf(this.getLv2p3().getNovilhoGordoQuant()).multiply(this.getLv2p3().getNovilhoGordoKg());
+            BigDecimal a5 = BigDecimal.valueOf(this.getLv2p3().getNovilhoPraRecriaQuant()).multiply(this.getLv2p3().getNovilhoPraRecriaKg());
+            BigDecimal a6 = BigDecimal.valueOf(this.getLv2p3().getVacaComCriaQuant()).multiply(this.getLv2p3().getVacaComCriaKg());
+            BigDecimal a7 = BigDecimal.valueOf(this.getLv2p3().getVacaGordaQuant()).multiply(this.getLv2p3().getVacaGordaKg());
+            BigDecimal a8 = BigDecimal.valueOf(this.getLv2p3().getVacaPrenhaQuant()).multiply(this.getLv2p3().getVacaPrenhaKg());
+            BigDecimal a9 = BigDecimal.valueOf(this.getLv2p3().getVacasDeDescarteQuant()).multiply(this.getLv2p3().getVacasDeDescarteKg());
+            BigDecimal a10 = BigDecimal.valueOf(this.getLv2p3().getTouroQuant()).multiply(this.getLv2p3().getTouroKg());
+            BigDecimal a11 = BigDecimal.valueOf(this.getLv2p3().getTorunosQuant()).multiply(this.getLv2p3().getTorunosKg());
+
+            return a1.add(a2).add(a3).add(a4).add(a5).add(a6).add(a7).add(a8).add(a9).add(a10).add(a11);
+
+        } catch (Exception e) {
+            return new BigDecimal("0.0");
+        }
+
+    }
+
     public BigDecimal lotacaoMedia() {
         try {
             BigDecimal area = areaMedia();
@@ -348,6 +325,16 @@ public class Passoslv2 {
             return BigDecimal.valueOf(a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t).setScale(2, BigDecimal.ROUND_HALF_UP);
         } catch (Exception e) {
             return new BigDecimal("0");
+        }
+    }
+
+    public BigDecimal margembruta() {
+        try {
+            return (this.totalReceita().subtract(totalCustoProducao())).divide(areaMedia(), 2, BigDecimal.ROUND_HALF_UP);
+
+        } catch (Exception e) {
+            return new BigDecimal("0.00");
+
         }
     }
 

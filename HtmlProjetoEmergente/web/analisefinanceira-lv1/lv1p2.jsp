@@ -12,7 +12,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv1p2 lv1p2 = passos.getLv1p2dao().buscarPorPropriedade(id, ano);
+        Lv1p2DAO lv1p2dao = new Lv1p2DAO();
+
+    Lv1p2 lv1p2 = lv1p2dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv1p1() == null) {
         response.sendRedirect("lv1p1.jsp");
@@ -33,14 +35,12 @@
         lv1p2.setTerneiro(Integer.parseInt(passos.conversor(request.getParameter("terneiro"))));
         lv1p2.setTerneira(Integer.parseInt(passos.conversor(request.getParameter("terneira"))));
         lv1p2.setNovilho36(Integer.parseInt(passos.conversor(request.getParameter("novilho_36"))));
-        lv1p2.setNovilha36(Integer.parseInt(passos.conversor(request.getParameter("novilha_36"))));
         lv1p2.setNovilho25a36(Integer.parseInt(passos.conversor(request.getParameter("novilho_25a36"))));
         lv1p2.setNovilha25a36(Integer.parseInt(passos.conversor(request.getParameter("novilha_25a36"))));
         lv1p2.setNovilho13a24(Integer.parseInt(passos.conversor(request.getParameter("novilho_13a24"))));
         lv1p2.setNovilha13a24(Integer.parseInt(passos.conversor(request.getParameter("novilha_13a24"))));
 
-        passos.setLv1p2dao(new Lv1p2DAO());
-        passos.getLv1p2dao().incluir(lv1p2);
+       lv1p2dao.incluir(lv1p2);
         passos.setLv1p2(lv1p2);
         session.setAttribute("Passos", passos);
         response.sendRedirect("lv1p3.jsp");
@@ -53,15 +53,13 @@
         lv1p2.setTerneiro(Integer.parseInt(passos.conversor(request.getParameter("terneiro"))));
         lv1p2.setTerneira(Integer.parseInt(passos.conversor(request.getParameter("terneira"))));
         lv1p2.setNovilho36(Integer.parseInt(passos.conversor(request.getParameter("novilho_36"))));
-        lv1p2.setNovilha36(Integer.parseInt(passos.conversor(request.getParameter("novilha_36"))));
         lv1p2.setNovilho25a36(Integer.parseInt(passos.conversor(request.getParameter("novilho_25a36"))));
         lv1p2.setNovilha25a36(Integer.parseInt(passos.conversor(request.getParameter("novilha_25a36"))));
         lv1p2.setNovilho13a24(Integer.parseInt(passos.conversor(request.getParameter("novilho_13a24"))));
         lv1p2.setNovilha13a24(Integer.parseInt(passos.conversor(request.getParameter("novilha_13a24"))));
 
-        passos.setLv1p2dao(new Lv1p2DAO());
 
-        passos.getLv1p2dao().alterar(lv1p2);
+        lv1p2dao.alterar(lv1p2);
         passos.setLv1p2(lv1p2);
         session.setAttribute("Passos", passos);
         response.sendRedirect("lv1p3.jsp");
@@ -168,12 +166,7 @@
                                 <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha25a36()%>"  name="novilha_25a36" title="Insira a Quantidade de Novilhos de 25 a 36 meses  da sua Propriedade">
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
-                            <label>Novilhas: Mais de 36 meses <span class="label-control"></span></label>
-                            <div class="input-group">
-                                <div class="input-group-addon">cab</div>
-                                <input type="text" class="form-control" value="<%=passos.getLv1p2().getNovilha36()%>"  name="novilha_36" title="Insira a Quantidade de Novilhos de mais de 36 meses da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -202,15 +195,20 @@
 
 
         </div>
-        
+
         <div class="col-md-6">
             <div class="well well-sm conteudo" id="lotacaocalculo" hidden></div>
+            <div class="well well-sm" id="uacalculo" hidden></div>
+            <div class="well well-sm" id="pmachos" hidden></div>
+            <div class="well well-sm" id="pfemeas" hidden></div>
+
+
         </div>
 
 
 
     </div>
-    
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3" hidden id="botao" >
 

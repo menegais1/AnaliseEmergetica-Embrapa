@@ -255,7 +255,7 @@
                     <hr class="section-heading-spacer">
                     <div class="clearfix"></div>
                     <h2 class="section-heading">Sobre</h2>
-                    <p class="lead">Esse software foi desenvolvido por alunos bolsistas do colégio IFSUL, Bagé, com ajuda dos orientadores e de um consultor da EMBRAPA. </p><br>
+                    <p class="lead">Essa aplicação Web foi desenvolvida a partir da concepção de uma solução rápida e fácil para o cálculo de custo por terneiro desmamado, feita pela EMBRAPA, a solução foi desenvolvida nos anos de 2013 e 2014, já o desenvolvimento da aplicação Web começou em 2015 e ainda está em construção.</p><br>
                     <button type="button" class="btn btn-info btn-lg center-block" data-toggle="modal" data-target="#myModal">Ver mais</button>
                     <div class="modal fade" id="myModal" role="dialog">
                         <div class="modal-dialog">

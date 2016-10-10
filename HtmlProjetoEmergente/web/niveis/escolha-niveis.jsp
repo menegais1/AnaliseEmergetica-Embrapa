@@ -1,4 +1,14 @@
 
+<%@page import="dao.Lv2resultadoDAO"%>
+<%@page import="dao.Lv2p4DAO"%>
+<%@page import="dao.Lv2p3DAO"%>
+<%@page import="dao.Lv2p2DAO"%>
+<%@page import="dao.Lv2p1DAO"%>
+<%@page import="dao.Lv1resultadoDAO"%>
+<%@page import="dao.Lv1p4DAO"%>
+<%@page import="dao.Lv1p3DAO"%>
+<%@page import="dao.Lv1p2DAO"%>
+<%@page import="dao.Lv1p1DAO"%>
 <%@page import="dao.Passoslv2"%>
 <%@page import="dao.Passoslv1"%>
 <%@page import="modelo.Propriedade"%>
@@ -16,12 +26,23 @@
     String ano = session.getAttribute("Ano").toString();
 
     Passoslv1 passoslv1 = new Passoslv1();
-
-    passoslv1.setLv1p1(passoslv1.getLv1p1dao().buscarPorPropriedade(id, ano));
-    passoslv1.setLv1p2(passoslv1.getLv1p2dao().buscarPorPropriedade(id, ano));
-    passoslv1.setLv1p3(passoslv1.getLv1p3dao().buscarPorPropriedade(id, ano));
-    passoslv1.setLv1p4(passoslv1.getLv1p4dao().buscarPorPropriedade(id, ano));
-    passoslv1.setLv1resultado(passoslv1.getLv1resultadodao().buscarPorPropriedade(id, ano));
+    
+    Lv1p1DAO lv1p1dao = new Lv1p1DAO();
+    Lv1p2DAO lv1p2dao = new Lv1p2DAO();
+    Lv1p3DAO lv1p3dao = new Lv1p3DAO();
+    Lv1p4DAO lv1p4dao = new Lv1p4DAO();
+    Lv1resultadoDAO lv1resultadodao = new Lv1resultadoDAO();
+    Lv2p1DAO lv2p1dao = new Lv2p1DAO();
+    Lv2p2DAO lv2p2dao = new Lv2p2DAO();
+    Lv2p3DAO lv2p3dao = new Lv2p3DAO();
+    Lv2p4DAO lv2p4dao = new Lv2p4DAO();
+    Lv2resultadoDAO lv2resultadodao = new Lv2resultadoDAO();
+    
+    passoslv1.setLv1p1(lv1p1dao.buscarPorPropriedade(id, ano));
+    passoslv1.setLv1p2(lv1p2dao.buscarPorPropriedade(id, ano));
+    passoslv1.setLv1p3(lv1p3dao.buscarPorPropriedade(id, ano));
+    passoslv1.setLv1p4(lv1p4dao.buscarPorPropriedade(id, ano));
+    passoslv1.setLv1resultado(lv1resultadodao.buscarPorPropriedade(id, ano));
 
     Integer porcento = 0, porcento1 = 0;
 
@@ -44,11 +65,11 @@
 
     Passoslv2 passoslv2 = new Passoslv2();
 
-    passoslv2.setLv2p1(passoslv2.getLv2p1dao().buscarPorPropriedade(id, ano));
-    passoslv2.setLv2p2(passoslv2.getLv2p2dao().buscarPorPropriedade(id, ano));
-    passoslv2.setLv2p3(passoslv2.getLv2p3dao().buscarPorPropriedade(id, ano));
-    passoslv2.setLv2p4(passoslv2.getLv2p4dao().buscarPorPropriedade(id, ano));
-    passoslv2.setLv2resultado(passoslv2.getLv2resultadodao().buscarPorPropriedade(id, ano));
+    passoslv2.setLv2p1(lv2p1dao.buscarPorPropriedade(id, ano));
+    passoslv2.setLv2p2(lv2p2dao.buscarPorPropriedade(id, ano));
+    passoslv2.setLv2p3(lv2p3dao.buscarPorPropriedade(id, ano));
+    passoslv2.setLv2p4(lv2p4dao.buscarPorPropriedade(id, ano));
+    passoslv2.setLv2resultado(lv2resultadodao.buscarPorPropriedade(id, ano));
 
     if (passoslv2.getLv2p1() != null) {
         porcento1 = 20;
@@ -78,18 +99,41 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 well well-sm text-center">
-            <h4>Propriedade: <%=p.getNome()%></h4>
+        <div class="col-md-4 nivel">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Propriedade
+                </div>
+                <div class="panel-body text-center">
+                    <h4 > <%=p.getNome()%></h4>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3  well well-sm text-center">
-            <h4>Cidade: <%=p.getCidade()%></h4>
+
+        <div class="col-md-4 nivel">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Município
+                </div>
+                <div class="panel-body text-center">
+                    <h4 > <%=p.getCidade()%></h4>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3  well well-sm text-center">
-            <h4>UF: <%=p.getUf()%></h4>
+
+        <div class="col-md-4 nivel">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Uf
+                </div>
+                <div class="panel-body text-center">
+                    <h4 > <%=p.getUf()%></h4>
+                </div>
+            </div>
         </div>
-        <div class="col-md-3 well well-sm text-center">
-            <h4>Ano: <%=session.getAttribute("Ano").toString()%></h4>
-        </div>
+
+        
+
     </div>
 
     <hr>
@@ -125,11 +169,20 @@
                 </div>
             </a>
         </div>
+        
+        <div class="col-md-3 col-md-offset-1 nivel">
+            <div class="panel panel-info">
+                
+                <div class="panel-body text-center">
+                    <h4 >Ano: <%=session.getAttribute("Ano").toString()%></h4>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="row">
         <div class="col-md-2 col-md-offset-4">
             <br>
-            <span class="text-center">Completo:</span>
 
             <div class="progress">
                 <div class="progress-bar progress-bar-info" style="width: <%=porcento%>%; z-index:1; color:black;">
@@ -141,7 +194,6 @@
 
         <div class="col-md-2">
             <br>
-            <span class="text-center">Completo:</span>
             <div class="progress">
                 <div class="progress-bar progress-bar-info" style="width: <%=porcento1%>%; z-index:1; color:black;">
                     <span><%=porcento1%>%</span>

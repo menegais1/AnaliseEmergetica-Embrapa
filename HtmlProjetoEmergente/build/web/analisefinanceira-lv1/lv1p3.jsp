@@ -1,3 +1,4 @@
+<%@page import="dao.Lv1p3DAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv1p3"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -12,7 +13,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv1p3 lv1p3 = passos.getLv1p3dao().buscarPorPropriedade(id, ano);
+    Lv1p3DAO lv1p3dao = new Lv1p3DAO();
+
+    Lv1p3 lv1p3 = lv1p3dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv1p2() == null) {
         response.sendRedirect("lv1p2.jsp");
@@ -28,7 +31,7 @@
         lv1p3 = new Lv1p3(id, ano);
 
         lv1p3.setReceitaAnual(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("receita_anual")))));
-        passos.getLv1p3dao().incluir(lv1p3);
+        lv1p3dao.incluir(lv1p3);
         passos.setLv1p3(lv1p3);
         session.setAttribute("Passoslv1", passos);
         response.sendRedirect("lv1p4.jsp");
@@ -37,7 +40,7 @@
 
         lv1p3.setReceitaAnual(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("receita_anual")))));
 
-        passos.getLv1p3dao().alterar(lv1p3);
+        lv1p3dao.alterar(lv1p3);
         passos.setLv1p3(lv1p3);
         session.setAttribute("Passoslv1", passos);
         response.sendRedirect("lv1p4.jsp");
@@ -67,7 +70,7 @@
                     <div class="input-group">
                         <div class="input-group-addon">R$</div>
                         <input type="text" autofocus class="form-control" value="<%=passos.getLv1p3().getReceitaAnual()%>" name="receita_anual"title="Insira a Receita Anual da sua Propriedade">
-                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
+                        <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span><br>
 
                     </div>
                     <span class="glyphicon glyphicon-asterisk"></span><span style="color:red"> Todos os campos são obrigatórios</span><br><br>

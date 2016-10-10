@@ -1,3 +1,4 @@
+<%@page import="dao.Lv2p2DAO"%>
 <%@page import="modelo.Lv2p2"%>
 <%@include file="../jsp/testelogin.jsp"%>
 <%@include file="../jsp/testepropriedade.jsp"%>
@@ -10,8 +11,10 @@
 
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
+    
+        Lv2p2DAO lv2p2dao = new Lv2p2DAO();
 
-    Lv2p2 lv2p2 = passos.getLv2p2dao().buscarPorPropriedade(id, ano);
+    Lv2p2 lv2p2 = lv2p2dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv2p1() == null) {
         response.sendRedirect("lv2p1.jsp");
@@ -76,7 +79,7 @@
         lv2p2.setNovilho36Julset(Integer.parseInt(passos.conversor(request.getParameter("novilho_36_julset"))));
         lv2p2.setNovilho36Outdez(Integer.parseInt(passos.conversor(request.getParameter("novilho_36_outdez"))));
 
-        passos.getLv2p2dao().incluir(lv2p2);
+        lv2p2dao.incluir(lv2p2);
         passos.setLv2p2(lv2p2);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2p3.jsp");
@@ -133,7 +136,7 @@
         lv2p2.setNovilho36Julset(Integer.parseInt(passos.conversor(request.getParameter("novilho_36_julset"))));
         lv2p2.setNovilho36Outdez(Integer.parseInt(passos.conversor(request.getParameter("novilho_36_outdez"))));
 
-        passos.getLv2p2dao().alterar(lv2p2);
+        lv2p2dao.alterar(lv2p2);
         passos.setLv2p2(lv2p2);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2p3.jsp");

@@ -49,9 +49,12 @@
         response.sendRedirect("../analisefinanceira/nivel-data.jsp");
     }
 
-    if (request.getParameter(
-            "ano") != null && (!request.getParameter("ano").isEmpty())) {
+    if (request.getParameter("ano") != null && (!request.getParameter("ano").isEmpty())) {
         session.setAttribute("Ano", request.getParameter("ano"));
+        response.sendRedirect("../niveis/escolha-niveis.jsp");
+        return;
+    } else if (request.getParameter("Rano") != null && (!request.getParameter("Rano").isEmpty())) {
+        session.setAttribute("Ano", request.getParameter("Rano"));
         response.sendRedirect("../niveis/escolha-niveis.jsp");
         return;
     }
@@ -68,64 +71,99 @@
         <div class="col-md-12">
             <h1 class="text-center">Análise Financeira</h1>
         </div>
-        <div class="row">
-            <div class="col-md-4  well well-sm text-center">
-                <h4 >Propriedade: <%=p.getNome()%></h4>
+         <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Propriedade
+                    </div>
+                    <div class="panel-body text-center">
+                        <h4 > <%=p.getNome()%></h4>
+                    </div>
+                </div>
             </div>
+
         </div>
         <hr>
-        <div class="row conteudo">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-dismissable alert-info text-center">
+                    <p>Insira ou selecione um ano na tabela abaixo</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group form-group-lg ">
-                            <form action="nivel-data.jsp" method="post">
-                                <label>Ano: </label>
-                                <input type="number" max="2100" min="1900" required placeholder="Insira o ano da análise" class="form-control" name="ano"><br>
 
 
-                                <button type="submit" class="btn btn-success btn-lg center-block">Entrar</button>
 
-                            </form>
-                        </div>
-                    </div>
 
-                    <%if(!a.isEmpty()){%>
-                   
 
-                    <div class="col-md-5 text-center col-md-offset-2" >
+                    <div class="col-md-6 col-md-offset-3 text-center" >
 
                         <span>Anos inseridos</span><br>
                         <table class="table table-bordered table-responsive table-striped text-center ">
+                            <div class="form-group form-group-lg ">
+                                <form action="nivel-data.jsp" method="post">
 
-                            <tr>
-                                <th>
-                                    Ano
-                                </th>
-                                <th>
-                                    Opções
-                                </th>
-                            </tr>
-
-                            <%for (String ano : a) {%>
-                            <tr>
-                                <td>
-                                    <%=ano%>
-                                </td>
-                                <td>
-                                    <div class="btn-group">
-                                        <a href="../analisefinanceira/nivel-data.jsp?ano=<%=ano%>" class="btn btn-lg btn-danger">Entrar</a>
-                                        <a href="../analisefinanceira/nivel-data.jsp?excluir=<%=ano%>" class="btn btn-lg btn-warning">Excluir</a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <%}%>
+                                    <tr>
+                                        <td colspan="3">
 
 
+                                            <input type="number" max="2100" min="1900" placeholder="Insira o ano da análise" id="ano" class="form-control" name="ano"><br>
+
+
+
+
+                                        </td>
+
+                                    </tr>
+                                    
+                                    <%if(!a.isEmpty()){%>
+                                    <tr>
+                                        <th>
+                                            Opção
+                                        </th>
+
+                                        <th>
+                                            Ano
+                                        </th>
+                                        <th>
+                                            Opções
+                                        </th>
+                                    </tr>
+
+                                    <%for (String ano : a) {%>
+                                    <tr>
+                                        <td>
+                                            <input class="form-control" type="radio" class="Rano" name="Rano" value="<%=ano%>"> 
+                                        </td>
+
+                                        <td>
+                                            <%=ano%>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="../analisefinanceira/nivel-data.jsp?excluir=<%=ano%>" class="btn btn-lg btn-warning">Excluir</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                     <%}%>
+
+                                    <tr>
+                                        <td colspan="3">
+                                            <button type="submit" class="btn btn-success btn-lg center-block">Entrar</button>
+                                        </td>
+                                    </tr>
+                                   
+                                </form>
+                            </div>     
 
                         </table>
                     </div>
-                            <%}%>
+
                 </div>
 
             </div>
@@ -144,5 +182,21 @@
 
 
     </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $("#ano").focus(function () {
+                $("input:radio").removeAttr("checked");
+
+            });
+
+
+
+        });
+    </script>
+
+
 </body>
 </html>

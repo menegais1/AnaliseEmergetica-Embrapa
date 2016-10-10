@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Usuario
+ * @author Roberto Menegais
  */
 @Entity
 @Table(name = "lv2p3")
@@ -55,7 +55,18 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lv2p3.findByTorunosValor", query = "SELECT l FROM Lv2p3 l WHERE l.torunosValor = :torunosValor"),
     @NamedQuery(name = "Lv2p3.findByTouroQuant", query = "SELECT l FROM Lv2p3 l WHERE l.touroQuant = :touroQuant"),
     @NamedQuery(name = "Lv2p3.findByTouroValor", query = "SELECT l FROM Lv2p3 l WHERE l.touroValor = :touroValor"),
-    @NamedQuery(name = "Lv2p3.findByAno", query = "SELECT l FROM Lv2p3 l WHERE l.ano = :ano")})
+    @NamedQuery(name = "Lv2p3.findByAno", query = "SELECT l FROM Lv2p3 l WHERE l.ano = :ano"),
+    @NamedQuery(name = "Lv2p3.findByTerneirosKg", query = "SELECT l FROM Lv2p3 l WHERE l.terneirosKg = :terneirosKg"),
+    @NamedQuery(name = "Lv2p3.findByTerneirasKg", query = "SELECT l FROM Lv2p3 l WHERE l.terneirasKg = :terneirasKg"),
+    @NamedQuery(name = "Lv2p3.findByNovilhasKg", query = "SELECT l FROM Lv2p3 l WHERE l.novilhasKg = :novilhasKg"),
+    @NamedQuery(name = "Lv2p3.findByVacasDeDescarteKg", query = "SELECT l FROM Lv2p3 l WHERE l.vacasDeDescarteKg = :vacasDeDescarteKg"),
+    @NamedQuery(name = "Lv2p3.findByVacaPrenhaKg", query = "SELECT l FROM Lv2p3 l WHERE l.vacaPrenhaKg = :vacaPrenhaKg"),
+    @NamedQuery(name = "Lv2p3.findByVacaComCriaKg", query = "SELECT l FROM Lv2p3 l WHERE l.vacaComCriaKg = :vacaComCriaKg"),
+    @NamedQuery(name = "Lv2p3.findByVacaGordaKg", query = "SELECT l FROM Lv2p3 l WHERE l.vacaGordaKg = :vacaGordaKg"),
+    @NamedQuery(name = "Lv2p3.findByNovilhoPraRecriaKg", query = "SELECT l FROM Lv2p3 l WHERE l.novilhoPraRecriaKg = :novilhoPraRecriaKg"),
+    @NamedQuery(name = "Lv2p3.findByNovilhoGordoKg", query = "SELECT l FROM Lv2p3 l WHERE l.novilhoGordoKg = :novilhoGordoKg"),
+    @NamedQuery(name = "Lv2p3.findByTorunosKg", query = "SELECT l FROM Lv2p3 l WHERE l.torunosKg = :torunosKg"),
+    @NamedQuery(name = "Lv2p3.findByTouroKg", query = "SELECT l FROM Lv2p3 l WHERE l.touroKg = :touroKg")})
 public class Lv2p3 implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -122,6 +133,39 @@ public class Lv2p3 implements Serializable {
     private BigDecimal touroValor;
     @Column(name = "ano")
     private String ano;
+    @Basic(optional = false)
+    @Column(name = "terneiros_kg")
+    private BigDecimal terneirosKg;
+    @Basic(optional = false)
+    @Column(name = "terneiras_kg")
+    private BigDecimal terneirasKg;
+    @Basic(optional = false)
+    @Column(name = "novilhas_kg")
+    private BigDecimal novilhasKg;
+    @Basic(optional = false)
+    @Column(name = "vacas_de_descarte_kg")
+    private BigDecimal vacasDeDescarteKg;
+    @Basic(optional = false)
+    @Column(name = "vaca_prenha_kg")
+    private BigDecimal vacaPrenhaKg;
+    @Basic(optional = false)
+    @Column(name = "vaca_com_cria_kg")
+    private BigDecimal vacaComCriaKg;
+    @Basic(optional = false)
+    @Column(name = "vaca_gorda_kg")
+    private BigDecimal vacaGordaKg;
+    @Basic(optional = false)
+    @Column(name = "novilho_pra_recria_kg")
+    private BigDecimal novilhoPraRecriaKg;
+    @Basic(optional = false)
+    @Column(name = "novilho_gordo_kg")
+    private BigDecimal novilhoGordoKg;
+    @Basic(optional = false)
+    @Column(name = "torunos_kg")
+    private BigDecimal torunosKg;
+    @Basic(optional = false)
+    @Column(name = "touro_kg")
+    private BigDecimal touroKg;
     @JoinColumn(name = "propriedade_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Propriedade propriedadeId;
@@ -140,7 +184,7 @@ public class Lv2p3 implements Serializable {
         this.id = id;
     }
 
-    public Lv2p3(Integer id, Integer terneirosQuant, Integer terneirasQuant, Integer novilhasQuant, Integer vacasDeDescarteQuant, Integer vacaPrenhaQuant, Integer vacaComCriaQuant, Integer vacaGordaQuant, Integer novilhoPraRecriaQuant, Integer novilhoGordoQuant, Integer torunosQuant, Integer touroQuant) {
+    public Lv2p3(Integer id, Integer terneirosQuant, Integer terneirasQuant, Integer novilhasQuant, Integer vacasDeDescarteQuant, Integer vacaPrenhaQuant, Integer vacaComCriaQuant, Integer vacaGordaQuant, Integer novilhoPraRecriaQuant, Integer novilhoGordoQuant, Integer torunosQuant, Integer touroQuant, BigDecimal terneirosKg, BigDecimal terneirasKg, BigDecimal novilhasKg, BigDecimal vacasDeDescarteKg, BigDecimal vacaPrenhaKg, BigDecimal vacaComCriaKg, BigDecimal vacaGordaKg, BigDecimal novilhoPraRecriaKg, BigDecimal novilhoGordoKg, BigDecimal torunosKg, BigDecimal touroKg) {
         this.id = id;
         this.terneirosQuant = terneirosQuant;
         this.terneirasQuant = terneirasQuant;
@@ -153,6 +197,17 @@ public class Lv2p3 implements Serializable {
         this.novilhoGordoQuant = novilhoGordoQuant;
         this.torunosQuant = torunosQuant;
         this.touroQuant = touroQuant;
+        this.terneirosKg = terneirosKg;
+        this.terneirasKg = terneirasKg;
+        this.novilhasKg = novilhasKg;
+        this.vacasDeDescarteKg = vacasDeDescarteKg;
+        this.vacaPrenhaKg = vacaPrenhaKg;
+        this.vacaComCriaKg = vacaComCriaKg;
+        this.vacaGordaKg = vacaGordaKg;
+        this.novilhoPraRecriaKg = novilhoPraRecriaKg;
+        this.novilhoGordoKg = novilhoGordoKg;
+        this.torunosKg = torunosKg;
+        this.touroKg = touroKg;
     }
 
     public Integer getId() {
@@ -174,13 +229,12 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTerneirosValor() {
         if (terneirosValor != null) {
 
-            terneirosValor = terneirosValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            terneirosValor = terneirosValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return terneirosValor;
     }
 
     public void setTerneirosValor(BigDecimal terneirosValor) {
-
         this.terneirosValor = terneirosValor;
     }
 
@@ -195,7 +249,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTerneirasValor() {
         if (terneirasValor != null) {
 
-            terneirasValor = terneirasValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            terneirasValor = terneirasValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return terneirasValor;
     }
@@ -215,7 +269,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getNovilhasValor() {
         if (novilhasValor != null) {
 
-            novilhasValor = novilhasValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            novilhasValor = novilhasValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return novilhasValor;
     }
@@ -235,7 +289,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacasDeDescarteValor() {
         if (vacasDeDescarteValor != null) {
 
-            vacasDeDescarteValor = vacasDeDescarteValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            vacasDeDescarteValor = vacasDeDescarteValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return vacasDeDescarteValor;
     }
@@ -255,7 +309,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacaPrenhaValor() {
         if (vacaPrenhaValor != null) {
 
-            vacaPrenhaValor = vacaPrenhaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            vacaPrenhaValor = vacaPrenhaValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return vacaPrenhaValor;
     }
@@ -275,7 +329,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacaComCriaValor() {
         if (vacaComCriaValor != null) {
 
-            vacaComCriaValor = vacaComCriaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            vacaComCriaValor = vacaComCriaValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return vacaComCriaValor;
     }
@@ -295,7 +349,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getVacaGordaValor() {
         if (vacaGordaValor != null) {
 
-            vacaGordaValor = vacaGordaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            vacaGordaValor = vacaGordaValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return vacaGordaValor;
     }
@@ -315,7 +369,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getNovilhoPraRecriaValor() {
         if (novilhoPraRecriaValor != null) {
 
-            novilhoPraRecriaValor = novilhoPraRecriaValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            novilhoPraRecriaValor = novilhoPraRecriaValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return novilhoPraRecriaValor;
     }
@@ -335,7 +389,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getNovilhoGordoValor() {
         if (novilhoGordoValor != null) {
 
-            novilhoGordoValor = novilhoGordoValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            novilhoGordoValor = novilhoGordoValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return novilhoGordoValor;
     }
@@ -355,7 +409,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTorunosValor() {
         if (torunosValor != null) {
 
-            torunosValor = torunosValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            torunosValor = torunosValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return torunosValor;
     }
@@ -375,7 +429,7 @@ public class Lv2p3 implements Serializable {
     public BigDecimal getTouroValor() {
         if (touroValor != null) {
 
-            touroValor = touroValor.setScale(2,BigDecimal.ROUND_HALF_UP);
+            touroValor = touroValor.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return touroValor;
     }
@@ -392,7 +446,140 @@ public class Lv2p3 implements Serializable {
         this.ano = ano;
     }
 
+    public BigDecimal getTerneirosKg() {
+        if (terneirosKg != null) {
+
+            terneirosKg = terneirosKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return terneirosKg;
+    }
+
+    public void setTerneirosKg(BigDecimal terneirosKg) {
+        this.terneirosKg = terneirosKg;
+    }
+
+    public BigDecimal getTerneirasKg() {
+        if (terneirasKg != null) {
+
+            terneirasKg = terneirasKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return terneirasKg;
+    }
+
+    public void setTerneirasKg(BigDecimal terneirasKg) {
+        this.terneirasKg = terneirasKg;
+    }
+
+    public BigDecimal getNovilhasKg() {
+        if (novilhasKg != null) {
+
+            novilhasKg = novilhasKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return novilhasKg;
+    }
+
+    public void setNovilhasKg(BigDecimal novilhasKg) {
+        this.novilhasKg = novilhasKg;
+    }
+
+    public BigDecimal getVacasDeDescarteKg() {
+        if (vacasDeDescarteKg != null) {
+
+            vacasDeDescarteKg = vacasDeDescarteKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return vacasDeDescarteKg;
+    }
+
+    public void setVacasDeDescarteKg(BigDecimal vacasDeDescarteKg) {
+        this.vacasDeDescarteKg = vacasDeDescarteKg;
+    }
+
+    public BigDecimal getVacaPrenhaKg() {
+        if (vacaPrenhaKg != null) {
+
+            vacaPrenhaKg = vacaPrenhaKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return vacaPrenhaKg;
+    }
+
+    public void setVacaPrenhaKg(BigDecimal vacaPrenhaKg) {
+        this.vacaPrenhaKg = vacaPrenhaKg;
+    }
+
+    public BigDecimal getVacaComCriaKg() {
+        if (vacaComCriaKg != null) {
+
+            vacaComCriaKg = vacaComCriaKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return vacaComCriaKg;
+    }
+
+    public void setVacaComCriaKg(BigDecimal vacaComCriaKg) {
+        this.vacaComCriaKg = vacaComCriaKg;
+    }
+
+    public BigDecimal getVacaGordaKg() {
+        if (vacaGordaKg != null) {
+
+            vacaGordaKg = vacaGordaKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return vacaGordaKg;
+    }
+
+    public void setVacaGordaKg(BigDecimal vacaGordaKg) {
+        this.vacaGordaKg = vacaGordaKg;
+    }
+
+    public BigDecimal getNovilhoPraRecriaKg() {
+        if (novilhoPraRecriaKg != null) {
+
+            novilhoPraRecriaKg = novilhoPraRecriaKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return novilhoPraRecriaKg;
+    }
+
+    public void setNovilhoPraRecriaKg(BigDecimal novilhoPraRecriaKg) {
+        this.novilhoPraRecriaKg = novilhoPraRecriaKg;
+    }
+
+    public BigDecimal getNovilhoGordoKg() {
+        if (novilhoGordoKg != null) {
+
+            novilhoGordoKg = novilhoGordoKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return novilhoGordoKg;
+    }
+
+    public void setNovilhoGordoKg(BigDecimal novilhoGordoKg) {
+        this.novilhoGordoKg = novilhoGordoKg;
+    }
+
+    public BigDecimal getTorunosKg() {
+        if (torunosKg != null) {
+
+            torunosKg = torunosKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return torunosKg;
+    }
+
+    public void setTorunosKg(BigDecimal torunosKg) {
+        this.torunosKg = torunosKg;
+    }
+
+    public BigDecimal getTouroKg() {
+        if (touroKg != null) {
+
+            touroKg = touroKg.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return touroKg;
+    }
+
+    public void setTouroKg(BigDecimal touroKg) {
+        this.touroKg = touroKg;
+    }
+
     public Propriedade getPropriedadeId() {
+
         return propriedadeId;
     }
 

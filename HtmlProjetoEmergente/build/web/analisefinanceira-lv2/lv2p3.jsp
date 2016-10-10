@@ -1,3 +1,4 @@
+<%@page import="dao.Lv2p3DAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv2p3"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -12,7 +13,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv2p3 lv2p3 = passos.getLv2p3dao().buscarPorPropriedade(id, ano);
+    Lv2p3DAO lv2p3dao = new Lv2p3DAO();
+
+    Lv2p3 lv2p3 = lv2p3dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv2p2() == null) {
         response.sendRedirect("lv2p2.jsp");
@@ -50,7 +53,18 @@
         lv2p3.setTorunosValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("torunos_Valor")))));
         lv2p3.setTouroValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("touro_Valor")))));
 
-        passos.getLv2p3dao().incluir(lv2p3);
+        lv2p3.setTerneirosKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiros_Kg")))));
+        lv2p3.setTerneirasKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiras_Kg")))));
+        lv2p3.setNovilhasKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilhas_Kg")))));
+        lv2p3.setVacasDeDescarteKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vacas_de_descarte_Kg")))));
+        lv2p3.setVacaPrenhaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_prenha_Kg")))));
+        lv2p3.setVacaComCriaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_com_cria_Kg")))));
+        lv2p3.setVacaGordaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_gorda_Kg")))));
+        lv2p3.setNovilhoPraRecriaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_pra_recria_Kg")))));
+        lv2p3.setNovilhoGordoKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_gordo_Kg")))));
+        lv2p3.setTorunosKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("torunos_Kg")))));
+        lv2p3.setTouroKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("touro_Kg")))));
+        lv2p3dao.incluir(lv2p3);
         passos.setLv2p3(lv2p3);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2p4.jsp");
@@ -79,8 +93,19 @@
         lv2p3.setNovilhoGordoValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_gordo_Valor")))));
         lv2p3.setTorunosValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("torunos_Valor")))));
         lv2p3.setTouroValor(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("touro_Valor")))));
+        lv2p3.setTerneirosKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiros_Kg")))));
+        lv2p3.setTerneirasKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("terneiras_Kg")))));
+        lv2p3.setNovilhasKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilhas_Kg")))));
+        lv2p3.setVacasDeDescarteKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vacas_de_descarte_Kg")))));
+        lv2p3.setVacaPrenhaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_prenha_Kg")))));
+        lv2p3.setVacaComCriaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_com_cria_Kg")))));
+        lv2p3.setVacaGordaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("vaca_gorda_Kg")))));
+        lv2p3.setNovilhoPraRecriaKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_pra_recria_Kg")))));
+        lv2p3.setNovilhoGordoKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("novilho_gordo_Kg")))));
+        lv2p3.setTorunosKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("torunos_Kg")))));
+        lv2p3.setTouroKg(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("touro_Kg")))));
 
-        passos.getLv2p3dao().alterar(lv2p3);
+        lv2p3dao.alterar(lv2p3);
         passos.setLv2p3(lv2p3);
         session.setAttribute("Passoslv2", passos);
         response.sendRedirect("lv2p4.jsp");
@@ -109,12 +134,14 @@
                     <h1 class="text-center">Vendas de Animais</h1>
 
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3"><h3>Cabeças</h3></div>
-                        <div class="col-md-3"><h3>Valor Unitário</h3></div>
+                        <div class="col-md-4"><h3>Cabeças</h3></div>
+                        <div class="col-md-4"><h3>Valor Unitário</h3></div>
+                        <div class="col-md-4"><h3>Peso Médio</h3></div>
+
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Terneiros <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -122,7 +149,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Terneiros <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -130,11 +157,19 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Terneiros <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirosKg()%>"  name="terneiros_Kg"  title="Insira o Peso Médio dos Terneiros de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Terneiras <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -142,7 +177,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Terneiras <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -150,10 +185,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Terneiras <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTerneirasKg()%>"  name="terneiras_Kg"  title="Insira o Peso Médio das Terneiras de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Novilhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -161,7 +204,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Novilhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -169,10 +212,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Novilhas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhasKg()%>"  name="novilhas_Kg"  title="Insira o Peso Médio das Novilhas de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Vacas de Descarte <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -180,7 +231,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Vacas de Descarte <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -188,10 +239,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Vacas de Descarte <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacasDeDescarteKg()%>"  name="vacas_de_descarte_Kg" title="Insira o Peso Médio das Vacas de Descarte de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Vacas Prenhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -199,7 +258,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Vacas Prenhas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -207,10 +266,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Vacas Prenhas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaPrenhaKg()%>"  name="vaca_prenha_Kg"  title="Insira o Peso Médio das Vacas Prenha de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Vacas com Cria <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -218,7 +285,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Vacas com Cria <span class="label-control"></span></label>
 
                             <div class="input-group">
@@ -227,10 +294,19 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Vacas com Cria <span class="label-control"></span></label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaComCriaKg()%>"  name="vaca_com_cria_Kg"  title="Insira o Peso Médio das Vacas com Cria de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Vacas Gordas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -238,7 +314,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Vacas Gordas <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -246,10 +322,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Vacas Gordas <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getVacaGordaKg()%>"  name="vaca_gorda_Kg"  title="Insira o Peso Médio das Vacas Gordas de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Novilhos para Recria <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -257,7 +341,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Novilhos para Recria <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -265,11 +349,19 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Novilhos para Recria <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoPraRecriaKg()%>"  name="novilho_pra_recria_Kg"  title="Insira o Peso Médio dos Novilhos para Recria de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Novilhos Gordos <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -277,7 +369,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Novilhos Gordos <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -285,10 +377,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Novilhos Gordos <span class="label-control"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getNovilhoGordoKg()%>"  name="novilho_gordo_Kg"  title="Insira o Peso Médio dos Novilhos Gordos de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row ">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Torunos <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -296,7 +396,7 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Torunos <span class="label-control int"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
@@ -304,10 +404,18 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <label>Torunos <span class="label-control int"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTorunosKg()%>"  name="torunos_Kg"  title="Insira o Peso Médio dos Torunos de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-md-3 col-md-offset-3">
+                        <div class="col-md-4">
                             <label>Touros <span class="label-control"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">cab</div>
@@ -315,11 +423,19 @@
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label>Touros <span class="label-control int"></span></label>
                             <div class="input-group">
                                 <div class="input-group-addon">R$</div>
                                 <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTouroValor()%>"  name="touro_Valor"  title="Insira o Valor de Touros de sua propriedade">
+                                <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Touros <span class="label-control int"></span></label>
+                            <div class="input-group">
+                                <div class="input-group-addon">KG</div>
+                                <input type="text" class="form-control double" value="<%=passos.getLv2p3().getTouroKg()%>"  name="touro_Kg"  title="Insira o Peso Médio dos Touros de sua propriedade">
                                 <span class="form-control-feedback glyphicon glyphicon-info-sign" ></span>
                             </div>
                         </div>
@@ -339,6 +455,11 @@
                 <div class="col-md-12 " hidden id="infocalculo">
 
                 </div>
+
+                <div class="row">
+                    <div class="col-md-12" id="grafico1" hidden style="width: 1200px;height: 400px;"></div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3" hidden id="botao" >
 
@@ -353,7 +474,7 @@
 
                     <div class="well well-sm" id="totalb">Total de Bovinos:</div>
                     <div class="well well-sm" id="totalreceita">Total de Receita de Bovinos:</div>
-                    <div class="well well-sm" id="receitahectare">Receita por Hectare:</div>
+                    <div class="well well-sm" id="receitahectare">Receita dosHectare:</div>
 
                 </div>-->
 

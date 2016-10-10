@@ -42,7 +42,7 @@
                         <input type="text" class="form-control" placeholder="Insira o nome da propriedade" name="nome" required>
                         <label>UF</label>
                         <input type="text" class="form-control" placeholder="Insira sua unidade federativa (Ex:RS)" name="uf" required>
-                        <Label>Cidade</label>
+                        <Label>Municipio</label>
                         <input type="text" class="form-control" placeholder="Insira sua cidade" name="cidade" required></br>
                         <button type="submit" class="btn btn-lg btn-success center-block">Salvar <span class="glyphicon glyphicon-check"></span></button>
                     </form>

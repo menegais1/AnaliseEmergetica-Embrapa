@@ -1,3 +1,4 @@
+<%@page import="dao.Lv1p4DAO"%>
 <%@page import="java.math.BigDecimal"%>
 <%@page import="modelo.Lv1p4"%>
 <%@include file="../jsp/testelogin.jsp"%>
@@ -12,7 +13,9 @@
     Integer id = Integer.parseInt(session.getAttribute("Propriedade_id").toString());
     String ano = session.getAttribute("Ano").toString();
 
-    Lv1p4 lv1p4 = passos.getLv1p4dao().buscarPorPropriedade(id, ano);
+    Lv1p4DAO lv1p4dao = new Lv1p4DAO();
+
+    Lv1p4 lv1p4 = lv1p4dao.buscarPorPropriedade(id, ano);
 
     if (passos.getLv1p3() == null) {
         response.sendRedirect("lv1p3.jsp");
@@ -33,7 +36,7 @@
         lv1p4.setPastagem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem")))));
         lv1p4.setOutros(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outros")))));
 
-        passos.getLv1p4dao().incluir(lv1p4);
+        lv1p4dao.incluir(lv1p4);
         passos.setLv1p4(lv1p4);
         session.setAttribute("Passos", passos);
         response.sendRedirect("lv1resultados.jsp");
@@ -46,7 +49,7 @@
         lv1p4.setPastagem(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("pastagem")))));
         lv1p4.setOutros(BigDecimal.valueOf(Double.parseDouble(passos.conversor(request.getParameter("outros")))));
 
-        passos.getLv1p4dao().alterar(lv1p4);
+        lv1p4dao.alterar(lv1p4);
         passos.setLv1p4(lv1p4);
         session.setAttribute("Passos", passos);
         response.sendRedirect("lv1resultados.jsp");
@@ -118,11 +121,14 @@
                     <div id="grafico1">
 
                     </div><br>
+
                     <div class="well well-sm" id="totalcustoproducao">
 
                     </div>
 
+                    <div class="well well-sm" id="mb">
 
+                    </div>
 
                     <input type="submit" disabled class="btn btn-success btn-lg center-block" value="Avaliação Final">
                     <br>
@@ -143,7 +149,7 @@
 <script>
                 $(document).ready(function () {
 
-                    lv1p4();
+                    lv1p4(<%=passos.getLv1p3().getReceitaAnual()%>,<%=passos.getLv1p1().getAreaApro()%>);
 
                 });</script>
 

@@ -46,6 +46,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Lv2resultado.findByAno", query = "SELECT l FROM Lv2resultado l WHERE l.ano = :ano")})
 public class Lv2resultado implements Serializable {
 
+    @Basic(optional = false)
+    @Column(name = "producaodecarne")
+    private BigDecimal producaodecarne;
+
+    @Basic(optional = false)
+    @Column(name = "margembruta")
+    private BigDecimal margembruta;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -130,7 +138,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getAreamedia() {
         if (areamedia != null) {
 
-            areamedia = areamedia.setScale(2,BigDecimal.ROUND_HALF_UP);
+            areamedia = areamedia.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return areamedia;
     }
@@ -142,7 +150,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getAreaaproveitavel() {
         if (areaaproveitavel != null) {
 
-            areaaproveitavel = areaaproveitavel.setScale(2,BigDecimal.ROUND_HALF_UP);
+            areaaproveitavel = areaaproveitavel.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return areaaproveitavel;
     }
@@ -154,7 +162,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getPercentualrebanhocomcria() {
         if (percentualrebanhocomcria != null) {
 
-            percentualrebanhocomcria = percentualrebanhocomcria.setScale(2,BigDecimal.ROUND_HALF_UP);
+            percentualrebanhocomcria = percentualrebanhocomcria.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return percentualrebanhocomcria;
     }
@@ -166,7 +174,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getLotacaomedia2() {
         if (lotacaomedia2 != null) {
 
-            lotacaomedia2 = lotacaomedia2.setScale(2,BigDecimal.ROUND_HALF_UP);
+            lotacaomedia2 = lotacaomedia2.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return lotacaomedia2;
     }
@@ -178,7 +186,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getTotalreceita() {
         if (totalreceita != null) {
 
-            totalreceita = totalreceita.setScale(2,BigDecimal.ROUND_HALF_UP);
+            totalreceita = totalreceita.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return totalreceita;
     }
@@ -190,7 +198,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getReceitahectar2() {
         if (receitahectar2 != null) {
 
-            receitahectar2 = receitahectar2.setScale(2,BigDecimal.ROUND_HALF_UP);
+            receitahectar2 = receitahectar2.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return receitahectar2;
     }
@@ -202,7 +210,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getCustotalproducao() {
         if (custotalproducao != null) {
 
-            custotalproducao = custotalproducao.setScale(2,BigDecimal.ROUND_HALF_UP);
+            custotalproducao = custotalproducao.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return custotalproducao;
     }
@@ -214,7 +222,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getCustoatividadecria1() {
         if (custoatividadecria1 != null) {
 
-            custoatividadecria1 = custoatividadecria1.setScale(2,BigDecimal.ROUND_HALF_UP);
+            custoatividadecria1 = custoatividadecria1.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return custoatividadecria1;
     }
@@ -226,7 +234,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getCustoproducaohectar1() {
         if (custoproducaohectar1 != null) {
 
-            custoproducaohectar1 = custoproducaohectar1.setScale(2,BigDecimal.ROUND_HALF_UP);
+            custoproducaohectar1 = custoproducaohectar1.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return custoproducaohectar1;
     }
@@ -238,7 +246,7 @@ public class Lv2resultado implements Serializable {
     public BigDecimal getCustoterneiro() {
         if (custoterneiro != null) {
 
-            custoterneiro = custoterneiro.setScale(2,BigDecimal.ROUND_HALF_UP);
+            custoterneiro = custoterneiro.setScale(2, BigDecimal.ROUND_HALF_UP);
         }
         return custoterneiro;
     }
@@ -286,6 +294,30 @@ public class Lv2resultado implements Serializable {
     @Override
     public String toString() {
         return "modelo.Lv2resultado[ id=" + id + " ]";
+    }
+
+    public BigDecimal getMargembruta() {
+        if (margembruta != null) {
+
+            margembruta = margembruta.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return margembruta;
+    }
+
+    public void setMargembruta(BigDecimal margembruta) {
+        this.margembruta = margembruta;
+    }
+
+    public BigDecimal getProducaodecarne() {
+        if (producaodecarne != null) {
+
+            producaodecarne = producaodecarne.setScale(2, BigDecimal.ROUND_HALF_UP);
+        }
+        return producaodecarne;
+    }
+
+    public void setProducaodecarne(BigDecimal producaodecarne) {
+        this.producaodecarne = producaodecarne;
     }
 
 }
